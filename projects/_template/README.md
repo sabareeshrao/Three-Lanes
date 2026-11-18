@@ -10,6 +10,10 @@ Read [../../DIAGRAM-QUALITY-STANDARD.md](../../DIAGRAM-QUALITY-STANDARD.md) befo
 
 Use the supplied [VISUAL-QA-TRACKER.md](./VISUAL-QA-TRACKER.md) to audit the source and visual at 1440px and 390px, verify SVG click-to-open/click-again-to-close and vertical scroll stability, and record defects and completion for each commit. Do not call the batch complete until **10/10** commits pass these checks.
 
+## Maximum 100 instructional code lines per subcommit
+
+**Read [../../SUBCOMMIT-100-LINE-RULE.md](../../SUBCOMMIT-100-LINE-RULE.md).** For large source commits, create as many numbered **learning subcommits** as necessary. Each may show **no more than 100 total code/diff lines across every file and snippet** (context + deletions + additions). Audit that **all** actual changed lines are covered and that real SHA, paths and old/new line coordinates remain intact. The whole original commit/diff remains externally accessible. Track counts and completeness in `VISUAL-QA-TRACKER.md`. The count of real GitHub commits stays at 10 per batch regardless of how many subcommits you make.
+
 ## Files
 
 - `project.json`: repository and project identity; the replacement for hardcoded Petclinic URLs.
