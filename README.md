@@ -39,6 +39,23 @@ Three-Lanes/
 └── .github/workflows/pages.yml
 ```
 
+## Navigate from diagrams to exact source code
+
+Each selected commit can expose **Source links** under the visual. The links are resolved against the historical **40-character GitHub commit SHA**, not the repository's latest `main` branch.
+
+- Click an underlined class, method, SQL label, server or database icon in an inline SVG to preview the corresponding source line in Three-Lanes.
+- Click **Source links** to view exact numbered code within the lane; click the adjacent arrow to open the same line on GitHub.
+- Related source references include verified controller/domain/repository definitions, SQL constraints and tests where applicable.
+- The in-page preview shows actual file text and nearby lines, not recreated teaching snippets.
+- A link is offered only when the specified file and symbol are found at that SHA. Unavailable references are not assigned invented line numbers.
+- Existing **View**, **GitHub**, **View here**, 10-commit navigation, and scroll-position persistence remain intact.
+
+The initial curated relationships are in [`src/navigation/source-manifest.js`](./src/navigation/source-manifest.js); the reusable navigator is [`src/navigation/code-navigation.js`](./src/navigation/code-navigation.js).
+
+**Example:** [OwnerController.java line 103 at Commit 8.1](https://github.com/spring-projects/spring-petclinic/blob/bb37aad8c332264723817d855e8b3b96b7c392bc/src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java#L103) is linked to [OwnerRepository.java line 45 at that exact same commit](https://github.com/spring-projects/spring-petclinic/blob/bb37aad8c332264723817d855e8b3b96b7c392bc/src/main/java/org/springframework/samples/petclinic/owner/OwnerRepository.java#L45).
+
+The relationships in this 10-commit demo are curated and line-verified, **not** an exhaustive automatically generated call graph for arbitrary repositories.
+
 ## Copy and paste an existing visual
 
 All **25 existing visual steps** have been exported individually. You can reuse or modify them without editing the app's UI rendering logic.
