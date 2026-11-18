@@ -6,6 +6,8 @@ For a new GitHub repository project, create `projects/<slug>/` from `projects/_t
 
 **10-commit batch rule:** Read [../DIAGRAM-QUALITY-STANDARD.md](../DIAGRAM-QUALITY-STANDARD.md) before creating diagrams. Each batch contains exactly 10 real commits, with first three visuals especially outstanding and *every* visual technically faithful, distinctive and free of overlap, tiny text, huge arrows or clipped elements. Inspect each at 1440px and 390px and fill the copied `projects/<slug>/VISUAL-QA-TRACKER.md`. Do not claim complete until all ten pass the source, visual and SVG-click/navigation/scroll gates. Quality is not optional; never use repeated generic text-box diagrams as a shortcut.
 
-The current starter JSON manifest is **not yet connected to a generic project loader**. Inspect actual code and implement the missing adapter before claiming that a new project can be selected by config alone.
+**Strict source slicing rule:** Read [../SUBCOMMIT-100-LINE-RULE.md](../SUBCOMMIT-100-LINE-RULE.md). Expand any large real GitHub commit into enough coherent numbered **learning subcommits**, each with **at most 100 total source/diff lines (including context, additions, removals) across all files**. Do not truncate or omit changes; audit complete real-diff coverage and keep historical SHA/line links. These subcommits are explanatory steps, not new Git commits; batches still contain ten real commits. Record line counts and uncovered sections in `VISUAL-QA-TRACKER.md`.
+
+The current starter JSON manifestThe current starter JSON manifest is **not yet connected to a generic project loader**. Inspect actual code and implement the missing adapter before claiming that a new project can be selected by config alone.
 
 Do not fabricate code/source references. Test and verify all modifications; only report deployed Pages URLs as live after checking deployment.
