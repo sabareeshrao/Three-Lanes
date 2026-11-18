@@ -1,0 +1,2590 @@
+{
+  "version": 1,
+  "targetTotal": 200,
+  "newCount": 175,
+  "entries": [
+    {
+      "id": "spring-boot-app",
+      "title": "Spring Boot App",
+      "category": "Java & Spring",
+      "motif": "server",
+      "mini": "spark",
+      "label": "SPRING",
+      "tags": [
+        "spring",
+        "boot",
+        "app",
+        "server",
+        "spark",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-controller",
+      "title": "Spring Controller",
+      "category": "Java & Spring",
+      "motif": "controller",
+      "mini": "arrow",
+      "label": "MVC",
+      "tags": [
+        "spring",
+        "controller",
+        "arrow",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-service",
+      "title": "Spring Service",
+      "category": "Java & Spring",
+      "motif": "gear",
+      "mini": "check",
+      "label": "SERVICE",
+      "tags": [
+        "spring",
+        "service",
+        "gear",
+        "check",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-repository",
+      "title": "Spring Repository",
+      "category": "Java & Spring",
+      "motif": "db",
+      "mini": "file",
+      "label": "JPA",
+      "tags": [
+        "spring",
+        "repository",
+        "db",
+        "file",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-bean",
+      "title": "Spring Bean",
+      "category": "Java & Spring",
+      "motif": "chip",
+      "mini": "spark",
+      "label": "BEAN",
+      "tags": [
+        "spring",
+        "bean",
+        "chip",
+        "spark",
+        "java"
+      ]
+    },
+    {
+      "id": "dependency-injection",
+      "title": "Dependency Injection",
+      "category": "Java & Spring",
+      "motif": "flow",
+      "mini": "arrow",
+      "label": "DI",
+      "tags": [
+        "dependency",
+        "injection",
+        "flow",
+        "arrow",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-configuration",
+      "title": "Spring Configuration",
+      "category": "Java & Spring",
+      "motif": "sliders",
+      "mini": "gear",
+      "label": "CONFIG",
+      "tags": [
+        "spring",
+        "configuration",
+        "sliders",
+        "gear",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-profile",
+      "title": "Spring Profile",
+      "category": "Java & Spring",
+      "motif": "tag",
+      "mini": "check",
+      "label": "PROFILE",
+      "tags": [
+        "spring",
+        "profile",
+        "tag",
+        "check",
+        "java"
+      ]
+    },
+    {
+      "id": "rest-controller",
+      "title": "Rest Controller",
+      "category": "Java & Spring",
+      "motif": "controller",
+      "mini": "file",
+      "label": "REST",
+      "tags": [
+        "rest",
+        "controller",
+        "file",
+        "java"
+      ]
+    },
+    {
+      "id": "get-mapping",
+      "title": "Get Mapping",
+      "category": "Java & Spring",
+      "motif": "browser",
+      "mini": "arrow",
+      "label": "GET",
+      "tags": [
+        "get",
+        "mapping",
+        "browser",
+        "arrow",
+        "java"
+      ]
+    },
+    {
+      "id": "post-mapping",
+      "title": "Post Mapping",
+      "category": "Java & Spring",
+      "motif": "browser",
+      "mini": "add",
+      "label": "POST",
+      "tags": [
+        "post",
+        "mapping",
+        "browser",
+        "add",
+        "java"
+      ]
+    },
+    {
+      "id": "request-body",
+      "title": "Request Body",
+      "category": "Java & Spring",
+      "motif": "file",
+      "mini": "arrow",
+      "label": "BODY",
+      "tags": [
+        "request",
+        "body",
+        "file",
+        "arrow",
+        "java"
+      ]
+    },
+    {
+      "id": "path-variable",
+      "title": "Path Variable",
+      "category": "Java & Spring",
+      "motif": "route",
+      "mini": "file",
+      "label": "PATH",
+      "tags": [
+        "path",
+        "variable",
+        "route",
+        "file",
+        "java"
+      ]
+    },
+    {
+      "id": "bean-validation",
+      "title": "Bean Validation",
+      "category": "Java & Spring",
+      "motif": "shield",
+      "mini": "check",
+      "label": "VALID",
+      "tags": [
+        "bean",
+        "validation",
+        "shield",
+        "check",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-interceptor",
+      "title": "Spring Interceptor",
+      "category": "Java & Spring",
+      "motif": "shield",
+      "mini": "arrow",
+      "label": "MVC",
+      "tags": [
+        "spring",
+        "interceptor",
+        "shield",
+        "arrow",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-security-chain",
+      "title": "Spring Security Chain",
+      "category": "Java & Spring",
+      "motif": "layer",
+      "mini": "shield",
+      "label": "FILTER",
+      "tags": [
+        "spring",
+        "security",
+        "chain",
+        "layer",
+        "shield",
+        "java"
+      ]
+    },
+    {
+      "id": "spring-scheduled-task",
+      "title": "Spring Scheduled Task",
+      "category": "Java & Spring",
+      "motif": "calendar",
+      "mini": "clock",
+      "label": "CRON",
+      "tags": [
+        "spring",
+        "scheduled",
+        "task",
+        "calendar",
+        "clock",
+        "java"
+      ]
+    },
+    {
+      "id": "transaction-annotation",
+      "title": "Transaction Annotation",
+      "category": "Java & Spring",
+      "motif": "db",
+      "mini": "lock",
+      "label": "TX",
+      "tags": [
+        "transaction",
+        "annotation",
+        "db",
+        "lock",
+        "java"
+      ]
+    },
+    {
+      "id": "api-endpoint",
+      "title": "API Endpoint",
+      "category": "APIs & Backend",
+      "motif": "server",
+      "mini": "arrow",
+      "label": "API",
+      "tags": [
+        "api",
+        "endpoint",
+        "server",
+        "arrow",
+        "apis"
+      ]
+    },
+    {
+      "id": "json-response",
+      "title": "Json Response",
+      "category": "APIs & Backend",
+      "motif": "code",
+      "mini": "check",
+      "label": "JSON",
+      "tags": [
+        "json",
+        "response",
+        "code",
+        "check",
+        "apis"
+      ]
+    },
+    {
+      "id": "http-status-ok",
+      "title": "HTTP Status Ok",
+      "category": "APIs & Backend",
+      "motif": "status",
+      "mini": "check",
+      "label": "200",
+      "tags": [
+        "http",
+        "status",
+        "ok",
+        "check",
+        "apis"
+      ]
+    },
+    {
+      "id": "http-status-error",
+      "title": "HTTP Status Error",
+      "category": "APIs & Backend",
+      "motif": "warn",
+      "mini": "error",
+      "label": "400",
+      "tags": [
+        "http",
+        "status",
+        "error",
+        "warn",
+        "apis"
+      ]
+    },
+    {
+      "id": "http-redirect",
+      "title": "HTTP Redirect",
+      "category": "APIs & Backend",
+      "motif": "route",
+      "mini": "arrow",
+      "label": "302",
+      "tags": [
+        "http",
+        "redirect",
+        "route",
+        "arrow",
+        "apis"
+      ]
+    },
+    {
+      "id": "api-pagination",
+      "title": "API Pagination",
+      "category": "APIs & Backend",
+      "motif": "file",
+      "mini": "arrow",
+      "label": "PAGE",
+      "tags": [
+        "api",
+        "pagination",
+        "file",
+        "arrow",
+        "apis"
+      ]
+    },
+    {
+      "id": "api-rate-limit",
+      "title": "API Rate Limit",
+      "category": "APIs & Backend",
+      "motif": "clock",
+      "mini": "warn",
+      "label": "RATE",
+      "tags": [
+        "api",
+        "rate",
+        "limit",
+        "clock",
+        "warn",
+        "apis"
+      ]
+    },
+    {
+      "id": "api-retry",
+      "title": "API Retry",
+      "category": "APIs & Backend",
+      "motif": "route",
+      "mini": "clock",
+      "label": "RETRY",
+      "tags": [
+        "api",
+        "retry",
+        "route",
+        "clock",
+        "apis"
+      ]
+    },
+    {
+      "id": "api-timeout",
+      "title": "API Timeout",
+      "category": "APIs & Backend",
+      "motif": "clock",
+      "mini": "error",
+      "label": "TIMEOUT",
+      "tags": [
+        "api",
+        "timeout",
+        "clock",
+        "error",
+        "apis"
+      ]
+    },
+    {
+      "id": "request-validation",
+      "title": "Request Validation",
+      "category": "APIs & Backend",
+      "motif": "shield",
+      "mini": "check",
+      "label": "INPUT",
+      "tags": [
+        "request",
+        "validation",
+        "shield",
+        "check",
+        "apis"
+      ]
+    },
+    {
+      "id": "response-serialization",
+      "title": "Response Serialization",
+      "category": "APIs & Backend",
+      "motif": "code",
+      "mini": "arrow",
+      "label": "SER",
+      "tags": [
+        "response",
+        "serialization",
+        "code",
+        "arrow",
+        "apis"
+      ]
+    },
+    {
+      "id": "api-versioning",
+      "title": "API Versioning",
+      "category": "APIs & Backend",
+      "motif": "tag",
+      "mini": "add",
+      "label": "V2",
+      "tags": [
+        "api",
+        "versioning",
+        "tag",
+        "add",
+        "apis"
+      ]
+    },
+    {
+      "id": "microservice",
+      "title": "Microservice",
+      "category": "APIs & Backend",
+      "motif": "server",
+      "mini": "cloud",
+      "label": "SERVICE",
+      "tags": [
+        "microservice",
+        "server",
+        "cloud",
+        "apis"
+      ]
+    },
+    {
+      "id": "message-queue",
+      "title": "Message Queue",
+      "category": "APIs & Backend",
+      "motif": "queue",
+      "mini": "arrow",
+      "label": "QUEUE",
+      "tags": [
+        "message",
+        "queue",
+        "arrow",
+        "apis"
+      ]
+    },
+    {
+      "id": "event-publisher",
+      "title": "Event Publisher",
+      "category": "APIs & Backend",
+      "motif": "bell",
+      "mini": "arrow",
+      "label": "EVENT",
+      "tags": [
+        "event",
+        "publisher",
+        "bell",
+        "arrow",
+        "apis"
+      ]
+    },
+    {
+      "id": "event-consumer",
+      "title": "Event Consumer",
+      "category": "APIs & Backend",
+      "motif": "queue",
+      "mini": "check",
+      "label": "SUB",
+      "tags": [
+        "event",
+        "consumer",
+        "queue",
+        "check",
+        "apis"
+      ]
+    },
+    {
+      "id": "background-worker",
+      "title": "Background Worker",
+      "category": "APIs & Backend",
+      "motif": "gear",
+      "mini": "clock",
+      "label": "WORKER",
+      "tags": [
+        "background",
+        "worker",
+        "gear",
+        "clock",
+        "apis"
+      ]
+    },
+    {
+      "id": "graphql-query",
+      "title": "Graphql Query",
+      "category": "APIs & Backend",
+      "motif": "network",
+      "mini": "search",
+      "label": "GRAPHQL",
+      "tags": [
+        "graphql",
+        "query",
+        "network",
+        "search",
+        "apis"
+      ]
+    },
+    {
+      "id": "database-table",
+      "title": "Database Table",
+      "category": "Database & Storage",
+      "motif": "table",
+      "mini": "db",
+      "label": "TABLE",
+      "tags": [
+        "database",
+        "table",
+        "db"
+      ]
+    },
+    {
+      "id": "database-primary-key",
+      "title": "Database Primary Key",
+      "category": "Database & Storage",
+      "motif": "key",
+      "mini": "check",
+      "label": "PK",
+      "tags": [
+        "database",
+        "primary",
+        "key",
+        "check"
+      ]
+    },
+    {
+      "id": "foreign-key",
+      "title": "Foreign Key",
+      "category": "Database & Storage",
+      "motif": "key",
+      "mini": "arrow",
+      "label": "FK",
+      "tags": [
+        "foreign",
+        "key",
+        "arrow",
+        "database"
+      ]
+    },
+    {
+      "id": "database-index",
+      "title": "Database Index",
+      "category": "Database & Storage",
+      "motif": "table",
+      "mini": "search",
+      "label": "INDEX",
+      "tags": [
+        "database",
+        "index",
+        "table",
+        "search"
+      ]
+    },
+    {
+      "id": "sql-select",
+      "title": "SQL Select",
+      "category": "Database & Storage",
+      "motif": "table",
+      "mini": "search",
+      "label": "SELECT",
+      "tags": [
+        "sql",
+        "select",
+        "table",
+        "search",
+        "database"
+      ]
+    },
+    {
+      "id": "sql-insert",
+      "title": "SQL Insert",
+      "category": "Database & Storage",
+      "motif": "table",
+      "mini": "add",
+      "label": "INSERT",
+      "tags": [
+        "sql",
+        "insert",
+        "table",
+        "add",
+        "database"
+      ]
+    },
+    {
+      "id": "sql-update",
+      "title": "SQL Update",
+      "category": "Database & Storage",
+      "motif": "table",
+      "mini": "gear",
+      "label": "UPDATE",
+      "tags": [
+        "sql",
+        "update",
+        "table",
+        "gear",
+        "database"
+      ]
+    },
+    {
+      "id": "sql-join",
+      "title": "SQL Join",
+      "category": "Database & Storage",
+      "motif": "network",
+      "mini": "db",
+      "label": "JOIN",
+      "tags": [
+        "sql",
+        "join",
+        "network",
+        "db",
+        "database"
+      ]
+    },
+    {
+      "id": "database-transaction",
+      "title": "Database Transaction",
+      "category": "Database & Storage",
+      "motif": "db",
+      "mini": "lock",
+      "label": "ACID",
+      "tags": [
+        "database",
+        "transaction",
+        "db",
+        "lock"
+      ]
+    },
+    {
+      "id": "database-rollback",
+      "title": "Database Rollback",
+      "category": "Database & Storage",
+      "motif": "db",
+      "mini": "error",
+      "label": "UNDO",
+      "tags": [
+        "database",
+        "rollback",
+        "db",
+        "error"
+      ]
+    },
+    {
+      "id": "database-migration",
+      "title": "Database Migration",
+      "category": "Database & Storage",
+      "motif": "route",
+      "mini": "db",
+      "label": "DDL",
+      "tags": [
+        "database",
+        "migration",
+        "route",
+        "db"
+      ]
+    },
+    {
+      "id": "database-view",
+      "title": "Database View",
+      "category": "Database & Storage",
+      "motif": "table",
+      "mini": "eye",
+      "label": "VIEW",
+      "tags": [
+        "database",
+        "view",
+        "table",
+        "eye"
+      ]
+    },
+    {
+      "id": "cache-key",
+      "title": "Cache Key",
+      "category": "Database & Storage",
+      "motif": "key",
+      "mini": "clock",
+      "label": "CACHE",
+      "tags": [
+        "cache",
+        "key",
+        "clock",
+        "database"
+      ]
+    },
+    {
+      "id": "redis-cache",
+      "title": "Redis Cache",
+      "category": "Database & Storage",
+      "motif": "db",
+      "mini": "spark",
+      "label": "REDIS",
+      "tags": [
+        "redis",
+        "cache",
+        "db",
+        "spark",
+        "database"
+      ]
+    },
+    {
+      "id": "file-storage",
+      "title": "File Storage",
+      "category": "Database & Storage",
+      "motif": "folder",
+      "mini": "file",
+      "label": "FILES",
+      "tags": [
+        "file",
+        "storage",
+        "folder",
+        "database"
+      ]
+    },
+    {
+      "id": "object-bucket",
+      "title": "Object Bucket",
+      "category": "Database & Storage",
+      "motif": "bucket",
+      "mini": "cloud",
+      "label": "BUCKET",
+      "tags": [
+        "object",
+        "bucket",
+        "cloud",
+        "database"
+      ]
+    },
+    {
+      "id": "unit-test",
+      "title": "Unit Test",
+      "category": "Testing & Quality",
+      "motif": "flask",
+      "mini": "check",
+      "label": "UNIT",
+      "tags": [
+        "unit",
+        "test",
+        "flask",
+        "check",
+        "testing"
+      ]
+    },
+    {
+      "id": "integration-test",
+      "title": "Integration Test",
+      "category": "Testing & Quality",
+      "motif": "layer",
+      "mini": "check",
+      "label": "IT",
+      "tags": [
+        "integration",
+        "test",
+        "layer",
+        "check",
+        "testing"
+      ]
+    },
+    {
+      "id": "mockmvc-test",
+      "title": "Mockmvc Test",
+      "category": "Testing & Quality",
+      "motif": "flask",
+      "mini": "controller",
+      "label": "MVC",
+      "tags": [
+        "mockmvc",
+        "test",
+        "flask",
+        "controller",
+        "testing"
+      ]
+    },
+    {
+      "id": "mock-object",
+      "title": "Mock Object",
+      "category": "Testing & Quality",
+      "motif": "chip",
+      "mini": "file",
+      "label": "MOCK",
+      "tags": [
+        "mock",
+        "object",
+        "chip",
+        "file",
+        "testing"
+      ]
+    },
+    {
+      "id": "assertion",
+      "title": "Assertion",
+      "category": "Testing & Quality",
+      "motif": "status",
+      "mini": "check",
+      "label": "ASSERT",
+      "tags": [
+        "assertion",
+        "status",
+        "check",
+        "testing"
+      ]
+    },
+    {
+      "id": "failing-test",
+      "title": "Failing Test",
+      "category": "Testing & Quality",
+      "motif": "flask",
+      "mini": "error",
+      "label": "FAIL",
+      "tags": [
+        "failing",
+        "test",
+        "flask",
+        "error",
+        "testing"
+      ]
+    },
+    {
+      "id": "regression-test",
+      "title": "Regression Test",
+      "category": "Testing & Quality",
+      "motif": "flask",
+      "mini": "clock",
+      "label": "REGRESS",
+      "tags": [
+        "regression",
+        "test",
+        "flask",
+        "clock",
+        "testing"
+      ]
+    },
+    {
+      "id": "test-fixture",
+      "title": "Test Fixture",
+      "category": "Testing & Quality",
+      "motif": "folder",
+      "mini": "add",
+      "label": "FIXTURE",
+      "tags": [
+        "test",
+        "fixture",
+        "folder",
+        "add",
+        "testing"
+      ]
+    },
+    {
+      "id": "test-coverage",
+      "title": "Test Coverage",
+      "category": "Testing & Quality",
+      "motif": "pie",
+      "mini": "check",
+      "label": "COVER",
+      "tags": [
+        "test",
+        "coverage",
+        "pie",
+        "check",
+        "testing"
+      ]
+    },
+    {
+      "id": "test-suite",
+      "title": "Test Suite",
+      "category": "Testing & Quality",
+      "motif": "file",
+      "mini": "check",
+      "label": "SUITE",
+      "tags": [
+        "test",
+        "suite",
+        "file",
+        "check",
+        "testing"
+      ]
+    },
+    {
+      "id": "junit-lifecycle",
+      "title": "Junit Lifecycle",
+      "category": "Testing & Quality",
+      "motif": "clock",
+      "mini": "flask",
+      "label": "JUNIT",
+      "tags": [
+        "junit",
+        "lifecycle",
+        "clock",
+        "flask",
+        "testing"
+      ]
+    },
+    {
+      "id": "debug-breakpoint",
+      "title": "Debug Breakpoint",
+      "category": "Testing & Quality",
+      "motif": "bug",
+      "mini": "error",
+      "label": "BREAK",
+      "tags": [
+        "debug",
+        "breakpoint",
+        "bug",
+        "error",
+        "testing"
+      ]
+    },
+    {
+      "id": "code-review",
+      "title": "Code Review",
+      "category": "Testing & Quality",
+      "motif": "code",
+      "mini": "eye",
+      "label": "REVIEW",
+      "tags": [
+        "code",
+        "review",
+        "eye",
+        "testing"
+      ]
+    },
+    {
+      "id": "static-analysis",
+      "title": "Static Analysis",
+      "category": "Testing & Quality",
+      "motif": "search",
+      "mini": "code",
+      "label": "LINT",
+      "tags": [
+        "static",
+        "analysis",
+        "search",
+        "code",
+        "testing"
+      ]
+    },
+    {
+      "id": "docker-image",
+      "title": "Docker Image",
+      "category": "Cloud & DevOps",
+      "motif": "container",
+      "mini": "tag",
+      "label": "IMAGE",
+      "tags": [
+        "docker",
+        "image",
+        "container",
+        "tag",
+        "cloud"
+      ]
+    },
+    {
+      "id": "docker-build",
+      "title": "Docker Build",
+      "category": "Cloud & DevOps",
+      "motif": "container",
+      "mini": "gear",
+      "label": "BUILD",
+      "tags": [
+        "docker",
+        "build",
+        "container",
+        "gear",
+        "cloud"
+      ]
+    },
+    {
+      "id": "container-running",
+      "title": "Container Running",
+      "category": "Cloud & DevOps",
+      "motif": "container",
+      "mini": "check",
+      "label": "RUN",
+      "tags": [
+        "container",
+        "running",
+        "check",
+        "cloud"
+      ]
+    },
+    {
+      "id": "k8s-pod",
+      "title": "K8s Pod",
+      "category": "Cloud & DevOps",
+      "motif": "container",
+      "mini": "cloud",
+      "label": "POD",
+      "tags": [
+        "k8s",
+        "pod",
+        "container",
+        "cloud"
+      ]
+    },
+    {
+      "id": "k8s-service",
+      "title": "K8s Service",
+      "category": "Cloud & DevOps",
+      "motif": "server",
+      "mini": "cloud",
+      "label": "K8S",
+      "tags": [
+        "k8s",
+        "service",
+        "server",
+        "cloud"
+      ]
+    },
+    {
+      "id": "k8s-deployment",
+      "title": "K8s Deployment",
+      "category": "Cloud & DevOps",
+      "motif": "rocket",
+      "mini": "cloud",
+      "label": "DEPLOY",
+      "tags": [
+        "k8s",
+        "deployment",
+        "rocket",
+        "cloud"
+      ]
+    },
+    {
+      "id": "load-balancing",
+      "title": "Load Balancing",
+      "category": "Cloud & DevOps",
+      "motif": "network",
+      "mini": "arrow",
+      "label": "BALANCE",
+      "tags": [
+        "load",
+        "balancing",
+        "network",
+        "arrow",
+        "cloud"
+      ]
+    },
+    {
+      "id": "cloud-function",
+      "title": "Cloud Function",
+      "category": "Cloud & DevOps",
+      "motif": "cloud",
+      "mini": "spark",
+      "label": "LAMBDA",
+      "tags": [
+        "cloud",
+        "function",
+        "spark"
+      ]
+    },
+    {
+      "id": "cloud-region",
+      "title": "Cloud Region",
+      "category": "Cloud & DevOps",
+      "motif": "globe",
+      "mini": "cloud",
+      "label": "REGION",
+      "tags": [
+        "cloud",
+        "region",
+        "globe"
+      ]
+    },
+    {
+      "id": "cdn-cache",
+      "title": "Cdn Cache",
+      "category": "Cloud & DevOps",
+      "motif": "globe",
+      "mini": "clock",
+      "label": "CDN",
+      "tags": [
+        "cdn",
+        "cache",
+        "globe",
+        "clock",
+        "cloud"
+      ]
+    },
+    {
+      "id": "ci-pipeline",
+      "title": "Ci Pipeline",
+      "category": "Cloud & DevOps",
+      "motif": "flow",
+      "mini": "check",
+      "label": "CI",
+      "tags": [
+        "ci",
+        "pipeline",
+        "flow",
+        "check",
+        "cloud"
+      ]
+    },
+    {
+      "id": "cd-deployment",
+      "title": "Cd Deployment",
+      "category": "Cloud & DevOps",
+      "motif": "rocket",
+      "mini": "check",
+      "label": "CD",
+      "tags": [
+        "cd",
+        "deployment",
+        "rocket",
+        "check",
+        "cloud"
+      ]
+    },
+    {
+      "id": "github-action",
+      "title": "Github Action",
+      "category": "Cloud & DevOps",
+      "motif": "git",
+      "mini": "gear",
+      "label": "ACTIONS",
+      "tags": [
+        "github",
+        "action",
+        "git",
+        "gear",
+        "cloud"
+      ]
+    },
+    {
+      "id": "terraform-plan",
+      "title": "Terraform Plan",
+      "category": "Cloud & DevOps",
+      "motif": "code",
+      "mini": "gear",
+      "label": "PLAN",
+      "tags": [
+        "terraform",
+        "plan",
+        "code",
+        "gear",
+        "cloud"
+      ]
+    },
+    {
+      "id": "infra-as-code",
+      "title": "Infra As Code",
+      "category": "Cloud & DevOps",
+      "motif": "layer",
+      "mini": "code",
+      "label": "IAC",
+      "tags": [
+        "infra",
+        "as",
+        "code",
+        "layer",
+        "cloud"
+      ]
+    },
+    {
+      "id": "environment-variable",
+      "title": "Environment Variable",
+      "category": "Cloud & DevOps",
+      "motif": "code",
+      "mini": "key",
+      "label": "ENV",
+      "tags": [
+        "environment",
+        "variable",
+        "code",
+        "key",
+        "cloud"
+      ]
+    },
+    {
+      "id": "observability-stack",
+      "title": "Observability Stack",
+      "category": "Cloud & DevOps",
+      "motif": "chart",
+      "mini": "eye",
+      "label": "OBS",
+      "tags": [
+        "observability",
+        "stack",
+        "chart",
+        "eye",
+        "cloud"
+      ]
+    },
+    {
+      "id": "service-health",
+      "title": "Service Health",
+      "category": "Cloud & DevOps",
+      "motif": "heartbeat",
+      "mini": "check",
+      "label": "HEALTH",
+      "tags": [
+        "service",
+        "health",
+        "heartbeat",
+        "check",
+        "cloud"
+      ]
+    },
+    {
+      "id": "oauth-login",
+      "title": "Oauth Login",
+      "category": "Security & Identity",
+      "motif": "lock",
+      "mini": "user",
+      "label": "OAUTH",
+      "tags": [
+        "oauth",
+        "login",
+        "lock",
+        "user",
+        "security"
+      ]
+    },
+    {
+      "id": "jwt-token",
+      "title": "JWT Token",
+      "category": "Security & Identity",
+      "motif": "key",
+      "mini": "file",
+      "label": "JWT",
+      "tags": [
+        "jwt",
+        "token",
+        "key",
+        "file",
+        "security"
+      ]
+    },
+    {
+      "id": "access-control",
+      "title": "Access Control",
+      "category": "Security & Identity",
+      "motif": "shield",
+      "mini": "lock",
+      "label": "RBAC",
+      "tags": [
+        "access",
+        "control",
+        "shield",
+        "lock",
+        "security"
+      ]
+    },
+    {
+      "id": "user-session",
+      "title": "User Session",
+      "category": "Security & Identity",
+      "motif": "user",
+      "mini": "clock",
+      "label": "SESSION",
+      "tags": [
+        "user",
+        "session",
+        "clock",
+        "security"
+      ]
+    },
+    {
+      "id": "password-hashing",
+      "title": "Password Hashing",
+      "category": "Security & Identity",
+      "motif": "key",
+      "mini": "gear",
+      "label": "HASH",
+      "tags": [
+        "password",
+        "hashing",
+        "key",
+        "gear",
+        "security"
+      ]
+    },
+    {
+      "id": "encryption",
+      "title": "Encryption",
+      "category": "Security & Identity",
+      "motif": "lock",
+      "mini": "key",
+      "label": "AES",
+      "tags": [
+        "encryption",
+        "lock",
+        "key",
+        "security"
+      ]
+    },
+    {
+      "id": "tls-handshake",
+      "title": "Tls Handshake",
+      "category": "Security & Identity",
+      "motif": "flow",
+      "mini": "lock",
+      "label": "TLS",
+      "tags": [
+        "tls",
+        "handshake",
+        "flow",
+        "lock",
+        "security"
+      ]
+    },
+    {
+      "id": "api-key",
+      "title": "API Key",
+      "category": "Security & Identity",
+      "motif": "key",
+      "mini": "code",
+      "label": "API KEY",
+      "tags": [
+        "api",
+        "key",
+        "code",
+        "security"
+      ]
+    },
+    {
+      "id": "mfa-authentication",
+      "title": "Mfa Authentication",
+      "category": "Security & Identity",
+      "motif": "shield",
+      "mini": "user",
+      "label": "MFA",
+      "tags": [
+        "mfa",
+        "authentication",
+        "shield",
+        "user",
+        "security"
+      ]
+    },
+    {
+      "id": "security-audit",
+      "title": "Security Audit",
+      "category": "Security & Identity",
+      "motif": "search",
+      "mini": "shield",
+      "label": "AUDIT",
+      "tags": [
+        "security",
+        "audit",
+        "search",
+        "shield"
+      ]
+    },
+    {
+      "id": "trust-boundary",
+      "title": "Trust Boundary",
+      "category": "Security & Identity",
+      "motif": "shield",
+      "mini": "arrow",
+      "label": "BOUNDARY",
+      "tags": [
+        "trust",
+        "boundary",
+        "shield",
+        "arrow",
+        "security"
+      ]
+    },
+    {
+      "id": "input-sanitization",
+      "title": "Input Sanitization",
+      "category": "Security & Identity",
+      "motif": "filter",
+      "mini": "check",
+      "label": "CLEAN",
+      "tags": [
+        "input",
+        "sanitization",
+        "filter",
+        "check",
+        "security"
+      ]
+    },
+    {
+      "id": "permission-denied",
+      "title": "Permission Denied",
+      "category": "Security & Identity",
+      "motif": "lock",
+      "mini": "error",
+      "label": "403",
+      "tags": [
+        "permission",
+        "denied",
+        "lock",
+        "error",
+        "security"
+      ]
+    },
+    {
+      "id": "tokenization",
+      "title": "Tokenization",
+      "category": "AI & ML",
+      "motif": "file",
+      "mini": "spark",
+      "label": "TOKENS",
+      "tags": [
+        "tokenization",
+        "file",
+        "spark",
+        "ai"
+      ]
+    },
+    {
+      "id": "embedding-vector",
+      "title": "Embedding Vector",
+      "category": "AI & ML",
+      "motif": "matrix",
+      "mini": "arrow",
+      "label": "EMBED",
+      "tags": [
+        "embedding",
+        "vector",
+        "matrix",
+        "arrow",
+        "ai"
+      ]
+    },
+    {
+      "id": "cosine-similarity",
+      "title": "Cosine Similarity",
+      "category": "AI & ML",
+      "motif": "route",
+      "mini": "matrix",
+      "label": "COSINE",
+      "tags": [
+        "cosine",
+        "similarity",
+        "route",
+        "matrix",
+        "ai"
+      ]
+    },
+    {
+      "id": "attention-head",
+      "title": "Attention Head",
+      "category": "AI & ML",
+      "motif": "neural",
+      "mini": "matrix",
+      "label": "ATTN",
+      "tags": [
+        "attention",
+        "head",
+        "neural",
+        "matrix",
+        "ai"
+      ]
+    },
+    {
+      "id": "transformer-block",
+      "title": "Transformer Block",
+      "category": "AI & ML",
+      "motif": "layer",
+      "mini": "spark",
+      "label": "LLM",
+      "tags": [
+        "transformer",
+        "block",
+        "layer",
+        "spark",
+        "ai"
+      ]
+    },
+    {
+      "id": "feed-forward-network",
+      "title": "Feed Forward Network",
+      "category": "AI & ML",
+      "motif": "neural",
+      "mini": "arrow",
+      "label": "FFN",
+      "tags": [
+        "feed",
+        "forward",
+        "network",
+        "neural",
+        "arrow",
+        "ai"
+      ]
+    },
+    {
+      "id": "neural-layer",
+      "title": "Neural Layer",
+      "category": "AI & ML",
+      "motif": "neural",
+      "mini": "add",
+      "label": "LAYER",
+      "tags": [
+        "neural",
+        "layer",
+        "add",
+        "ai"
+      ]
+    },
+    {
+      "id": "gradient-descent",
+      "title": "Gradient Descent",
+      "category": "AI & ML",
+      "motif": "linechart",
+      "mini": "arrow",
+      "label": "GRAD",
+      "tags": [
+        "gradient",
+        "descent",
+        "linechart",
+        "arrow",
+        "ai"
+      ]
+    },
+    {
+      "id": "backpropagation",
+      "title": "Backpropagation",
+      "category": "AI & ML",
+      "motif": "neural",
+      "mini": "arrow",
+      "label": "BACKPROP",
+      "tags": [
+        "backpropagation",
+        "neural",
+        "arrow",
+        "ai"
+      ]
+    },
+    {
+      "id": "model-training",
+      "title": "Model Training",
+      "category": "AI & ML",
+      "motif": "gear",
+      "mini": "spark",
+      "label": "TRAIN",
+      "tags": [
+        "model",
+        "training",
+        "gear",
+        "spark",
+        "ai"
+      ]
+    },
+    {
+      "id": "model-inference",
+      "title": "Model Inference",
+      "category": "AI & ML",
+      "motif": "chip",
+      "mini": "check",
+      "label": "INFER",
+      "tags": [
+        "model",
+        "inference",
+        "chip",
+        "check",
+        "ai"
+      ]
+    },
+    {
+      "id": "rag-retrieval",
+      "title": "Rag Retrieval",
+      "category": "AI & ML",
+      "motif": "search",
+      "mini": "db",
+      "label": "RAG",
+      "tags": [
+        "rag",
+        "retrieval",
+        "search",
+        "db",
+        "ai"
+      ]
+    },
+    {
+      "id": "vector-database",
+      "title": "Vector Database",
+      "category": "AI & ML",
+      "motif": "db",
+      "mini": "matrix",
+      "label": "VECTOR",
+      "tags": [
+        "vector",
+        "database",
+        "db",
+        "matrix",
+        "ai"
+      ]
+    },
+    {
+      "id": "lora-adapter",
+      "title": "Lora Adapter",
+      "category": "AI & ML",
+      "motif": "layer",
+      "mini": "add",
+      "label": "LORA",
+      "tags": [
+        "lora",
+        "adapter",
+        "layer",
+        "add",
+        "ai"
+      ]
+    },
+    {
+      "id": "model-quantization",
+      "title": "Model Quantization",
+      "category": "AI & ML",
+      "motif": "matrix",
+      "mini": "gear",
+      "label": "INT8",
+      "tags": [
+        "model",
+        "quantization",
+        "matrix",
+        "gear",
+        "ai"
+      ]
+    },
+    {
+      "id": "model-evaluation",
+      "title": "Model Evaluation",
+      "category": "AI & ML",
+      "motif": "chart",
+      "mini": "check",
+      "label": "EVAL",
+      "tags": [
+        "model",
+        "evaluation",
+        "chart",
+        "check",
+        "ai"
+      ]
+    },
+    {
+      "id": "classification",
+      "title": "Classification",
+      "category": "AI & ML",
+      "motif": "pie",
+      "mini": "check",
+      "label": "CLASS",
+      "tags": [
+        "classification",
+        "pie",
+        "check",
+        "ai"
+      ]
+    },
+    {
+      "id": "clustering",
+      "title": "Clustering",
+      "category": "AI & ML",
+      "motif": "network",
+      "mini": "spark",
+      "label": "CLUSTER",
+      "tags": [
+        "clustering",
+        "network",
+        "spark",
+        "ai"
+      ]
+    },
+    {
+      "id": "fine-tuning",
+      "title": "Fine Tuning",
+      "category": "AI & ML",
+      "motif": "gear",
+      "mini": "spark",
+      "label": "TUNE",
+      "tags": [
+        "fine",
+        "tuning",
+        "gear",
+        "spark",
+        "ai"
+      ]
+    },
+    {
+      "id": "agent-tool-call",
+      "title": "Agent Tool Call",
+      "category": "AI & ML",
+      "motif": "flow",
+      "mini": "gear",
+      "label": "TOOLS",
+      "tags": [
+        "agent",
+        "tool",
+        "call",
+        "flow",
+        "gear",
+        "ai"
+      ]
+    },
+    {
+      "id": "etl-extraction",
+      "title": "Etl Extraction",
+      "category": "Data & Analytics",
+      "motif": "db",
+      "mini": "arrow",
+      "label": "EXTRACT",
+      "tags": [
+        "etl",
+        "extraction",
+        "db",
+        "arrow",
+        "data"
+      ]
+    },
+    {
+      "id": "etl-transform",
+      "title": "Etl Transform",
+      "category": "Data & Analytics",
+      "motif": "gear",
+      "mini": "table",
+      "label": "TRANSFORM",
+      "tags": [
+        "etl",
+        "transform",
+        "gear",
+        "table",
+        "data"
+      ]
+    },
+    {
+      "id": "etl-load",
+      "title": "Etl Load",
+      "category": "Data & Analytics",
+      "motif": "bucket",
+      "mini": "db",
+      "label": "LOAD",
+      "tags": [
+        "etl",
+        "load",
+        "bucket",
+        "db",
+        "data"
+      ]
+    },
+    {
+      "id": "bar-chart",
+      "title": "Bar Chart",
+      "category": "Data & Analytics",
+      "motif": "chart",
+      "mini": "check",
+      "label": "BAR",
+      "tags": [
+        "bar",
+        "chart",
+        "check",
+        "data"
+      ]
+    },
+    {
+      "id": "line-chart",
+      "title": "Line Chart",
+      "category": "Data & Analytics",
+      "motif": "linechart",
+      "mini": "check",
+      "label": "LINE",
+      "tags": [
+        "line",
+        "chart",
+        "linechart",
+        "check",
+        "data"
+      ]
+    },
+    {
+      "id": "pie-chart",
+      "title": "Pie Chart",
+      "category": "Data & Analytics",
+      "motif": "pie",
+      "mini": "check",
+      "label": "PIE",
+      "tags": [
+        "pie",
+        "chart",
+        "check",
+        "data"
+      ]
+    },
+    {
+      "id": "scatter-plot",
+      "title": "Scatter Plot",
+      "category": "Data & Analytics",
+      "motif": "matrix",
+      "mini": "chart",
+      "label": "SCATTER",
+      "tags": [
+        "scatter",
+        "plot",
+        "matrix",
+        "chart",
+        "data"
+      ]
+    },
+    {
+      "id": "kpi-metric",
+      "title": "Kpi Metric",
+      "category": "Data & Analytics",
+      "motif": "chart",
+      "mini": "check",
+      "label": "KPI",
+      "tags": [
+        "kpi",
+        "metric",
+        "chart",
+        "check",
+        "data"
+      ]
+    },
+    {
+      "id": "dashboard-widget",
+      "title": "Dashboard Widget",
+      "category": "Data & Analytics",
+      "motif": "chart",
+      "mini": "browser",
+      "label": "DASH",
+      "tags": [
+        "dashboard",
+        "widget",
+        "chart",
+        "browser",
+        "data"
+      ]
+    },
+    {
+      "id": "data-cleaning",
+      "title": "Data Cleaning",
+      "category": "Data & Analytics",
+      "motif": "filter",
+      "mini": "check",
+      "label": "CLEAN",
+      "tags": [
+        "data",
+        "cleaning",
+        "filter",
+        "check"
+      ]
+    },
+    {
+      "id": "data-quality",
+      "title": "Data Quality",
+      "category": "Data & Analytics",
+      "motif": "status",
+      "mini": "table",
+      "label": "QUALITY",
+      "tags": [
+        "data",
+        "quality",
+        "status",
+        "table"
+      ]
+    },
+    {
+      "id": "missing-values",
+      "title": "Missing Values",
+      "category": "Data & Analytics",
+      "motif": "grid",
+      "mini": "error",
+      "label": "NULL",
+      "tags": [
+        "missing",
+        "values",
+        "grid",
+        "error",
+        "data"
+      ]
+    },
+    {
+      "id": "aggregation",
+      "title": "Aggregation",
+      "category": "Data & Analytics",
+      "motif": "table",
+      "mini": "gear",
+      "label": "GROUP",
+      "tags": [
+        "aggregation",
+        "table",
+        "gear",
+        "data"
+      ]
+    },
+    {
+      "id": "data-export",
+      "title": "Data Export",
+      "category": "Data & Analytics",
+      "motif": "file",
+      "mini": "arrow",
+      "label": "CSV",
+      "tags": [
+        "data",
+        "export",
+        "file",
+        "arrow"
+      ]
+    },
+    {
+      "id": "react-component",
+      "title": "React Component",
+      "category": "UI & Frontend",
+      "motif": "browser",
+      "mini": "layer",
+      "label": "REACT",
+      "tags": [
+        "react",
+        "component",
+        "browser",
+        "layer",
+        "ui"
+      ]
+    },
+    {
+      "id": "react-state",
+      "title": "React State",
+      "category": "UI & Frontend",
+      "motif": "sliders",
+      "mini": "arrow",
+      "label": "STATE",
+      "tags": [
+        "react",
+        "state",
+        "sliders",
+        "arrow",
+        "ui"
+      ]
+    },
+    {
+      "id": "html-form",
+      "title": "HTML Form",
+      "category": "UI & Frontend",
+      "motif": "browser",
+      "mini": "file",
+      "label": "FORM",
+      "tags": [
+        "html",
+        "form",
+        "browser",
+        "file",
+        "ui"
+      ]
+    },
+    {
+      "id": "css-layout",
+      "title": "CSS Layout",
+      "category": "UI & Frontend",
+      "motif": "grid",
+      "mini": "gear",
+      "label": "GRID",
+      "tags": [
+        "css",
+        "layout",
+        "grid",
+        "gear",
+        "ui"
+      ]
+    },
+    {
+      "id": "responsive-ui",
+      "title": "Responsive Ui",
+      "category": "UI & Frontend",
+      "motif": "phone",
+      "mini": "browser",
+      "label": "MOBILE",
+      "tags": [
+        "responsive",
+        "ui",
+        "phone",
+        "browser"
+      ]
+    },
+    {
+      "id": "button-click",
+      "title": "Button Click",
+      "category": "UI & Frontend",
+      "motif": "flow",
+      "mini": "arrow",
+      "label": "CLICK",
+      "tags": [
+        "button",
+        "click",
+        "flow",
+        "arrow",
+        "ui"
+      ]
+    },
+    {
+      "id": "input-field",
+      "title": "Input Field",
+      "category": "UI & Frontend",
+      "motif": "browser",
+      "mini": "add",
+      "label": "INPUT",
+      "tags": [
+        "input",
+        "field",
+        "browser",
+        "add",
+        "ui"
+      ]
+    },
+    {
+      "id": "form-error",
+      "title": "Form Error",
+      "category": "UI & Frontend",
+      "motif": "browser",
+      "mini": "error",
+      "label": "ERROR",
+      "tags": [
+        "form",
+        "error",
+        "browser",
+        "ui"
+      ]
+    },
+    {
+      "id": "modal-dialog",
+      "title": "Modal Dialog",
+      "category": "UI & Frontend",
+      "motif": "browser",
+      "mini": "file",
+      "label": "MODAL",
+      "tags": [
+        "modal",
+        "dialog",
+        "browser",
+        "file",
+        "ui"
+      ]
+    },
+    {
+      "id": "navigation-menu",
+      "title": "Navigation Menu",
+      "category": "UI & Frontend",
+      "motif": "list",
+      "mini": "arrow",
+      "label": "NAV",
+      "tags": [
+        "navigation",
+        "menu",
+        "list",
+        "arrow",
+        "ui"
+      ]
+    },
+    {
+      "id": "loading-state",
+      "title": "Loading State",
+      "category": "UI & Frontend",
+      "motif": "clock",
+      "mini": "spark",
+      "label": "LOAD",
+      "tags": [
+        "loading",
+        "state",
+        "clock",
+        "spark",
+        "ui"
+      ]
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "category": "UI & Frontend",
+      "motif": "eye",
+      "mini": "check",
+      "label": "A11Y",
+      "tags": [
+        "accessibility",
+        "eye",
+        "check",
+        "ui"
+      ]
+    },
+    {
+      "id": "tcp-connection",
+      "title": "Tcp Connection",
+      "category": "Networking",
+      "motif": "globe",
+      "mini": "arrow",
+      "label": "TCP",
+      "tags": [
+        "tcp",
+        "connection",
+        "globe",
+        "arrow",
+        "networking"
+      ]
+    },
+    {
+      "id": "dns-lookup",
+      "title": "DNS Lookup",
+      "category": "Networking",
+      "motif": "search",
+      "mini": "globe",
+      "label": "DNS",
+      "tags": [
+        "dns",
+        "lookup",
+        "search",
+        "globe",
+        "networking"
+      ]
+    },
+    {
+      "id": "http-client",
+      "title": "HTTP Client",
+      "category": "Networking",
+      "motif": "browser",
+      "mini": "arrow",
+      "label": "CLIENT",
+      "tags": [
+        "http",
+        "client",
+        "browser",
+        "arrow",
+        "networking"
+      ]
+    },
+    {
+      "id": "websocket-stream",
+      "title": "Websocket Stream",
+      "category": "Networking",
+      "motif": "wave",
+      "mini": "arrow",
+      "label": "WS",
+      "tags": [
+        "websocket",
+        "stream",
+        "wave",
+        "arrow",
+        "networking"
+      ]
+    },
+    {
+      "id": "network-switch",
+      "title": "Network Switch",
+      "category": "Networking",
+      "motif": "network",
+      "mini": "gear",
+      "label": "SWITCH",
+      "tags": [
+        "network",
+        "switch",
+        "gear",
+        "networking"
+      ]
+    },
+    {
+      "id": "network-router",
+      "title": "Network Router",
+      "category": "Networking",
+      "motif": "route",
+      "mini": "globe",
+      "label": "ROUTER",
+      "tags": [
+        "network",
+        "router",
+        "route",
+        "globe",
+        "networking"
+      ]
+    },
+    {
+      "id": "firewall-rule",
+      "title": "Firewall Rule",
+      "category": "Networking",
+      "motif": "shield",
+      "mini": "filter",
+      "label": "RULE",
+      "tags": [
+        "firewall",
+        "rule",
+        "shield",
+        "filter",
+        "networking"
+      ]
+    },
+    {
+      "id": "ip-address",
+      "title": "Ip Address",
+      "category": "Networking",
+      "motif": "tag",
+      "mini": "globe",
+      "label": "IP",
+      "tags": [
+        "ip",
+        "address",
+        "tag",
+        "globe",
+        "networking"
+      ]
+    },
+    {
+      "id": "packet-transfer",
+      "title": "Packet Transfer",
+      "category": "Networking",
+      "motif": "queue",
+      "mini": "arrow",
+      "label": "PACKET",
+      "tags": [
+        "packet",
+        "transfer",
+        "queue",
+        "arrow",
+        "networking"
+      ]
+    },
+    {
+      "id": "network-latency",
+      "title": "Network Latency",
+      "category": "Networking",
+      "motif": "clock",
+      "mini": "globe",
+      "label": "LATENCY",
+      "tags": [
+        "network",
+        "latency",
+        "clock",
+        "globe",
+        "networking"
+      ]
+    },
+    {
+      "id": "gpu-compute",
+      "title": "Gpu Compute",
+      "category": "Hardware",
+      "motif": "chip",
+      "mini": "spark",
+      "label": "GPU",
+      "tags": [
+        "gpu",
+        "compute",
+        "chip",
+        "spark",
+        "hardware"
+      ]
+    },
+    {
+      "id": "nvme-storage",
+      "title": "Nvme Storage",
+      "category": "Hardware",
+      "motif": "disk",
+      "mini": "chip",
+      "label": "NVME",
+      "tags": [
+        "nvme",
+        "storage",
+        "disk",
+        "chip",
+        "hardware"
+      ]
+    },
+    {
+      "id": "cpu-cores",
+      "title": "Cpu Cores",
+      "category": "Hardware",
+      "motif": "chip",
+      "mini": "grid",
+      "label": "CORES",
+      "tags": [
+        "cpu",
+        "cores",
+        "chip",
+        "grid",
+        "hardware"
+      ]
+    },
+    {
+      "id": "ram-allocation",
+      "title": "Ram Allocation",
+      "category": "Hardware",
+      "motif": "ram",
+      "mini": "add",
+      "label": "RAM",
+      "tags": [
+        "ram",
+        "allocation",
+        "add",
+        "hardware"
+      ]
+    },
+    {
+      "id": "memory-cache",
+      "title": "Memory Cache",
+      "category": "Hardware",
+      "motif": "ram",
+      "mini": "clock",
+      "label": "CACHE",
+      "tags": [
+        "memory",
+        "cache",
+        "ram",
+        "clock",
+        "hardware"
+      ]
+    },
+    {
+      "id": "motherboard-bus",
+      "title": "Motherboard Bus",
+      "category": "Hardware",
+      "motif": "network",
+      "mini": "chip",
+      "label": "BUS",
+      "tags": [
+        "motherboard",
+        "bus",
+        "network",
+        "chip",
+        "hardware"
+      ]
+    },
+    {
+      "id": "cooling-system",
+      "title": "Cooling System",
+      "category": "Hardware",
+      "motif": "gear",
+      "mini": "heartbeat",
+      "label": "COOL",
+      "tags": [
+        "cooling",
+        "system",
+        "gear",
+        "heartbeat",
+        "hardware"
+      ]
+    },
+    {
+      "id": "storage-controller",
+      "title": "Storage Controller",
+      "category": "Hardware",
+      "motif": "controller",
+      "mini": "disk",
+      "label": "IO",
+      "tags": [
+        "storage",
+        "controller",
+        "disk",
+        "hardware"
+      ]
+    },
+    {
+      "id": "arrow-bidirectional-thin",
+      "title": "Arrow Bidirectional Thin",
+      "category": "Connectors & Workflow",
+      "motif": "flow",
+      "mini": "arrow",
+      "label": "BOTH",
+      "tags": [
+        "arrow",
+        "bidirectional",
+        "thin",
+        "flow",
+        "connectors"
+      ]
+    },
+    {
+      "id": "arrow-dashed-message",
+      "title": "Arrow Dashed Message",
+      "category": "Connectors & Workflow",
+      "motif": "wave",
+      "mini": "arrow",
+      "label": "ASYNC",
+      "tags": [
+        "arrow",
+        "dashed",
+        "message",
+        "wave",
+        "connectors"
+      ]
+    },
+    {
+      "id": "arrow-feedback-loop",
+      "title": "Arrow Feedback Loop",
+      "category": "Connectors & Workflow",
+      "motif": "route",
+      "mini": "arrow",
+      "label": "LOOP",
+      "tags": [
+        "arrow",
+        "feedback",
+        "loop",
+        "route",
+        "connectors"
+      ]
+    },
+    {
+      "id": "arrow-fork",
+      "title": "Arrow Fork",
+      "category": "Connectors & Workflow",
+      "motif": "network",
+      "mini": "arrow",
+      "label": "FORK",
+      "tags": [
+        "arrow",
+        "fork",
+        "network",
+        "connectors"
+      ]
+    },
+    {
+      "id": "arrow-merge",
+      "title": "Arrow Merge",
+      "category": "Connectors & Workflow",
+      "motif": "network",
+      "mini": "arrow",
+      "label": "MERGE",
+      "tags": [
+        "arrow",
+        "merge",
+        "network",
+        "connectors"
+      ]
+    },
+    {
+      "id": "arrow-elbow-thin",
+      "title": "Arrow Elbow Thin",
+      "category": "Connectors & Workflow",
+      "motif": "route",
+      "mini": "arrow",
+      "label": "ELBOW",
+      "tags": [
+        "arrow",
+        "elbow",
+        "thin",
+        "route",
+        "connectors"
+      ]
+    },
+    {
+      "id": "arrow-error-path",
+      "title": "Arrow Error Path",
+      "category": "Connectors & Workflow",
+      "motif": "route",
+      "mini": "error",
+      "label": "ERROR",
+      "tags": [
+        "arrow",
+        "error",
+        "path",
+        "route",
+        "connectors"
+      ]
+    },
+    {
+      "id": "arrow-success-path",
+      "title": "Arrow Success Path",
+      "category": "Connectors & Workflow",
+      "motif": "route",
+      "mini": "check",
+      "label": "OK",
+      "tags": [
+        "arrow",
+        "success",
+        "path",
+        "route",
+        "check",
+        "connectors"
+      ]
+    },
+    {
+      "id": "parallel-workflow",
+      "title": "Parallel Workflow",
+      "category": "Connectors & Workflow",
+      "motif": "flow",
+      "mini": "add",
+      "label": "PAR",
+      "tags": [
+        "parallel",
+        "workflow",
+        "flow",
+        "add",
+        "connectors"
+      ]
+    },
+    {
+      "id": "approval-workflow",
+      "title": "Approval Workflow",
+      "category": "Connectors & Workflow",
+      "motif": "shield",
+      "mini": "check",
+      "label": "APPROVE",
+      "tags": [
+        "approval",
+        "workflow",
+        "shield",
+        "check",
+        "connectors"
+      ]
+    },
+    {
+      "id": "retry-workflow",
+      "title": "Retry Workflow",
+      "category": "Connectors & Workflow",
+      "motif": "clock",
+      "mini": "arrow",
+      "label": "RETRY",
+      "tags": [
+        "retry",
+        "workflow",
+        "clock",
+        "arrow",
+        "connectors"
+      ]
+    },
+    {
+      "id": "state-transition",
+      "title": "State Transition",
+      "category": "Connectors & Workflow",
+      "motif": "flow",
+      "mini": "arrow",
+      "label": "STATE",
+      "tags": [
+        "state",
+        "transition",
+        "flow",
+        "arrow",
+        "connectors"
+      ]
+    },
+    {
+      "id": "timeline-marker",
+      "title": "Timeline Marker",
+      "category": "Connectors & Workflow",
+      "motif": "clock",
+      "mini": "file",
+      "label": "TIME",
+      "tags": [
+        "timeline",
+        "marker",
+        "clock",
+        "file",
+        "connectors"
+      ]
+    },
+    {
+      "id": "decision-branch",
+      "title": "Decision Branch",
+      "category": "Connectors & Workflow",
+      "motif": "filter",
+      "mini": "arrow",
+      "label": "DECIDE",
+      "tags": [
+        "decision",
+        "branch",
+        "filter",
+        "arrow",
+        "connectors"
+      ]
+    }
+  ]
+}
