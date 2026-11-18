@@ -345,6 +345,7 @@ function displayMobile(){return keepReadingLevel(displayMobileCore)}
 function displayMobileCore(){const isMobile=matchMedia('(max-width:820px)').matches;document.querySelector('.workspace').classList.toggle('mobile-both',isMobile&&mobileView==='both');byId('backendLane').classList.toggle('mobilehide',isMobile&&mobileView==='frontend');byId('frontendLane').classList.toggle('mobilehide',isMobile&&mobileView==='backend');for(const b of document.querySelectorAll('[data-mview]'))b.classList.toggle('active',b.dataset.mview===mobileView)}
 function renderBackend(){const {s}=current(),quiet=s.kind==='frontend';byId('backendInfo').textContent=quiet?'NO BACKEND CHANGE':'CHANGED IN THIS STEP';byId('backendName').textContent=quiet?'No server source modified':s.name;byId('backendGraphic').innerHTML=backendDiagram(s);
 window.THREE_LANES_VISUAL_LIBRARY?.mount('backend',current().c.sha,stepIndex(),byId('backendGraphic'));
+window.THREE_LANES_CODE_NAV?.mount({side:'backend',sha:current().c.sha,id:stepIndex(),step:s,visual:byId('backendGraphic')});
 byId('backendInfoLine').textContent='';
 byId('backendCode').style.display='';byId('backendFile').parentElement.style.display='';byId('backendFile').parentElement.previousElementSibling.style.display='';if(!quiet){byId('backendFile').textContent=s.file;}
 }
@@ -357,6 +358,7 @@ byId('frontendInfo').textContent=quiet?(mode==='live'?'NO FRONTEND FILE':effect?
 byId('frontendName').textContent=quiet?(mode==='live'?'No frontend file changed':effect?'Impact of '+s.name:'No view file changed in this step'):s.name;
 byId('frontendGraphic').innerHTML=makePreview();
 window.THREE_LANES_VISUAL_LIBRARY?.mount('frontend',current().c.sha,stepIndex(),byId('frontendGraphic'));
+window.THREE_LANES_CODE_NAV?.mount({side:'frontend',sha:current().c.sha,id:stepIndex(),step:s,visual:byId('frontendGraphic')});
 byId('frontendFile').parentElement.style.display='';byId('frontendCode').style.display='';byId('frontendFile').parentElement.previousElementSibling.style.display='';
 if(!quiet){byId('frontendFile').textContent=s.file;}
 }
