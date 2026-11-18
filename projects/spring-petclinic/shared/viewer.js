@@ -8,6 +8,8 @@ const shaUrl=(sha,path,line)=>'https://github.com/'+BASE+'/blob/'+encodeURICompo
 const commitUrl=s=>'https://github.com/'+BASE+'/commit/'+s;
 const short=(s,n=38)=>String(s||'').length>n?String(s).slice(0,n-1)+'…':String(s||'');
 const current=()=>data[index];
+const RAIL_VERT='three-lanes-b'+BATCH+'-timeline-scroll-v1';
+let previousRailStep=null;
 const shardCache=new Map();
 async function hydrate(s){if(!s.partsUrl||s.partsLoaded)return;if(s.partsPromise)return s.partsPromise;if(!shardCache.has(s.partsUrl))shardCache.set(s.partsUrl,fetch(s.partsUrl).then(r=>{if(!r.ok)throw Error('source slice HTTP '+r.status);return r.json()}));s.partsPromise=shardCache.get(s.partsUrl).then(obj=>{const partList=Array.isArray(obj.parts)?obj.parts:obj.steps?.[s.id];if(!Array.isArray(partList))throw Error('invalid or missing source slice '+s.id);s.parts=partList;s.partsLoaded=true;if(current()===s)preserve(()=>renderSource())}).catch(e=>{s.partsError=e.message||String(e);if(current()===s)byId('sourceContent').innerHTML='<div class="error">Cannot load source slice: '+H(s.partsError)+'</div>'});return s.partsPromise;}
 function preserve(fn){const y=window.scrollY,x=window.scrollX,app=byId('app');if(app){pageFloor=Math.max(pageFloor,app.offsetHeight,document.documentElement.scrollHeight,y+window.innerHeight+40);app.style.minHeight=Math.ceil(pageFloor)+'px';}const ret=fn();window.scrollTo({top:y,left:x,behavior:'instant'});requestAnimationFrame(()=>{if(Math.abs(window.scrollY-y)>1)window.scrollTo({top:y,left:x,behavior:'instant'})});return ret}
@@ -23,6 +25,8 @@ function commitKind(steps){
 }
 function renderTimeline(){
  const rail=byId("timeline"),selected=current();
+ const initial=previousRailStep===null,selectionChanged=previousRailStep!==selected?.id;
+ const priorTop=initial?Math.max(0,Number(read(RAIL_VERT))||0):rail.scrollTop;
  rail.innerHTML=commits.map(item=>{
   const all=data.filter(s=>s.commitPosition===item.position),active=selected?.commitPosition===item.position;
   const cls=commitKind(all),at=all.findIndex(s=>s.id===selected?.id);
@@ -33,6 +37,18 @@ function renderTimeline(){
   if(active&&all.length>7)listing+='<button class="expandsteps" type="button" data-expand="'+item.position+'">'+(windowed?'Show all '+all.length+' steps':'Show fewer steps')+'</button>';
   return '<div class="commitgroup '+cls+(active?' active':'')+'"><button class="commitbtn" type="button" data-commit="'+item.position+'" aria-label="Commit '+item.position+', '+H(item.title)+'"><span class="commitno '+cls+'">'+String(item.position).padStart(2,'0')+'</span><span><b>'+H(short(item.title,23))+'</b><small>'+H(item.sha.slice(0,8))+' · '+all.length+' steps</small></span></button>'+(active?'<div class="substeps">'+listing+'</div>':'')+'</div>';
  }).join('');
+ rail.scrollTop=priorTop;
+ previousRailStep=selected?.id||null;
+ if(selectionChanged){
+  // Scroll only this rail; scrollIntoView() can move the whole page.
+  const target=rail.querySelector('[data-step].chosen')||rail.querySelector('.commitgroup.active .commitbtn');
+  if(target){
+   const railBox=rail.getBoundingClientRect(),targetBox=target.getBoundingClientRect(),pad=9;
+   if(targetBox.top<railBox.top+pad)rail.scrollTop-=railBox.top+pad-targetBox.top;
+   else if(targetBox.bottom>railBox.bottom-pad)rail.scrollTop+=targetBox.bottom-(railBox.bottom-pad);
+  }
+ }
+ store(RAIL_VERT,String(Math.round(rail.scrollTop)));
 }
 function renderHeader(){const s=current();if(!s)return;byId('stepPosition').textContent=(index+1)+' / '+data.length;byId('prevStep').disabled=index<=0;byId('nextStep').disabled=index===data.length-1;
 byId('viewMode').classList.toggle('chosen',mode==='view');byId('githubMode').classList.toggle('chosen',mode==='github');byId('inspectorTitle').textContent=mode==='view'?'Focused historical source':(tab==='compare'?'Before / After':tab==='diff'?'Commit changes':'Original source');
@@ -107,6 +123,7 @@ byId('prevStep').onclick=()=>changeSelection(index-1);byId('nextStep').onclick=(
 byId('viewMode').onclick=()=>{mode='view';render()};byId('githubMode').onclick=()=>{mode='github';tab='compare';render()};
 byId('compareTab').onclick=()=>preserve(()=>{tab='compare';renderSource()});byId('diffTab').onclick=()=>preserve(()=>{tab='diff';renderSource()});byId('fullTab').onclick=()=>preserve(()=>{tab='source';renderSource()});
 byId('fileSelect').onchange=e=>preserve(()=>{selectedFile=e.target.value;renderSource()});
+byId('timeline').addEventListener('scroll',e=>{store(RAIL_VERT,String(Math.round(e.currentTarget.scrollTop)))},{passive:true});
 byId('timeline').onclick=e=>{const expand=e.target.closest('[data-expand]');if(expand){preserve(()=>{const id=Number(expand.dataset.expand);expandedCommit=expandedCommit===id?null:id;renderTimeline()});return}const step=e.target.closest('[data-step]');if(step){const i=data.findIndex(s=>s.id===step.dataset.step);if(i>=0)changeSelection(i);return}const c=e.target.closest('[data-commit]');if(c){const i=data.findIndex(s=>s.commitPosition===Number(c.dataset.commit));if(i>=0)changeSelection(i)}};
 for(const side of ['backend','frontend']){
  byId(side+'Links').addEventListener('click',e=>{const btn=e.target.closest('[data-source-ref]');if(btn)previewTarget(+btn.dataset.sourceRef)});
