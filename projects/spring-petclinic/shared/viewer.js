@@ -11,7 +11,7 @@ const current=()=>data[index];
 const RAIL_VERT='three-lanes-b'+BATCH+'-timeline-scroll-v1';
 let previousRailStep=null;
 const shardCache=new Map();
-async function hydrate(s){if(!s.partsUrl||s.partsLoaded)return;if(s.partsPromise)return s.partsPromise;if(!shardCache.has(s.partsUrl))shardCache.set(s.partsUrl,fetch(s.partsUrl).then(r=>{if(!r.ok)throw Error('source slice HTTP '+r.status);return r.json()}));s.partsPromise=shardCache.get(s.partsUrl).then(obj=>{const partList=Array.isArray(obj.parts)?obj.parts:obj.steps?.[s.id];if(!Array.isArray(partList))throw Error('invalid or missing source slice '+s.id);s.parts=partList;s.partsLoaded=true;if(current()===s)preserve(()=>renderSource())}).catch(e=>{s.partsError=e.message||String(e);if(current()===s)byId('sourceContent').innerHTML='<div class="error">Cannot load source slice: '+H(s.partsError)+'</div>'});return s.partsPromise;}
+async function hydrate(s){if(!s.partsUrl||s.partsLoaded)return;if(s.partsPromise)return s.partsPromise;if(!shardCache.has(s.partsUrl))shardCache.set(s.partsUrl,fetch(s.partsUrl).then(r=>{if(!r.ok)throw Error('source slice HTTP '+r.status);return r.json()}));s.partsPromise=shardCache.get(s.partsUrl).then(obj=>{const partList=Array.isArray(obj.parts)?obj.parts:obj.steps?.[s.id];if(!Array.isArray(partList))throw Error('invalid or missing source slice '+s.id);s.parts=partList;s.partsLoaded=true;if(current()===s)preserve(()=>{renderSource();renderMentor(s);})}).catch(e=>{s.partsError=e.message||String(e);if(current()===s)byId('sourceContent').innerHTML='<div class="error">Cannot load source slice: '+H(s.partsError)+'</div>'});return s.partsPromise;}
 function preserve(fn){const y=window.scrollY,x=window.scrollX,app=byId('app');if(app){pageFloor=Math.max(pageFloor,app.offsetHeight,document.documentElement.scrollHeight,y+window.innerHeight+40);app.style.minHeight=Math.ceil(pageFloor)+'px';}const ret=fn();window.scrollTo({top:y,left:x,behavior:'instant'});requestAnimationFrame(()=>{if(Math.abs(window.scrollY-y)>1)window.scrollTo({top:y,left:x,behavior:'instant'})});return ret}
 window.addEventListener('scroll',()=>{if(restoreDone)store(VERT,String(Math.round(window.scrollY)))},{passive:true});
 function rowFileParts(s){return s.parts.filter(p=>p.rows?.length||p.binary||p.renameOnly);}
@@ -91,10 +91,11 @@ function neutralPreviewPalette(html){
    (full,q,v)=>full.replace(v,neutralVisualPalette(v)));
 }
 
+function renderMentor(s){for(const side of ['backend','frontend']){const guide=byId(side+'Mentor');guide.hidden=side!==s.lane;if(guide.dataset.stepId!==s.id){guide.open=false;guide.dataset.stepId=s.id;}guide.innerHTML=guide.hidden?'':window.THREE_LANES_MENTOR?.render(s,BATCH)||'';}}
 function renderVisual(){const s=current(),token=++renderToken;for(const side of ['backend','frontend']){byId(side+'Peek').hidden=true;byId(side+'Peek').replaceChildren();activePeek[side]=null}
 const backend=byId('backendGraphic'),frontend=byId('frontendGraphic');
 const backendLinks=byId('backendLinks'),frontendLinks=byId('frontendLinks');
-for(const side of ['backend','frontend']){const guide=byId(side+'Mentor');guide.hidden=side!==s.lane;if(guide.dataset.stepId!==s.id){guide.open=false;guide.dataset.stepId=s.id;}guide.innerHTML=guide.hidden?'':window.THREE_LANES_MENTOR?.render(s,BATCH)||'';}
+renderMentor(s);
 if(s.lane==='backend'){
  backend.innerHTML='<div class="loading">Loading commit-specific SVG…</div>';
  fetch(s.visual).then(r=>{if(!r.ok)throw Error('SVG unavailable (HTTP '+r.status+')');return r.text()}).then(svg=>{if(token!==renderToken)return;if(!/^\s*<svg[\s\S]*<\/svg>\s*$/.test(svg))throw Error('Invalid SVG asset');preserve(()=>{backend.innerHTML=neutralVisualPalette(svg);})}).catch(e=>{if(token===renderToken)backend.innerHTML='<div class="error">'+H(e.message)+'</div>'});

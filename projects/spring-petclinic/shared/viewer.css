@@ -143,3 +143,15 @@ details.mentor>summary:focus-visible{outline:2px solid #91a5c0;outline-offset:-2
 .mentor-follow{border:1px solid #4c4c4c;background:#313131}
 .mentor-follow span{color:#c5cad0}
 .mentor-follow a{color:#bdd0ea}
+
+/* Source-specific mentor line evidence, neutral skin; never color the entire card green. */
+.mentor-head>span:nth-child(2){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mentor-evidence{display:grid;gap:6px;margin-top:7px}
+.mentor-code-line{display:grid;grid-template-columns:18px minmax(0,1fr) 22px;gap:7px;padding:7px 9px;border:1px solid #464b52;border-radius:7px;background:#24272d;align-items:start}
+.mentor-code-line>div{min-width:0}
+.mentor-code-line small{display:block;color:#aab7c7;font-size:10px;margin-bottom:4px}
+.mentor-code-line code{display:block;color:#e4e9f0;font:11px/1.5 ui-monospace,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.mentor-change-marker{font:700 14px ui-monospace,Consolas,monospace}
+.mentor-change-marker.added{color:#85a8d4}
+.mentor-change-marker.removed{color:#e4a3a7}
+.mentor-code-line>a{color:#bdd0ea;line-height:1.1;text-align:center;font-size:17px}
