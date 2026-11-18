@@ -32,6 +32,9 @@
     if(/\b(?:public|protected|private)\s+(?:static\s+)?(?:class|interface|enum|[\w<>,?\[\].]+\s+\w+\s*\()/.test(x))n+=14;
     if(/\b(?:if|return|throw|assertEquals|assertTrue|assertFalse|fail)\b|\.save\(|\.find\(|\.load\(|\.merge\(|\.execute\(|\.redirect\(/i.test(x))n+=11;
     if(/<definition\b|<put-attribute\b|<bean\b|<property\b|<artifactId>|<version>|<scope>|<goal>|<phase>|<url-pattern>|<servlet-class>|<context:|<tx:|<form:|<jsp:|<h[1-4]\b|CREATE TABLE|INSERT INTO|ALTER TABLE|SELECT\b|WHERE\b|jdbc\./i.test(x))n+=12;
+    if(/<appender\b|<logger\b|<root\b|<param\b|<level\b|<priority\b/i.test(x))n+=20;
+    if(cat==='style'&&/^[^{}]+\{\s*$|^[\w-]+\s*:\s*[^;]+;/.test(x))n+=24;
+    if(/^(?:<log4j:configuration|<beans\b|<project\b|<dependencies>|<properties>|<build>|<plugins>)/i.test(x))n-=18;
     if(/^(?:\w[\w.-]*\s*=|<h[1-4]\b)/.test(x))n+=9;
     if(/\.jar|FactoryBean|DataSource|SessionFactory|EntityManager/.test(x))n+=7;
     if(/^\s*(?:\d+\s+|#|\/\*)/.test(x))n-=3;
@@ -42,6 +45,20 @@
   }
   function insight(x,part,s){
     const t=x.text.trim(),n=name(part.path),id=identify(t),cat=s.category;
+    if(/\.css$/i.test(n)){
+      const selector=t.match(/^([^{};]+)\s*\{$/);
+      if(selector)return 'The CSS selector "'+selector[1].trim()+'" identifies which page elements receive the declarations below it. Read those declarations to see the specific visual change; this does not change a controller or database method.';
+      const declaration=t.match(/^([\w-]+)\s*:\s*([^;]+);?/);
+      if(declaration)return 'The '+declaration[1]+' property is set to '+declaration[2].replace(/;$/,'')+'. That value affects the appearance or layout of whichever CSS rule contains this line.';
+      return 'This CSS rule affects the styling defined in '+n+'. Its exact selector or declaration is shown in the source excerpt below.';
+    }
+    if(/log4j\.xml$|log4j\.properties$/i.test(n)){
+      const tag=t.match(/<(appender|logger|root|param|level|priority)\b([^>]*)>/i),id2=tag?.[2]?.match(/(?:name|value|ref|class)\s*=\s*["']([^"']+)/);
+      if(tag)return 'Log4j configures a '+tag[1]+' entry'+(id2?' for "'+id2[1]+'"':'')+'. It controls which logging events go where or at what level; this XML is not an application method call.';
+      const prop=t.match(/^([\w.]+)\s*=\s*(.*)$/);
+      if(prop)return 'The Log4j setting "'+prop[1]+'" gets the value "'+prop[2]+'". The key identifies the logging option being configured.';
+      return 'This XML belongs to the historical Log4j configuration. Its exact source line is included below.';
+    }
     const route=t.match(/@RequestMapping\s*\((.*)\)/);
     if(route){
       const path=route[1].match(/["'](\/[^"']*)["']/);
@@ -53,7 +70,12 @@
     if(/@Autowired/.test(t))return 'Spring supplies the dependency at this injection point instead of the class constructing it directly. Check the following constructor or field to see what is required.';
     if(/@Controller/.test(t))return 'This marks the Java class as an MVC controller so Spring can discover it; the request mapping determines which URL reaches a method.';
     if(/@Repository/.test(t))return 'This class belongs to the persistence boundary. The repository annotation identifies its role to Spring; the actual storage behavior comes from its methods.';
-    if(/@Test\b/.test(t))return 'JUnit will treat the following method as a test. Its assertions describe the behavior being checked; the annotation alone does not prove a test passed.';
+    if(/@Test\b/.test(t)){
+      const all=part.rows||[],i=all.findIndex(r=>r.text.trim()===t);
+      const next=all.slice(i+1,i+7).map(r=>r.text.trim()).find(z=>/\b(?:public|protected|private)\s+\w+\s+\w+\s*\(/.test(z));
+      const method=next?.match(/\b(\w+)\s*\([^)]*\)\s*\{/);
+      return 'JUnit identifies '+(method?'the following '+method[1]+'() method':'the following method')+' as a test. Its actual assertions determine the condition under examination; the annotation by itself does not prove the test passed.';
+    }
     if(/\bassert(?:Equals|True|False|Null|NotNull|That)\s*\(/.test(t))return 'This assertion turns an expectation into a testable condition. Compare the expected and actual arguments to understand precisely what must hold.';
     if(/\b(?:if|else if)\s*\(/.test(t))return 'This condition decides whether the following block runs. The values inside the parentheses are the important inputs or validation rule.';
     if(/\breturn\b/.test(t)&&/\.getCurrentSession\(\)\.(?:load|get|merge)/.test(t))return 'The method delegates to Hibernate’s current session. The class and identifier in this statement determine which persistent entity is requested.';
@@ -63,17 +85,17 @@
     }
     if(/\b(?:public|protected|private)\s+[\w<>,?\[\].\s]+\s+\w+\s*\(/.test(t))return 'The method '+id+' is the entry point for the behavior implemented in its body. Look next for the arguments it receives and the expression it returns or changes.';
     if(/\b(?:private|protected|public)\s+[\w<>,?\[\]]+\s+\w+\s*;/.test(t))return 'This field is part of the state carried by the class. Its name and type tell you what can be remembered, not which code fills it.';
-    if(/<bean\b/.test(t))return 'Spring creates or locates a component using this XML bean declaration. Other beans may refer to it; the class attribute identifies the implementation.';
-    if(/<property\b/.test(t))return 'This property passes a configured value or bean reference into its parent Spring component. Changing the property affects configuration rather than Java source.';
-    if(/<definition\b/.test(t))return 'Tiles declares a named view definition here. The name selects the page composition, while the parent/template determines which shared layout it extends.';
-    if(/<put-attribute\b/.test(t))return 'Tiles assigns a page fragment to a layout slot here. That is how the same layout can display different content without duplicating its header.';
-    if(/<artifactId>/.test(t))return 'Maven identifies the library or build plugin by its artifact ID. Dependencies must be resolved before the project can compile or package correctly.';
-    if(/<version>/.test(t)||/<spring\.version>/.test(t))return 'This value chooses a library or project version. A changed version can affect compatibility even when no application method changes.';
-    if(/<scope>/.test(t))return 'Maven scope decides where a dependency is available: for example, test-only or provided by the deployment container.';
+    if(/<bean\b/.test(t)){const cls=t.match(/class\s*=\s*["']([^"']+)/),bean=t.match(/id\s*=\s*["']([^"']+)/);return 'Spring wires '+(bean?'"'+bean[1]+'"':'a bean')+(cls?' using '+cls[1].split('.').pop():'')+'. The enclosing XML configuration determines how that component is initialized and referenced.';}
+    if(/<property\b/.test(t)){const p=t.match(/name\s*=\s*["']([^"']+)/),r=t.match(/(?:ref|value)\s*=\s*["']([^"']+)/);return 'Spring sets '+(p?'"'+p[1]+'"':'this property')+(r?' to '+r[1]:'')+' on its parent bean. The effect is dependency/configuration wiring rather than a direct Java method call.';}
+    if(/<definition\b/.test(t)){const title=t.match(/name\s*=\s*["']([^"']+)/),parent=t.match(/extends\s*=\s*["']([^"']+)/);return 'Tiles names the view '+(title?'"'+title[1]+'"':'in this declaration')+(parent?' and bases it on "'+parent[1]+'"':'')+'. Its body controls which page fragments fill the shared layout.';}
+    if(/<put-attribute\b/.test(t)){const p=t.match(/name\s*=\s*["']([^"']+)/),v=t.match(/value\s*=\s*["']([^"']+)/);return 'Tiles fills the '+(p?p[1]:'named')+' layout slot'+(v?' with '+v[1]:'')+'. This allows several views to reuse one page layout with different content.';}
+    if(/<artifactId>/.test(t)){const artifact=t.match(/<artifactId>([^<]+)<\/artifactId>/);return 'Maven refers to '+(artifact?artifact[1]:'this artifact')+' by its artifact ID. This determines the dependency or build plugin Maven resolves; it is not a Java method being called.';}
+    if(/<version>/.test(t)||/<spring\.version>/.test(t)){const v=t.match(/>([^<]+)<\//);return 'This Maven version entry'+(v?' selects '+v[1]:'')+'. Changing it can change resolved binaries and compatibility without changing a Java method.';}
+    if(/<scope>/.test(t)){const scope=t.match(/<scope>([^<]+)<\/scope>/);return 'Maven uses '+(scope?'"'+scope[1]+'"':'this')+' scope to decide where this library is needed. For example, test dependencies are not packaged the same way as runtime dependencies.';}
     if(/<phase>|<goal>/.test(t))return 'The build lifecycle runs goals in configured phases. This entry changes when Maven performs a specific build action.';
     if(/<url-pattern>|<servlet-class>|<listener-class>/.test(t))return 'The deployment descriptor uses this entry to connect web startup or URL dispatch to a servlet or listener.';
     if(/<(?:form:|jsp:|c:)/.test(t))return 'This JSP tag performs view-level binding, templating or conditional rendering. Check its attributes to see which field or model value is involved.';
-    if(/<h[1-4]\b/.test(t))return cat==='other'?'This heading marks the subject introduced in the historical tutorial. It documents a concept; it does not execute application code.':'The JSP/HTML heading identifies content presented to the user, rather than changing a backend endpoint.';
+    if(/<h[1-4]\b/.test(t)){const heading=t.match(/<h[1-4][^>]*>(.*?)<\/h[1-4]>/i);const title=heading?clean(heading[1]):clean(t);return cat==='other'?'The historical tutorial introduces "'+title+'". This is documentation that explains the named concept, not code executed during a clinic request.':'This markup renders the heading "'+title+'" in the selected JSP/HTML view. A page label is presentation content, not a backend route.';}
     if(/<a\s|<c:url|href=/.test(t))return 'This markup defines a navigation link or target URL. Adding or removing it changes the available navigation, not the underlying controller implementation.';
     if(/^jdbc\.[\w.]+\s*=/.test(t))return 'This JDBC property tells the application where to find a database resource. A classpath path must match the actual packaged resource location.';
     if(/^[\w.-]+\s*=/.test(t)&&(/messages[^/]*\.properties/.test(n)))return 'This entry maps a message key to display text. Localized bundles let the application show the same message key in different languages.';
@@ -152,7 +174,10 @@
       else if(renamed.length&&!anchors.length)change=renamed.map(p=>name(p.oldPath||p.path)+' → '+name(p.path)).join('; ')+'. This slice records file moves, not changed SQL or Java text.';
       else if(main){
         const idn=identify(main.text),kind=main.row.type==='del'?'removes':'adds';
-        change='In '+fileIntro+', this slice '+kind+(idn?' '+idn:' a concrete source statement')+'. The historical diff contains '+totalAdds+' added and '+totalDels+' removed text lines.';
+        const fragment=idn||main.text.trim();
+        const line=main.row.type==='add'?main.row.new:main.row.old;
+        const action=totalAdds&&totalDels?'This revision '+kind:'This subcommit '+kind;
+        change=action+' "'+fragment+'" in '+name(main.part.path)+(Number.isInteger(line)?' at line '+line:'')+'.'+(files.length>1?' The same slice also touches '+fileIntro+'.':'');
       }else change='This historical slice changes '+fileIntro+' without a text source line to quote. Inspect the original file or asset names rather than assuming behavior.';
       const why=special?special[1]:main?insight(main.text?{text:main.text}:main.row,main.part,s):renamed.length?'The important effect is the new resource path. The application configuration or build references must resolve the moved file under that name.':'No executable line was introduced in this slice; the related original commit shows the actual non-text change.';
       content='<div class="mentor-part"><b>What actually changed</b><p>'+H(change)+'</p></div>'+
