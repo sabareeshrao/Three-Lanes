@@ -8,6 +8,7 @@ const shaUrl=(sha,path,line)=>'https://github.com/'+BASE+'/blob/'+encodeURICompo
 const commitUrl=s=>'https://github.com/'+BASE+'/commit/'+s;
 const short=(s,n=38)=>String(s||'').length>n?String(s).slice(0,n-1)+'…':String(s||'');
 const current=()=>data[index];
+async function hydrate(s){if(!s.partsUrl||s.partsLoaded)return;if(s.partsPromise)return s.partsPromise;s.partsPromise=fetch(s.partsUrl).then(r=>{if(!r.ok)throw Error('source slice HTTP '+r.status);return r.json()}).then(obj=>{if(!Array.isArray(obj.parts))throw Error('invalid source slice');s.parts=obj.parts;s.partsLoaded=true;if(current()===s)preserve(()=>renderSource())}).catch(e=>{s.partsError=e.message||String(e);if(current()===s)byId('sourceContent').innerHTML='<div class="error">Cannot load source slice: '+H(s.partsError)+'</div>'});return s.partsPromise;}
 function preserve(fn){const y=window.scrollY,x=window.scrollX,app=byId('app');if(app){pageFloor=Math.max(pageFloor,app.offsetHeight,document.documentElement.scrollHeight,y+window.innerHeight+40);app.style.minHeight=Math.ceil(pageFloor)+'px';}const ret=fn();window.scrollTo({top:y,left:x,behavior:'instant'});requestAnimationFrame(()=>{if(Math.abs(window.scrollY-y)>1)window.scrollTo({top:y,left:x,behavior:'instant'})});return ret}
 window.addEventListener('scroll',()=>{if(restoreDone)store(VERT,String(Math.round(window.scrollY)))},{passive:true});
 function rowFileParts(s){return s.parts.filter(p=>p.rows?.length||p.binary);}
@@ -27,7 +28,7 @@ function renderHeader(){const s=current();if(!s)return;byId('stepPosition').text
 byId('viewMode').classList.toggle('chosen',mode==='view');byId('githubMode').classList.toggle('chosen',mode==='github');byId('inspectorTitle').textContent=mode==='view'?'Focused historical source':(tab==='compare'?'Before / After':tab==='diff'?'Commit changes':'Original source');
 byId('backendCaption').textContent=s.lane==='backend'?s.title:'No backend source in this slice';byId('frontendCaption').textContent=s.lane==='frontend'?s.title:'No frontend source in this slice';
 byId('backendChip').textContent=s.lane==='backend'?'CHANGED':'QUIET';byId('frontendChip').textContent=s.lane==='frontend'?'CHANGED':'QUIET';
-byId('summary').innerHTML='<div><h2>Commit '+s.commitPosition+' · '+H(s.commitTitle)+'</h2><small>SHA '+H(s.sha)+' · Step '+H(s.id)+' · '+H(s.title)+'</small></div><div class="meta"><span class="chip">'+'Batch '+BATCH+' · '+(commits.findIndex(c=>c.position===s.commitPosition)+1)+' / 10 commits</span><span class="chip code">'+s.codeLineCount+' / 100 code lines</span><span class="chip">'+s.parts.length+' changed file slices</span><a href="'+H(commitUrl(s.sha))+'" target="_blank" rel="noopener noreferrer">Exact commit ↗</a></div>';
+byId('summary').innerHTML='<div><h2>Commit '+s.commitPosition+' · '+H(s.commitTitle)+'</h2><small>SHA '+H(s.sha)+' · Step '+H(s.id)+' · '+H(s.title)+'</small></div><div class="meta"><span class="chip">'+'Batch '+BATCH+' · '+(commits.findIndex(c=>c.position===s.commitPosition)+1)+' / 10 commits</span><span class="chip code">'+s.codeLineCount+' / 100 code lines</span><span class="chip">'+(s.partCount??s.parts.length)+' changed file slices</span><a href="'+H(commitUrl(s.sha))+'" target="_blank" rel="noopener noreferrer">Exact commit ↗</a></div>';
 byId('commitLink').href=commitUrl(s.sha);
 }
 function linksMarkup(s){return s.sourceTargets.map((t,i)=>'<span class="refunit"><button type="button" data-source-ref="'+i+'">'+H(short(t.label,22))+':'+t.line+'</button><a href="'+H(shaUrl(t.sha,t.path,t.line))+'" target="_blank" rel="noopener noreferrer" aria-label="Open '+H(t.label)+' on GitHub">↗</a></span>').join('')}
@@ -51,7 +52,7 @@ for(const side of ['backend','frontend']){
 function previewTarget(i){const s=current(),t=s?.sourceTargets?.[i];if(!t)return;const side=s.lane,peek=byId(side+'Peek'),key=t.sha+'|'+t.path+'|'+t.line;
 return preserve(()=>{if(!peek.hidden&&activePeek[side]===key){peek.hidden=true;activePeek[side]=null;return}activePeek[side]=key;
 const rows=s.parts.filter(p=>p.path===t.path).flatMap(p=>p.rows),loc=rows.findIndex(r=>r.new===t.line||r.old===t.line),near=rows.slice(Math.max(0,loc-5),loc+6);
-peek.innerHTML='<div class="peekhead"><div><b>'+H(t.label)+'</b><small>'+H(t.path)+' · L'+t.line+' · '+H(t.sha.slice(0,8))+'</small></div><div><a href="'+H(shaUrl(t.sha,t.path,t.line))+'" target="_blank" rel="noopener noreferrer">GitHub ↗</a> <button type="button" data-close-peek="1">×</button></div></div><div class="peekcode codetable">'+near.map(r=>renderRow(r,t.path,!!r.new,null,r.new===t.line||r.old===t.line)).join('')+'</div>';
+peek.innerHTML='<div class="peekhead"><div><b>'+H(t.label)+'</b><small>'+H(t.path)+' · L'+t.line+' · '+H(t.sha.slice(0,8))+'</small></div><div><a href="'+H(shaUrl(t.sha,t.path,t.line))+'" target="_blank" rel="noopener noreferrer">GitHub ↗</a> <button type="button" data-close-peek="1">×</button></div></div><div class="peekcode codetable">'+near.map(r=>renderRow(r,r.new?t.path:(s.parts.find(p=>p.path===t.path)?.oldPath||t.path),!!r.new,null,r.new===t.line||r.old===t.line)).join('')+'</div>';
 peek.hidden=false});
 }
 function renderRow(row,path,useNew,revOverride,highlight=false){const n=useNew?row.new:row.old;if(!Number.isInteger(n))return '';
@@ -61,7 +62,7 @@ return '<div class="coderow '+cl+(highlight?' highlight':'')+'"><a href="'+H(sha
 function codeFiles(which){const s=current();let count=0;return rowFileParts(s).map(p=>{if(!p.rows.length)return '<div class="filename">'+H(p.path)+'</div><div class="empty">Binary asset; there are no text source lines in this diff.</div>';
 const rows=p.rows.filter(r=>which==='before'?!!r.old:which==='after'?!!r.new:true);
 count+=rows.length;
-return '<div class="filename">'+H(p.path)+'</div>'+(rows.length?rows.map(r=>renderRow(r,p.path,which==='before'?false:which==='after'?true:!!r.new)).join(''):'<div class="empty">'+(which==='before'?'File or lines introduced in this commit':'File or lines removed in this commit')+'</div>')}).join('');}
+return '<div class="filename">'+H(p.path)+'</div>'+(rows.length?rows.map(r=>renderRow(r,which==='before'?(p.oldPath||p.path):p.path,which==='before'?false:which==='after'?true:!!r.new)).join(''):'<div class="empty">'+(which==='before'?'File or lines introduced in this commit':'File or lines removed in this commit')+'</div>')}).join('');}
 function selectFileOptions(){const s=current();const files=[...new Set(s.parts.map(p=>p.path))];if(!files.includes(selectedFile))selectedFile=files[0]||'';byId('fileSelect').innerHTML=files.map(p=>'<option value="'+H(p)+'"'+(p===selectedFile?' selected':'')+'>'+H(short(p,70))+'</option>').join('');byId('openFileLink').href=selectedFile?shaUrl(s.sha,selectedFile):commitUrl(s.sha)}
 async function displayCompleteSource(){const s=current(),idx=++sourceToken,path=selectedFile;if(!path){byId('sourceContent').innerHTML='<div class="empty">No file selected</div>';return}
 const target=byId('sourceContent');target.innerHTML='<div class="loading">Loading complete historical file from GitHub…</div>';
@@ -74,7 +75,9 @@ try{
  preserve(()=>{target.innerHTML='<div class="singlepane"><div class="panehead">Complete original file · '+H(path)+' · '+H(s.sha.slice(0,9))+' · '+lines.length+' lines</div><div class="codetable">'+lines.map((txt,i)=>'<div class="coderow"><a href="'+H(shaUrl(s.sha,path,i+1))+'" target="_blank" rel="noopener noreferrer">'+(i+1)+'</a><code>'+H(txt)+'</code></div>').join('')+'</div></div>'});
 }catch(e){if(idx===sourceToken)target.innerHTML='<div class="error">Complete file unavailable: '+H(e.message)+' — <a target="_blank" rel="noopener noreferrer" href="'+H(shaUrl(s.sha,path))+'">Open on GitHub ↗</a></div>'}
 }
-function renderSource(){const s=current();if(!s)return;sourceToken++;selectFileOptions();
+function renderSource(){const s=current();if(!s)return;sourceToken++;
+if(s.partsUrl&&!s.partsLoaded){byId('sourceContent').innerHTML='<div class="loading">Loading verified historical source…</div>';hydrate(s);return;}
+selectFileOptions();
 byId('compareTab').classList.toggle('chosen',mode==='github'&&tab==='compare');byId('diffTab').classList.toggle('chosen',mode==='github'&&tab==='diff');byId('fullTab').classList.toggle('chosen',mode==='github'&&tab==='source');
 byId('compareTab').disabled=mode==='view';byId('diffTab').disabled=mode==='view';byId('fullTab').disabled=mode==='view';
 const target=byId('sourceContent');
