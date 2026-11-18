@@ -13,16 +13,25 @@ async function hydrate(s){if(!s.partsUrl||s.partsLoaded)return;if(s.partsPromise
 function preserve(fn){const y=window.scrollY,x=window.scrollX,app=byId('app');if(app){pageFloor=Math.max(pageFloor,app.offsetHeight,document.documentElement.scrollHeight,y+window.innerHeight+40);app.style.minHeight=Math.ceil(pageFloor)+'px';}const ret=fn();window.scrollTo({top:y,left:x,behavior:'instant'});requestAnimationFrame(()=>{if(Math.abs(window.scrollY-y)>1)window.scrollTo({top:y,left:x,behavior:'instant'})});return ret}
 window.addEventListener('scroll',()=>{if(restoreDone)store(VERT,String(Math.round(window.scrollY)))},{passive:true});
 function rowFileParts(s){return s.parts.filter(p=>p.rows?.length||p.binary||p.renameOnly);}
+function stepKind(s){
+ const lane=String(s.lane||s.kind||"backend").toLowerCase();
+ return lane==="frontend"?"frontend":lane==="fullstack"||lane==="both"?"fullstack":"backend";
+}
+function commitKind(steps){
+ const kinds=new Set(steps.map(stepKind));
+ return kinds.has("fullstack")||(kinds.has("frontend")&&kinds.has("backend"))?"fullstack":kinds.has("frontend")?"frontend":"backend";
+}
 function renderTimeline(){
- const rail=byId('timeline'),selected=current();
+ const rail=byId("timeline"),selected=current();
  rail.innerHTML=commits.map(item=>{
   const all=data.filter(s=>s.commitPosition===item.position),active=selected?.commitPosition===item.position;
-  const cls=all.every(s=>s.lane==='frontend')?'frontend':'backend';
-  const at=all.findIndex(s=>s.id===selected?.id),windowed=active&&all.length>7&&expandedCommit!==item.position;
-  const lo=windowed?Math.max(0,Math.min(all.length-7,at-3)):0,visible=active?(windowed?all.slice(lo,lo+7):all):[];
-  let listing=visible.map(s=>'<button type="button" data-step="'+H(s.id)+'" class="'+(s.id===selected?.id?'chosen':'')+'"><strong>'+H(s.id)+'</strong><span class="label">'+H(short(s.title,27))+'</span></button>').join('');
+  const cls=commitKind(all),at=all.findIndex(s=>s.id===selected?.id);
+  const windowed=active&&all.length>7&&expandedCommit!==item.position;
+  const lo=windowed?Math.max(0,Math.min(all.length-7,at-3)):0;
+  const visible=active?(windowed?all.slice(lo,lo+7):all):[];
+  let listing=visible.map(s=>'<button type="button" data-step="'+H(s.id)+'" class="'+stepKind(s)+(s.id===selected?.id?' chosen':'')+'"'+(s.id===selected?.id?' aria-current="step"':'')+'><strong>'+H(s.id)+'</strong><span class="label">'+H(short(s.title,27))+'</span></button>').join('');
   if(active&&all.length>7)listing+='<button class="expandsteps" type="button" data-expand="'+item.position+'">'+(windowed?'Show all '+all.length+' steps':'Show fewer steps')+'</button>';
-  return '<div class="commitgroup'+(active?' active':'')+'"><button class="commitbtn" type="button" data-commit="'+item.position+'"><span class="commitno '+cls+'">'+String(item.position).padStart(2,'0')+'</span><span><b>'+H(short(item.title,23))+'</b><small>'+H(item.sha.slice(0,8))+' · '+all.length+' steps</small></span></button>'+(active?'<div class="substeps">'+listing+'</div>':'')+'</div>';
+  return '<div class="commitgroup '+cls+(active?' active':'')+'"><button class="commitbtn" type="button" data-commit="'+item.position+'" aria-label="Commit '+item.position+', '+H(item.title)+'"><span class="commitno '+cls+'">'+String(item.position).padStart(2,'0')+'</span><span><b>'+H(short(item.title,23))+'</b><small>'+H(item.sha.slice(0,8))+' · '+all.length+' steps</small></span></button>'+(active?'<div class="substeps">'+listing+'</div>':'')+'</div>';
  }).join('');
 }
 function renderHeader(){const s=current();if(!s)return;byId('stepPosition').textContent=(index+1)+' / '+data.length;byId('prevStep').disabled=index<=0;byId('nextStep').disabled=index===data.length-1;
