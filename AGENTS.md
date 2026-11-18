@@ -90,3 +90,8 @@ Never link to `HEAD` for historical code, infer a missing line number, or treat 
 - [ ] No deployment, screenshot or test result is asserted unless independently verified.
 
 **Task execution note:** Do not spend the whole task restating this plan. Inspect, implement, test, commit and report the actual result. If the requested operation cannot be performed with current access, clearly report the blocker and leave existing work intact.
+
+
+## Approved compact root prototype (November 2026)
+
+The user explicitly approved simplifying the root prototype UI: remove the “VISUAL COMMIT TIMELINE” header subtitle, the “GITHUB SOURCE · 10 SELECTED COMMITS · STEP” summary line, Source Links cards, and the View/GitHub buttons beside Search. In the summary, show the semantic backend/frontend/full-stack chip **first**, then the commit title and brief explanation horizontally; retain the historical GitHub commit link. The single **Original source** action in that header opens the selected GitHub source file at its exact immutable revision (parent SHA for a deleted file). In both source lanes keep one compact horizontal toolbar: **View**, **Commit changes**, the file selector and **Open file**. No redundant inline Original source tab. Do not remove underlying SVG click-to-open/click-again-to-close exact-code previews or full-width Before/After view. Preserve the existing ten curated commits, 25 steps, dark theme, timeline chip colors, scroll persistence and responsive controls. This permission applies to the root prototype only; independent project pages remain separately scoped.

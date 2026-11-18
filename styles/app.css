@@ -556,3 +556,63 @@ html{scroll-behavior:auto!important}
 .nav-svg-icon:hover{filter:drop-shadow(0 0 5px #10a37f66)}
 .stored-svg-visual{max-height:none}
 @media(max-width:520px){.source-nav,.source-peek{margin-left:6px;margin-right:6px}.nav-links-title{align-items:flex-start}.nav-source-row{font-size:10px;grid-template-columns:35px minmax(max-content,1fr)}.nav-source-row code{padding:0 7px}}
+
+
+/* Compact root-prototype UI: keep the approved dark three-lane visual language. */
+.top{min-height:0!important;padding:0 2px 5px!important}
+.brandicon{width:29px!important;height:29px!important;font-size:16px!important}
+.title{font-size:15px!important;line-height:1.3!important;margin:0!important}
+.controlbar{margin-bottom:7px!important}
+.summary,body.github-source-mode .summary{
+ display:flex!important;align-items:center!important;flex-wrap:nowrap!important;gap:10px!important;
+ padding:8px 12px!important;margin:0 0 7px!important;
+ min-height:0!important;height:auto!important;max-height:none!important;
+ overflow:visible!important;border-color:#474747!important;background:#2b2b2b!important;
+}
+.summary-main{display:flex;align-items:center;gap:10px;flex:1 1 auto;min-width:0}
+.summary .summary-kind{flex:0 0 auto;font-size:9px!important;font-weight:800;padding:4px 8px!important}
+.summary .summary-kind.backend{background:#304d6d;border-color:#4c6f96;color:#c6e0fa}
+.summary .summary-kind.frontend{background:#215139;border-color:#397d58;color:#c1f4d5}
+.summary .summary-kind.both{background:#75441d;border-color:#b4782e;color:#ffdaaf}
+.summary h2{flex:0 1 auto;min-width:0;max-width:420px;margin:0!important;
+ line-height:1.3!important;font-size:13px!important;
+ white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.summary p{flex:1 1 150px;min-width:0;max-width:none!important;margin:0!important;
+ font-size:11px!important;line-height:1.4!important;
+ display:block!important;white-space:nowrap!important;overflow:hidden!important;
+ text-overflow:ellipsis!important;-webkit-line-clamp:unset!important;line-clamp:unset!important}
+.summary .rightsummary{display:flex!important;flex:0 0 auto;flex-direction:row!important;
+ align-items:center!important;justify-content:flex-end;gap:8px!important;margin-left:auto}
+.summary .rightsummary .source{font-size:10px!important;font-weight:700;white-space:nowrap}
+.summary .original-launch{display:inline-flex;align-items:center;color:#eee!important;
+ background:#343434!important;border:1px solid #565656!important;
+ border-radius:6px;padding:5px 8px}
+.summary .original-launch:hover{background:#444!important}
+/* Hide only redundant source cards, not linked SVG code-peek surfaces. */
+.source-nav{display:none!important}
+/* One horizontal control row: View, Commit changes, selector, Open file. */
+.source-actions{display:flex!important;flex-direction:row!important;
+ align-items:center!important;gap:0!important;padding:6px 8px!important;
+ background:#333!important;overflow:visible!important}
+.source-actions[style*="display: none"]{display:none!important}
+.source-actions .source-primary-row{display:flex!important;align-items:center;
+ flex:1 1 auto;min-width:0;width:100%;gap:7px;flex-wrap:nowrap!important;
+ padding:0!important;border:0!important}
+.source-actions .source-view-here{flex:0 0 auto;font-size:11px!important;
+ white-space:nowrap;min-height:30px;padding:7px 10px;margin:0}
+.source-actions .source-fileselect{display:block!important;order:0!important;
+ flex:1 1 90px!important;min-width:85px!important;width:auto!important;max-width:none!important;
+ margin:0!important}
+.source-actions .source-filelink{order:0!important;flex:0 0 auto;
+ font-size:10px;white-space:nowrap;margin:0!important}
+@media(max-width:1050px){
+ .summary,body.github-source-mode .summary{flex-wrap:wrap!important}
+ .summary-main{flex:1 1 100%}
+ .summary .rightsummary{margin-left:0}
+}
+@media(max-width:620px){
+ .summary-main{flex-wrap:wrap;gap:6px}
+ .summary p{flex:1 1 100%;white-space:normal!important}
+ .source-actions .source-primary-row{flex-wrap:wrap!important;gap:6px}
+ .source-actions .source-fileselect{flex:1 1 calc(100% - 100px)!important;min-width:0!important}
+}

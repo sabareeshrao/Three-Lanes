@@ -115,25 +115,16 @@ function mount(args){
  if(!step||!args.sha||(!step.kind.includes(side)&&step.kind!=='both')){
    nav.hidden=true;return;
  }
- nav.hidden=false;
+ // Source Links cards removed; keep source resolution for SVG clicks and code peeks.
+ nav.hidden=true;
  const stamp=args.sha+'|'+args.id+'|'+side;
  nav.dataset.current=stamp;
- nav.innerHTML='<div class="nav-links-title">SOURCE LINKS <span>Resolving at '+escapeHtml(args.sha.slice(0,8))+'…</span></div>';
  const refs=buildRefs({...step,id:args.id},side);
  return Promise.all(refs.map(ref=>resolve(args.sha,ref))).then(resolved=>{
   if(nav.dataset.current!==stamp)return;
   const items=resolved.filter(x=>x.available).map(x=>({...x,sha:args.sha}));
-  if(!items.length){
-    nav.innerHTML='<div class="nav-links-title">SOURCE LINKS <span>Exact source lines unavailable for this revision</span></div>';
-    return;
-  }
-  nav.innerHTML='<div class="nav-links-title">SOURCE LINKS <span>Exact commit · '+escapeHtml(args.sha.slice(0,8))+'</span></div><div class="nav-links-list">'+items.map((x,i)=>'<span class="nav-link-unit"><button type="button" data-source-peek="'+i+'" aria-label="Preview '+escapeHtml(x.ref.label)+'"><b>'+escapeHtml(x.ref.label)+'</b><small>'+escapeHtml(displayName(x.ref.path))+':'+x.line+'</small></button><a href="'+escapeHtml(x.url)+'" target="_blank" rel="noopener noreferrer" aria-label="Open '+escapeHtml(x.ref.label)+' on GitHub">↗</a></span>').join('')+'</div>';
-  nav.onclick=e=>{
-    const btn=e.target.closest('[data-source-peek]');
-    if(!btn)return;
-    const item=items[Number(btn.dataset.sourcePeek)];
-    if(item)paintPeek(side,item);
-  };
+  if(!items.length)return;
+  // Verified sources remain interactive directly on the diagram.
   const svg=args.visual.querySelector('svg');
   if(svg)activateSvg(svg,items,side);
  });

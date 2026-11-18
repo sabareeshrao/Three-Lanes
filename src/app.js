@@ -52,7 +52,8 @@ function restoreSavedReadingLevel(){
   initialVerticalRestoreDone=true;
 }
 
-let mode='demo',commits=DEMO,selection={ci:0,si:0},repo=DEFAULT_REPO,page=1, mobileView='auto';
+// SHA-pinned historical source is the only viewer mode in the simplified prototype.
+let mode='live',commits=DEMO.map(c=>({...c,needsFetch:true})),selection={ci:0,si:0},repo=DEFAULT_REPO,page=1, mobileView='auto';
 // The ten curated lesson IDs (including .1/.2 steps) are stable across both modes.
 // Live GitHub changes the source shown in those lessons, not the lesson index.
 const liveCache=new Map();
@@ -67,11 +68,7 @@ let modeEpoch=0;
 let previewMode='after'; let uiTab='visit',message='',userData={name:'Bella',type:'Dog',birth:'2022-07-15',visits:[],owner:'George Franklin',city:'Madison',address:'123 Lake Street'};
 try{const old=JSON.parse(storage.get('petlab-project')||'null');if(old&&typeof old==='object')userData={...userData,...old}}catch{}
 try{const last=JSON.parse(storage.get('petlab-selection-focused-v3')||'null');if(last&&Number.isInteger(last.ci)&&Number.isInteger(last.si))selection=last}catch{}
-// Reopen on the same selected step and in the same mode, when browser storage allows it.
-if(storage.get('petlab-mode-chatgpt-v1')==='live'){
-  mode='live';
-  commits=DEMO.map(c=>({...c,needsFetch:true}));
-}
+// Remember the selected step, but ignore the legacy View/GitHub toggle setting.
 let totalFetched=0;
 function current(){const c=commits[selection.ci]||commits[0];const s=c?.steps?.[selection.si]||c?.steps?.[0];return {c,s};}
 function namePath(p){return String(p||'unknown').split('/').pop()}
@@ -252,10 +249,10 @@ function renderSourcePanelCore(side){
   selectEl.title='';
   byId(side+'SourceActions').style.display='flex';
   byId(side+'DiffTab').classList.toggle('chosen',codeMode[side]==='diff');
-  byId(side+'OriginalTab').classList.toggle('chosen',codeMode[side]==='source');
   byId(side+'ViewHereTab').classList.toggle('chosen',codeMode[side]==='compare');
   const targetUrl=fileUrl(raw,target,null,target.status==='removed');
   byId(side+'FileLink').href=targetUrl;
+  if(side===(s.kind==='frontend'?'frontend':'backend'))syncOriginalSourceLink();
   byId(side+'FileLink').textContent='Open file ↗';
   const rowCount=codeMode[side]==='diff'?parseFullPatch(target.patch||'').rows.length:null;
   filebar.innerHTML=`<b>${H(namePath(target.filename))}</b><span>${H(target.filename)}</span>`;
@@ -326,12 +323,30 @@ function renderSourceForSelection(){
   ensureExactCommit(selection.ci);
 }
 function typeLabel(t){return t==='frontend'?'FRONTEND':t==='both'?'FULL STACK':'BACKEND'}
-function head(){const {c,s}=current();if(!c)return;const num=stepIndex(),number=commitNumber();
-byId('summary').innerHTML=`<div><div class="meta">${mode==='demo'?'VISUAL LEARNING · 10 SELECTED COMMITS':'GITHUB SOURCE · 10 SELECTED COMMITS'} &nbsp; <span class="stepmeta">STEP ${H(num)}</span></div><h2>${H(c.name)}</h2><p><b>${H(s.name)}.</b> ${H(s.explain)}</p></div><div class="rightsummary"><span class="chip">${H(typeLabel(s.kind||c.kind))}</span><a class="source" href="https://github.com/${H(repo)}/commit/${encodeURIComponent(c.sha)}" target="_blank" rel="noopener noreferrer">GitHub commit ↗</a><button class="source original-launch" type="button" id="openOriginalSource">Original source</button><span class="subpath">${H(c.date||'')} · ${H(shortSha(c.sha))}</span></div>`;
-const total=mode==='demo'?DEMO.reduce((acc,c)=>acc+c.steps.length,0):commits.reduce((acc,c)=>acc+c.steps.length,0);const position=commits.slice(0,selection.ci).reduce((acc,c)=>acc+c.steps.length,0)+selection.si+1;
-
-
-updateStepper();
+// The top Original source action opens the source file on GitHub, never an inline tab.
+// Deleted files use their existing revision at the selected commit's parent SHA.
+function originalSourceUrl(){
+  const {c,s}=current();
+  const side=s.kind==='frontend'?'frontend':'backend';
+  const raw=exactCommitCache.get(c.sha)?.raw;
+  const wanted=chosenFile[side]||s.file;
+  const file=raw?.files?.find(f=>f.filename===wanted||f.previous_filename===wanted);
+  const deleted=file?.status==='removed';
+  const revision=deleted?(raw.parents?.[0]?.sha||c.sha):c.sha;
+  const path=deleted?(file.previous_filename||file.filename):(file?.filename||wanted);
+  if(!/^[a-f0-9]{40}$/i.test(revision)||typeof path!=='string'||!path)
+    return 'https://github.com/'+DEFAULT_REPO+'/commit/'+encodeURIComponent(c.sha);
+  return 'https://github.com/'+DEFAULT_REPO+'/blob/'+encodeURIComponent(revision)+'/'+path.split('/').map(encodeURIComponent).join('/');
+}
+function syncOriginalSourceLink(){
+ const link=byId('openOriginalSource');
+ if(link)link.href=originalSourceUrl();
+}
+function head(){
+ const {c,s}=current();if(!c)return;
+ const kind=s.kind||c.kind;
+ byId('summary').innerHTML=`<div class="summary-main"><span class="chip summary-kind ${H(kind)}">${H(typeLabel(kind))}</span><h2>${H(c.name)}</h2><p><b>${H(s.name)}.</b> ${H(s.explain)}</p></div><div class="rightsummary"><a class="source original-launch" id="openOriginalSource" href="${H(originalSourceUrl())}" target="_blank" rel="noopener noreferrer">Original source ↗</a><a class="source" href="https://github.com/${H(repo)}/commit/${encodeURIComponent(c.sha)}" target="_blank" rel="noopener noreferrer">GitHub commit ↗</a></div>`;
+ updateStepper();
 }
 
 function timeline(){const rail=byId('railItems');rail.innerHTML=commits.map((c,i)=>{let picked=i===selection.ci;let num=String(commitNumber(i));return `<div class="railitem ${H(c.kind)}"><button class="commitBtn ${H(c.kind)} ${picked?'selected':''}" data-c="${i}" data-s="0"><span class="no">${H(num)}</span><span class="mini">${H(shortSha(c.sha).slice(0,5))}</span></button>${picked?`<div class="substeps">${c.steps.map((s,j)=>`<button class="subbtn ${j===selection.si?'selected':''}" data-c="${i}" data-s="${j}">${H(commitNumber(i))}.${j+1}</button>`).join('')}</div>`:'<div style="height:13px"></div>'}</div>`}).join('');const active=rail.querySelector('.subbtn.selected');
@@ -364,22 +379,12 @@ if(!quiet){byId('frontendFile').textContent=s.file;}
 }
 
 function render(){return keepReadingLevel(renderCore)}
-function renderCore(){if(!commits.length)return;document.body.classList.toggle('github-source-mode',mode==='live');document.querySelector('.workspace').classList.toggle('github-source-mode',mode==='live');selection.ci=Math.min(Math.max(selection.ci,0),commits.length-1);selection.si=Math.min(Math.max(selection.si,0),commits[selection.ci].steps.length-1);const {c,s}=current();if(selection.ci!==render.prevci||selection.si!==render.prevsi){previewMode='after';message='';chosenFile={backend:null,frontend:null}}render.prevci=selection.ci;render.prevsi=selection.si;head();timeline();renderBackend();renderFrontend();renderSourceForSelection();setFocus(mode==='live'?c.kind:(s.kind||c.kind));byId('status').innerHTML=`${mode==='demo'?'10 hand-picked real commits · '+DEMO.reduce((a,c)=>a+c.steps.length,0)+' focused learning steps':'Exactly 10 selected commits · refreshed from GitHub'} · <span class="statusok">Selected ${H(stepIndex())}</span>`;byId('demoButton').classList.toggle('active',mode==='demo');byId('liveButton').classList.toggle('active',mode==='live');
-
-byId('liveButton').setAttribute('aria-pressed',String(mode==='live'));
-byId('demoButton').setAttribute('aria-pressed',String(mode==='demo'));persist()}
+function renderCore(){if(!commits.length)return;document.body.classList.toggle('github-source-mode',mode==='live');document.querySelector('.workspace').classList.toggle('github-source-mode',mode==='live');selection.ci=Math.min(Math.max(selection.ci,0),commits.length-1);selection.si=Math.min(Math.max(selection.si,0),commits[selection.ci].steps.length-1);const {c,s}=current();if(selection.ci!==render.prevci||selection.si!==render.prevsi){previewMode='after';message='';chosenFile={backend:null,frontend:null}}render.prevci=selection.ci;render.prevsi=selection.si;head();timeline();renderBackend();renderFrontend();renderSourceForSelection();setFocus(mode==='live'?c.kind:(s.kind||c.kind));byId('status').innerHTML=`${mode==='demo'?'10 hand-picked real commits · '+DEMO.reduce((a,c)=>a+c.steps.length,0)+' focused learning steps':'Exactly 10 selected commits · refreshed from GitHub'} · <span class="statusok">Selected ${H(stepIndex())}</span>`;persist()}
 function select(ci,si){if(ci<0||ci>=10||ci>=commits.length)return;if(mode==='live'&&commits[ci]?.needsFetch){selectLive(ci,si);return}selection={ci,si};mobileView='auto';render()}
 byId('railItems').addEventListener('click',e=>{let b=e.target.closest('button[data-c]');if(!b)return;select(+b.dataset.c,+b.dataset.s)});
 byId('mobileTabs').addEventListener('click',e=>{const b=e.target.closest('[data-mview]');if(!b)return;mobileView=b.dataset.mview;displayMobile()});
 byId('frontendGraphic').addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;if(b.dataset.act==='tab'){uiTab=b.dataset.tab;message=''}if(b.dataset.act==='today'){const input=byId('visitForm')?.elements.date;if(input)input.value=daysFromNow(0);message='Selected today. Submit to test validation.'}if(b.dataset.act==='test-pet'){const input=byId('petForm')?.elements.petName;if(input)input.value='A'.repeat(31);message='Name set to 31 characters. Submit to test.'}renderFrontend()});
 byId('frontendGraphic').addEventListener('submit',e=>{e.preventDefault();const form=e.target, f=flags();if(form.id==='petForm'){const name=form.elements.petName.value.trim(),birth=form.elements.birth.value,type=form.elements.type.value;if(f.birth&&birth>daysFromNow(0)){message='✕ Birth date cannot be in the future.'}else if(f.length&&name.length>30){message='✕ Pet name must be no more than 30 characters.'}else if(f.unique&&['Buddy','Max'].some(x=>x.toLowerCase()===name.toLowerCase())){message='✕ A pet with that name already exists for this sample owner.'}else{userData={...userData,name,birth,type};message='✓ Pet changes saved in this browser simulation.'}}else if(form.id==='visitForm'){let date=form.elements.date.value;if(f.visitDate&&date<=daysFromNow(0)){message='✕ Visit date must be in the future.'}else{userData.visits=[...userData.visits,{date,description:form.elements.description.value}];message='✓ Visit added to this browser simulation.'}}else if(form.id==='searchForm'){let q=form.elements.lastName.value;if(f.searchTrim)q=q.trim();message=q.trim().toLowerCase()==='davis'&&(!q.startsWith(' ')&&!q.endsWith(' '))?'✓ Owner Betty Davis found.':'✕ No matching owners in this sample result.'}else if(form.id==='ownerForm'){let city=form.elements.city.value,address=form.elements.address.value;if(f.ownerLength&&(city.length>80||address.length>255)){message='✕ City must be ≤80 characters and address ≤255.'}else{userData.city=city;userData.address=address;message='✓ Owner information saved in this browser simulation.'}}persist();renderFrontend()});
-function switchToDemo(){
-  hideComparison();
-  // Invalidate any outstanding network result. Never move the timeline.
-  modeEpoch++;mode='demo';repo=DEFAULT_REPO;commits=DEMO;
-  render();
-}
-byId('demoButton').onclick=switchToDemo;
 byId('searchFormMain').addEventListener('submit',e=>{e.preventDefault();const q=byId('search').value.trim();if(!q){byId('status').textContent='Search these 10 commits by number, substep, SHA, or topic.';return}let match=q.match(/^#?(\d+)(?:\.(\d+))?$/);if(match){const n=+match[1],sub=match[2]?+match[2]:1,ci=n-1;if(ci>=0&&ci<DEMO.length&&sub>=1&&sub<=commits[ci].steps.length){select(ci,sub-1);return}byId('status').innerHTML='<span class="error">Only commits 1–10 and their existing substeps are available.</span>';return}const i=commits.findIndex(c=>c.sha.toLowerCase().startsWith(q.toLowerCase())||c.name.toLowerCase().includes(q.toLowerCase())||c.steps.some(s=>s.file.toLowerCase().includes(q.toLowerCase())||s.name.toLowerCase().includes(q.toLowerCase())));if(i>=0){const si=commits[i].steps.findIndex(s=>s.name.toLowerCase().includes(q.toLowerCase())||s.file.toLowerCase().includes(q.toLowerCase()));select(i,Math.max(0,si));return}byId('status').innerHTML=`<span class="error">Not among the 10 selected commits. No other commits will be loaded.</span>`});
 async function api(path){const url=ROOT+repo+'/'+path;const r=await fetch(url,{headers:{Accept:'application/vnd.github+json'}});if(!r.ok){let detail='';try{detail=(await r.json()).message||''}catch{}throw Error(`GitHub HTTP ${r.status}. ${detail}`)}return r.json()}
 function guess(path){return /(?:^|\/)(?:templates|static|webapp|frontend|assets)\b|\.(?:html|jsp|css|js|tsx|jsx|vue|svelte)$/i.test(path)?'frontend':'backend'}
@@ -443,14 +448,6 @@ function hydrateCuratedCommit(raw,i){
   });
   return {...base,steps:updated,needsFetch:false,liveFetched:true};
 }
-function switchToLive(){
-  modeEpoch++;mode='live';repo=DEFAULT_REPO;
-  // Crucial: do not clear search, change selection or rebuild lesson numbering.
-  commits=DEMO.map(c=>liveCache.get(c.sha)||{...c,needsFetch:true});
-  render();
-  selectLive(selection.ci,selection.si);
-}
-function toggleLive(){if(mode==='live')switchToDemo();else switchToLive()}
 // Fetch one of the 10 known SHAs, but never navigate the user as a side effect.
 async function selectLive(i,si=0){
   if(i<0||i>=DEMO.length||mode!=='live')return;
@@ -483,7 +480,6 @@ byId('closeCompare').addEventListener('click',()=>{
   hideComparison();
   if(side)renderSourcePanel(side);
 });
-byId('liveButton').onclick=toggleLive;
 window.addEventListener('resize',displayMobile);
 
 function updateStepper(){const left=byId('prevStep'),right=byId('nextStep');if(!left||!right)return;const total=commits.reduce((acc,c)=>acc+c.steps.length,0),pos=commits.slice(0,selection.ci).reduce((acc,c)=>acc+c.steps.length,0)+selection.si+1;left.disabled=pos<=1;right.disabled=pos>=total;byId('stepPosition').textContent=`${pos} / ${total}`;}
@@ -514,11 +510,8 @@ message=m;persist();renderFrontend();},true);
 
 
 byId('summary').addEventListener('click',e=>{
-  const button=e.target.closest('#openOriginalSource');if(!button)return;
-  const side=current().s.kind==='frontend'?'frontend':'backend';
-  codeMode[side]='source';
-  if(mode==='demo')switchToLive();
-  else renderSourcePanel(side);
+  const link=e.target.closest('#openOriginalSource');
+  if(link)link.href=originalSourceUrl(); // Let the browser open GitHub in a new tab.
 });
 for(const side of ['backend','frontend']){
   byId(side+'SourceActions').addEventListener('click',event=>{
@@ -526,7 +519,7 @@ for(const side of ['backend','frontend']){
     if(tab){codeMode[side]=tab.dataset.codeMode;renderSourcePanel(side);return;}
   });
   byId(side+'FileSelect').addEventListener('change',event=>{
-    chosenFile[side]=event.target.value;renderSourcePanel(side);
+    chosenFile[side]=event.target.value;syncOriginalSourceLink();renderSourcePanel(side);
   });
   byId(side+'Code').addEventListener('click',event=>{
     if(event.target.closest('[data-exact-retry]'))ensureExactCommit(selection.ci,true);
