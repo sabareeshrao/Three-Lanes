@@ -4,6 +4,12 @@ Copy this directory to `projects/<slug>/` for **one new GitHub repository**.
 
 **Start with:** [../../HANDOVER-NEW-PROJECT.md](../../HANDOVER-NEW-PROJECT.md).
 
+## Required 10-commit quality gate
+
+Read [../../DIAGRAM-QUALITY-STANDARD.md](../../DIAGRAM-QUALITY-STANDARD.md) before producing any diagram or frontend UI. Work in **10 real commits per batch**; the first three should be visual showpieces, and **all ten** must be distinctive, source-accurate and free of overlapping/clipped text, bulky arrows, unreadable mobile labels and nonfunctional navigation.
+
+Use the supplied [VISUAL-QA-TRACKER.md](./VISUAL-QA-TRACKER.md) to audit the source and visual at 1440px and 390px, verify SVG click-to-open/click-again-to-close and vertical scroll stability, and record defects and completion for each commit. Do not call the batch complete until **10/10** commits pass these checks.
+
 ## Files
 
 - `project.json`: repository and project identity; the replacement for hardcoded Petclinic URLs.
