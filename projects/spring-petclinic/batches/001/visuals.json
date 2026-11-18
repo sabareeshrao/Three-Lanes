@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "project": "spring-petclinic",
+  "batch": "001",
+  "byCommitStep": {
+    "349fdef18bcf688709f19097c140c69724905768:1.1": {
+      "backend": "../../svg/b001-1.1.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.1": {
+      "backend": "../../svg/b001-2.1.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.2": {
+      "backend": "../../svg/b001-2.2.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.3": {
+      "backend": "../../svg/b001-2.3.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.4": {
+      "backend": "../../svg/b001-2.4.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.5": {
+      "backend": "../../svg/b001-2.5.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.6": {
+      "backend": "../../svg/b001-2.6.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.7": {
+      "backend": "../../svg/b001-2.7.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.8": {
+      "backend": "../../svg/b001-2.8.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.9": {
+      "frontend": "../../frontend-ui/b001-2.9.html"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.10": {
+      "backend": "../../svg/b001-2.10.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.11": {
+      "backend": "../../svg/b001-2.11.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.12": {
+      "backend": "../../svg/b001-2.12.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.13": {
+      "backend": "../../svg/b001-2.13.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.14": {
+      "backend": "../../svg/b001-2.14.svg"
+    },
+    "f09d67cc1c216b445d01f1893f37ff391bb3b4b7:2.15": {
+      "backend": "../../svg/b001-2.15.svg"
+    },
+    "7ff5e857fdb41a9f3e012c56390c2baa1f8b0f3e:3.1": {
+      "backend": "../../svg/b001-3.1.svg"
+    },
+    "7ff5e857fdb41a9f3e012c56390c2baa1f8b0f3e:3.2": {
+      "backend": "../../svg/b001-3.2.svg"
+    },
+    "556824d7c7f31405deb6ba7bc066cf957eed0be5:4.1": {
+      "backend": "../../svg/b001-4.1.svg"
+    },
+    "556824d7c7f31405deb6ba7bc066cf957eed0be5:4.2": {
+      "backend": "../../svg/b001-4.2.svg"
+    },
+    "556824d7c7f31405deb6ba7bc066cf957eed0be5:4.3": {
+      "frontend": "../../frontend-ui/b001-4.3.html"
+    },
+    "556824d7c7f31405deb6ba7bc066cf957eed0be5:4.4": {
+      "frontend": "../../frontend-ui/b001-4.4.html"
+    },
+    "556824d7c7f31405deb6ba7bc066cf957eed0be5:4.5": {
+      "frontend": "../../frontend-ui/b001-4.5.html"
+    },
+    "556824d7c7f31405deb6ba7bc066cf957eed0be5:4.6": {
+      "frontend": "../../frontend-ui/b001-4.6.html"
+    },
+    "d5cf15107a3dc797354e5d3c353a846f377a64a1:5.1": {
+      "backend": "../../svg/b001-5.1.svg"
+    },
+    "d5cf15107a3dc797354e5d3c353a846f377a64a1:5.2": {
+      "backend": "../../svg/b001-5.2.svg"
+    },
+    "d5cf15107a3dc797354e5d3c353a846f377a64a1:5.3": {
+      "frontend": "../../frontend-ui/b001-5.3.html"
+    },
+    "d5cf15107a3dc797354e5d3c353a846f377a64a1:5.4": {
+      "frontend": "../../frontend-ui/b001-5.4.html"
+    },
+    "e7a6c22ef05ba86c57477b3971818459c471f6e6:6.1": {
+      "backend": "../../svg/b001-6.1.svg"
+    },
+    "e7a6c22ef05ba86c57477b3971818459c471f6e6:6.2": {
+      "backend": "../../svg/b001-6.2.svg"
+    },
+    "d8014ae193f5190625a338c4d7faf095ddcd65bd:7.1": {
+      "frontend": "../../frontend-ui/b001-7.1.html"
+    },
+    "098cfb60b6de7d75d9c2d39f6b2ee23b8b6ead43:8.1": {
+      "backend": "../../svg/b001-8.1.svg"
+    },
+    "24ea3e9916d08cd2034f4f97d4af844ebf7c2bae:9.1": {
+      "backend": "../../svg/b001-9.1.svg"
+    },
+    "775e85dd1716c8c3da53722a645f2cd51bdf4abc:10.1": {
+      "backend": "../../svg/b001-10.1.svg"
+    }
+  }
+}
