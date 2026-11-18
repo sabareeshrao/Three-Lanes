@@ -8,10 +8,11 @@ const shaUrl=(sha,path,line)=>'https://github.com/'+BASE+'/blob/'+encodeURICompo
 const commitUrl=s=>'https://github.com/'+BASE+'/commit/'+s;
 const short=(s,n=38)=>String(s||'').length>n?String(s).slice(0,n-1)+'…':String(s||'');
 const current=()=>data[index];
-async function hydrate(s){if(!s.partsUrl||s.partsLoaded)return;if(s.partsPromise)return s.partsPromise;s.partsPromise=fetch(s.partsUrl).then(r=>{if(!r.ok)throw Error('source slice HTTP '+r.status);return r.json()}).then(obj=>{const partList=Array.isArray(obj.parts)?obj.parts:obj.steps?.[s.id];if(!Array.isArray(partList))throw Error('invalid or missing source slice '+s.id);s.parts=partList;s.partsLoaded=true;if(current()===s)preserve(()=>renderSource())}).catch(e=>{s.partsError=e.message||String(e);if(current()===s)byId('sourceContent').innerHTML='<div class="error">Cannot load source slice: '+H(s.partsError)+'</div>'});return s.partsPromise;}
+const shardCache=new Map();
+async function hydrate(s){if(!s.partsUrl||s.partsLoaded)return;if(s.partsPromise)return s.partsPromise;if(!shardCache.has(s.partsUrl))shardCache.set(s.partsUrl,fetch(s.partsUrl).then(r=>{if(!r.ok)throw Error('source slice HTTP '+r.status);return r.json()}));s.partsPromise=shardCache.get(s.partsUrl).then(obj=>{const partList=Array.isArray(obj.parts)?obj.parts:obj.steps?.[s.id];if(!Array.isArray(partList))throw Error('invalid or missing source slice '+s.id);s.parts=partList;s.partsLoaded=true;if(current()===s)preserve(()=>renderSource())}).catch(e=>{s.partsError=e.message||String(e);if(current()===s)byId('sourceContent').innerHTML='<div class="error">Cannot load source slice: '+H(s.partsError)+'</div>'});return s.partsPromise;}
 function preserve(fn){const y=window.scrollY,x=window.scrollX,app=byId('app');if(app){pageFloor=Math.max(pageFloor,app.offsetHeight,document.documentElement.scrollHeight,y+window.innerHeight+40);app.style.minHeight=Math.ceil(pageFloor)+'px';}const ret=fn();window.scrollTo({top:y,left:x,behavior:'instant'});requestAnimationFrame(()=>{if(Math.abs(window.scrollY-y)>1)window.scrollTo({top:y,left:x,behavior:'instant'})});return ret}
 window.addEventListener('scroll',()=>{if(restoreDone)store(VERT,String(Math.round(window.scrollY)))},{passive:true});
-function rowFileParts(s){return s.parts.filter(p=>p.rows?.length||p.binary);}
+function rowFileParts(s){return s.parts.filter(p=>p.rows?.length||p.binary||p.renameOnly);}
 function renderTimeline(){
  const rail=byId('timeline'),selected=current();
  rail.innerHTML=commits.map(item=>{
@@ -49,7 +50,7 @@ for(const side of ['backend','frontend']){
  links.innerHTML=links.hidden?'':'<div class="heading">SOURCE LINKS · '+H(s.sha.slice(0,8))+'</div><div class="sourceitems">'+linksMarkup(s)+'</div>';
 }
 }
-function previewTarget(i){const s=current(),t=s?.sourceTargets?.[i];if(!t)return;const side=s.lane,peek=byId(side+'Peek'),key=t.sha+'|'+t.path+'|'+t.line;
+function previewTarget(i){const s=current(),t=s?.sourceTargets?.[i];if(!t)return;if(s.partsUrl&&!s.partsLoaded){hydrate(s)?.then(()=>{if(s.partsLoaded&&current()===s)previewTarget(i)});return;}const side=s.lane,peek=byId(side+'Peek'),key=t.sha+'|'+t.path+'|'+t.line;
 return preserve(()=>{if(!peek.hidden&&activePeek[side]===key){peek.hidden=true;activePeek[side]=null;return}activePeek[side]=key;
 const rows=s.parts.filter(p=>p.path===t.path).flatMap(p=>p.rows),loc=rows.findIndex(r=>r.new===t.line||r.old===t.line),near=rows.slice(Math.max(0,loc-5),loc+6);
 peek.innerHTML='<div class="peekhead"><div><b>'+H(t.label)+'</b><small>'+H(t.path)+' · L'+t.line+' · '+H(t.sha.slice(0,8))+'</small></div><div><a href="'+H(shaUrl(t.sha,t.path,t.line))+'" target="_blank" rel="noopener noreferrer">GitHub ↗</a> <button type="button" data-close-peek="1">×</button></div></div><div class="peekcode codetable">'+near.map(r=>renderRow(r,r.new?t.path:(s.parts.find(p=>p.path===t.path)?.oldPath||t.path),!!r.new,null,r.new===t.line||r.old===t.line)).join('')+'</div>';
@@ -59,7 +60,7 @@ function renderRow(row,path,useNew,revOverride,highlight=false){const n=useNew?r
 const rev=revOverride||((useNew?current().sha:current().parentSha)||current().sha);
 const cl=row.type==='add'?'add':row.type==='del'?'del':'';
 return '<div class="coderow '+cl+(highlight?' highlight':'')+'"><a href="'+H(shaUrl(rev,path,n))+'" target="_blank" rel="noopener noreferrer">'+n+'</a><code>'+H(row.text)+'</code></div>';}
-function codeFiles(which){const s=current();let count=0;return rowFileParts(s).map(p=>{if(!p.rows.length)return '<div class="filename">'+H(p.path)+'</div><div class="empty">Binary asset; there are no text source lines in this diff.</div>';
+function codeFiles(which){const s=current();let count=0;return rowFileParts(s).map(p=>{if(!p.rows.length){const renamed=p.renameOnly;return '<div class="filename">'+H(p.path)+'</div><div class="empty">'+(renamed?'Renamed without text edits: <a href="'+H(shaUrl(s.parentSha||s.sha,p.oldPath||p.path))+'" target="_blank" rel="noopener noreferrer">previous file ↗</a> → <a href="'+H(shaUrl(s.sha,p.path))+'" target="_blank" rel="noopener noreferrer">new file ↗</a>':'Binary asset; no changed text lines. Open the original commit for the image file.')+'</div>';}
 const rows=p.rows.filter(r=>which==='before'?!!r.old:which==='after'?!!r.new:true);
 count+=rows.length;
 return '<div class="filename">'+H(p.path)+'</div>'+(rows.length?rows.map(r=>renderRow(r,which==='before'?(p.oldPath||p.path):p.path,which==='before'?false:which==='after'?true:!!r.new)).join(''):'<div class="empty">'+(which==='before'?'File or lines introduced in this commit':'File or lines removed in this commit')+'</div>')}).join('');}
