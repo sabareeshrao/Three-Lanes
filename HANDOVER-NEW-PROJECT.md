@@ -51,6 +51,14 @@ Three-Lanes/
 
 **Important:** Current `src/app.js` still uses `DEFAULT_REPO='spring-projects/spring-petclinic'` and `window.PETCLINIC_DEMO`; the new project cannot simply change a JSON file and work today. Refactor these to project configuration first.
 
+## Mandatory 10-commit visual production standard
+
+**Every new project is built in batches of exactly ten distinct real commits.** Read [DIAGRAM-QUALITY-STANDARD.md](./DIAGRAM-QUALITY-STANDARD.md) before generating content. The first three commits per batch require especially extraordinary, visually diverse diagrams/previews, but **no commit is allowed to sacrifice technical or visual quality**. Use meaningful architecture, method calls, tables, request paths, state transitions, SQL constraints and accurate focused UI rather than simple text inside generic boxes.
+
+Never use a diagram that has overlapping labels, off-canvas elements, bulky arrows, unreadable mobile text, confusing connectors, fabricated code or invented user interfaces. Create reusable source SVG/HTML assets; preserve SHA-pinned source navigation and click-again-to-close.
+
+**Required audit:** visually inspect at 1440px and 390px, test source links and click-to-toggle, compare before/after, and check layout/scroll persistence for each applicable step. Copy `projects/_template/VISUAL-QA-TRACKER.md` into each new project. A batch is only COMPLETE after **10/10 commit entries** pass these checks. Report actual progress and defects if anything is unfinished; do not invent quality scores or inspection results.
+
 ## 3. Approved product behavior — preserve exactly
 
 1. Three lanes: backend SVG/architecture **left**, commit/substep rail **middle**, focused frontend UI **right**.
