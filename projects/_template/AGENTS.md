@@ -23,6 +23,10 @@ Follow [../../SUBCOMMIT-100-LINE-RULE.md](../../SUBCOMMIT-100-LINE-RULE.md). Eac
 5. The current general-purpose JSON project loader may not exist yet; inspect shared `src/` code. If missing, implement project-agnostic support centrally and regression-test the existing Petclinic demo.
 6. Keep project-specific content isolated here. Do not overwrite or mix SHA keys across repositories.
 
+## Commit rail with independent scrolling
+
+When a real commit expands into dozens or hundreds of learning subcommits, **show every subcommit inside a fixed-height, independently scrollable middle commit lane**. Keep its header in place, use a subtle thin scrollbar and make the active subcommit visible by adjusting **only the rail's `scrollTop`**. Do not call `scrollIntoView()` on the document or make the entire page thousands of pixels taller. Preserve the rail scroll position when switching View/GitHub modes, changing source files or re-rendering the same step. Keep keyboard arrow navigation functional. For an implemented example, inspect `projects/spring-petclinic/shared/viewer.css` and `viewer.js`; do not modify the root prototype.
+
 ## Verification
 
 Use the root handover's acceptance checklist. In particular: historical GitHub source lines, View/GitHub modes, default full-width View here Before/After, clickable SVG-source toggle, keyboard controls, preserved scroll, responsive UI, and accurate source dependencies. Report verifiable links and exact commit SHAs. Never claim a GitHub Pages site is published before verifying it.
