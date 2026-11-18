@@ -92,16 +92,16 @@ html{scrollbar-gutter:stable}
 .commitBtn{box-shadow:none!important;border-width:1px;color:#1c4d38;transition:none}
 .commitBtn.frontend{background:#ecfdf4;border-color:#a4dfbe;color:#146b44}
 .commitBtn.backend{background:#edf5ff;border-color:#a7c9f1;color:#215a9e}
-.commitBtn.both{background:#fff8dd;border-color:#e9cd78;color:#8b6108}
+.commitBtn.both{background:#fff0e6;border-color:#f97316;color:#9a3412}
 .commitBtn.frontend.selected{background:#168452;border-color:#096c40;color:#fff}
 .commitBtn.backend.selected{background:#256cc0;border-color:#205da2;color:#fff}
-.commitBtn.both.selected{background:#e2ac2f;border-color:#bd8620;color:#352604}
-.commitBtn.frontend .mini{color:#4b9c75}.commitBtn.backend .mini{color:#678db5}.commitBtn.both .mini{color:#a47c2f}
+.commitBtn.both.selected{background:#ea580c;border-color:#fd9857;color:#fff}
+.commitBtn.frontend .mini{color:#4b9c75}.commitBtn.backend .mini{color:#678db5}.commitBtn.both .mini{color:#c06a2e}
 .commitBtn.frontend.selected .mini,.commitBtn.backend.selected .mini{color:#efffff}
-.commitBtn.both.selected .mini{color:#47320c}
+.commitBtn.both.selected .mini{color:#fff7ed}
 .railitem.frontend .subbtn.selected{background:#168452;border-color:#168452;color:#fff}
 .railitem.backend .subbtn.selected{background:#256cc0;border-color:#256cc0;color:#fff}
-.railitem.both .subbtn.selected{background:#e2ac2f;border-color:#bd8620;color:#352604}
+.railitem.both .subbtn.selected{background:#ea580c;border-color:#fd9857;color:#fff}
 /* Remove all nonessential hover helper popups; native title attributes are also removed in JS. */
 button:focus-visible,a:focus-visible{outline:2px solid #287dc2;outline-offset:2px}
 @media(max-width:1140px){
@@ -917,4 +917,47 @@ html,body{
   }
   .workspace>.lane>.visual>.quiet-visual b{font-size:13px!important}
   .workspace>.lane>.visual>.quiet-visual span{font-size:11px!important}
+}
+
+
+/* Compact commit rail: larger numeral-only chips and a lightweight one-line hover title.
+   Hover never changes the rail's geometry or adds a black tooltip. */
+.rail .commitBtn{width:63px!important;height:44px!important;border-radius:9px!important}
+.rail .commitBtn .no{font-size:17px!important;line-height:1!important;font-weight:800!important}
+.rail .commitBtn .mini{display:none!important}
+.rail .subbtn{width:62px!important;min-height:27px!important}
+.rail .commitBtn.both.selected,.rail .commitBtn.fullstack.selected{
+  background:#ea580c!important;border-color:#fd9857!important;color:#fff!important
+}
+.rail .commitBtn.both:not(.selected),.rail .commitBtn.fullstack:not(.selected){
+  background:#303030!important;border-left:3px solid #f97316!important;color:#999fa6!important
+}
+.rail .commitBtn.both.selected+.substeps .subbtn.selected{
+  background:#f1f3f6!important;color:#161b22!important
+}
+.summary .summary-kind.both,.summary .summary-kind.fullstack{
+  background:#a94512!important;border-color:#f97316!important;color:#fff7ed!important
+}
+.commit-hover-label{
+  position:fixed;z-index:1100;pointer-events:none;
+  max-width:min(380px,calc(100vw - 16px));
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  padding:7px 11px;border:1px solid #cbd3df;border-radius:7px;
+  background:#f4f6fa;color:#202630;
+  font:600 12px/1.25 var(--apple-ui-font,-apple-system,BlinkMacSystemFont,Inter,Arial,sans-serif);
+  box-shadow:0 2px 8px #0002;
+}
+.commit-hover-label[hidden]{display:none!important}
+.summary .commit-position-label{
+  display:inline-flex;align-items:center;flex:0 0 auto;
+  color:#d0d5dd;font:650 11px var(--apple-ui-font,-apple-system,BlinkMacSystemFont,Inter,Arial,sans-serif);
+  letter-spacing:.01em;white-space:nowrap;cursor:default;
+}
+@media(max-width:820px){
+  .rail .commitBtn{width:53px!important;height:43px!important}
+  .rail .subbtn{width:52px!important}
+}
+@media(max-width:520px){
+  .rail .commitBtn{width:45px!important;height:42px!important}
+  .rail .subbtn{width:45px!important}
 }

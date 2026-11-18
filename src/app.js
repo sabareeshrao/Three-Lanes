@@ -245,7 +245,6 @@ function renderSourcePanelCore(side){
   byId('sharedFileLink').href=target?fileUrl(raw,target,null,target.status==='removed')
     :'https://github.com/'+DEFAULT_REPO+'/commit/'+encodeURIComponent(c.sha);
   byId('sharedFileLink').textContent=target?'Open file ↗':'GitHub commit ↗';
-  syncOriginalSourceLink();
   for(const view of ['compare','diff']){
     const button=byId(view==='compare'?'sharedViewTab':'sharedDiffTab');
     const selected=codeMode[activeSide]===view;
@@ -300,37 +299,40 @@ function renderSourceForSelection(){
   ensureExactCommit(selection.ci);
 }
 function typeLabel(t){return t==='frontend'?'FRONTEND':t==='both'?'FULL STACK':'BACKEND'}
-// The top Original source action opens the source file on GitHub, never an inline tab.
-// Deleted files use their existing revision at the selected commit's parent SHA.
-function originalSourceUrl(){
-  const {c,s}=current();
-  const side=s.kind==='frontend'?'frontend':'backend';
-  const raw=exactCommitCache.get(c.sha)?.raw;
-  const wanted=selectedSharedFile||s.file;
-  const file=raw?.files?.find(f=>f.filename===wanted||f.previous_filename===wanted);
-  const deleted=file?.status==='removed';
-  const revision=deleted?(raw.parents?.[0]?.sha||c.sha):c.sha;
-  const path=deleted?(file.previous_filename||file.filename):(file?.filename||wanted);
-  if(!/^[a-f0-9]{40}$/i.test(revision)||typeof path!=='string'||!path)
-    return 'https://github.com/'+DEFAULT_REPO+'/commit/'+encodeURIComponent(c.sha);
-  return 'https://github.com/'+DEFAULT_REPO+'/blob/'+encodeURIComponent(revision)+'/'+path.split('/').map(encodeURIComponent).join('/');
-}
-function syncOriginalSourceLink(){
- const link=byId('openOriginalSource');
- if(link)link.href=originalSourceUrl();
-}
 function head(){
  const {c,s}=current();if(!c)return;
  const kind=s.kind||c.kind;
- byId('summary').innerHTML=`<div class="summary-main"><span class="chip summary-kind ${H(kind)}">${H(typeLabel(kind))}</span><h2>${H(c.name)}</h2><p><b>${H(s.name)}.</b> ${H(s.explain)}</p></div><div class="rightsummary"><a class="source original-launch" id="openOriginalSource" href="${H(originalSourceUrl())}" target="_blank" rel="noopener noreferrer">Original source ↗</a><a class="source" href="https://github.com/${H(repo)}/commit/${encodeURIComponent(c.sha)}" target="_blank" rel="noopener noreferrer">GitHub commit ↗</a></div>`;
+ byId('summary').innerHTML=`<div class="summary-main"><span class="chip summary-kind ${H(kind)}">${H(typeLabel(kind))}</span><h2>${H(c.name)}</h2><p><b>${H(s.name)}.</b> ${H(s.explain)}</p></div><div class="rightsummary"><span class="commit-position-label">Commit ${String(commitNumber()).padStart(2,'0')}</span><a class="source" href="https://github.com/${H(repo)}/commit/${encodeURIComponent(c.sha)}" target="_blank" rel="noopener noreferrer">GitHub commit ↗</a></div>`;
  updateStepper();
 }
 
+function hideCommitHover(){
+ const tip=byId('commitHoverLabel');
+ if(tip){tip.hidden=true;tip.textContent='';}
+}
+function showCommitHover(button){
+ const tip=byId('commitHoverLabel');
+ if(!tip||!button)return;
+ const text=button.dataset.commitTitle||'';
+ if(!text)return;
+ tip.textContent=text;
+ tip.hidden=false;
+ // Keep the tooltip as a single readable line, without resizing the rail or page.
+ const chip=button.getBoundingClientRect();
+ const tipRect=tip.getBoundingClientRect();
+ const width=Math.min(tipRect.width,window.innerWidth-16);
+ const rightRoom=window.innerWidth-chip.right;
+ const x=rightRoom>=width+12 ? chip.right+10 : Math.max(8,chip.left-width-10);
+ tip.style.left=Math.min(Math.max(8,x),Math.max(8,window.innerWidth-width-8))+'px';
+ tip.style.top=Math.max(8,Math.min(chip.top+(chip.height-tipRect.height)/2,window.innerHeight-tipRect.height-8))+'px';
+}
 function timeline(){
+  hideCommitHover();
   const rail=byId('railItems');
   rail.innerHTML=commits.map((commit,i)=>{
     const selected=i===selection.ci,n=String(commitNumber(i));
-    const chip='<button type="button" class="commitBtn '+H(commit.kind)+' '+(selected?'selected':'')+'" data-c="'+i+'" data-s="0" aria-current="'+(selected?'true':'false')+'" aria-label="Commit '+H(n)+(selected?' current':'')+'"><span class="no">'+H(n)+'</span><span class="mini">'+H(shortSha(commit.sha).slice(0,5))+'</span></button>';
+    const title=String(commit.name||commit.title||'Commit '+n).split('\n')[0].trim();
+    const chip='<button type="button" class="commitBtn '+H(commit.kind)+' '+(selected?'selected':'')+'" data-c="'+i+'" data-s="0" data-commit-title="'+H(title)+'" aria-current="'+(selected?'true':'false')+'" aria-describedby="commitHoverLabel" aria-label="Commit '+H(n)+': '+H(title)+(selected?', current':'')+'"><span class="no">'+H(n)+'</span></button>';
     const steps=selected?'<div class="substeps">'+commit.steps.map((step,j)=>'<button type="button" class="subbtn '+(j===selection.si?'selected':'')+'" data-c="'+i+'" data-s="'+j+'" aria-current="'+(j===selection.si?'step':'false')+'" aria-label="Step '+H(n)+'.'+(j+1)+(j===selection.si?' current':'')+'">'+H(n)+'.'+(j+1)+'</button>').join('')+'</div>':'<div class="rail-gap" aria-hidden="true"></div>';
     return '<div class="railitem '+H(commit.kind)+'">'+chip+steps+'</div>';
   }).join('');
@@ -372,6 +374,24 @@ function render(){return keepReadingLevel(renderCore)}
 function renderCore(){if(!commits.length)return;document.body.classList.toggle('github-source-mode',mode==='live');document.querySelector('.workspace').classList.toggle('github-source-mode',mode==='live');selection.ci=Math.min(Math.max(selection.ci,0),commits.length-1);selection.si=Math.min(Math.max(selection.si,0),commits[selection.ci].steps.length-1);const {c,s}=current();if(selection.ci!==render.prevci||selection.si!==render.prevsi){previewMode='after';message='';chosenFile={backend:null,frontend:null};selectedSharedFile=null}render.prevci=selection.ci;render.prevsi=selection.si;head();timeline();renderBackend();renderFrontend();renderSourceForSelection();setFocus(mode==='live'?c.kind:(s.kind||c.kind));byId('status').innerHTML=`${mode==='demo'?'10 hand-picked real commits · '+DEMO.reduce((a,c)=>a+c.steps.length,0)+' focused learning steps':'Exactly 10 selected commits · refreshed from GitHub'} · <span class="statusok">Selected ${H(stepIndex())}</span>`;persist()}
 function select(ci,si){if(ci<0||ci>=10||ci>=commits.length)return;if(mode==='live'&&commits[ci]?.needsFetch){selectLive(ci,si);return}selection={ci,si};mobileView='auto';render()}
 byId('railItems').addEventListener('click',e=>{let b=e.target.closest('button[data-c]');if(!b)return;select(+b.dataset.c,+b.dataset.s)});
+byId('railItems').addEventListener('mouseover',e=>{
+  const button=e.target.closest('.commitBtn[data-commit-title]');
+  if(button)showCommitHover(button);
+  else hideCommitHover();
+});
+byId('railItems').addEventListener('mouseout',e=>{
+  const from=e.target.closest('.commitBtn[data-commit-title]');
+  if(from&&!from.contains(e.relatedTarget))hideCommitHover();
+});
+byId('railItems').addEventListener('focusin',e=>{
+  const button=e.target.closest('.commitBtn[data-commit-title]');
+  if(button)showCommitHover(button);
+});
+byId('railItems').addEventListener('focusout',e=>{
+  if(e.target.closest('.commitBtn[data-commit-title]'))hideCommitHover();
+});
+window.addEventListener('scroll',hideCommitHover,true);
+window.addEventListener('resize',hideCommitHover);
 byId('mobileTabs').addEventListener('click',e=>{const b=e.target.closest('[data-mview]');if(!b)return;mobileView=b.dataset.mview;displayMobile()});
 byId('frontendGraphic').addEventListener('click',e=>{const b=e.target.closest('[data-act]');if(!b)return;if(b.dataset.act==='tab'){uiTab=b.dataset.tab;message=''}if(b.dataset.act==='today'){const input=byId('visitForm')?.elements.date;if(input)input.value=daysFromNow(0);message='Selected today. Submit to test validation.'}if(b.dataset.act==='test-pet'){const input=byId('petForm')?.elements.petName;if(input)input.value='A'.repeat(31);message='Name set to 31 characters. Submit to test.'}renderFrontend()});
 byId('frontendGraphic').addEventListener('submit',e=>{e.preventDefault();const form=e.target, f=flags();if(form.id==='petForm'){const name=form.elements.petName.value.trim(),birth=form.elements.birth.value,type=form.elements.type.value;if(f.birth&&birth>daysFromNow(0)){message='✕ Birth date cannot be in the future.'}else if(f.length&&name.length>30){message='✕ Pet name must be no more than 30 characters.'}else if(f.unique&&['Buddy','Max'].some(x=>x.toLowerCase()===name.toLowerCase())){message='✕ A pet with that name already exists for this sample owner.'}else{userData={...userData,name,birth,type};message='✓ Pet changes saved in this browser simulation.'}}else if(form.id==='visitForm'){let date=form.elements.date.value;if(f.visitDate&&date<=daysFromNow(0)){message='✕ Visit date must be in the future.'}else{userData.visits=[...userData.visits,{date,description:form.elements.description.value}];message='✓ Visit added to this browser simulation.'}}else if(form.id==='searchForm'){let q=form.elements.lastName.value;if(f.searchTrim)q=q.trim();message=q.trim().toLowerCase()==='davis'&&(!q.startsWith(' ')&&!q.endsWith(' '))?'✓ Owner Betty Davis found.':'✕ No matching owners in this sample result.'}else if(form.id==='ownerForm'){let city=form.elements.city.value,address=form.elements.address.value;if(f.ownerLength&&(city.length>80||address.length>255)){message='✕ City must be ≤80 characters and address ≤255.'}else{userData.city=city;userData.address=address;message='✓ Owner information saved in this browser simulation.'}}persist();renderFrontend()});
@@ -473,7 +493,6 @@ byId('sharedSourceDock').addEventListener('click',event=>{
 });
 byId('sharedFileSelect').addEventListener('change',event=>{
   selectedSharedFile=event.target.value||null;inspectorOpen=true;
-  syncOriginalSourceLink();
   renderSourcePanel(current().s.kind==='frontend'?'frontend':'backend');
 });
 window.addEventListener('resize',displayMobile);
@@ -505,17 +524,13 @@ if(id==='microOwnerForm'){m=fields.city.value.length>80||fields.address.value.le
 message=m;persist();renderFrontend();},true);
 
 
-byId('summary').addEventListener('click',e=>{
-  const link=e.target.closest('#openOriginalSource');
-  if(link)link.href=originalSourceUrl(); // Let the browser open GitHub in a new tab.
-});
 for(const side of ['backend','frontend']){
   byId(side+'SourceActions').addEventListener('click',event=>{
     const tab=event.target.closest('[data-code-mode]');
     if(tab){codeMode[side]=tab.dataset.codeMode;renderSourcePanel(side);return;}
   });
   byId(side+'FileSelect').addEventListener('change',event=>{
-    chosenFile[side]=event.target.value;syncOriginalSourceLink();renderSourcePanel(side);
+    chosenFile[side]=event.target.value;renderSourcePanel(side);
   });
   byId(side+'Code').addEventListener('click',event=>{
     if(event.target.closest('[data-exact-retry]'))ensureExactCommit(selection.ci,true);
