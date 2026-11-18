@@ -961,3 +961,38 @@ html,body{
   .rail .commitBtn{width:45px!important;height:42px!important}
   .rail .subbtn{width:45px!important}
 }
+
+
+/* Commit conveyor: fixed frame, internal vertical scroll only, no page displacement. */
+.workspace>.rail{
+  display:flex!important;
+  flex-direction:column!important;
+  height:var(--stable-lane-height,700px)!important;
+  min-height:var(--stable-lane-height,700px)!important;
+  max-height:var(--stable-lane-height,700px)!important;
+  overflow:hidden!important;
+}
+.workspace>.rail>.railhead{
+  flex:0 0 auto!important;
+  position:relative;
+  z-index:2;
+}
+.workspace>.rail>.railscroll{
+  flex:1 1 0!important;
+  min-height:0!important;
+  max-height:100%!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  overscroll-behavior-y:contain!important;
+  scrollbar-width:thin;
+  scrollbar-color:#758397 #292929;
+  scroll-behavior:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.workspace>.rail>.railscroll::-webkit-scrollbar{width:6px}
+.workspace>.rail>.railscroll::-webkit-scrollbar-track{background:#292929;border-radius:99px}
+.workspace>.rail>.railscroll::-webkit-scrollbar-thumb{background:#758397;border-radius:99px}
+.workspace>.rail>.railscroll::-webkit-scrollbar-thumb:hover{background:#a5b3c3}
+.workspace>.rail .commitBtn:focus-visible,.workspace>.rail .subbtn:focus-visible{
+  outline:2px solid #e5edf8!important;outline-offset:2px!important;
+}
