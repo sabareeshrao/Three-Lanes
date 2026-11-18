@@ -515,6 +515,10 @@ body.github-source-mode #liveButton{background:#3a3a3a;border-color:#aaa;color:#
 .workspace .source-region.compare-active>.source-stats{display:none!important}
 .workspace .source-region.compare-active{padding-bottom:10px}
 @media(max-width:820px){.workspace>.wide-compare{grid-column:1/-1;grid-row:3}}
+
+/* Avoid browser scroll anchoring on reconstructed diagrams and source panels. */
+html,body,.app,.workspace,.lane,.source-region,.wide-compare{overflow-anchor:none!important}
+html{scroll-behavior:auto!important}
 </style></head>
 <body>
 <div class="app">
@@ -922,6 +926,52 @@ const DEMO=window.PETCLINIC_DEMO||[];
 const byId=id=>document.getElementById(id);
 const H=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 const storage={get(k){try{return localStorage.getItem(k)}catch{return null}},set(k,v){try{localStorage.setItem(k,v)}catch{}}};
+
+// Keep the user's exact vertical reading level through commit, mode, and async source changes.
+const VERTICAL_SCROLL_KEY='three-lanes-scroll-y-v1';
+let reservedPageHeight=0,verticalLockDepth=0,lockedScrollY=0,lockedScrollX=0,verticalFrame=0;
+function reserveReadingHeight(y=window.scrollY){
+  const app=document.querySelector('.app');
+  if(!app)return;
+  const top=app.getBoundingClientRect().top+window.scrollY;
+  const available=Math.max(document.documentElement.scrollHeight,document.body.scrollHeight);
+  reservedPageHeight=Math.max(reservedPageHeight,app.offsetHeight,available-top,y+window.innerHeight-top+32);
+  app.style.minHeight=Math.ceil(reservedPageHeight)+'px';
+}
+function keepReadingLevel(update){
+  if(verticalLockDepth===0){
+    lockedScrollY=window.scrollY;
+    lockedScrollX=window.scrollX;
+    reserveReadingHeight(lockedScrollY);
+  }
+  verticalLockDepth++;
+  try{return update();}
+  finally{
+    if(--verticalLockDepth===0){
+      const y=lockedScrollY,x=lockedScrollX,frame=++verticalFrame;
+      window.scrollTo({top:y,left:x,behavior:'instant'});
+      requestAnimationFrame(()=>{
+        if(frame===verticalFrame&&Math.abs(window.scrollY-y)>1)
+          window.scrollTo({top:y,left:x,behavior:'instant'});
+      });
+    }
+  }
+}
+let initialVerticalRestoreDone=false;
+window.addEventListener('scroll',()=>{
+  if(initialVerticalRestoreDone&&verticalLockDepth===0)
+    storage.set(VERTICAL_SCROLL_KEY,String(Math.round(window.scrollY)));
+},{passive:true});
+function restoreSavedReadingLevel(){
+  const saved=Number(storage.get(VERTICAL_SCROLL_KEY));
+  if(Number.isFinite(saved)&&saved>0&&saved<1000000){
+    reserveReadingHeight(saved);
+    window.scrollTo({top:saved,left:0,behavior:'instant'});
+    requestAnimationFrame(()=>window.scrollTo({top:saved,left:0,behavior:'instant'}));
+  }
+  initialVerticalRestoreDone=true;
+}
+
 let mode='demo',commits=DEMO,selection={ci:0,si:0},repo=DEFAULT_REPO,page=1, mobileView='auto';
 // The ten curated lesson IDs (including .1/.2 steps) are stable across both modes.
 // Live GitHub changes the source shown in those lessons, not the lesson index.
@@ -1084,8 +1134,9 @@ function showComparison(side,commit,file){
   byId('compareAfter').innerHTML=compareRows(commit,file,'new');
   holder.dataset.side=side;
 }
-function hideComparison(){byId('wideCompare').hidden=true;delete byId('wideCompare').dataset.side}
-function renderSourcePanel(side){
+function hideComparison(){return keepReadingLevel(()=>{byId('wideCompare').hidden=true;delete byId('wideCompare').dataset.side})}
+function renderSourcePanel(side){return keepReadingLevel(()=>renderSourcePanelCore(side))}
+function renderSourcePanelCore(side){
   if(mode==='demo'){hideComparison();renderGuidedSource(side);return}
   const lane=byId(side+'Lane'),panel=byId(side+'SourceActions'),code=byId(side+'Code'),region=byId(side+'SourceRegion');
   if(!panel||!code)return;
@@ -1210,7 +1261,8 @@ function backendDiagram(s){if(s.kind==='frontend')return window.PETCLINIC_DIAGRA
 
 function setFocus(kind){const b=byId('backendLane'),f=byId('frontendLane'),w=document.querySelector('.workspace');w.classList.toggle('has-visible-impact',mode==='live'&&current().s.visualImpact);b.classList.toggle('focused',kind!=='frontend');f.classList.toggle('focused',kind!=='backend');b.classList.toggle('idle',kind==='frontend');f.classList.toggle('idle',kind==='backend');w.classList.toggle('focus-frontend',kind==='frontend');w.classList.toggle('focus-backend',kind==='backend');w.classList.toggle('focus-both',kind==='both');if(mobileView==='auto')mobileView=kind==='both'?'both':kind==='frontend'?'frontend':'backend';displayMobile();}
 
-function displayMobile(){const isMobile=matchMedia('(max-width:820px)').matches;document.querySelector('.workspace').classList.toggle('mobile-both',isMobile&&mobileView==='both');byId('backendLane').classList.toggle('mobilehide',isMobile&&mobileView==='frontend');byId('frontendLane').classList.toggle('mobilehide',isMobile&&mobileView==='backend');for(const b of document.querySelectorAll('[data-mview]'))b.classList.toggle('active',b.dataset.mview===mobileView)}
+function displayMobile(){return keepReadingLevel(displayMobileCore)}
+function displayMobileCore(){const isMobile=matchMedia('(max-width:820px)').matches;document.querySelector('.workspace').classList.toggle('mobile-both',isMobile&&mobileView==='both');byId('backendLane').classList.toggle('mobilehide',isMobile&&mobileView==='frontend');byId('frontendLane').classList.toggle('mobilehide',isMobile&&mobileView==='backend');for(const b of document.querySelectorAll('[data-mview]'))b.classList.toggle('active',b.dataset.mview===mobileView)}
 function renderBackend(){const {s}=current(),quiet=s.kind==='frontend';byId('backendInfo').textContent=quiet?'NO BACKEND CHANGE':'CHANGED IN THIS STEP';byId('backendName').textContent=quiet?'No server source modified':s.name;byId('backendGraphic').innerHTML=backendDiagram(s);byId('backendInfoLine').textContent='';
 byId('backendCode').style.display='';byId('backendFile').parentElement.style.display='';byId('backendFile').parentElement.previousElementSibling.style.display='';if(!quiet){byId('backendFile').textContent=s.file;}
 }
@@ -1225,7 +1277,8 @@ byId('frontendGraphic').innerHTML=makePreview();byId('frontendFile').parentEleme
 if(!quiet){byId('frontendFile').textContent=s.file;}
 }
 
-function render(){if(!commits.length)return;document.body.classList.toggle('github-source-mode',mode==='live');document.querySelector('.workspace').classList.toggle('github-source-mode',mode==='live');selection.ci=Math.min(Math.max(selection.ci,0),commits.length-1);selection.si=Math.min(Math.max(selection.si,0),commits[selection.ci].steps.length-1);const {c,s}=current();if(selection.ci!==render.prevci||selection.si!==render.prevsi){previewMode='after';message='';chosenFile={backend:null,frontend:null}}render.prevci=selection.ci;render.prevsi=selection.si;head();timeline();renderBackend();renderFrontend();renderSourceForSelection();setFocus(mode==='live'?c.kind:(s.kind||c.kind));byId('status').innerHTML=`${mode==='demo'?'10 hand-picked real commits · '+DEMO.reduce((a,c)=>a+c.steps.length,0)+' focused learning steps':'Exactly 10 selected commits · refreshed from GitHub'} · <span class="statusok">Selected ${H(stepIndex())}</span>`;byId('demoButton').classList.toggle('active',mode==='demo');byId('liveButton').classList.toggle('active',mode==='live');
+function render(){return keepReadingLevel(renderCore)}
+function renderCore(){if(!commits.length)return;document.body.classList.toggle('github-source-mode',mode==='live');document.querySelector('.workspace').classList.toggle('github-source-mode',mode==='live');selection.ci=Math.min(Math.max(selection.ci,0),commits.length-1);selection.si=Math.min(Math.max(selection.si,0),commits[selection.ci].steps.length-1);const {c,s}=current();if(selection.ci!==render.prevci||selection.si!==render.prevsi){previewMode='after';message='';chosenFile={backend:null,frontend:null}}render.prevci=selection.ci;render.prevsi=selection.si;head();timeline();renderBackend();renderFrontend();renderSourceForSelection();setFocus(mode==='live'?c.kind:(s.kind||c.kind));byId('status').innerHTML=`${mode==='demo'?'10 hand-picked real commits · '+DEMO.reduce((a,c)=>a+c.steps.length,0)+' focused learning steps':'Exactly 10 selected commits · refreshed from GitHub'} · <span class="statusok">Selected ${H(stepIndex())}</span>`;byId('demoButton').classList.toggle('active',mode==='demo');byId('liveButton').classList.toggle('active',mode==='live');
 
 byId('liveButton').setAttribute('aria-pressed',String(mode==='live'));
 byId('demoButton').setAttribute('aria-pressed',String(mode==='demo'));persist()}
@@ -1405,6 +1458,7 @@ for(const side of ['backend','frontend']){
 render();
 // Restore live mode from local storage without changing the selected lesson.
 if(mode==='live')selectLive(selection.ci,selection.si);
+requestAnimationFrame(restoreSavedReadingLevel);
 })();
 
 </script>
