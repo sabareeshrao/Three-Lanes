@@ -10,6 +10,20 @@ Before doing work here, also read the repository root **AGENTS.md** and **HANDOV
 
 Inspect every visual at **1440px and 390px**: zero overlaps/clipping, readable text, controlled arrows, real code/line navigation, no invented frontend behavior, and preserved scroll position. Track all 10 in this folder's `VISUAL-QA-TRACKER.md` (included in the copied template). A batch is only COMPLETE when all 10 have passed source/visual/navigation review; otherwise give the accurate progress and unresolved defects.
 
+## Required: exactly one changed file per learning substep
+
+**ONE step = exactly ONE changed file.** A historical GitHub commit changing N files requires at least N numbered learning substeps, all referencing that same real commit SHA. Split by canonical changed-file path BEFORE splitting by functionality. A controller and its test, two XML files, or Java and HTML must never be combined in one learning step.
+
+- Each step's focused diff/code, mentor explanation, visualization, and source lines belong to its single owning file. Other changed files can be named as context only; their changed code must have a separate step.
+- If ONE file exceeds 100 instructional code/diff lines, split that same file into multiple sequential steps. Never relax the 100-line cap and never impose an arbitrary step-count limit.
+- A rename/move counts as one logical file with both old and new paths. Binary assets each receive their own file-scoped metadata step, with zero invented code lines.
+- Audit complete GitHub commit file inventory and diff coordinates: every changed file needs at least one step; every changed line belongs to a step for that file. A multi-file step, missing changed file/line, absent canonical file owner, or more than 100 instructional lines fails QA.
+- The archival full-commit source view may show all files, but the focused teaching step must not mix changed files.
+
+**Chip color contract:** backend blue, frontend green, full-stack ORANGE (#EA580C / #F97316), never yellow. Inactive commit chips are neutral charcoal with a subtle category edge.
+
+**Commit conveyor belt:** when there are many commits/substeps, the middle rail has a fixed-height, independently VERTICALLY SCROLLABLE list with a stationary heading. Mouse wheel, touch, keyboard and selected-step navigation scroll only the rail, not the backend/frontend panels or the whole page. Keep the selected step visible without snapping the page or resetting scroll unnecessarily.
+
 ## Mandatory max-100-line subcommits
 
 Follow [../../SUBCOMMIT-100-LINE-RULE.md](../../SUBCOMMIT-100-LINE-RULE.md). Each **real historical commit** may be divided into unlimited numbered explanatory subcommits, e.g., `7.1` through `7.20`. **Each learning subcommit must contain at most 100 source/diff lines in total** (additions, deletions and context, summed across files). Break giant commits into more meaningful steps, never truncate, and confirm **every changed line** in the complete real diff is covered. Keep real SHA, original paths and both old/new line numbers, with a unique visual when appropriate. Record per-subcommit line counts and complete-diff coverage in the copied `VISUAL-QA-TRACKER.md`. Ten original SHAs still make one batch; these subcommits do not create Git history.
