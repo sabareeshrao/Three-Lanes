@@ -4,6 +4,10 @@
 
 **Goal:** Publish a visually compelling, technically correct learning experience—not 10 automatically generated generic diagrams. Quality takes priority over throughput. A batch is **not complete until all 10 commit entries and their applicable visuals pass review**. If work cannot be completed, report the accurate count and remaining defects instead of claiming success.
 
+## Mandatory 100-line cap per learning subcommit
+
+Before drawing a visual, read [SUBCOMMIT-100-LINE-RULE.md](./SUBCOMMIT-100-LINE-RULE.md). For every actual GitHub commit, split its complete verified changes into **numbered logical learning subcommits**, each containing **no more than 100 code/diff lines across all its code slices and files**, including context, additions and deletions. A large commit can have dozens of subcommits; never truncate or skip lines. Give every meaningful subcommit its own specific visual and source links. The 10-per-batch count is **10 real SHAs**, not 10 subcommits. Record exact code-line counts and verified full-diff coverage in `VISUAL-QA-TRACKER.md`; exceeding the 100-line cap or missing lines fails the quality gate. The complete historical file/diff inspectors remain accessible and exempt from the instructional display cap.
+
 ## 1. Batch contract
 
 1. Work in **batches of 10 actual commits** (Batch 001 = 10, Batch 002 = next 10, etc.). Choose and verify full 40-character SHAs and exact changed files. Different steps within a single commit are substeps, **not extra commits**.
