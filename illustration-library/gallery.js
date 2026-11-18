@@ -10,7 +10,7 @@ async function copy(text,button){
 function makeCard(asset){
  const a=element('article','card');
  const preview=element('div','preview'),img=document.createElement('img');
- img.src=asset.source+'?v=light-v2';img.alt=asset.title+' illustration';img.loading='lazy';
+ img.src=asset.source+'?v=kit-200';img.alt=asset.title+' illustration';img.loading='lazy';
  preview.append(img);a.append(preview);
  const meta=element('div','meta');
  meta.append(element('span','category',asset.category),element('h3','',asset.title),element('code','id',asset.id));

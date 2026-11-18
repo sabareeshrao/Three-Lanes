@@ -1,6 +1,6 @@
 # Three-Lanes Design System · v1.0.0
 
-**Status:** shared design tokens, six optional reference compositions and 25 lightweight SVG primitives and connectors. References are not binding or evidence for a historical commit.
+**Status:** shared design tokens, six optional reference compositions and 200 lightweight SVG primitives, technical symbols and connectors. References are not binding or evidence for a historical commit.
 
 - [Browse the design catalog](./catalog/index.html) (GitHub Pages: `/Three-Lanes/design-system/catalog/`)
 - [Canonical colors, fonts, sizes and scroll utilities](./tokens.css)

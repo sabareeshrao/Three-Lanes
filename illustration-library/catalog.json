@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "version": "2.0.0",
+  "version": "3.0.0",
   "title": "Three-Lanes Lightweight Blueprint SVG Kit",
   "openVocabulary": true,
   "style": "Petclinic original prototype: thin connectors, sparse flat outline icons, subtle paper grid, large whitespace",
@@ -373,6 +373,3307 @@
       "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/dashed-lifeline.svg",
       "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/dashed-lifeline.svg",
       "reusable": true
+    },
+    {
+      "id": "spring-boot-app",
+      "title": "Spring Boot App",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "boot",
+        "app",
+        "server",
+        "spark",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-boot-app.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-boot-app.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-boot-app.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring boot app",
+      "motif": "server"
+    },
+    {
+      "id": "spring-controller",
+      "title": "Spring Controller",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "controller",
+        "arrow",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-controller.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-controller.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-controller.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring controller",
+      "motif": "controller"
+    },
+    {
+      "id": "spring-service",
+      "title": "Spring Service",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "service",
+        "gear",
+        "check",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-service.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-service.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-service.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring service",
+      "motif": "gear"
+    },
+    {
+      "id": "spring-repository",
+      "title": "Spring Repository",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "repository",
+        "db",
+        "file",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-repository.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-repository.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-repository.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring repository",
+      "motif": "db"
+    },
+    {
+      "id": "spring-bean",
+      "title": "Spring Bean",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "bean",
+        "chip",
+        "spark",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-bean.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-bean.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-bean.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring bean",
+      "motif": "chip"
+    },
+    {
+      "id": "dependency-injection",
+      "title": "Dependency Injection",
+      "category": "Java & Spring",
+      "tags": [
+        "dependency",
+        "injection",
+        "flow",
+        "arrow",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/dependency-injection.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/dependency-injection.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/dependency-injection.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for dependency injection",
+      "motif": "flow"
+    },
+    {
+      "id": "spring-configuration",
+      "title": "Spring Configuration",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "configuration",
+        "sliders",
+        "gear",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-configuration.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-configuration.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-configuration.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring configuration",
+      "motif": "sliders"
+    },
+    {
+      "id": "spring-profile",
+      "title": "Spring Profile",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "profile",
+        "tag",
+        "check",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-profile.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-profile.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-profile.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring profile",
+      "motif": "tag"
+    },
+    {
+      "id": "rest-controller",
+      "title": "Rest Controller",
+      "category": "Java & Spring",
+      "tags": [
+        "rest",
+        "controller",
+        "file",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/rest-controller.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/rest-controller.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/rest-controller.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for rest controller",
+      "motif": "controller"
+    },
+    {
+      "id": "get-mapping",
+      "title": "Get Mapping",
+      "category": "Java & Spring",
+      "tags": [
+        "get",
+        "mapping",
+        "browser",
+        "arrow",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/get-mapping.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/get-mapping.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/get-mapping.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for get mapping",
+      "motif": "browser"
+    },
+    {
+      "id": "post-mapping",
+      "title": "Post Mapping",
+      "category": "Java & Spring",
+      "tags": [
+        "post",
+        "mapping",
+        "browser",
+        "add",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/post-mapping.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/post-mapping.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/post-mapping.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for post mapping",
+      "motif": "browser"
+    },
+    {
+      "id": "request-body",
+      "title": "Request Body",
+      "category": "Java & Spring",
+      "tags": [
+        "request",
+        "body",
+        "file",
+        "arrow",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/request-body.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/request-body.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/request-body.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for request body",
+      "motif": "file"
+    },
+    {
+      "id": "path-variable",
+      "title": "Path Variable",
+      "category": "Java & Spring",
+      "tags": [
+        "path",
+        "variable",
+        "route",
+        "file",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/path-variable.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/path-variable.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/path-variable.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for path variable",
+      "motif": "route"
+    },
+    {
+      "id": "bean-validation",
+      "title": "Bean Validation",
+      "category": "Java & Spring",
+      "tags": [
+        "bean",
+        "validation",
+        "shield",
+        "check",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/bean-validation.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/bean-validation.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/bean-validation.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for bean validation",
+      "motif": "shield"
+    },
+    {
+      "id": "spring-interceptor",
+      "title": "Spring Interceptor",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "interceptor",
+        "shield",
+        "arrow",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-interceptor.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-interceptor.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-interceptor.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring interceptor",
+      "motif": "shield"
+    },
+    {
+      "id": "spring-security-chain",
+      "title": "Spring Security Chain",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "security",
+        "chain",
+        "layer",
+        "shield",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-security-chain.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-security-chain.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-security-chain.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring security chain",
+      "motif": "layer"
+    },
+    {
+      "id": "spring-scheduled-task",
+      "title": "Spring Scheduled Task",
+      "category": "Java & Spring",
+      "tags": [
+        "spring",
+        "scheduled",
+        "task",
+        "calendar",
+        "clock",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/spring-scheduled-task.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/spring-scheduled-task.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/spring-scheduled-task.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for spring scheduled task",
+      "motif": "calendar"
+    },
+    {
+      "id": "transaction-annotation",
+      "title": "Transaction Annotation",
+      "category": "Java & Spring",
+      "tags": [
+        "transaction",
+        "annotation",
+        "db",
+        "lock",
+        "java"
+      ],
+      "kind": "primitive",
+      "source": "assets/transaction-annotation.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/transaction-annotation.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/transaction-annotation.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for transaction annotation",
+      "motif": "db"
+    },
+    {
+      "id": "api-endpoint",
+      "title": "API Endpoint",
+      "category": "APIs & Backend",
+      "tags": [
+        "api",
+        "endpoint",
+        "server",
+        "arrow",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/api-endpoint.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/api-endpoint.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/api-endpoint.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for api endpoint",
+      "motif": "server"
+    },
+    {
+      "id": "json-response",
+      "title": "Json Response",
+      "category": "APIs & Backend",
+      "tags": [
+        "json",
+        "response",
+        "code",
+        "check",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/json-response.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/json-response.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/json-response.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for json response",
+      "motif": "code"
+    },
+    {
+      "id": "http-status-ok",
+      "title": "HTTP Status Ok",
+      "category": "APIs & Backend",
+      "tags": [
+        "http",
+        "status",
+        "ok",
+        "check",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/http-status-ok.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/http-status-ok.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/http-status-ok.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for http status ok",
+      "motif": "status"
+    },
+    {
+      "id": "http-status-error",
+      "title": "HTTP Status Error",
+      "category": "APIs & Backend",
+      "tags": [
+        "http",
+        "status",
+        "error",
+        "warn",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/http-status-error.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/http-status-error.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/http-status-error.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for http status error",
+      "motif": "warn"
+    },
+    {
+      "id": "http-redirect",
+      "title": "HTTP Redirect",
+      "category": "APIs & Backend",
+      "tags": [
+        "http",
+        "redirect",
+        "route",
+        "arrow",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/http-redirect.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/http-redirect.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/http-redirect.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for http redirect",
+      "motif": "route"
+    },
+    {
+      "id": "api-pagination",
+      "title": "API Pagination",
+      "category": "APIs & Backend",
+      "tags": [
+        "api",
+        "pagination",
+        "file",
+        "arrow",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/api-pagination.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/api-pagination.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/api-pagination.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for api pagination",
+      "motif": "file"
+    },
+    {
+      "id": "api-rate-limit",
+      "title": "API Rate Limit",
+      "category": "APIs & Backend",
+      "tags": [
+        "api",
+        "rate",
+        "limit",
+        "clock",
+        "warn",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/api-rate-limit.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/api-rate-limit.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/api-rate-limit.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for api rate limit",
+      "motif": "clock"
+    },
+    {
+      "id": "api-retry",
+      "title": "API Retry",
+      "category": "APIs & Backend",
+      "tags": [
+        "api",
+        "retry",
+        "route",
+        "clock",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/api-retry.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/api-retry.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/api-retry.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for api retry",
+      "motif": "route"
+    },
+    {
+      "id": "api-timeout",
+      "title": "API Timeout",
+      "category": "APIs & Backend",
+      "tags": [
+        "api",
+        "timeout",
+        "clock",
+        "error",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/api-timeout.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/api-timeout.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/api-timeout.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for api timeout",
+      "motif": "clock"
+    },
+    {
+      "id": "request-validation",
+      "title": "Request Validation",
+      "category": "APIs & Backend",
+      "tags": [
+        "request",
+        "validation",
+        "shield",
+        "check",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/request-validation.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/request-validation.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/request-validation.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for request validation",
+      "motif": "shield"
+    },
+    {
+      "id": "response-serialization",
+      "title": "Response Serialization",
+      "category": "APIs & Backend",
+      "tags": [
+        "response",
+        "serialization",
+        "code",
+        "arrow",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/response-serialization.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/response-serialization.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/response-serialization.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for response serialization",
+      "motif": "code"
+    },
+    {
+      "id": "api-versioning",
+      "title": "API Versioning",
+      "category": "APIs & Backend",
+      "tags": [
+        "api",
+        "versioning",
+        "tag",
+        "add",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/api-versioning.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/api-versioning.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/api-versioning.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for api versioning",
+      "motif": "tag"
+    },
+    {
+      "id": "microservice",
+      "title": "Microservice",
+      "category": "APIs & Backend",
+      "tags": [
+        "microservice",
+        "server",
+        "cloud",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/microservice.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/microservice.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/microservice.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for microservice",
+      "motif": "server"
+    },
+    {
+      "id": "message-queue",
+      "title": "Message Queue",
+      "category": "APIs & Backend",
+      "tags": [
+        "message",
+        "queue",
+        "arrow",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/message-queue.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/message-queue.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/message-queue.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for message queue",
+      "motif": "queue"
+    },
+    {
+      "id": "event-publisher",
+      "title": "Event Publisher",
+      "category": "APIs & Backend",
+      "tags": [
+        "event",
+        "publisher",
+        "bell",
+        "arrow",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/event-publisher.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/event-publisher.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/event-publisher.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for event publisher",
+      "motif": "bell"
+    },
+    {
+      "id": "event-consumer",
+      "title": "Event Consumer",
+      "category": "APIs & Backend",
+      "tags": [
+        "event",
+        "consumer",
+        "queue",
+        "check",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/event-consumer.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/event-consumer.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/event-consumer.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for event consumer",
+      "motif": "queue"
+    },
+    {
+      "id": "background-worker",
+      "title": "Background Worker",
+      "category": "APIs & Backend",
+      "tags": [
+        "background",
+        "worker",
+        "gear",
+        "clock",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/background-worker.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/background-worker.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/background-worker.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for background worker",
+      "motif": "gear"
+    },
+    {
+      "id": "graphql-query",
+      "title": "Graphql Query",
+      "category": "APIs & Backend",
+      "tags": [
+        "graphql",
+        "query",
+        "network",
+        "search",
+        "apis"
+      ],
+      "kind": "primitive",
+      "source": "assets/graphql-query.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/graphql-query.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/graphql-query.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for graphql query",
+      "motif": "network"
+    },
+    {
+      "id": "database-table",
+      "title": "Database Table",
+      "category": "Database & Storage",
+      "tags": [
+        "database",
+        "table",
+        "db"
+      ],
+      "kind": "primitive",
+      "source": "assets/database-table.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/database-table.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/database-table.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for database table",
+      "motif": "table"
+    },
+    {
+      "id": "database-primary-key",
+      "title": "Database Primary Key",
+      "category": "Database & Storage",
+      "tags": [
+        "database",
+        "primary",
+        "key",
+        "check"
+      ],
+      "kind": "primitive",
+      "source": "assets/database-primary-key.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/database-primary-key.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/database-primary-key.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for database primary key",
+      "motif": "key"
+    },
+    {
+      "id": "foreign-key",
+      "title": "Foreign Key",
+      "category": "Database & Storage",
+      "tags": [
+        "foreign",
+        "key",
+        "arrow",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/foreign-key.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/foreign-key.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/foreign-key.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for foreign key",
+      "motif": "key"
+    },
+    {
+      "id": "database-index",
+      "title": "Database Index",
+      "category": "Database & Storage",
+      "tags": [
+        "database",
+        "index",
+        "table",
+        "search"
+      ],
+      "kind": "primitive",
+      "source": "assets/database-index.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/database-index.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/database-index.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for database index",
+      "motif": "table"
+    },
+    {
+      "id": "sql-select",
+      "title": "SQL Select",
+      "category": "Database & Storage",
+      "tags": [
+        "sql",
+        "select",
+        "table",
+        "search",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/sql-select.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/sql-select.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/sql-select.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for sql select",
+      "motif": "table"
+    },
+    {
+      "id": "sql-insert",
+      "title": "SQL Insert",
+      "category": "Database & Storage",
+      "tags": [
+        "sql",
+        "insert",
+        "table",
+        "add",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/sql-insert.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/sql-insert.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/sql-insert.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for sql insert",
+      "motif": "table"
+    },
+    {
+      "id": "sql-update",
+      "title": "SQL Update",
+      "category": "Database & Storage",
+      "tags": [
+        "sql",
+        "update",
+        "table",
+        "gear",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/sql-update.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/sql-update.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/sql-update.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for sql update",
+      "motif": "table"
+    },
+    {
+      "id": "sql-join",
+      "title": "SQL Join",
+      "category": "Database & Storage",
+      "tags": [
+        "sql",
+        "join",
+        "network",
+        "db",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/sql-join.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/sql-join.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/sql-join.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for sql join",
+      "motif": "network"
+    },
+    {
+      "id": "database-transaction",
+      "title": "Database Transaction",
+      "category": "Database & Storage",
+      "tags": [
+        "database",
+        "transaction",
+        "db",
+        "lock"
+      ],
+      "kind": "primitive",
+      "source": "assets/database-transaction.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/database-transaction.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/database-transaction.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for database transaction",
+      "motif": "db"
+    },
+    {
+      "id": "database-rollback",
+      "title": "Database Rollback",
+      "category": "Database & Storage",
+      "tags": [
+        "database",
+        "rollback",
+        "db",
+        "error"
+      ],
+      "kind": "primitive",
+      "source": "assets/database-rollback.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/database-rollback.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/database-rollback.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for database rollback",
+      "motif": "db"
+    },
+    {
+      "id": "database-migration",
+      "title": "Database Migration",
+      "category": "Database & Storage",
+      "tags": [
+        "database",
+        "migration",
+        "route",
+        "db"
+      ],
+      "kind": "primitive",
+      "source": "assets/database-migration.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/database-migration.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/database-migration.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for database migration",
+      "motif": "route"
+    },
+    {
+      "id": "database-view",
+      "title": "Database View",
+      "category": "Database & Storage",
+      "tags": [
+        "database",
+        "view",
+        "table",
+        "eye"
+      ],
+      "kind": "primitive",
+      "source": "assets/database-view.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/database-view.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/database-view.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for database view",
+      "motif": "table"
+    },
+    {
+      "id": "cache-key",
+      "title": "Cache Key",
+      "category": "Database & Storage",
+      "tags": [
+        "cache",
+        "key",
+        "clock",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/cache-key.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/cache-key.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/cache-key.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for cache key",
+      "motif": "key"
+    },
+    {
+      "id": "redis-cache",
+      "title": "Redis Cache",
+      "category": "Database & Storage",
+      "tags": [
+        "redis",
+        "cache",
+        "db",
+        "spark",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/redis-cache.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/redis-cache.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/redis-cache.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for redis cache",
+      "motif": "db"
+    },
+    {
+      "id": "file-storage",
+      "title": "File Storage",
+      "category": "Database & Storage",
+      "tags": [
+        "file",
+        "storage",
+        "folder",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/file-storage.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/file-storage.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/file-storage.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for file storage",
+      "motif": "folder"
+    },
+    {
+      "id": "object-bucket",
+      "title": "Object Bucket",
+      "category": "Database & Storage",
+      "tags": [
+        "object",
+        "bucket",
+        "cloud",
+        "database"
+      ],
+      "kind": "primitive",
+      "source": "assets/object-bucket.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/object-bucket.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/object-bucket.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for object bucket",
+      "motif": "bucket"
+    },
+    {
+      "id": "unit-test",
+      "title": "Unit Test",
+      "category": "Testing & Quality",
+      "tags": [
+        "unit",
+        "test",
+        "flask",
+        "check",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/unit-test.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/unit-test.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/unit-test.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for unit test",
+      "motif": "flask"
+    },
+    {
+      "id": "integration-test",
+      "title": "Integration Test",
+      "category": "Testing & Quality",
+      "tags": [
+        "integration",
+        "test",
+        "layer",
+        "check",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/integration-test.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/integration-test.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/integration-test.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for integration test",
+      "motif": "layer"
+    },
+    {
+      "id": "mockmvc-test",
+      "title": "Mockmvc Test",
+      "category": "Testing & Quality",
+      "tags": [
+        "mockmvc",
+        "test",
+        "flask",
+        "controller",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/mockmvc-test.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/mockmvc-test.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/mockmvc-test.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for mockmvc test",
+      "motif": "flask"
+    },
+    {
+      "id": "mock-object",
+      "title": "Mock Object",
+      "category": "Testing & Quality",
+      "tags": [
+        "mock",
+        "object",
+        "chip",
+        "file",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/mock-object.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/mock-object.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/mock-object.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for mock object",
+      "motif": "chip"
+    },
+    {
+      "id": "assertion",
+      "title": "Assertion",
+      "category": "Testing & Quality",
+      "tags": [
+        "assertion",
+        "status",
+        "check",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/assertion.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/assertion.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/assertion.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for assertion",
+      "motif": "status"
+    },
+    {
+      "id": "failing-test",
+      "title": "Failing Test",
+      "category": "Testing & Quality",
+      "tags": [
+        "failing",
+        "test",
+        "flask",
+        "error",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/failing-test.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/failing-test.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/failing-test.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for failing test",
+      "motif": "flask"
+    },
+    {
+      "id": "regression-test",
+      "title": "Regression Test",
+      "category": "Testing & Quality",
+      "tags": [
+        "regression",
+        "test",
+        "flask",
+        "clock",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/regression-test.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/regression-test.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/regression-test.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for regression test",
+      "motif": "flask"
+    },
+    {
+      "id": "test-fixture",
+      "title": "Test Fixture",
+      "category": "Testing & Quality",
+      "tags": [
+        "test",
+        "fixture",
+        "folder",
+        "add",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/test-fixture.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/test-fixture.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/test-fixture.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for test fixture",
+      "motif": "folder"
+    },
+    {
+      "id": "test-coverage",
+      "title": "Test Coverage",
+      "category": "Testing & Quality",
+      "tags": [
+        "test",
+        "coverage",
+        "pie",
+        "check",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/test-coverage.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/test-coverage.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/test-coverage.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for test coverage",
+      "motif": "pie"
+    },
+    {
+      "id": "test-suite",
+      "title": "Test Suite",
+      "category": "Testing & Quality",
+      "tags": [
+        "test",
+        "suite",
+        "file",
+        "check",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/test-suite.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/test-suite.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/test-suite.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for test suite",
+      "motif": "file"
+    },
+    {
+      "id": "junit-lifecycle",
+      "title": "Junit Lifecycle",
+      "category": "Testing & Quality",
+      "tags": [
+        "junit",
+        "lifecycle",
+        "clock",
+        "flask",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/junit-lifecycle.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/junit-lifecycle.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/junit-lifecycle.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for junit lifecycle",
+      "motif": "clock"
+    },
+    {
+      "id": "debug-breakpoint",
+      "title": "Debug Breakpoint",
+      "category": "Testing & Quality",
+      "tags": [
+        "debug",
+        "breakpoint",
+        "bug",
+        "error",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/debug-breakpoint.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/debug-breakpoint.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/debug-breakpoint.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for debug breakpoint",
+      "motif": "bug"
+    },
+    {
+      "id": "code-review",
+      "title": "Code Review",
+      "category": "Testing & Quality",
+      "tags": [
+        "code",
+        "review",
+        "eye",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/code-review.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/code-review.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/code-review.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for code review",
+      "motif": "code"
+    },
+    {
+      "id": "static-analysis",
+      "title": "Static Analysis",
+      "category": "Testing & Quality",
+      "tags": [
+        "static",
+        "analysis",
+        "search",
+        "code",
+        "testing"
+      ],
+      "kind": "primitive",
+      "source": "assets/static-analysis.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/static-analysis.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/static-analysis.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for static analysis",
+      "motif": "search"
+    },
+    {
+      "id": "docker-image",
+      "title": "Docker Image",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "docker",
+        "image",
+        "container",
+        "tag",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/docker-image.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/docker-image.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/docker-image.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for docker image",
+      "motif": "container"
+    },
+    {
+      "id": "docker-build",
+      "title": "Docker Build",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "docker",
+        "build",
+        "container",
+        "gear",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/docker-build.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/docker-build.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/docker-build.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for docker build",
+      "motif": "container"
+    },
+    {
+      "id": "container-running",
+      "title": "Container Running",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "container",
+        "running",
+        "check",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/container-running.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/container-running.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/container-running.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for container running",
+      "motif": "container"
+    },
+    {
+      "id": "k8s-pod",
+      "title": "K8s Pod",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "k8s",
+        "pod",
+        "container",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/k8s-pod.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/k8s-pod.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/k8s-pod.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for k8s pod",
+      "motif": "container"
+    },
+    {
+      "id": "k8s-service",
+      "title": "K8s Service",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "k8s",
+        "service",
+        "server",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/k8s-service.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/k8s-service.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/k8s-service.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for k8s service",
+      "motif": "server"
+    },
+    {
+      "id": "k8s-deployment",
+      "title": "K8s Deployment",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "k8s",
+        "deployment",
+        "rocket",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/k8s-deployment.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/k8s-deployment.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/k8s-deployment.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for k8s deployment",
+      "motif": "rocket"
+    },
+    {
+      "id": "load-balancing",
+      "title": "Load Balancing",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "load",
+        "balancing",
+        "network",
+        "arrow",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/load-balancing.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/load-balancing.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/load-balancing.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for load balancing",
+      "motif": "network"
+    },
+    {
+      "id": "cloud-function",
+      "title": "Cloud Function",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "cloud",
+        "function",
+        "spark"
+      ],
+      "kind": "primitive",
+      "source": "assets/cloud-function.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/cloud-function.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/cloud-function.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for cloud function",
+      "motif": "cloud"
+    },
+    {
+      "id": "cloud-region",
+      "title": "Cloud Region",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "cloud",
+        "region",
+        "globe"
+      ],
+      "kind": "primitive",
+      "source": "assets/cloud-region.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/cloud-region.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/cloud-region.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for cloud region",
+      "motif": "globe"
+    },
+    {
+      "id": "cdn-cache",
+      "title": "Cdn Cache",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "cdn",
+        "cache",
+        "globe",
+        "clock",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/cdn-cache.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/cdn-cache.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/cdn-cache.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for cdn cache",
+      "motif": "globe"
+    },
+    {
+      "id": "ci-pipeline",
+      "title": "Ci Pipeline",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "ci",
+        "pipeline",
+        "flow",
+        "check",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/ci-pipeline.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/ci-pipeline.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/ci-pipeline.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for ci pipeline",
+      "motif": "flow"
+    },
+    {
+      "id": "cd-deployment",
+      "title": "Cd Deployment",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "cd",
+        "deployment",
+        "rocket",
+        "check",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/cd-deployment.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/cd-deployment.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/cd-deployment.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for cd deployment",
+      "motif": "rocket"
+    },
+    {
+      "id": "github-action",
+      "title": "Github Action",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "github",
+        "action",
+        "git",
+        "gear",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/github-action.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/github-action.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/github-action.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for github action",
+      "motif": "git"
+    },
+    {
+      "id": "terraform-plan",
+      "title": "Terraform Plan",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "terraform",
+        "plan",
+        "code",
+        "gear",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/terraform-plan.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/terraform-plan.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/terraform-plan.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for terraform plan",
+      "motif": "code"
+    },
+    {
+      "id": "infra-as-code",
+      "title": "Infra As Code",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "infra",
+        "as",
+        "code",
+        "layer",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/infra-as-code.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/infra-as-code.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/infra-as-code.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for infra as code",
+      "motif": "layer"
+    },
+    {
+      "id": "environment-variable",
+      "title": "Environment Variable",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "environment",
+        "variable",
+        "code",
+        "key",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/environment-variable.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/environment-variable.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/environment-variable.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for environment variable",
+      "motif": "code"
+    },
+    {
+      "id": "observability-stack",
+      "title": "Observability Stack",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "observability",
+        "stack",
+        "chart",
+        "eye",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/observability-stack.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/observability-stack.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/observability-stack.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for observability stack",
+      "motif": "chart"
+    },
+    {
+      "id": "service-health",
+      "title": "Service Health",
+      "category": "Cloud & DevOps",
+      "tags": [
+        "service",
+        "health",
+        "heartbeat",
+        "check",
+        "cloud"
+      ],
+      "kind": "primitive",
+      "source": "assets/service-health.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/service-health.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/service-health.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for service health",
+      "motif": "heartbeat"
+    },
+    {
+      "id": "oauth-login",
+      "title": "Oauth Login",
+      "category": "Security & Identity",
+      "tags": [
+        "oauth",
+        "login",
+        "lock",
+        "user",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/oauth-login.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/oauth-login.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/oauth-login.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for oauth login",
+      "motif": "lock"
+    },
+    {
+      "id": "jwt-token",
+      "title": "JWT Token",
+      "category": "Security & Identity",
+      "tags": [
+        "jwt",
+        "token",
+        "key",
+        "file",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/jwt-token.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/jwt-token.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/jwt-token.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for jwt token",
+      "motif": "key"
+    },
+    {
+      "id": "access-control",
+      "title": "Access Control",
+      "category": "Security & Identity",
+      "tags": [
+        "access",
+        "control",
+        "shield",
+        "lock",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/access-control.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/access-control.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/access-control.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for access control",
+      "motif": "shield"
+    },
+    {
+      "id": "user-session",
+      "title": "User Session",
+      "category": "Security & Identity",
+      "tags": [
+        "user",
+        "session",
+        "clock",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/user-session.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/user-session.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/user-session.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for user session",
+      "motif": "user"
+    },
+    {
+      "id": "password-hashing",
+      "title": "Password Hashing",
+      "category": "Security & Identity",
+      "tags": [
+        "password",
+        "hashing",
+        "key",
+        "gear",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/password-hashing.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/password-hashing.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/password-hashing.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for password hashing",
+      "motif": "key"
+    },
+    {
+      "id": "encryption",
+      "title": "Encryption",
+      "category": "Security & Identity",
+      "tags": [
+        "encryption",
+        "lock",
+        "key",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/encryption.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/encryption.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/encryption.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for encryption",
+      "motif": "lock"
+    },
+    {
+      "id": "tls-handshake",
+      "title": "Tls Handshake",
+      "category": "Security & Identity",
+      "tags": [
+        "tls",
+        "handshake",
+        "flow",
+        "lock",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/tls-handshake.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/tls-handshake.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/tls-handshake.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for tls handshake",
+      "motif": "flow"
+    },
+    {
+      "id": "api-key",
+      "title": "API Key",
+      "category": "Security & Identity",
+      "tags": [
+        "api",
+        "key",
+        "code",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/api-key.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/api-key.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/api-key.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for api key",
+      "motif": "key"
+    },
+    {
+      "id": "mfa-authentication",
+      "title": "Mfa Authentication",
+      "category": "Security & Identity",
+      "tags": [
+        "mfa",
+        "authentication",
+        "shield",
+        "user",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/mfa-authentication.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/mfa-authentication.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/mfa-authentication.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for mfa authentication",
+      "motif": "shield"
+    },
+    {
+      "id": "security-audit",
+      "title": "Security Audit",
+      "category": "Security & Identity",
+      "tags": [
+        "security",
+        "audit",
+        "search",
+        "shield"
+      ],
+      "kind": "primitive",
+      "source": "assets/security-audit.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/security-audit.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/security-audit.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for security audit",
+      "motif": "search"
+    },
+    {
+      "id": "trust-boundary",
+      "title": "Trust Boundary",
+      "category": "Security & Identity",
+      "tags": [
+        "trust",
+        "boundary",
+        "shield",
+        "arrow",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/trust-boundary.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/trust-boundary.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/trust-boundary.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for trust boundary",
+      "motif": "shield"
+    },
+    {
+      "id": "input-sanitization",
+      "title": "Input Sanitization",
+      "category": "Security & Identity",
+      "tags": [
+        "input",
+        "sanitization",
+        "filter",
+        "check",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/input-sanitization.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/input-sanitization.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/input-sanitization.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for input sanitization",
+      "motif": "filter"
+    },
+    {
+      "id": "permission-denied",
+      "title": "Permission Denied",
+      "category": "Security & Identity",
+      "tags": [
+        "permission",
+        "denied",
+        "lock",
+        "error",
+        "security"
+      ],
+      "kind": "primitive",
+      "source": "assets/permission-denied.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/permission-denied.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/permission-denied.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for permission denied",
+      "motif": "lock"
+    },
+    {
+      "id": "tokenization",
+      "title": "Tokenization",
+      "category": "AI & ML",
+      "tags": [
+        "tokenization",
+        "file",
+        "spark",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/tokenization.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/tokenization.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/tokenization.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for tokenization",
+      "motif": "file"
+    },
+    {
+      "id": "embedding-vector",
+      "title": "Embedding Vector",
+      "category": "AI & ML",
+      "tags": [
+        "embedding",
+        "vector",
+        "matrix",
+        "arrow",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/embedding-vector.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/embedding-vector.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/embedding-vector.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for embedding vector",
+      "motif": "matrix"
+    },
+    {
+      "id": "cosine-similarity",
+      "title": "Cosine Similarity",
+      "category": "AI & ML",
+      "tags": [
+        "cosine",
+        "similarity",
+        "route",
+        "matrix",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/cosine-similarity.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/cosine-similarity.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/cosine-similarity.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for cosine similarity",
+      "motif": "route"
+    },
+    {
+      "id": "attention-head",
+      "title": "Attention Head",
+      "category": "AI & ML",
+      "tags": [
+        "attention",
+        "head",
+        "neural",
+        "matrix",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/attention-head.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/attention-head.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/attention-head.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for attention head",
+      "motif": "neural"
+    },
+    {
+      "id": "transformer-block",
+      "title": "Transformer Block",
+      "category": "AI & ML",
+      "tags": [
+        "transformer",
+        "block",
+        "layer",
+        "spark",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/transformer-block.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/transformer-block.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/transformer-block.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for transformer block",
+      "motif": "layer"
+    },
+    {
+      "id": "feed-forward-network",
+      "title": "Feed Forward Network",
+      "category": "AI & ML",
+      "tags": [
+        "feed",
+        "forward",
+        "network",
+        "neural",
+        "arrow",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/feed-forward-network.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/feed-forward-network.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/feed-forward-network.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for feed forward network",
+      "motif": "neural"
+    },
+    {
+      "id": "neural-layer",
+      "title": "Neural Layer",
+      "category": "AI & ML",
+      "tags": [
+        "neural",
+        "layer",
+        "add",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/neural-layer.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/neural-layer.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/neural-layer.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for neural layer",
+      "motif": "neural"
+    },
+    {
+      "id": "gradient-descent",
+      "title": "Gradient Descent",
+      "category": "AI & ML",
+      "tags": [
+        "gradient",
+        "descent",
+        "linechart",
+        "arrow",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/gradient-descent.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/gradient-descent.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/gradient-descent.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for gradient descent",
+      "motif": "linechart"
+    },
+    {
+      "id": "backpropagation",
+      "title": "Backpropagation",
+      "category": "AI & ML",
+      "tags": [
+        "backpropagation",
+        "neural",
+        "arrow",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/backpropagation.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/backpropagation.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/backpropagation.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for backpropagation",
+      "motif": "neural"
+    },
+    {
+      "id": "model-training",
+      "title": "Model Training",
+      "category": "AI & ML",
+      "tags": [
+        "model",
+        "training",
+        "gear",
+        "spark",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/model-training.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/model-training.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/model-training.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for model training",
+      "motif": "gear"
+    },
+    {
+      "id": "model-inference",
+      "title": "Model Inference",
+      "category": "AI & ML",
+      "tags": [
+        "model",
+        "inference",
+        "chip",
+        "check",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/model-inference.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/model-inference.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/model-inference.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for model inference",
+      "motif": "chip"
+    },
+    {
+      "id": "rag-retrieval",
+      "title": "Rag Retrieval",
+      "category": "AI & ML",
+      "tags": [
+        "rag",
+        "retrieval",
+        "search",
+        "db",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/rag-retrieval.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/rag-retrieval.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/rag-retrieval.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for rag retrieval",
+      "motif": "search"
+    },
+    {
+      "id": "vector-database",
+      "title": "Vector Database",
+      "category": "AI & ML",
+      "tags": [
+        "vector",
+        "database",
+        "db",
+        "matrix",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/vector-database.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/vector-database.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/vector-database.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for vector database",
+      "motif": "db"
+    },
+    {
+      "id": "lora-adapter",
+      "title": "Lora Adapter",
+      "category": "AI & ML",
+      "tags": [
+        "lora",
+        "adapter",
+        "layer",
+        "add",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/lora-adapter.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/lora-adapter.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/lora-adapter.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for lora adapter",
+      "motif": "layer"
+    },
+    {
+      "id": "model-quantization",
+      "title": "Model Quantization",
+      "category": "AI & ML",
+      "tags": [
+        "model",
+        "quantization",
+        "matrix",
+        "gear",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/model-quantization.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/model-quantization.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/model-quantization.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for model quantization",
+      "motif": "matrix"
+    },
+    {
+      "id": "model-evaluation",
+      "title": "Model Evaluation",
+      "category": "AI & ML",
+      "tags": [
+        "model",
+        "evaluation",
+        "chart",
+        "check",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/model-evaluation.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/model-evaluation.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/model-evaluation.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for model evaluation",
+      "motif": "chart"
+    },
+    {
+      "id": "classification",
+      "title": "Classification",
+      "category": "AI & ML",
+      "tags": [
+        "classification",
+        "pie",
+        "check",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/classification.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/classification.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/classification.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for classification",
+      "motif": "pie"
+    },
+    {
+      "id": "clustering",
+      "title": "Clustering",
+      "category": "AI & ML",
+      "tags": [
+        "clustering",
+        "network",
+        "spark",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/clustering.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/clustering.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/clustering.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for clustering",
+      "motif": "network"
+    },
+    {
+      "id": "fine-tuning",
+      "title": "Fine Tuning",
+      "category": "AI & ML",
+      "tags": [
+        "fine",
+        "tuning",
+        "gear",
+        "spark",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/fine-tuning.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/fine-tuning.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/fine-tuning.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for fine tuning",
+      "motif": "gear"
+    },
+    {
+      "id": "agent-tool-call",
+      "title": "Agent Tool Call",
+      "category": "AI & ML",
+      "tags": [
+        "agent",
+        "tool",
+        "call",
+        "flow",
+        "gear",
+        "ai"
+      ],
+      "kind": "primitive",
+      "source": "assets/agent-tool-call.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/agent-tool-call.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/agent-tool-call.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for agent tool call",
+      "motif": "flow"
+    },
+    {
+      "id": "etl-extraction",
+      "title": "Etl Extraction",
+      "category": "Data & Analytics",
+      "tags": [
+        "etl",
+        "extraction",
+        "db",
+        "arrow",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/etl-extraction.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/etl-extraction.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/etl-extraction.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for etl extraction",
+      "motif": "db"
+    },
+    {
+      "id": "etl-transform",
+      "title": "Etl Transform",
+      "category": "Data & Analytics",
+      "tags": [
+        "etl",
+        "transform",
+        "gear",
+        "table",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/etl-transform.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/etl-transform.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/etl-transform.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for etl transform",
+      "motif": "gear"
+    },
+    {
+      "id": "etl-load",
+      "title": "Etl Load",
+      "category": "Data & Analytics",
+      "tags": [
+        "etl",
+        "load",
+        "bucket",
+        "db",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/etl-load.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/etl-load.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/etl-load.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for etl load",
+      "motif": "bucket"
+    },
+    {
+      "id": "bar-chart",
+      "title": "Bar Chart",
+      "category": "Data & Analytics",
+      "tags": [
+        "bar",
+        "chart",
+        "check",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/bar-chart.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/bar-chart.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/bar-chart.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for bar chart",
+      "motif": "chart"
+    },
+    {
+      "id": "line-chart",
+      "title": "Line Chart",
+      "category": "Data & Analytics",
+      "tags": [
+        "line",
+        "chart",
+        "linechart",
+        "check",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/line-chart.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/line-chart.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/line-chart.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for line chart",
+      "motif": "linechart"
+    },
+    {
+      "id": "pie-chart",
+      "title": "Pie Chart",
+      "category": "Data & Analytics",
+      "tags": [
+        "pie",
+        "chart",
+        "check",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/pie-chart.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/pie-chart.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/pie-chart.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for pie chart",
+      "motif": "pie"
+    },
+    {
+      "id": "scatter-plot",
+      "title": "Scatter Plot",
+      "category": "Data & Analytics",
+      "tags": [
+        "scatter",
+        "plot",
+        "matrix",
+        "chart",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/scatter-plot.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/scatter-plot.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/scatter-plot.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for scatter plot",
+      "motif": "matrix"
+    },
+    {
+      "id": "kpi-metric",
+      "title": "Kpi Metric",
+      "category": "Data & Analytics",
+      "tags": [
+        "kpi",
+        "metric",
+        "chart",
+        "check",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/kpi-metric.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/kpi-metric.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/kpi-metric.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for kpi metric",
+      "motif": "chart"
+    },
+    {
+      "id": "dashboard-widget",
+      "title": "Dashboard Widget",
+      "category": "Data & Analytics",
+      "tags": [
+        "dashboard",
+        "widget",
+        "chart",
+        "browser",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/dashboard-widget.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/dashboard-widget.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/dashboard-widget.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for dashboard widget",
+      "motif": "chart"
+    },
+    {
+      "id": "data-cleaning",
+      "title": "Data Cleaning",
+      "category": "Data & Analytics",
+      "tags": [
+        "data",
+        "cleaning",
+        "filter",
+        "check"
+      ],
+      "kind": "primitive",
+      "source": "assets/data-cleaning.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/data-cleaning.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/data-cleaning.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for data cleaning",
+      "motif": "filter"
+    },
+    {
+      "id": "data-quality",
+      "title": "Data Quality",
+      "category": "Data & Analytics",
+      "tags": [
+        "data",
+        "quality",
+        "status",
+        "table"
+      ],
+      "kind": "primitive",
+      "source": "assets/data-quality.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/data-quality.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/data-quality.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for data quality",
+      "motif": "status"
+    },
+    {
+      "id": "missing-values",
+      "title": "Missing Values",
+      "category": "Data & Analytics",
+      "tags": [
+        "missing",
+        "values",
+        "grid",
+        "error",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/missing-values.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/missing-values.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/missing-values.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for missing values",
+      "motif": "grid"
+    },
+    {
+      "id": "aggregation",
+      "title": "Aggregation",
+      "category": "Data & Analytics",
+      "tags": [
+        "aggregation",
+        "table",
+        "gear",
+        "data"
+      ],
+      "kind": "primitive",
+      "source": "assets/aggregation.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/aggregation.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/aggregation.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for aggregation",
+      "motif": "table"
+    },
+    {
+      "id": "data-export",
+      "title": "Data Export",
+      "category": "Data & Analytics",
+      "tags": [
+        "data",
+        "export",
+        "file",
+        "arrow"
+      ],
+      "kind": "primitive",
+      "source": "assets/data-export.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/data-export.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/data-export.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for data export",
+      "motif": "file"
+    },
+    {
+      "id": "react-component",
+      "title": "React Component",
+      "category": "UI & Frontend",
+      "tags": [
+        "react",
+        "component",
+        "browser",
+        "layer",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/react-component.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/react-component.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/react-component.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for react component",
+      "motif": "browser"
+    },
+    {
+      "id": "react-state",
+      "title": "React State",
+      "category": "UI & Frontend",
+      "tags": [
+        "react",
+        "state",
+        "sliders",
+        "arrow",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/react-state.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/react-state.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/react-state.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for react state",
+      "motif": "sliders"
+    },
+    {
+      "id": "html-form",
+      "title": "HTML Form",
+      "category": "UI & Frontend",
+      "tags": [
+        "html",
+        "form",
+        "browser",
+        "file",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/html-form.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/html-form.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/html-form.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for html form",
+      "motif": "browser"
+    },
+    {
+      "id": "css-layout",
+      "title": "CSS Layout",
+      "category": "UI & Frontend",
+      "tags": [
+        "css",
+        "layout",
+        "grid",
+        "gear",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/css-layout.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/css-layout.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/css-layout.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for css layout",
+      "motif": "grid"
+    },
+    {
+      "id": "responsive-ui",
+      "title": "Responsive Ui",
+      "category": "UI & Frontend",
+      "tags": [
+        "responsive",
+        "ui",
+        "phone",
+        "browser"
+      ],
+      "kind": "primitive",
+      "source": "assets/responsive-ui.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/responsive-ui.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/responsive-ui.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for responsive ui",
+      "motif": "phone"
+    },
+    {
+      "id": "button-click",
+      "title": "Button Click",
+      "category": "UI & Frontend",
+      "tags": [
+        "button",
+        "click",
+        "flow",
+        "arrow",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/button-click.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/button-click.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/button-click.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for button click",
+      "motif": "flow"
+    },
+    {
+      "id": "input-field",
+      "title": "Input Field",
+      "category": "UI & Frontend",
+      "tags": [
+        "input",
+        "field",
+        "browser",
+        "add",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/input-field.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/input-field.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/input-field.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for input field",
+      "motif": "browser"
+    },
+    {
+      "id": "form-error",
+      "title": "Form Error",
+      "category": "UI & Frontend",
+      "tags": [
+        "form",
+        "error",
+        "browser",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/form-error.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/form-error.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/form-error.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for form error",
+      "motif": "browser"
+    },
+    {
+      "id": "modal-dialog",
+      "title": "Modal Dialog",
+      "category": "UI & Frontend",
+      "tags": [
+        "modal",
+        "dialog",
+        "browser",
+        "file",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/modal-dialog.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/modal-dialog.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/modal-dialog.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for modal dialog",
+      "motif": "browser"
+    },
+    {
+      "id": "navigation-menu",
+      "title": "Navigation Menu",
+      "category": "UI & Frontend",
+      "tags": [
+        "navigation",
+        "menu",
+        "list",
+        "arrow",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/navigation-menu.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/navigation-menu.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/navigation-menu.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for navigation menu",
+      "motif": "list"
+    },
+    {
+      "id": "loading-state",
+      "title": "Loading State",
+      "category": "UI & Frontend",
+      "tags": [
+        "loading",
+        "state",
+        "clock",
+        "spark",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/loading-state.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/loading-state.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/loading-state.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for loading state",
+      "motif": "clock"
+    },
+    {
+      "id": "accessibility",
+      "title": "Accessibility",
+      "category": "UI & Frontend",
+      "tags": [
+        "accessibility",
+        "eye",
+        "check",
+        "ui"
+      ],
+      "kind": "primitive",
+      "source": "assets/accessibility.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/accessibility.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/accessibility.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for accessibility",
+      "motif": "eye"
+    },
+    {
+      "id": "tcp-connection",
+      "title": "Tcp Connection",
+      "category": "Networking",
+      "tags": [
+        "tcp",
+        "connection",
+        "globe",
+        "arrow",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/tcp-connection.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/tcp-connection.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/tcp-connection.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for tcp connection",
+      "motif": "globe"
+    },
+    {
+      "id": "dns-lookup",
+      "title": "DNS Lookup",
+      "category": "Networking",
+      "tags": [
+        "dns",
+        "lookup",
+        "search",
+        "globe",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/dns-lookup.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/dns-lookup.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/dns-lookup.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for dns lookup",
+      "motif": "search"
+    },
+    {
+      "id": "http-client",
+      "title": "HTTP Client",
+      "category": "Networking",
+      "tags": [
+        "http",
+        "client",
+        "browser",
+        "arrow",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/http-client.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/http-client.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/http-client.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for http client",
+      "motif": "browser"
+    },
+    {
+      "id": "websocket-stream",
+      "title": "Websocket Stream",
+      "category": "Networking",
+      "tags": [
+        "websocket",
+        "stream",
+        "wave",
+        "arrow",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/websocket-stream.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/websocket-stream.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/websocket-stream.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for websocket stream",
+      "motif": "wave"
+    },
+    {
+      "id": "network-switch",
+      "title": "Network Switch",
+      "category": "Networking",
+      "tags": [
+        "network",
+        "switch",
+        "gear",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/network-switch.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/network-switch.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/network-switch.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for network switch",
+      "motif": "network"
+    },
+    {
+      "id": "network-router",
+      "title": "Network Router",
+      "category": "Networking",
+      "tags": [
+        "network",
+        "router",
+        "route",
+        "globe",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/network-router.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/network-router.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/network-router.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for network router",
+      "motif": "route"
+    },
+    {
+      "id": "firewall-rule",
+      "title": "Firewall Rule",
+      "category": "Networking",
+      "tags": [
+        "firewall",
+        "rule",
+        "shield",
+        "filter",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/firewall-rule.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/firewall-rule.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/firewall-rule.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for firewall rule",
+      "motif": "shield"
+    },
+    {
+      "id": "ip-address",
+      "title": "Ip Address",
+      "category": "Networking",
+      "tags": [
+        "ip",
+        "address",
+        "tag",
+        "globe",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/ip-address.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/ip-address.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/ip-address.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for ip address",
+      "motif": "tag"
+    },
+    {
+      "id": "packet-transfer",
+      "title": "Packet Transfer",
+      "category": "Networking",
+      "tags": [
+        "packet",
+        "transfer",
+        "queue",
+        "arrow",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/packet-transfer.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/packet-transfer.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/packet-transfer.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for packet transfer",
+      "motif": "queue"
+    },
+    {
+      "id": "network-latency",
+      "title": "Network Latency",
+      "category": "Networking",
+      "tags": [
+        "network",
+        "latency",
+        "clock",
+        "globe",
+        "networking"
+      ],
+      "kind": "primitive",
+      "source": "assets/network-latency.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/network-latency.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/network-latency.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for network latency",
+      "motif": "clock"
+    },
+    {
+      "id": "gpu-compute",
+      "title": "Gpu Compute",
+      "category": "Hardware",
+      "tags": [
+        "gpu",
+        "compute",
+        "chip",
+        "spark",
+        "hardware"
+      ],
+      "kind": "primitive",
+      "source": "assets/gpu-compute.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/gpu-compute.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/gpu-compute.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for gpu compute",
+      "motif": "chip"
+    },
+    {
+      "id": "nvme-storage",
+      "title": "Nvme Storage",
+      "category": "Hardware",
+      "tags": [
+        "nvme",
+        "storage",
+        "disk",
+        "chip",
+        "hardware"
+      ],
+      "kind": "primitive",
+      "source": "assets/nvme-storage.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/nvme-storage.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/nvme-storage.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for nvme storage",
+      "motif": "disk"
+    },
+    {
+      "id": "cpu-cores",
+      "title": "Cpu Cores",
+      "category": "Hardware",
+      "tags": [
+        "cpu",
+        "cores",
+        "chip",
+        "grid",
+        "hardware"
+      ],
+      "kind": "primitive",
+      "source": "assets/cpu-cores.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/cpu-cores.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/cpu-cores.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for cpu cores",
+      "motif": "chip"
+    },
+    {
+      "id": "ram-allocation",
+      "title": "Ram Allocation",
+      "category": "Hardware",
+      "tags": [
+        "ram",
+        "allocation",
+        "add",
+        "hardware"
+      ],
+      "kind": "primitive",
+      "source": "assets/ram-allocation.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/ram-allocation.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/ram-allocation.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for ram allocation",
+      "motif": "ram"
+    },
+    {
+      "id": "memory-cache",
+      "title": "Memory Cache",
+      "category": "Hardware",
+      "tags": [
+        "memory",
+        "cache",
+        "ram",
+        "clock",
+        "hardware"
+      ],
+      "kind": "primitive",
+      "source": "assets/memory-cache.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/memory-cache.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/memory-cache.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for memory cache",
+      "motif": "ram"
+    },
+    {
+      "id": "motherboard-bus",
+      "title": "Motherboard Bus",
+      "category": "Hardware",
+      "tags": [
+        "motherboard",
+        "bus",
+        "network",
+        "chip",
+        "hardware"
+      ],
+      "kind": "primitive",
+      "source": "assets/motherboard-bus.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/motherboard-bus.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/motherboard-bus.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for motherboard bus",
+      "motif": "network"
+    },
+    {
+      "id": "cooling-system",
+      "title": "Cooling System",
+      "category": "Hardware",
+      "tags": [
+        "cooling",
+        "system",
+        "gear",
+        "heartbeat",
+        "hardware"
+      ],
+      "kind": "primitive",
+      "source": "assets/cooling-system.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/cooling-system.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/cooling-system.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for cooling system",
+      "motif": "gear"
+    },
+    {
+      "id": "storage-controller",
+      "title": "Storage Controller",
+      "category": "Hardware",
+      "tags": [
+        "storage",
+        "controller",
+        "disk",
+        "hardware"
+      ],
+      "kind": "primitive",
+      "source": "assets/storage-controller.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/storage-controller.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/storage-controller.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for storage controller",
+      "motif": "controller"
+    },
+    {
+      "id": "arrow-bidirectional-thin",
+      "title": "Arrow Bidirectional Thin",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "arrow",
+        "bidirectional",
+        "thin",
+        "flow",
+        "connectors"
+      ],
+      "kind": "connector",
+      "source": "assets/arrow-bidirectional-thin.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/arrow-bidirectional-thin.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/arrow-bidirectional-thin.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for arrow bidirectional thin",
+      "motif": "flow"
+    },
+    {
+      "id": "arrow-dashed-message",
+      "title": "Arrow Dashed Message",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "arrow",
+        "dashed",
+        "message",
+        "wave",
+        "connectors"
+      ],
+      "kind": "connector",
+      "source": "assets/arrow-dashed-message.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/arrow-dashed-message.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/arrow-dashed-message.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for arrow dashed message",
+      "motif": "wave"
+    },
+    {
+      "id": "arrow-feedback-loop",
+      "title": "Arrow Feedback Loop",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "arrow",
+        "feedback",
+        "loop",
+        "route",
+        "connectors"
+      ],
+      "kind": "connector",
+      "source": "assets/arrow-feedback-loop.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/arrow-feedback-loop.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/arrow-feedback-loop.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for arrow feedback loop",
+      "motif": "route"
+    },
+    {
+      "id": "arrow-fork",
+      "title": "Arrow Fork",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "arrow",
+        "fork",
+        "network",
+        "connectors"
+      ],
+      "kind": "connector",
+      "source": "assets/arrow-fork.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/arrow-fork.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/arrow-fork.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for arrow fork",
+      "motif": "network"
+    },
+    {
+      "id": "arrow-merge",
+      "title": "Arrow Merge",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "arrow",
+        "merge",
+        "network",
+        "connectors"
+      ],
+      "kind": "connector",
+      "source": "assets/arrow-merge.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/arrow-merge.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/arrow-merge.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for arrow merge",
+      "motif": "network"
+    },
+    {
+      "id": "arrow-elbow-thin",
+      "title": "Arrow Elbow Thin",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "arrow",
+        "elbow",
+        "thin",
+        "route",
+        "connectors"
+      ],
+      "kind": "connector",
+      "source": "assets/arrow-elbow-thin.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/arrow-elbow-thin.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/arrow-elbow-thin.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for arrow elbow thin",
+      "motif": "route"
+    },
+    {
+      "id": "arrow-error-path",
+      "title": "Arrow Error Path",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "arrow",
+        "error",
+        "path",
+        "route",
+        "connectors"
+      ],
+      "kind": "connector",
+      "source": "assets/arrow-error-path.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/arrow-error-path.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/arrow-error-path.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for arrow error path",
+      "motif": "route"
+    },
+    {
+      "id": "arrow-success-path",
+      "title": "Arrow Success Path",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "arrow",
+        "success",
+        "path",
+        "route",
+        "check",
+        "connectors"
+      ],
+      "kind": "connector",
+      "source": "assets/arrow-success-path.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/arrow-success-path.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/arrow-success-path.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for arrow success path",
+      "motif": "route"
+    },
+    {
+      "id": "parallel-workflow",
+      "title": "Parallel Workflow",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "parallel",
+        "workflow",
+        "flow",
+        "add",
+        "connectors"
+      ],
+      "kind": "workflow",
+      "source": "assets/parallel-workflow.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/parallel-workflow.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/parallel-workflow.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for parallel workflow",
+      "motif": "flow"
+    },
+    {
+      "id": "approval-workflow",
+      "title": "Approval Workflow",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "approval",
+        "workflow",
+        "shield",
+        "check",
+        "connectors"
+      ],
+      "kind": "workflow",
+      "source": "assets/approval-workflow.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/approval-workflow.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/approval-workflow.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for approval workflow",
+      "motif": "shield"
+    },
+    {
+      "id": "retry-workflow",
+      "title": "Retry Workflow",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "retry",
+        "workflow",
+        "clock",
+        "arrow",
+        "connectors"
+      ],
+      "kind": "workflow",
+      "source": "assets/retry-workflow.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/retry-workflow.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/retry-workflow.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for retry workflow",
+      "motif": "clock"
+    },
+    {
+      "id": "state-transition",
+      "title": "State Transition",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "state",
+        "transition",
+        "flow",
+        "arrow",
+        "connectors"
+      ],
+      "kind": "workflow",
+      "source": "assets/state-transition.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/state-transition.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/state-transition.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for state transition",
+      "motif": "flow"
+    },
+    {
+      "id": "timeline-marker",
+      "title": "Timeline Marker",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "timeline",
+        "marker",
+        "clock",
+        "file",
+        "connectors"
+      ],
+      "kind": "workflow",
+      "source": "assets/timeline-marker.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/timeline-marker.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/timeline-marker.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for timeline marker",
+      "motif": "clock"
+    },
+    {
+      "id": "decision-branch",
+      "title": "Decision Branch",
+      "category": "Connectors & Workflow",
+      "tags": [
+        "decision",
+        "branch",
+        "filter",
+        "arrow",
+        "connectors"
+      ],
+      "kind": "workflow",
+      "source": "assets/decision-branch.svg",
+      "github": "https://github.com/sabareeshrao/Three-Lanes/blob/main/illustration-library/assets/decision-branch.svg",
+      "raw": "https://raw.githubusercontent.com/sabareeshrao/Three-Lanes/main/illustration-library/assets/decision-branch.svg",
+      "reusable": true,
+      "description": "Petclinic-style illustration for decision branch",
+      "motif": "filter"
     }
-  ]
+  ],
+  "targetCount": 200,
+  "description": "200 editable, individually addressable Petclinic-style SVG primitives, diagrams and workflow connectors. AI can create more.",
+  "categoryCounts": {
+    "Primitives": 20,
+    "Connectors": 5,
+    "Java & Spring": 18,
+    "APIs & Backend": 18,
+    "Database & Storage": 16,
+    "Testing & Quality": 14,
+    "Cloud & DevOps": 18,
+    "Security & Identity": 13,
+    "AI & ML": 20,
+    "Data & Analytics": 14,
+    "UI & Frontend": 12,
+    "Networking": 10,
+    "Hardware": 8,
+    "Connectors & Workflow": 14
+  }
 }
