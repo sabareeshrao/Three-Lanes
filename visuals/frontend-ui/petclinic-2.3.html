@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fix pagination URL formatting — Three-Lanes</title>
+<link rel="stylesheet" href="../../styles/app.css">
+<style>
+:root{color-scheme:light}
+html,body{margin:0;padding:0;background:#fff;color:#233746;min-height:100%;font-family:Inter,Arial,sans-serif}
+[hidden]{display:none!important}
+.micro-workbench{width:100%;margin:0;border-radius:0;min-height:350px}
+.micro-stage{min-height:220px}
+</style>
+</head>
+<body>
+<div data-state="before" hidden><div class="micro-workbench"><div class="micro-header"><div><span class="micro-eyebrow">ONE CHANGE AT A TIME</span><h3>Pagination links</h3></div><span class="micro-step">2.3</span></div><div class="micro-compare"><button type="button" data-micro="toggle" data-value="before" class="chosen">Before</button><button type="button" data-micro="toggle" data-value="after" class="">After</button></div><div class="micro-stage"><div class="micro-overline">OWNERS / PAGINATION ONLY</div><div class="micro-pagebar"><span>Pages:</span><button type="button" data-micro="page" data-label="1">1</button><button type="button" data-micro="page" data-label="2" class="picked">2</button><button type="button" data-micro="page" data-label="3">3</button></div><div class="micro-url">/owners/?page=2</div><p class="micro-note">Only the URL format changes; no unrelated page elements are drawn.</p></div></div></div>
+<div data-state="after"><div class="micro-workbench"><div class="micro-header"><div><span class="micro-eyebrow">ONE CHANGE AT A TIME</span><h3>Pagination links</h3></div><span class="micro-step">2.3</span></div><div class="micro-compare"><button type="button" data-micro="toggle" data-value="before" class="">Before</button><button type="button" data-micro="toggle" data-value="after" class="chosen">After</button></div><div class="micro-stage"><div class="micro-overline">OWNERS / PAGINATION ONLY</div><div class="micro-pagebar"><span>Pages:</span><button type="button" data-micro="page" data-label="1">1</button><button type="button" data-micro="page" data-label="2" class="picked">2</button><button type="button" data-micro="page" data-label="3">3</button></div><div class="micro-url">/owners?page=2</div><p class="micro-note">Only the URL format changes; no unrelated page elements are drawn.</p></div></div></div>
+<script>
+document.addEventListener('click', function (event) {
+  const control=event.target.closest('[data-micro="toggle"]');
+  if(!control)return;
+  const state=control.getAttribute('data-value')==='before'?'before':'after';
+  for(const pane of document.querySelectorAll('[data-state]')){
+    pane.hidden=pane.dataset.state!==state;
+  }
+});
+</script>
+</body></html>
