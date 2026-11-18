@@ -3,6 +3,7 @@ name: Deploy Three-Lanes to GitHub Pages
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -11,11 +12,43 @@ permissions:
   id-token: write
 
 concurrency:
-  group: github-pages
+  group: github-pages-${{ github.event_name }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  visual-quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out history for changed-asset audits
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install visual QA dependency
+        run: npm install --no-audit --no-fund
+      - name: Validate design tokens, catalogs and new SVGs
+        run: npm run audit:design
+        env:
+          DESIGN_DIFF_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Render desktop and mobile checks
+        run: npm run test:visual
+      - name: Upload screenshot evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: three-lanes-design-review
+          path: quality-gates/artifacts/
+          if-no-files-found: ignore
+          retention-days: 14
+
   deploy:
+    if: github.event_name != 'pull_request'
+    needs: visual-quality-gate
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -23,15 +56,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-
       - name: Upload static website
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
