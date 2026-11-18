@@ -39,8 +39,18 @@ Duplicate the following row for **every** learning subcommit of **every** real c
 
 **Coverage proof:** for each commit, compare the union of all assigned changed line coordinates against the **complete verified diff**. Report any missing, duplicated or unavailable changed lines explicitly. A 1,000+ line commit may require 10, 20 or more subcommits. The count is governed by semantic boundaries and the 100-line cap, not an arbitrary upper limit.
 
+## Mandatory one-file steps and scrolling commit conveyor
+
+Each numbered learning step covers **exactly one changed file**. For a real commit touching 20 files, make at least 20 numbered substeps under its original SHA. Never combine changes from different files (including tests and config). If any one file contains more than 100 instructional lines, break THAT file into smaller substeps. Renames count as one file with old/new paths; binary assets have their own metadata-only step. Audit the verified complete commit to ensure every file and changed line is covered.
+
+With many commits or substeps, the middle commit conveyor is **vertically scrollable inside a fixed-height rail**, its header stays in place, and the selected step is kept visible by scrolling ONLY the rail. Do not expand the page or shift either visual lane. Preserve the current rail scroll offset on ordinary redraws.
+
+Semantic chips: backend blue; frontend green; full-stack **orange, not yellow**; unselected commits neutral.
+
 ## Mandatory checks
 
+- [ ] Exactly one canonical changed file per step, and at least one step for EVERY changed file in the verified original commit
+- [ ] Many-step commit conveyor independently scrolls vertically while keeping its header and main lanes stable
 - [ ] 10 unique immutable SHAs, all changed files and code claims verified
 - [ ] Every real commit split into logical numbered subcommits of **at most 100 total instructional code/diff lines** (added + removed + context; summed across files)
 - [ ] Every changed source line of the **complete historical diff** assigned to an audited subcommit, including old/new coordinates and rename/deletion handling
