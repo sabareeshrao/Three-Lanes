@@ -4,6 +4,12 @@
 >
 > These are repository instructions, not proof of implementation. The new-project JSON template is **not yet connected to a generic runtime loader**; the current running viewer remains Spring Petclinic-specific.
 
+## Hard rule — split large real commits into ≤100-line learning subcommits
+
+**Read [SUBCOMMIT-100-LINE-RULE.md](./SUBCOMMIT-100-LINE-RULE.md) before selecting or processing commits.** Every real commit, including one with thousands of changed lines, must be decomposed into semantically coherent **numbered learning subcommits** (`1.1`, `1.2`, …). A learning subcommit shows **at most 100 code/diff lines in total across its source snippets and files** (count added, removed and context; no 101-line segments). Split any larger section again rather than truncating it or shrinking it into an illegible diagram. Source archival views may still show full authentic diffs/files.
+
+**Cover every changed text line** of the verified complete real commit diff across those subcommits, preserve original old/new coordinates and commit/parent SHA, and record line counts plus coverage in the project's QA tracker. No upper limit on the subcommit count. A 10-commit batch still means **10 distinct original GitHub SHAs** regardless of substep count; these learning subcommits are not new Git commits. Do not claim complete unless the complete code coverage has been audited.
+
 ## Mandatory 10-commit visual-quality gate
 
 **Every request for a batch of 10 commits must comply with [DIAGRAM-QUALITY-STANDARD.md](./DIAGRAM-QUALITY-STANDARD.md).** Read that file before selecting commits or drawing any visual. This is a blocking review gate, not optional guidance:
