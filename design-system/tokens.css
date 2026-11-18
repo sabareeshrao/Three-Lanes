@@ -1,0 +1,44 @@
+/* Three-Lanes Design System 1.0 — canonical shared tokens.
+   Import from the root and every project; do NOT copy these values into new CSS. */
+:root{
+  color-scheme:dark;
+  --tl-font-ui:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Inter,"Segoe UI",Arial,sans-serif;
+  --tl-font-code:ui-monospace,"SFMono-Regular",Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --tl-ink:#ECECEC;
+  --tl-muted:#B4B4B4;
+  --tl-bg:#212121;
+  --tl-surface:#292929;
+  --tl-surface-raised:#303030;
+  --tl-border:#4D4D4D;
+  --tl-backend:#306BAF;
+  --tl-frontend:#198359;
+  --tl-fullstack:#EA580C;
+  --tl-fullstack-accent:#F97316;
+  --tl-focus:#F1F3F6;
+  --tl-canvas:#F9FBFE;
+  --tl-canvas-grid:#E7EEF5;
+  --tl-canvas-dots:#CBD9E4;
+  --tl-radius-sm:7px;
+  --tl-radius-card:13px;
+  --tl-radius-lane:15px;
+  --tl-gap:12px;
+  --tl-lane-height:700px;
+  --tl-grid-small:24px;
+  --tl-grid-large:120px;
+  --tl-shadow:0 5px 20px rgba(0,0,0,.18);
+  --tl-ease:cubic-bezier(.2,.7,.2,1);
+}
+.tl-paper-grid{
+  background-color:var(--tl-canvas);
+  background-image:radial-gradient(circle,var(--tl-canvas-dots) .7px,transparent .95px),
+   linear-gradient(to right,var(--tl-canvas-grid) 1px,transparent 1px),
+   linear-gradient(to bottom,var(--tl-canvas-grid) 1px,transparent 1px);
+  background-size:var(--tl-grid-small) var(--tl-grid-small),var(--tl-grid-large) var(--tl-grid-large),var(--tl-grid-large) var(--tl-grid-large);
+}
+.tl-scroll-invisible{
+  overflow-y:auto;
+  overscroll-behavior-y:contain;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.tl-scroll-invisible::-webkit-scrollbar{display:none;width:0;height:0}

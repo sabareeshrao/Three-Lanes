@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#212121">
+<title>Three-Lanes · Design Catalog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="catalog.css">
+<script defer src="catalog.js"></script>
+</head>
+<body>
+<div class="shell">
+ <header class="top">
+  <a class="brand" href="../../index.html" aria-label="Open Three-Lanes prototype"><span class="mark">⟠</span><span>Three-Lanes <strong>Design System</strong></span></a>
+  <nav aria-label="Reference navigation"><a href="../../index.html">Live prototype</a><a href="https://github.com/sabareeshrao/Three-Lanes/tree/main/design-system" target="_blank" rel="noopener noreferrer">Source files ↗</a></nav>
+ </header>
+ <main>
+  <section class="hero">
+   <div class="eyebrow">THE SHARED VISUAL LANGUAGE · V1</div>
+   <h1>Consistent interfaces.<br><span>Unlimited explanations.</span></h1>
+   <p>Approved typography, color semantics, canvas geometry, and a growing diagram vocabulary for source-accurate Three-Lanes lessons.</p>
+   <div class="hero-metrics"><span><b id="patternCount">6</b> diagram patterns</span><span><b>700px</b> fixed lane height</span><span><b>1 file</b> per teaching step</span></div>
+  </section>
+  <section class="foundation" aria-labelledby="foundations">
+   <div class="section-head"><div><span class="eyebrow">01 / FOUNDATION</span><h2 id="foundations">Shared design tokens</h2></div><span class="section-note">Defined in <code>design-system/tokens.css</code></span></div>
+   <div class="foundation-grid">
+    <article class="panel"><h3>Typography</h3><div class="type-sample">Readable, restrained.</div><p>San Francisco on Apple platforms; Inter as the Windows/web fallback.</p><div class="code-font">public class SourceCode { }</div><small>Code: SF Mono / Menlo / Consolas</small></article>
+    <article class="panel"><h3>Semantic colors</h3><div class="color-row"><span class="swatch blue">Backend</span><span class="swatch green">Frontend</span><span class="swatch orange">Full-stack</span></div><p>Only the selected commit receives a saturated category color. Inactive chips stay charcoal.</p><small>Orange, never yellow, for full-stack.</small></article>
+    <article class="panel"><h3>Canvas and geometry</h3><div class="canvas tl-paper-grid"><span>24px dots<br>120px major grid</span></div><p>Continuous light paper, no painted SVG seams, rounded corners, centered content.</p><small>700px lanes · 15px corner radius</small></article>
+   </div>
+  </section>
+  <section aria-labelledby="diagramHeading" class="diagrams">
+   <div class="section-head"><div><span class="eyebrow">02 / GROWING LIBRARY</span><h2 id="diagramHeading">Diagram pattern catalog</h2></div><div class="filter"><label for="patternFilter">Filter</label><select id="patternFilter" aria-label="Filter diagram categories"><option value="all">All patterns</option><option value="Architecture">Architecture</option><option value="Behavior">Behavior</option><option value="Data">Data</option><option value="UI">UI</option></select></div></div>
+   <p class="intro">These are illustrative style specimens, not claims about a particular commit. Each future lesson should reflect its verified source file, and a genuinely new mechanism may introduce a new pattern.</p>
+   <div class="catalog-grid" id="catalogGrid" aria-live="polite"><div class="loading">Loading approved diagrams…</div></div>
+  </section>
+  <section class="approval" aria-labelledby="approvalTitle"><div><span class="eyebrow">03 / ENFORCEMENT</span><h2 id="approvalTitle">Every new pattern goes through review.</h2><p>New diagram → source verification → design-token compliance → SVG audit → desktop/mobile screenshot review → approved catalog entry.</p></div><a href="https://github.com/sabareeshrao/Three-Lanes/blob/main/design-system/README.md" target="_blank" rel="noopener noreferrer">Read the standards ↗</a></section>
+ </main>
+ <footer>Three-Lanes Design System · Built for code-specific explanations, not repeated generic charts.</footer>
+</div>
+</body></html>

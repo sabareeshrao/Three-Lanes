@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "designVersion": "1.0.0",
+  "description": "Approved reusable layout patterns. Samples are fictional design specimens, not source-code claims.",
+  "patterns": [
+    {
+      "id": "request-lifecycle",
+      "title": "Request lifecycle",
+      "category": "Architecture",
+      "status": "approved",
+      "sample": "diagram-catalog/request-lifecycle.svg",
+      "whenToUse": "HTTP/controller/service/repository paths verified by the selected source file",
+      "quality": "Trace direction and real interfaces; preserve relative layer ordering"
+    },
+    {
+      "id": "sequence-interaction",
+      "title": "Sequence interaction",
+      "category": "Architecture",
+      "status": "approved",
+      "sample": "diagram-catalog/sequence-interaction.svg",
+      "whenToUse": "Order-sensitive method calls, request/reply timing or async callbacks",
+      "quality": "Distinct lifelines, numbered messages and aligned arrows"
+    },
+    {
+      "id": "state-transition",
+      "title": "State transitions",
+      "category": "Behavior",
+      "status": "approved",
+      "sample": "diagram-catalog/state-transition.svg",
+      "whenToUse": "Finite states, approval workflow, lifecycle flags or real transitions",
+      "quality": "Named states, source-grounded event triggers and labeled transitions"
+    },
+    {
+      "id": "data-relationship",
+      "title": "Data relationships",
+      "category": "Data",
+      "status": "approved",
+      "sample": "diagram-catalog/data-relationship.svg",
+      "whenToUse": "JPA entity relations, database keys, ownership and constraints",
+      "quality": "Show correct cardinality and distinguish primary and foreign keys"
+    },
+    {
+      "id": "validation-decision",
+      "title": "Validation decision",
+      "category": "Behavior",
+      "status": "approved",
+      "sample": "diagram-catalog/validation-decision.svg",
+      "whenToUse": "Guard clauses, form validation, branching and error outcomes",
+      "quality": "Unambiguous yes/no paths and explicit error or continuation result"
+    },
+    {
+      "id": "interface-behavior",
+      "title": "Interface behavior",
+      "category": "UI",
+      "status": "approved",
+      "sample": "diagram-catalog/interface-behavior.svg",
+      "whenToUse": "Visible frontend changes, form states, navigation or accessibility behavior",
+      "quality": "Focused true before/after; never fabricate frontend for backend-only changes"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-labelledby="interface-behavior-title interface-behavior-desc" data-tl-diagram-type="interface-behavior" data-design-version="1" preserveAspectRatio="xMidYMid meet">
+<title id="interface-behavior-title">Interface behavior</title><desc id="interface-behavior-desc">Compare two actual UI states without drawing an unrelated full page. Fictional design-system specimen; not historical repository evidence.</desc>
+<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="0.8" fill="#D2E0EC"/></pattern><marker id="tip" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#306BAF"/></marker></defs>
+<rect width="760" height="430" fill="#F9FBFE"/><rect width="760" height="430" fill="url(#dots)"/><path d="M0 120H760M0 240H760M0 360H760M120 0V430M240 0V430M360 0V430M480 0V430M600 0V430M720 0V430" stroke="#E9F0F8" stroke-width="1"/>
+<g font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text',Inter,'Helvetica Neue',Arial,sans-serif" font-size="13">
+<text x="27" y="38" fill="#26364A" font-size="21" font-weight="750" text-anchor="start">Interface behavior</text><text x="27" y="60" fill="#61748A" font-size="12" font-weight="500" text-anchor="start">Compare two actual UI states without drawing an unrelated full page</text>
+<path d="M27 77H733" fill="none" stroke="#D5E1ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<rect x="34" y="103" width="331" height="251" rx="12" fill="#FFFFFF" stroke="#AFC5DB" stroke-width="1.5"/>
+<rect x="396" y="103" width="331" height="251" rx="12" fill="#FFFFFF" stroke="#AFC5DB" stroke-width="1.5"/>
+<text x="56" y="133" fill="#61748A" font-size="12" font-weight="800" text-anchor="start">BEFORE</text><text x="419" y="133" fill="#306BAF" font-size="12" font-weight="800" text-anchor="start">AFTER</text>
+<text x="57" y="172" fill="#26364A" font-size="12" font-weight="700" text-anchor="start">Pet name</text><text x="419" y="172" fill="#26364A" font-size="12" font-weight="700" text-anchor="start">Pet name</text>
+<rect x="57" y="185" width="285" height="40" rx="6" fill="#F8FBFE" stroke="#C3D3E5" stroke-width="1.5"/><rect x="419" y="185" width="285" height="40" rx="6" fill="#F8FBFE" stroke="#D18181" stroke-width="1.5"/>
+<text x="70" y="211" fill="#26364A" font-size="14" font-weight="500" text-anchor="start">buddy</text><text x="431" y="211" fill="#26364A" font-size="14" font-weight="500" text-anchor="start">buddy</text>
+<text x="419" y="243" fill="#B34E4E" font-size="11" font-weight="600" text-anchor="start">A pet with this name already exists.</text>
+<rect x="57" y="269" width="136" height="40" rx="7" fill="#306BAF" stroke="none" stroke-width="1.5"/><rect x="419" y="284" width="136" height="40" rx="7" fill="#306BAF" stroke="none" stroke-width="1.5"/>
+<text x="125" y="294" fill="#FFFFFF" font-size="13" font-weight="750" text-anchor="middle">Add pet</text><text x="487" y="309" fill="#FFFFFF" font-size="13" font-weight="750" text-anchor="middle">Add pet</text>
+<text x="199" y="367" fill="#61748A" font-size="11" font-weight="650" text-anchor="start">Same form • targeted error state</text>
+
+<path d="M27 388H733" fill="none" stroke="#D5E1ED" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="29" y="409" fill="#61748A" font-size="10" font-weight="700" text-anchor="start">THREE-LANES · APPROVED PATTERN</text><text x="729" y="409" fill="#306BAF" font-size="10" font-weight="700" text-anchor="end">INTERFACE / BEHAVIOR</text>
+</g></svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-labelledby="state-transition-title state-transition-desc" data-tl-diagram-type="state-transition" data-design-version="1" preserveAspectRatio="xMidYMid meet">
+<title id="state-transition-title">State transitions</title><desc id="state-transition-desc">Show allowed and rejected changes without invented runtime states. Fictional design-system specimen; not historical repository evidence.</desc>
+<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="0.8" fill="#D2E0EC"/></pattern><marker id="tip" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#306BAF"/></marker></defs>
+<rect width="760" height="430" fill="#F9FBFE"/><rect width="760" height="430" fill="url(#dots)"/><path d="M0 120H760M0 240H760M0 360H760M120 0V430M240 0V430M360 0V430M480 0V430M600 0V430M720 0V430" stroke="#E9F0F8" stroke-width="1"/>
+<g font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text',Inter,'Helvetica Neue',Arial,sans-serif" font-size="13">
+<text x="27" y="38" fill="#26364A" font-size="21" font-weight="750" text-anchor="start">State transitions</text><text x="27" y="60" fill="#61748A" font-size="12" font-weight="500" text-anchor="start">Show allowed and rejected changes without invented runtime states</text>
+<path d="M27 77H733" fill="none" stroke="#D5E1ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<circle cx="123" cy="215" r="53" fill="#F2F6FC" stroke="#8FA9C8" stroke-width="2.4"/>
+<text x="123" y="220" fill="#26364A" font-size="16" font-weight="800" text-anchor="middle">DRAFT</text>
+<rect x="312" y="163" width="135" height="103" rx="22" fill="#E7F0FC" stroke="#7DA7D4" stroke-width="1.5"/><text x="379" y="221" fill="#306BAF" font-size="16" font-weight="800" text-anchor="middle">REVIEW</text>
+<rect x="579" y="163" width="142" height="103" rx="22" fill="#E7F7F0" stroke="#80B89B" stroke-width="1.5"/><text x="650" y="221" fill="#198359" font-size="15" font-weight="800" text-anchor="middle">ACCEPTED</text>
+<path d="M176 202H306" fill="none" stroke="#306BAF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M300 196l8 6-8 6z" fill="#306BAF"/><text x="242" y="187" fill="#306BAF" font-size="12" font-weight="650" text-anchor="middle">submit()</text>
+<path d="M447 202H572" fill="none" stroke="#198359" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M566 196l8 6-8 6z" fill="#198359"/><text x="505" y="187" fill="#198359" font-size="12" font-weight="650" text-anchor="middle">approve()</text>
+<path d="M348 270C292 341 187 339 130 270" fill="none" stroke="#EA580C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M132 279l-4-10 10 3z" fill="#EA580C"/>
+<text x="239" y="347" fill="#EA580C" font-size="12" font-weight="700" text-anchor="middle">request changes → DRAFT</text>
+
+<path d="M27 388H733" fill="none" stroke="#D5E1ED" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="29" y="409" fill="#61748A" font-size="10" font-weight="700" text-anchor="start">THREE-LANES · APPROVED PATTERN</text><text x="729" y="409" fill="#306BAF" font-size="10" font-weight="700" text-anchor="end">STATE / TRANSITION</text>
+</g></svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" role="img" aria-labelledby="request-lifecycle-title request-lifecycle-desc" data-tl-diagram-type="request-lifecycle" data-design-version="1" preserveAspectRatio="xMidYMid meet">
+<title id="request-lifecycle-title">Request lifecycle</title><desc id="request-lifecycle-desc">Trace the real direction of an HTTP request across layers. Fictional design-system specimen; not historical repository evidence.</desc>
+<defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="0.8" fill="#D2E0EC"/></pattern><marker id="tip" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#306BAF"/></marker></defs>
+<rect width="760" height="430" fill="#F9FBFE"/><rect width="760" height="430" fill="url(#dots)"/><path d="M0 120H760M0 240H760M0 360H760M120 0V430M240 0V430M360 0V430M480 0V430M600 0V430M720 0V430" stroke="#E9F0F8" stroke-width="1"/>
+<g font-family="-apple-system,BlinkMacSystemFont,'SF Pro Text',Inter,'Helvetica Neue',Arial,sans-serif" font-size="13">
+<text x="27" y="38" fill="#26364A" font-size="21" font-weight="750" text-anchor="start">Request lifecycle</text><text x="27" y="60" fill="#61748A" font-size="12" font-weight="500" text-anchor="start">Trace the real direction of an HTTP request across layers</text>
+<path d="M27 77H733" fill="none" stroke="#D5E1ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<rect x="36" y="133" width="150" height="164" rx="11" fill="#FFFFFF" stroke="#B8CDE4" stroke-width="1.5"/><rect x="240" y="133" width="151" height="164" rx="11" fill="#E7F0FC" stroke="#B8CDE4" stroke-width="1.5"/><rect x="445" y="133" width="151" height="164" rx="11" fill="#FFFFFF" stroke="#B8CDE4" stroke-width="1.5"/><rect x="649" y="133" width="76" height="164" rx="11" fill="#E7F7F0" stroke="#B8CDE4" stroke-width="1.5"/>
+<text x="111" y="168" fill="#61748A" font-size="12" font-weight="750" text-anchor="middle">CLIENT</text><text x="111" y="203" fill="#26364A" font-size="17" font-weight="760" text-anchor="middle">Browser</text>
+<text x="315" y="168" fill="#61748A" font-size="12" font-weight="750" text-anchor="middle">WEB</text><text x="315" y="203" fill="#306BAF" font-size="17" font-weight="760" text-anchor="middle">Controller</text>
+<text x="520" y="168" fill="#61748A" font-size="12" font-weight="750" text-anchor="middle">DOMAIN</text><text x="520" y="203" fill="#26364A" font-size="17" font-weight="760" text-anchor="middle">Service</text>
+<text x="687" y="168" fill="#61748A" font-size="12" font-weight="750" text-anchor="middle">DATA</text><text x="687" y="203" fill="#198359" font-size="17" font-weight="760" text-anchor="middle">DB</text>
+<path d="M186 208H236" fill="none" stroke="#306BAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M391 208H441" fill="none" stroke="#306BAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M596 208H645" fill="none" stroke="#306BAF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<g fill="#306BAF"><path d="M232 202l9 6-9 6z"/><path d="M437 202l9 6-9 6z"/><path d="M641 202l9 6-9 6z"/></g>
+<text x="111" y="257" fill="#61748A" font-size="12" font-weight="650" text-anchor="middle">GET /pets</text><text x="315" y="257" fill="#61748A" font-size="12" font-weight="650" text-anchor="middle">Validate + route</text>
+<text x="520" y="257" fill="#61748A" font-size="12" font-weight="650" text-anchor="middle">Business logic</text><text x="688" y="257" fill="#61748A" font-size="12" font-weight="650" text-anchor="middle">Query</text>
+<rect x="213" y="322" width="338" height="39" rx="8" fill="#EDF4FC" stroke="#D0E1F4" stroke-width="1.5"/><text x="382" y="346" fill="#306BAF" font-size="12" font-weight="650" text-anchor="middle">Response data returns through the same path</text>
+
+<path d="M27 388H733" fill="none" stroke="#D5E1ED" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="29" y="409" fill="#61748A" font-size="10" font-weight="700" text-anchor="start">THREE-LANES · APPROVED PATTERN</text><text x="729" y="409" fill="#306BAF" font-size="10" font-weight="700" text-anchor="end">REQUEST / LIFECYCLE</text>
+</g></svg>
