@@ -77,15 +77,15 @@ for(const file of changed){
  if(!exists(file))continue;
  if(/^projects\/[^/]+\/.*\/svg\/[^/]+\.svg$/.test(file)||/^projects\/[^/]+\/svg\/[^/]+\.svg$/.test(file)){
   const s=read(file);
-  const first=s.match(/<svg\\b[^>]*>/s)?.[0]||'';
+  const first=s.match(/<svg\b[^>]*>/s)?.[0]||'';
   const id=first.match(/data-tl-diagram-id="([^"]+)"/)?.[1]||first.match(/data-tl-diagram-type="([^"]+)"/)?.[1];
   check(!!id,file+' needs a unique diagram ID (no approved-pattern whitelist)');
-  check(/viewBox="0 0 \\d+ \\d+"/.test(first),file+' must declare a positive viewBox');
+  check(/viewBox="0 0 \d+ \d+"/.test(first),file+' must declare a positive viewBox');
   check(first.includes('data-design-version="1"'),file+' needs design version');
   check(first.includes('role="img"')&&first.includes('aria-labelledby='),file+' needs accessible image labeling');
-  check(/<title\\b[^>]*>[^<]+<\\/title>/.test(s)&&/<desc\\b[^>]*>[^<]+<\\/desc>/.test(s),file+' requires nonempty title and description');
-  check(!/<script\\b|<foreignObject\\b|\\bon(?:click|load|mouse\\w+|key\\w+)\\s*=|javascript:/i.test(s),file+' must not contain executable SVG');
-  check(!/<image\\b[^>]*(?:https?:|data:)/i.test(s),file+' must not embed remote or data images');
+  check(/<title\b[^>]*>[^<]+<\/title>/.test(s)&&/<desc\b[^>]*>[^<]+<\/desc>/.test(s),file+' requires nonempty title and description');
+  check(!/<script\b|<foreignObject\b|\bon(?:click|load|mouse\w+|key\w+)\s*=|javascript:/i.test(s),file+' must not contain executable SVG');
+  check(!/<image\b[^>]*(?:https?:|data:)/i.test(s),file+' must not embed remote or data images');
   // Open vocabulary: inventing a new diagram type or composition is always allowed.
  }
  if(/^projects\/[^/]+\/.*frontend-ui\/[^/]+\.html$/.test(file)){
