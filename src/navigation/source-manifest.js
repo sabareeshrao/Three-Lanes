@@ -18,7 +18,7 @@ const steps={
   '2.1':{needle:'th:replace',related:[
     R('Owners list template','src/main/resources/templates/owners/ownersList.html','<table','view')
   ]},
-  '2.2':{needle:'Edit Owner',related:[
+  '2.2':{needle:'@{__${owner.id}__/edit}',related:[
     R('Owner controller',J+'OwnerController.java','class OwnerController','controller')
   ]},
   '2.3':{needle:'/owners?page=',related:[
