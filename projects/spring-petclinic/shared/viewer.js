@@ -52,7 +52,7 @@ for(const side of ['backend','frontend']){
 }
 function previewTarget(i){const s=current(),t=s?.sourceTargets?.[i];if(!t)return;if(s.partsUrl&&!s.partsLoaded){hydrate(s)?.then(()=>{if(s.partsLoaded&&current()===s)previewTarget(i)});return;}const side=s.lane,peek=byId(side+'Peek'),key=t.sha+'|'+t.path+'|'+t.line;
 return preserve(()=>{if(!peek.hidden&&activePeek[side]===key){peek.hidden=true;activePeek[side]=null;return}activePeek[side]=key;
-const rows=s.parts.filter(p=>p.path===t.path).flatMap(p=>p.rows),loc=rows.findIndex(r=>r.new===t.line||r.old===t.line),near=rows.slice(Math.max(0,loc-5),loc+6);
+const rows=s.parts.filter(p=>p.path===t.path||p.oldPath===t.path).flatMap(p=>p.rows),loc=rows.findIndex(r=>r.new===t.line||r.old===t.line),near=rows.slice(Math.max(0,loc-5),loc+6);
 peek.innerHTML='<div class="peekhead"><div><b>'+H(t.label)+'</b><small>'+H(t.path)+' · L'+t.line+' · '+H(t.sha.slice(0,8))+'</small></div><div><a href="'+H(shaUrl(t.sha,t.path,t.line))+'" target="_blank" rel="noopener noreferrer">GitHub ↗</a> <button type="button" data-close-peek="1">×</button></div></div><div class="peekcode codetable">'+near.map(r=>renderRow(r,r.new?t.path:(s.parts.find(p=>p.path===t.path)?.oldPath||t.path),!!r.new,null,r.new===t.line||r.old===t.line)).join('')+'</div>';
 peek.hidden=false});
 }
@@ -63,7 +63,7 @@ return '<div class="coderow '+cl+(highlight?' highlight':'')+'"><a href="'+H(sha
 function codeFiles(which){const s=current();let count=0;return rowFileParts(s).map(p=>{if(!p.rows.length){const renamed=p.renameOnly;return '<div class="filename">'+H(p.path)+'</div><div class="empty">'+(renamed?'Renamed without text edits: <a href="'+H(shaUrl(s.parentSha||s.sha,p.oldPath||p.path))+'" target="_blank" rel="noopener noreferrer">previous file ↗</a> → <a href="'+H(shaUrl(s.sha,p.path))+'" target="_blank" rel="noopener noreferrer">new file ↗</a>':'Binary asset; no changed text lines. Open the original commit for the image file.')+'</div>';}
 const rows=p.rows.filter(r=>which==='before'?!!r.old:which==='after'?!!r.new:true);
 count+=rows.length;
-return '<div class="filename">'+H(p.path)+'</div>'+(rows.length?rows.map(r=>renderRow(r,which==='before'?(p.oldPath||p.path):p.path,which==='before'?false:which==='after'?true:!!r.new)).join(''):'<div class="empty">'+(which==='before'?'File or lines introduced in this commit':'File or lines removed in this commit')+'</div>')}).join('');}
+return '<div class="filename">'+H(p.path)+'</div>'+(rows.length?rows.map(r=>renderRow(r,which==='before'?(p.oldPath||p.path):which==='after'?p.path:(r.new?p.path:(p.oldPath||p.path)),which==='before'?false:which==='after'?true:!!r.new)).join(''):'<div class="empty">'+(which==='before'?'File or lines introduced in this commit':'File or lines removed in this commit')+'</div>')}).join('');}
 function selectFileOptions(){const s=current();const files=[...new Set(s.parts.map(p=>p.path))];if(!files.includes(selectedFile))selectedFile=files[0]||'';byId('fileSelect').innerHTML=files.map(p=>'<option value="'+H(p)+'"'+(p===selectedFile?' selected':'')+'>'+H(short(p,70))+'</option>').join('');byId('openFileLink').href=selectedFile?shaUrl(s.sha,selectedFile):commitUrl(s.sha)}
 async function displayCompleteSource(){const s=current(),idx=++sourceToken,path=selectedFile;if(!path){byId('sourceContent').innerHTML='<div class="empty">No file selected</div>';return}
 const target=byId('sourceContent');target.innerHTML='<div class="loading">Loading complete historical file from GitHub…</div>';
