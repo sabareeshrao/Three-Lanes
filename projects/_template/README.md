@@ -14,6 +14,10 @@ Use the supplied [VISUAL-QA-TRACKER.md](./VISUAL-QA-TRACKER.md) to audit the sou
 
 **Read [../../SUBCOMMIT-100-LINE-RULE.md](../../SUBCOMMIT-100-LINE-RULE.md).** For large source commits, create as many numbered **learning subcommits** as necessary. Each may show **no more than 100 total code/diff lines across every file and snippet** (context + deletions + additions). Audit that **all** actual changed lines are covered and that real SHA, paths and old/new line coordinates remain intact. The whole original commit/diff remains externally accessible. Track counts and completeness in `VISUAL-QA-TRACKER.md`. The count of real GitHub commits stays at 10 per batch regardless of how many subcommits you make.
 
+## Commit timeline behavior for large histories
+
+The middle commit lane must be height-limited with its **own vertical scrollbar**, showing the selected real commit's complete subcommit list inside it. With 100+ learning steps, the overall viewer height stays stable. Preserve rail scroll position during normal re-renders and scroll the rail alone (never the entire page) to keep the active step visible on keyboard navigation. Use the implemented CSS/JS in `projects/spring-petclinic/shared/` as a reference when implementing the generic project loader.
+
 ## Files
 
 - `project.json`: repository and project identity; the replacement for hardcoded Petclinic URLs.
