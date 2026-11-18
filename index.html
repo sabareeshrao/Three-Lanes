@@ -506,6 +506,15 @@ body.github-source-mode #liveButton{background:#3a3a3a;border-color:#aaa;color:#
 .source-secondary-row .source-tabs{width:max-content}
 .source-secondary-row .source-tabs button{min-height:29px}
 @media(max-width:520px){.source-primary-row .source-fileselect{flex-basis:100%;order:3}.source-primary-row .source-filelink{margin-left:auto}.source-secondary-row .source-tabs{width:100%}.source-secondary-row .source-tabs button{flex:1}}
+
+/* In View here, use one full-width Before / After source view, immediately after the visual lanes. */
+.workspace>.wide-compare{grid-column:1/-1;grid-row:2;min-width:0;width:100%;margin:0 0 12px;align-self:start}
+.workspace>.wide-compare .compare-columns{width:100%}
+.workspace .source-region.compare-active>.filebar,
+.workspace .source-region.compare-active>.codeview,
+.workspace .source-region.compare-active>.source-stats{display:none!important}
+.workspace .source-region.compare-active{padding-bottom:10px}
+@media(max-width:820px){.workspace>.wide-compare{grid-column:1/-1;grid-row:3}}
 </style></head>
 <body>
 <div class="app">
@@ -531,11 +540,11 @@ body.github-source-mode #liveButton{background:#3a3a3a;border-color:#aaa;color:#
 <section class="lane" id="backendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">◇</span><div><div class="lanetitle">Backend / system internals</div><div class="lanesub" id="backendName">Controller and database flow</div></div></div><span class="lanechip" id="backendInfo">ACTIVE</span></div><div class="blocktitle"><span>01 &nbsp; BACKEND ARCHITECTURE</span></div><div class="visual" id="backendGraphic"></div><div class="backend-note" id="backendInfoLine" hidden></div><div class="source-region" id="backendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="backendSourceActions" role="group" aria-label="Source code view"><div class="source-primary-row"><button type="button" id="backendViewHereTab" data-code-mode="compare" class="source-view-here chosen">View here</button><select id="backendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="backendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div><div class="source-secondary-row"><div class="source-tabs"><button type="button" id="backendDiffTab" data-code-mode="diff">Commit changes</button><button type="button" id="backendOriginalTab" data-code-mode="source">Original source</button></div></div></div><div class="filebar"><span class="filename" id="backendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="backendCode"></div><div class="source-stats" id="backendCodeStats"></div></div></section>
 <aside class="rail" aria-label="Commit timeline"><div class="railhead">COMMIT<small>STEP</small></div><div class="railscroll" id="railItems"></div></aside>
 <section class="lane" id="frontendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">▣</span><div><div class="lanetitle">Frontend / what users see</div><div class="lanesub" id="frontendName">Rendered UI and relevant markup</div></div></div><span class="lanechip" id="frontendInfo">PERSISTENT UI</span></div><div class="blocktitle"><span>01 &nbsp; UI CHANGE</span></div><div class="visual" id="frontendGraphic"></div><div class="source-region" id="frontendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="frontendSourceActions" role="group" aria-label="Source code view"><div class="source-primary-row"><button type="button" id="frontendViewHereTab" data-code-mode="compare" class="source-view-here chosen">View here</button><select id="frontendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="frontendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div><div class="source-secondary-row"><div class="source-tabs"><button type="button" id="frontendDiffTab" data-code-mode="diff">Commit changes</button><button type="button" id="frontendOriginalTab" data-code-mode="source">Original source</button></div></div></div><div class="filebar"><span class="filename" id="frontendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="frontendCode"></div><div class="source-stats" id="frontendCodeStats"></div></div></section>
-</main>
-<section class="wide-compare" id="wideCompare" hidden aria-label="Full width GitHub change comparison">
+  <section class="wide-compare" id="wideCompare" hidden aria-label="Full width GitHub change comparison">
   <div class="compare-top"><div><div class="compare-kicker">SOURCE INSPECTOR</div><h3 id="compareTitle">Before / After</h3><span id="comparePath"></span></div><button class="compare-close" type="button" id="closeCompare" aria-label="Close code comparison">Close ×</button></div>
   <div class="compare-columns"><div class="compare-pane"><div class="compare-panehead">Before commit</div><div id="compareBefore"></div></div><div class="compare-pane"><div class="compare-panehead">After commit</div><div id="compareAfter"></div></div></div>
 </section>
+</main>
 
 
 </div>
@@ -1101,6 +1110,7 @@ function renderSourcePanel(side){
   // A missing lane never displays invented code; the relevant code remains under its lane.
   if(!files.length){region.style.display='none';return}
   region.style.display='';panel.style.display='';
+  region.classList.toggle('compare-active',codeMode[side]==='compare');
   const selectedPath=chosenFile[side];
   const relevant=files.some(f=>f.filename===s.file)?s.file:files[0].filename;
   const target=files.find(f=>f.filename===selectedPath)||files.find(f=>f.filename===relevant)||files[0];
@@ -1124,8 +1134,10 @@ function renderSourcePanel(side){
     return;
   }
   if(codeMode[side]==='compare'){
-    code.innerHTML=completeDiffHtml(raw,target);
-    byId(side+'CodeStats').textContent='Full source comparison expanded below';
+    // The full-width before/after inspector is the code view, not a duplicate below a diff.
+    region.classList.add('compare-active');
+    code.innerHTML='';
+    byId(side+'CodeStats').textContent='';
     showComparison(side,raw,target);
     return;
   }
