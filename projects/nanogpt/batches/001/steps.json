@@ -23,17 +23,66 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "README.md",
+          "label": "(blank line)",
           "path": "README.md",
-          "line": 1,
           "side": "after",
+          "line": 1,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "# nanoGPT",
+          "path": "README.md",
+          "side": "after",
+          "line": 2,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 3,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "The cleanest, fastest repository for training/fi",
+          "path": "README.md",
+          "side": "after",
+          "line": 4,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 5,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "This repo currently requires reading the code, b",
+          "path": "README.md",
+          "side": "after",
+          "line": 6,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 7,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "Getting started:",
+          "path": "README.md",
+          "side": "after",
+          "line": 8,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 34 actual diff/context lines from README.md. The source link is pinned to this commit at line 1."
+        "idea": "The first README introduces nanoGPT and describes its purpose; this portion is documentation, not the implementation.",
+        "reason": "Read the README lines to distinguish the project’s goals from what the training and model files actually implement in later steps."
       }
     },
     {
@@ -54,17 +103,66 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "prepare.py",
+          "label": "load_dataset(",
           "path": "data/openwebtext/prepare.py",
-          "line": 1,
           "side": "after",
+          "line": 15,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "train_test_split",
+          "path": "data/openwebtext/prepare.py",
+          "side": "after",
+          "line": 18,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "tiktoken.get_encoding",
+          "path": "data/openwebtext/prepare.py",
+          "side": "after",
+          "line": 35,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "enc.encode_ordinary",
+          "path": "data/openwebtext/prepare.py",
+          "side": "after",
+          "line": 37,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "eot_token",
+          "path": "data/openwebtext/prepare.py",
+          "side": "after",
+          "line": 38,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "np.cumsum",
+          "path": "data/openwebtext/prepare.py",
+          "side": "after",
+          "line": 53,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "mmap.mmap",
+          "path": "data/openwebtext/prepare.py",
+          "side": "after",
+          "line": 68,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "arr[:] =",
+          "path": "data/openwebtext/prepare.py",
+          "side": "after",
+          "line": 70,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.2.svg",
       "mentor": {
-        "idea": "This slice contains historical data-preparation code or documentation; no dataset run is simulated.",
-        "reason": "Read the 78 actual diff/context lines from data/openwebtext/prepare.py. The source link is pinned to this commit at line 1."
+        "idea": "OpenWebText is split, tokenized with the GPT-2 encoding, and packed into contiguous token files.",
+        "reason": "Trace load_dataset → train_test_split → encode_ordinary → cumulative offsets → mmap writes. Each output token is stored as uint16."
       }
     },
     {
@@ -87,15 +185,15 @@
         {
           "label": "prepare.py",
           "path": "data/openwebtext/prepare.py",
-          "line": 79,
           "side": "after",
+          "line": 79,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.3.svg",
       "mentor": {
-        "idea": "This slice contains historical data-preparation code or documentation; no dataset run is simulated.",
-        "reason": "Read the 6 actual diff/context lines from data/openwebtext/prepare.py. The source link is pinned to this commit at line 79."
+        "idea": "The script documents estimated binary-file sizes and shows how to read tokens using np.memmap.",
+        "reason": "The size figures are comments in prepare.py. They are not results computed by this viewer."
       }
     },
     {
@@ -118,15 +216,15 @@
         {
           "label": "readme.md",
           "path": "data/openwebtext/readme.md",
-          "line": 1,
           "side": "after",
+          "line": 1,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.4.svg",
       "mentor": {
-        "idea": "This slice contains historical data-preparation code or documentation; no dataset run is simulated.",
-        "reason": "Read the 15 actual diff/context lines from data/openwebtext/readme.md. The source link is pinned to this commit at line 1."
+        "idea": "This README provides setup information for preparing OpenWebText.",
+        "reason": "The change is documentation; trace the preparation implementation in prepare.py, not an invented execution here."
       }
     },
     {
@@ -147,17 +245,80 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "model.py",
+          "label": "class CausalSelfAttention",
           "path": "model.py",
-          "line": 1,
           "side": "after",
+          "line": 25,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "self.c_attn",
+          "path": "model.py",
+          "side": "after",
+          "line": 31,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "self.register_buffer",
+          "path": "model.py",
+          "side": "after",
+          "line": 38,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "q, k",
+          "path": "model.py",
+          "side": "after",
+          "line": 47,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "att = (q @",
+          "path": "model.py",
+          "side": "after",
+          "line": 53,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "masked_fill",
+          "path": "model.py",
+          "side": "after",
+          "line": 54,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "F.softmax",
+          "path": "model.py",
+          "side": "after",
+          "line": 55,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "y = att @ v",
+          "path": "model.py",
+          "side": "after",
+          "line": 57,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "class MLP",
+          "path": "model.py",
+          "side": "after",
+          "line": 64,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "fused_gelu(x)",
+          "path": "model.py",
+          "side": "after",
+          "line": 18,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.5.svg",
       "mentor": {
-        "idea": "This is actual nanoGPT model.py source at the selected historical SHA, not a new model architecture.",
-        "reason": "Read the 78 actual diff/context lines from model.py. The source link is pinned to this commit at line 1."
+        "idea": "Each token is projected into query, key, and value representations. The lower-triangular mask forbids attending to future positions.",
+        "reason": "Inspect self.c_attn, reshape into heads, masked_fill with -inf, softmax, att @ v, and final output projection."
       }
     },
     {
@@ -178,17 +339,80 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "model.py",
+          "label": "class Block",
           "path": "model.py",
-          "line": 79,
           "side": "after",
+          "line": 79,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "self.ln_1",
+          "path": "model.py",
+          "side": "after",
+          "line": 83,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "self.attn =",
+          "path": "model.py",
+          "side": "after",
+          "line": 84,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "self.ln_2",
+          "path": "model.py",
+          "side": "after",
+          "line": 85,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "self.mlp =",
+          "path": "model.py",
+          "side": "after",
+          "line": 86,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "wte =",
+          "path": "model.py",
+          "side": "after",
+          "line": 111,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "wpe =",
+          "path": "model.py",
+          "side": "after",
+          "line": 112,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "h = nn.ModuleList",
+          "path": "model.py",
+          "side": "after",
+          "line": 114,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "x = x + self.attn",
+          "path": "model.py",
+          "side": "after",
+          "line": 89,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "x = x + self.mlp",
+          "path": "model.py",
+          "side": "after",
+          "line": 90,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.6.svg",
       "mentor": {
-        "idea": "This is actual nanoGPT model.py source at the selected historical SHA, not a new model architecture.",
-        "reason": "Read the 78 actual diff/context lines from model.py. The source link is pinned to this commit at line 79."
+        "idea": "A Transformer Block applies attention and an MLP with residual connections. GPT adds token and positional embeddings before its block stack.",
+        "reason": "Follow Block.forward, transformer.wte/wpe, the repeated Block list, ln_f, lm_head, and optional cross-entropy."
       }
     },
     {
@@ -209,17 +433,66 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "model.py",
+          "label": "GPT2LMHeadModel.from_pretrained",
           "path": "model.py",
-          "line": 157,
           "side": "after",
+          "line": 174,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "transposed =",
+          "path": "model.py",
+          "side": "after",
+          "line": 179,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "sd[k].copy_",
+          "path": "model.py",
+          "side": "after",
+          "line": 188,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "configure_optimizers",
+          "path": "model.py",
+          "side": "after",
+          "line": 197,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "whitelist_weight_modules",
+          "path": "model.py",
+          "side": "after",
+          "line": 208,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "blacklist_weight_modules",
+          "path": "model.py",
+          "side": "after",
+          "line": 209,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "assert len(inter_params)",
+          "path": "model.py",
+          "side": "after",
+          "line": 230,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "layer_config = {",
+          "path": "model.py",
+          "side": "after",
+          "line": 161,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.7.svg",
       "mentor": {
-        "idea": "This is actual nanoGPT model.py source at the selected historical SHA, not a new model architecture.",
-        "reason": "Read the 78 actual diff/context lines from model.py. The source link is pinned to this commit at line 157."
+        "idea": "The code imports pretrained GPT-2 weights with shape checks and transposes selected Conv1D matrices. It starts separating parameters into decay groups.",
+        "reason": "The optimizer object itself is constructed in the following slice; this part handles weight transfer and parameter classification."
       }
     },
     {
@@ -240,17 +513,73 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "model.py",
+          "label": "idx_cond =",
           "path": "model.py",
-          "line": 235,
           "side": "after",
+          "line": 251,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "logits, _ = self(idx_cond)",
+          "path": "model.py",
+          "side": "after",
+          "line": 253,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "/ temperature",
+          "path": "model.py",
+          "side": "after",
+          "line": 255,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "torch.topk",
+          "path": "model.py",
+          "side": "after",
+          "line": 258,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "F.softmax",
+          "path": "model.py",
+          "side": "after",
+          "line": 261,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "torch.multinomial",
+          "path": "model.py",
+          "side": "after",
+          "line": 263,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "optimizer = torch.optim.AdamW",
+          "path": "model.py",
+          "side": "after",
+          "line": 239,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "def generate",
+          "path": "model.py",
+          "side": "after",
+          "line": 243,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "torch.cat",
+          "path": "model.py",
+          "side": "after",
+          "line": 265,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.8.svg",
       "mentor": {
-        "idea": "This is actual nanoGPT model.py source at the selected historical SHA, not a new model architecture.",
-        "reason": "Read the 33 actual diff/context lines from model.py. The source link is pinned to this commit at line 235."
+        "idea": "Generation repeatedly predicts the next token from the current context, scales logits, optionally applies top-k, samples, and appends.",
+        "reason": "Inspect idx_cond, the final-position logits, temperature, top_k, softmax, multinomial, and torch.cat."
       }
     },
     {
@@ -259,9 +588,9 @@
       "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
       "parentSha": null,
       "commitTitle": "first very bad commit",
-      "title": "sample.py",
+      "title": "sample.py · model checkpoint → generation",
       "caption": "sample.py",
-      "category": "docs",
+      "category": "sampling",
       "lane": "backend",
       "codeLineCount": 37,
       "changedLineCount": 37,
@@ -271,17 +600,66 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "sample.py",
+          "label": "torch.load",
           "path": "sample.py",
-          "line": 1,
           "side": "after",
+          "line": 16,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "model.load_state_dict",
+          "path": "sample.py",
+          "side": "after",
+          "line": 21,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "tiktoken.get_encoding",
+          "path": "sample.py",
+          "side": "after",
+          "line": 25,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "model.generate",
+          "path": "sample.py",
+          "side": "after",
+          "line": 34,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "enc.decode",
+          "path": "sample.py",
+          "side": "after",
+          "line": 36,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "device = 'cuda:2'",
+          "path": "sample.py",
+          "side": "after",
+          "line": 9,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "out_dir = 'out'",
+          "path": "sample.py",
+          "side": "after",
+          "line": 14,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "ckpt_path = os.path.join(out_dir, 'ckpt.pt')",
+          "path": "sample.py",
+          "side": "after",
+          "line": 15,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.9.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 37 actual diff/context lines from sample.py. The source link is pinned to this commit at line 1."
+        "idea": "The sampling script restores checkpoint weights, creates the GPT model and tokenizer, and decodes generated tokens.",
+        "reason": "Compare torch.load and load_state_dict with model.generate and enc.decode; the diagram does not pretend to execute sampling."
       }
     },
     {
@@ -302,17 +680,66 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "train.py",
+          "label": "np.memmap",
           "path": "train.py",
-          "line": 1,
           "side": "after",
+          "line": 56,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "def get_batch",
+          "path": "train.py",
+          "side": "after",
+          "line": 58,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "torch.randint",
+          "path": "train.py",
+          "side": "after",
+          "line": 60,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "torch.stack",
+          "path": "train.py",
+          "side": "after",
+          "line": 61,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "x, y = x.to(device)",
+          "path": "train.py",
+          "side": "after",
+          "line": 63,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "out_dir = 'out'",
+          "path": "train.py",
+          "side": "after",
+          "line": 18,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "eval_interval = 500",
+          "path": "train.py",
+          "side": "after",
+          "line": 19,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "log_interval = 1",
+          "path": "train.py",
+          "side": "after",
+          "line": 20,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.10.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 78 actual diff/context lines from train.py. The source link is pinned to this commit at line 1."
+        "idea": "Training inputs and targets come from the same memory-mapped token stream, with targets shifted one token forward.",
+        "reason": "In get_batch, compare the x slice [i:i+block_size] to the y slice [i+1:i+1+block_size]."
       }
     },
     {
@@ -333,17 +760,66 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "train.py",
+          "label": "GPTConfig(**model_args)",
           "path": "train.py",
-          "line": 79,
           "side": "after",
+          "line": 80,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "GPT.from_pretrained",
+          "path": "train.py",
+          "side": "after",
+          "line": 85,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "def estimate_loss",
+          "path": "train.py",
+          "side": "after",
+          "line": 91,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "model.eval()",
+          "path": "train.py",
+          "side": "after",
+          "line": 93,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "get_batch(split)",
+          "path": "train.py",
+          "side": "after",
+          "line": 97,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "def get_lr",
+          "path": "train.py",
+          "side": "after",
+          "line": 111,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "model = GPT(gptconf)",
+          "path": "train.py",
+          "side": "after",
+          "line": 81,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "if block_size < model.block_size:",
+          "path": "train.py",
+          "side": "after",
+          "line": 86,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.11.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 73 actual diff/context lines from train.py. The source link is pinned to this commit at line 79."
+        "idea": "Initialization can resume a checkpoint or load a GPT-2 pretrained model. estimate_loss switches to evaluation mode for train and validation.",
+        "reason": "Trace checkpoint and pretrained branches, then the mean losses in estimate_loss. No numeric training result is invented."
       }
     },
     {
@@ -364,17 +840,73 @@
       "partsUrl": "./parts/c01.json",
       "sourceTargets": [
         {
-          "label": "train.py",
+          "label": "get_batch('train')",
           "path": "train.py",
-          "line": 152,
           "side": "after",
+          "line": 170,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "model(X, Y)",
+          "path": "train.py",
+          "side": "after",
+          "line": 172,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "loss.backward",
+          "path": "train.py",
+          "side": "after",
+          "line": 175,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "optimizer.step",
+          "path": "train.py",
+          "side": "after",
+          "line": 177,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "torch.save",
+          "path": "train.py",
+          "side": "after",
+          "line": 168,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "checkpoint =",
+          "path": "train.py",
+          "side": "after",
+          "line": 162,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "iter_num += 1",
+          "path": "train.py",
+          "side": "after",
+          "line": 185,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "if losses['val'] < best_val_loss:",
+          "path": "train.py",
+          "side": "after",
+          "line": 159,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "best_val_loss = losses['val']",
+          "path": "train.py",
+          "side": "after",
+          "line": 160,
           "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
         }
       ],
       "visual": "../../svg/b001-1.12.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 40 actual diff/context lines from train.py. The source link is pinned to this commit at line 152."
+        "idea": "One training iteration fetches a batch, evaluates the model, backpropagates the loss, and updates weights.",
+        "reason": "Inspect get_batch('train'), mixed-precision forward, loss.backward, optimizer.step, and checkpoint-saving conditions."
       }
     },
     {
@@ -395,17 +927,38 @@
       "partsUrl": "./parts/c02.json",
       "sourceTargets": [
         {
-          "label": "README.md",
+          "label": "Then we want to render the detaset:",
           "path": "README.md",
-          "line": 18,
           "side": "after",
+          "line": 18,
+          "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 19,
+          "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
+        },
+        {
+          "label": "To download and tokenize the [openwebtext](https",
+          "path": "README.md",
+          "side": "before",
+          "line": 23,
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        },
+        {
+          "label": "To download and tokenize the [openwebtext](https",
+          "path": "README.md",
+          "side": "after",
+          "line": 25,
           "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
         }
       ],
       "visual": "../../svg/b001-2.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 15 actual diff/context lines from README.md. The source link is pinned to this commit at line 18."
+        "idea": "The second real commit clarifies README wording; it is not a new training-system feature.",
+        "reason": "Compare added and removed README lines to see what the author actually changed."
       }
     },
     {
@@ -428,15 +981,36 @@
         {
           "label": "train.py",
           "path": "train.py",
-          "line": 22,
           "side": "after",
+          "line": 22,
+          "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
+        },
+        {
+          "label": "wandb_run_name = 'gpt2' # 'run' + str(time.time(",
+          "path": "train.py",
+          "side": "after",
+          "line": 25,
+          "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
+        },
+        {
+          "label": "batch_size = 8",
+          "path": "train.py",
+          "side": "after",
+          "line": 28,
+          "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
+        },
+        {
+          "label": "block_size = 1024",
+          "path": "train.py",
+          "side": "after",
+          "line": 29,
           "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
         }
       ],
       "visual": "../../svg/b001-2.2.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 18 actual diff/context lines from train.py. The source link is pinned to this commit at line 22."
+        "idea": "Default training batch size changes from 32 to 8, context size from 512 to 1024, and the W&B run name changes.",
+        "reason": "The side-by-side view shows exact before and after values from train.py. It does not predict GPU performance."
       }
     },
     {
@@ -457,17 +1031,66 @@
       "partsUrl": "./parts/c03.json",
       "sourceTargets": [
         {
-          "label": "README.md",
+          "label": "Training on 1 GPU overnight currently gets loss ",
           "path": "README.md",
-          "line": 37,
           "side": "after",
+          "line": 37,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 38,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "## baselines",
+          "path": "README.md",
+          "side": "after",
+          "line": 39,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 40,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "OpenAI GPT-2 checkpoints allow us to get some ba",
+          "path": "README.md",
+          "side": "after",
+          "line": 41,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 42,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "```",
+          "path": "README.md",
+          "side": "after",
+          "line": 43,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "$ python train.py eval_gpt2",
+          "path": "README.md",
+          "side": "after",
+          "line": 44,
           "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
         }
       ],
       "visual": "../../svg/b001-3.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 26 actual diff/context lines from README.md. The source link is pinned to this commit at line 37."
+        "idea": "The README adds published GPT-2 baseline losses and the commands used to evaluate available model checkpoints.",
+        "reason": "Numbers in the graphic are explicitly the author's README claims, not rerun benchmarks."
       }
     },
     {
@@ -490,15 +1113,50 @@
         {
           "label": "eval_gpt2.py",
           "path": "config/eval_gpt2.py",
-          "line": 1,
           "side": "after",
+          "line": 1,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "batch_size = 8",
+          "path": "config/eval_gpt2.py",
+          "side": "after",
+          "line": 4,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_iters = 500 # use more iterations to get go",
+          "path": "config/eval_gpt2.py",
+          "side": "after",
+          "line": 5,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_only = True",
+          "path": "config/eval_gpt2.py",
+          "side": "after",
+          "line": 6,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "wandb_log = False",
+          "path": "config/eval_gpt2.py",
+          "side": "after",
+          "line": 7,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "init_from = 'gpt2'",
+          "path": "config/eval_gpt2.py",
+          "side": "after",
+          "line": 8,
           "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
         }
       ],
       "visual": "../../svg/b001-3.2.svg",
       "mentor": {
-        "idea": "These values and options come from the original configuration file.",
-        "reason": "Read the 8 actual diff/context lines from config/eval_gpt2.py. The source link is pinned to this commit at line 1."
+        "idea": "This GPT-2 preset uses 12 layers, 12 heads, 768 dimensions, batch size 8, and evaluation-only mode.",
+        "reason": "These dimensions are comments and settings in eval_gpt2.py; init_from points to the released GPT-2 checkpoint."
       }
     },
     {
@@ -521,15 +1179,50 @@
         {
           "label": "eval_gpt2_large.py",
           "path": "config/eval_gpt2_large.py",
-          "line": 1,
           "side": "after",
+          "line": 1,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "batch_size = 8",
+          "path": "config/eval_gpt2_large.py",
+          "side": "after",
+          "line": 4,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_iters = 500 # use more iterations to get go",
+          "path": "config/eval_gpt2_large.py",
+          "side": "after",
+          "line": 5,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_only = True",
+          "path": "config/eval_gpt2_large.py",
+          "side": "after",
+          "line": 6,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "wandb_log = False",
+          "path": "config/eval_gpt2_large.py",
+          "side": "after",
+          "line": 7,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "init_from = 'gpt2-large'",
+          "path": "config/eval_gpt2_large.py",
+          "side": "after",
+          "line": 8,
           "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
         }
       ],
       "visual": "../../svg/b001-3.3.svg",
       "mentor": {
-        "idea": "These values and options come from the original configuration file.",
-        "reason": "Read the 8 actual diff/context lines from config/eval_gpt2_large.py. The source link is pinned to this commit at line 1."
+        "idea": "This GPT-2 large preset uses 36 layers, 20 heads, and 1280 embedding dimensions.",
+        "reason": "Compare eval_gpt2_large.py against the earlier base preset without inventing runtime results."
       }
     },
     {
@@ -552,15 +1245,50 @@
         {
           "label": "eval_gpt2_medium.py",
           "path": "config/eval_gpt2_medium.py",
-          "line": 1,
           "side": "after",
+          "line": 1,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "batch_size = 8",
+          "path": "config/eval_gpt2_medium.py",
+          "side": "after",
+          "line": 4,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_iters = 500 # use more iterations to get go",
+          "path": "config/eval_gpt2_medium.py",
+          "side": "after",
+          "line": 5,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_only = True",
+          "path": "config/eval_gpt2_medium.py",
+          "side": "after",
+          "line": 6,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "wandb_log = False",
+          "path": "config/eval_gpt2_medium.py",
+          "side": "after",
+          "line": 7,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "init_from = 'gpt2-medium'",
+          "path": "config/eval_gpt2_medium.py",
+          "side": "after",
+          "line": 8,
           "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
         }
       ],
       "visual": "../../svg/b001-3.4.svg",
       "mentor": {
-        "idea": "These values and options come from the original configuration file.",
-        "reason": "Read the 8 actual diff/context lines from config/eval_gpt2_medium.py. The source link is pinned to this commit at line 1."
+        "idea": "This GPT-2 medium preset uses 24 layers, 16 heads, and 1024 embedding dimensions.",
+        "reason": "Inspect eval_gpt2_medium.py to see the recorded dimensions and evaluation parameters."
       }
     },
     {
@@ -583,15 +1311,50 @@
         {
           "label": "eval_gpt2_xl.py",
           "path": "config/eval_gpt2_xl.py",
-          "line": 1,
           "side": "after",
+          "line": 1,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "batch_size = 8",
+          "path": "config/eval_gpt2_xl.py",
+          "side": "after",
+          "line": 4,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_iters = 500 # use more iterations to get go",
+          "path": "config/eval_gpt2_xl.py",
+          "side": "after",
+          "line": 5,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_only = True",
+          "path": "config/eval_gpt2_xl.py",
+          "side": "after",
+          "line": 6,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "wandb_log = False",
+          "path": "config/eval_gpt2_xl.py",
+          "side": "after",
+          "line": 7,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "init_from = 'gpt2-xl'",
+          "path": "config/eval_gpt2_xl.py",
+          "side": "after",
+          "line": 8,
           "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
         }
       ],
       "visual": "../../svg/b001-3.5.svg",
       "mentor": {
-        "idea": "These values and options come from the original configuration file.",
-        "reason": "Read the 8 actual diff/context lines from config/eval_gpt2_xl.py. The source link is pinned to this commit at line 1."
+        "idea": "This GPT-2 XL preset uses 48 layers, 25 heads, and 1600 embedding dimensions.",
+        "reason": "Read the exact eval_gpt2_xl.py config and note that only evaluation settings are introduced."
       }
     },
     {
@@ -612,17 +1375,73 @@
       "partsUrl": "./parts/c03.json",
       "sourceTargets": [
         {
-          "label": "train.py",
+          "label": "for arg in sys.argv",
           "path": "train.py",
-          "line": 7,
           "side": "after",
+          "line": 56,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "config_file",
+          "path": "train.py",
+          "side": "after",
+          "line": 60,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "literal_eval(val)",
+          "path": "train.py",
+          "side": "after",
+          "line": 73,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "globals()[key]",
+          "path": "train.py",
+          "side": "after",
+          "line": 78,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "from ast import literal_eval",
+          "path": "train.py",
+          "side": "after",
+          "line": 10,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "globals()[key] =",
+          "path": "train.py",
+          "side": "after",
+          "line": 81,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_iters = 50",
+          "path": "train.py",
+          "side": "after",
+          "line": 24,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "eval_only = False # if True, script exits right ",
+          "path": "train.py",
+          "side": "after",
+          "line": 25,
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        },
+        {
+          "label": "if '=' not in arg:",
+          "path": "train.py",
+          "side": "after",
+          "line": 57,
           "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
         }
       ],
       "visual": "../../svg/b001-3.6.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 78 actual diff/context lines from train.py. The source link is pinned to this commit at line 7."
+        "idea": "The configurator reads a named configuration file or parses --key=value overrides using literal_eval.",
+        "reason": "Follow the source branch checking '=', the config file execution, type assertion, and update of globals()[key]."
       }
     },
     {
@@ -645,15 +1464,15 @@
         {
           "label": "train.py",
           "path": "train.py",
-          "line": 209,
           "side": "after",
+          "line": 209,
           "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
         }
       ],
       "visual": "../../svg/b001-3.7.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 2 actual diff/context lines from train.py. The source link is pinned to this commit at line 209."
+        "idea": "This tiny source patch changes only its displayed lines. The viewer should not expand that change into imaginary behavior.",
+        "reason": "Compare the exact before and after lines; this step is intentionally small."
       }
     },
     {
@@ -674,17 +1493,38 @@
       "partsUrl": "./parts/c04.json",
       "sourceTargets": [
         {
-          "label": "README.md",
+          "label": "(blank line)",
           "path": "README.md",
-          "line": 60,
           "side": "after",
+          "line": 60,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "## benchmarking",
+          "path": "README.md",
+          "side": "after",
+          "line": 61,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 62,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "For model benchmarking `bench.py` might be usefu",
+          "path": "README.md",
+          "side": "after",
+          "line": 63,
           "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
         }
       ],
       "visual": "../../svg/b001-4.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 7 actual diff/context lines from README.md. The source link is pinned to this commit at line 60."
+        "idea": "The README introduces benchmarking instructions and a reference to bench.py.",
+        "reason": "This is a documentation change; performance measurement happens in bench.py, introduced by the next step."
       }
     },
     {
@@ -705,17 +1545,73 @@
       "partsUrl": "./parts/c04.json",
       "sourceTargets": [
         {
-          "label": "bench.py",
+          "label": "GPTConfig(",
           "path": "bench.py",
-          "line": 1,
           "side": "after",
+          "line": 17,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "model(x, y)",
+          "path": "bench.py",
+          "side": "after",
+          "line": 38,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "optimizer.step",
+          "path": "bench.py",
+          "side": "after",
+          "line": 42,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "torch.cuda.synchronize",
+          "path": "bench.py",
+          "side": "after",
+          "line": 46,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "t0 = time.time()",
+          "path": "bench.py",
+          "side": "after",
+          "line": 35,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "loss.backward()",
+          "path": "bench.py",
+          "side": "after",
+          "line": 41,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "device = 'cuda:3'",
+          "path": "bench.py",
+          "side": "after",
+          "line": 9,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "batch_size = 8",
+          "path": "bench.py",
+          "side": "after",
+          "line": 14,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "block_size = 1024",
+          "path": "bench.py",
+          "side": "after",
+          "line": 15,
           "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
         }
       ],
       "visual": "../../svg/b001-4.2.svg",
       "mentor": {
-        "idea": "This slice belongs to the benchmark script; no benchmark results are invented.",
-        "reason": "Read the 48 actual diff/context lines from bench.py. The source link is pinned to this commit at line 1."
+        "idea": "The initial benchmark constructs GPT, runs 10 warmup steps and times the remaining 20 iterations.",
+        "reason": "Read bench.py's burn_in, num_steps, model(x,y), optimizer update, CUDA synchronization and elapsed-time calculation."
       }
     },
     {
@@ -736,17 +1632,24 @@
       "partsUrl": "./parts/c05.json",
       "sourceTargets": [
         {
-          "label": "README.md",
+          "label": "For model benchmarking `bench.py` might be usefu",
           "path": "README.md",
+          "side": "before",
           "line": 63,
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        },
+        {
+          "label": "For model benchmarking `bench.py` might be usefu",
+          "path": "README.md",
           "side": "after",
+          "line": 63,
           "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
         }
       ],
       "visual": "../../svg/b001-5.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 5 actual diff/context lines from README.md. The source link is pinned to this commit at line 63."
+        "idea": "The README clarifies benchmarking documentation.",
+        "reason": "The changed README text is authoritative; no timing results are inferred."
       }
     },
     {
@@ -767,17 +1670,66 @@
       "partsUrl": "./parts/c05.json",
       "sourceTargets": [
         {
-          "label": "bench.py",
+          "label": "np.memmap",
           "path": "bench.py",
-          "line": 2,
           "side": "after",
+          "line": 23,
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        },
+        {
+          "label": "def get_batch",
+          "path": "bench.py",
+          "side": "after",
+          "line": 24,
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        },
+        {
+          "label": "torch.randint",
+          "path": "bench.py",
+          "side": "after",
+          "line": 26,
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        },
+        {
+          "label": "torch.stack",
+          "path": "bench.py",
+          "side": "after",
+          "line": 27,
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        },
+        {
+          "label": "get_batch = lambda",
+          "path": "bench.py",
+          "side": "after",
+          "line": 35,
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        },
+        {
+          "label": "real_data = True",
+          "path": "bench.py",
+          "side": "after",
+          "line": 19,
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        },
+        {
+          "label": "if real_data:",
+          "path": "bench.py",
+          "side": "after",
+          "line": 20,
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        },
+        {
+          "label": "dataset = 'openwebtext'",
+          "path": "bench.py",
+          "side": "after",
+          "line": 21,
           "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
         }
       ],
       "visual": "../../svg/b001-5.2.svg",
       "mentor": {
-        "idea": "This slice belongs to the benchmark script; no benchmark results are invented.",
-        "reason": "Read the 55 actual diff/context lines from bench.py. The source link is pinned to this commit at line 2."
+        "idea": "The benchmark can now fetch real tokens through np.memmap instead of only using fixed random tensors.",
+        "reason": "The real_data switch selects the memmap-based get_batch path or fixed synthetic x/y tensors."
       }
     },
     {
@@ -798,17 +1750,66 @@
       "partsUrl": "./parts/c06.json",
       "sourceTargets": [
         {
-          "label": "bench.py",
+          "label": "profile = False",
           "path": "bench.py",
-          "line": 10,
           "side": "after",
+          "line": 48,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "wait, warmup, active",
+          "path": "bench.py",
+          "side": "after",
+          "line": 53,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "torch.profiler.profile",
+          "path": "bench.py",
+          "side": "after",
+          "line": 52,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "torch.profiler.schedule",
+          "path": "bench.py",
+          "side": "after",
+          "line": 57,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "prof.step()",
+          "path": "bench.py",
+          "side": "after",
+          "line": 76,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "torch.cuda.synchronize",
+          "path": "bench.py",
+          "side": "after",
+          "line": 81,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "device = 'cuda'",
+          "path": "bench.py",
+          "side": "after",
+          "line": 10,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "if profile:",
+          "path": "bench.py",
+          "side": "after",
+          "line": 49,
           "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
         }
       ],
       "visual": "../../svg/b001-6.1.svg",
       "mentor": {
-        "idea": "This slice belongs to the benchmark script; no benchmark results are invented.",
-        "reason": "Read the 76 actual diff/context lines from bench.py. The source link is pinned to this commit at line 10."
+        "idea": "PyTorch profiler support introduces wait/warmup/active windows and CPU/CUDA tracing options.",
+        "reason": "Inspect torch.profiler.schedule and prof.step; the trace handler is configured, not executed in this viewer."
       }
     },
     {
@@ -829,17 +1830,66 @@
       "partsUrl": "./parts/c07.json",
       "sourceTargets": [
         {
-          "label": "README.md",
+          "label": "The cleanest, fastest repository for training/fi",
           "path": "README.md",
+          "side": "before",
           "line": 4,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "The cleanest, fastest repository for training/fi",
+          "path": "README.md",
           "side": "after",
+          "line": 4,
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
+        },
+        {
+          "label": "This repo currently requires reading the code, b",
+          "path": "README.md",
+          "side": "before",
+          "line": 6,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "before",
+          "line": 7,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "Getting started:",
+          "path": "README.md",
+          "side": "before",
+          "line": 8,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "## install",
+          "path": "README.md",
+          "side": "after",
+          "line": 6,
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
+        },
+        {
+          "label": "Then we want to render the detaset:",
+          "path": "README.md",
+          "side": "before",
+          "line": 18,
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        },
+        {
+          "label": "## usage",
+          "path": "README.md",
+          "side": "after",
+          "line": 16,
           "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
         }
       ],
       "visual": "../../svg/b001-7.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 38 actual diff/context lines from README.md. The source link is pinned to this commit at line 4."
+        "idea": "The README updates installation and usage explanations.",
+        "reason": "This is a text edit only. Follow the historical commands rather than an invented execution."
       }
     },
     {
@@ -860,17 +1910,66 @@
       "partsUrl": "./parts/c08.json",
       "sourceTargets": [
         {
-          "label": "README.md",
+          "label": "The cleanest, fastest repository for training/fi",
           "path": "README.md",
+          "side": "before",
           "line": 4,
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
+        },
+        {
+          "label": "The cleanest, smallest, fastest repository for t",
+          "path": "README.md",
           "side": "after",
+          "line": 4,
           "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "We need a few dependencies:",
+          "path": "README.md",
+          "side": "before",
+          "line": 8,
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
+        },
+        {
+          "label": "Dependencies:",
+          "path": "README.md",
+          "side": "after",
+          "line": 8,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "- [pytorch](https://pytorch.org), of course",
+          "path": "README.md",
+          "side": "before",
+          "line": 10,
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
+        },
+        {
+          "label": "- numpy",
+          "path": "README.md",
+          "side": "before",
+          "line": 11,
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
+        },
+        {
+          "label": "- `pip install datasets` for huggingface dataset",
+          "path": "README.md",
+          "side": "before",
+          "line": 12,
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
+        },
+        {
+          "label": "- `pip install tiktoken` for OpenAI's fast bpe c",
+          "path": "README.md",
+          "side": "before",
+          "line": 13,
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
         }
       ],
       "visual": "../../svg/b001-8.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 50 actual diff/context lines from README.md. The source link is pinned to this commit at line 4."
+        "idea": "The README describes launching DDP training with torchrun on four GPUs.",
+        "reason": "These commands document how the feature is used; the DDP implementation appears in subsequent train.py changes."
       }
     },
     {
@@ -891,17 +1990,73 @@
       "partsUrl": "./parts/c08.json",
       "sourceTargets": [
         {
-          "label": "train.py",
+          "label": "LOCAL_RANK",
           "path": "train.py",
-          "line": 2,
           "side": "after",
+          "line": 95,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "init_process_group",
+          "path": "train.py",
+          "side": "after",
+          "line": 22,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "device = f",
+          "path": "train.py",
+          "side": "after",
+          "line": 99,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "gpu_id == 0",
+          "path": "train.py",
+          "side": "after",
+          "line": 103,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "DistributedDataParallel",
+          "path": "train.py",
+          "side": "after",
+          "line": 21,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "torch.manual_seed",
+          "path": "train.py",
+          "side": "after",
+          "line": 105,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "backend = 'nccl' # 'nccl', 'gloo', etc.",
+          "path": "train.py",
+          "side": "after",
+          "line": 61,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "if ddp:",
+          "path": "train.py",
+          "side": "after",
+          "line": 96,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "gpu_id = int(os.environ[\"LOCAL_RANK\"])",
+          "path": "train.py",
+          "side": "after",
+          "line": 98,
           "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
         }
       ],
       "visual": "../../svg/b001-8.2.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 78 actual diff/context lines from train.py. The source link is pinned to this commit at line 2."
+        "idea": "Distributed training detects LOCAL_RANK, starts a process group, and assigns a CUDA device to each worker.",
+        "reason": "The four GPU lanes illustrate the README's torchrun example; the code uses LOCAL_RANK rather than hardcoding four GPUs."
       }
     },
     {
@@ -922,17 +2077,66 @@
       "partsUrl": "./parts/c08.json",
       "sourceTargets": [
         {
-          "label": "train.py",
+          "label": "model = DDP",
           "path": "train.py",
-          "line": 128,
           "side": "after",
+          "line": 153,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "def estimate_loss",
+          "path": "train.py",
+          "side": "after",
+          "line": 156,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "model.train",
+          "path": "train.py",
+          "side": "after",
+          "line": 167,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "checkpoint = torch.load(ckpt_path, map_location=",
+          "path": "train.py",
+          "side": "after",
+          "line": 131,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "if block_size < model.block_size:",
+          "path": "train.py",
+          "side": "after",
+          "line": 142,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "optimizer = model.configure_optimizers(weight_de",
+          "path": "train.py",
+          "side": "after",
+          "line": 147,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "if init_from == 'resume':",
+          "path": "train.py",
+          "side": "after",
+          "line": 148,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "if ddp:",
+          "path": "train.py",
+          "side": "after",
+          "line": 152,
           "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
         }
       ],
       "visual": "../../svg/b001-8.3.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 73 actual diff/context lines from train.py. The source link is pinned to this commit at line 128."
+        "idea": "This slice adds device-aware checkpoint loading, DDP model wrapping, and rank-zero evaluation guards.",
+        "reason": "Trace map_location=device, DDP(model, device_ids=[gpu_id]), and gpu_id == 0 conditions. Other ranks skip those branches."
       }
     },
     {
@@ -953,17 +2157,45 @@
       "partsUrl": "./parts/c08.json",
       "sourceTargets": [
         {
-          "label": "train.py",
+          "label": "raw_model = model.module",
           "path": "train.py",
-          "line": 219,
           "side": "after",
+          "line": 219,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "gpu_id == 0",
+          "path": "train.py",
+          "side": "after",
+          "line": 244,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "torch.save",
+          "path": "train.py",
+          "side": "after",
+          "line": 228,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "destroy_process_group",
+          "path": "train.py",
+          "side": "after",
+          "line": 253,
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        },
+        {
+          "label": "if iter_num > 0:",
+          "path": "train.py",
+          "side": "after",
+          "line": 220,
           "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
         }
       ],
       "visual": "../../svg/b001-8.4.svg",
       "mentor": {
-        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
-        "reason": "Read the 44 actual diff/context lines from train.py. The source link is pinned to this commit at line 219."
+        "idea": "The last DDP slice unwraps model.module for checkpointing and restricts logging to rank zero.",
+        "reason": "Read raw_model, checkpoint state serialization, the logging guard, and destroy_process_group()."
       }
     },
     {
@@ -984,17 +2216,66 @@
       "partsUrl": "./parts/c09.json",
       "sourceTargets": [
         {
-          "label": "LICENSE",
+          "label": "MIT License",
           "path": "LICENSE",
-          "line": 1,
           "side": "after",
+          "line": 1,
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        },
+        {
+          "label": "(blank line)",
+          "path": "LICENSE",
+          "side": "after",
+          "line": 2,
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        },
+        {
+          "label": "Copyright (c) 2022 Andrej Karpathy",
+          "path": "LICENSE",
+          "side": "after",
+          "line": 3,
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        },
+        {
+          "label": "(blank line)",
+          "path": "LICENSE",
+          "side": "after",
+          "line": 4,
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        },
+        {
+          "label": "Permission is hereby granted, free of charge, to",
+          "path": "LICENSE",
+          "side": "after",
+          "line": 5,
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        },
+        {
+          "label": "of this software and associated documentation fi",
+          "path": "LICENSE",
+          "side": "after",
+          "line": 6,
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        },
+        {
+          "label": "in the Software without restriction, including w",
+          "path": "LICENSE",
+          "side": "after",
+          "line": 7,
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        },
+        {
+          "label": "to use, copy, modify, merge, publish, distribute",
+          "path": "LICENSE",
+          "side": "after",
+          "line": 8,
           "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
         }
       ],
       "visual": "../../svg/b001-9.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 21 actual diff/context lines from LICENSE. The source link is pinned to this commit at line 1."
+        "idea": "The repository adds its MIT license, a legal document rather than executable source.",
+        "reason": "Review the original LICENSE content; no change to the model's runtime architecture is implied."
       }
     },
     {
@@ -1015,17 +2296,66 @@
       "partsUrl": "./parts/c10.json",
       "sourceTargets": [
         {
-          "label": "README.md",
+          "label": "Once some checkpoints are written to the output ",
           "path": "README.md",
+          "side": "before",
           "line": 37,
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        },
+        {
+          "label": "To my knowledge, running this with the current s",
+          "path": "README.md",
           "side": "after",
+          "line": 37,
+          "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 70,
+          "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7"
+        },
+        {
+          "label": "# todos",
+          "path": "README.md",
+          "side": "after",
+          "line": 71,
+          "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 72,
+          "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7"
+        },
+        {
+          "label": "A few that I'm aware of, other than the ones men",
+          "path": "README.md",
+          "side": "after",
+          "line": 73,
+          "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7"
+        },
+        {
+          "label": "(blank line)",
+          "path": "README.md",
+          "side": "after",
+          "line": 74,
+          "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7"
+        },
+        {
+          "label": "- Additional optimizations to the running time",
+          "path": "README.md",
+          "side": "after",
+          "line": 75,
           "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7"
         }
       ],
       "visual": "../../svg/b001-10.1.svg",
       "mentor": {
-        "idea": "This change edits repository documentation or license text, not runtime behavior.",
-        "reason": "Read the 23 actual diff/context lines from README.md. The source link is pinned to this commit at line 37."
+        "idea": "The author documents TODOs as future work.",
+        "reason": "These notes are plans in README.md; they should not be presented as already implemented features."
       }
     }
   ]
