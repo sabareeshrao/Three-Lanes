@@ -1,27 +1,75 @@
-# Three-Lanes — PetClinic Commit Lab
+# Three-Lanes — visual commit learning engine
 
-A visual, three-lane commit viewer for studying real changes in [Spring Petclinic](https://github.com/spring-projects/spring-petclinic).
+A modular, browser-based three-lane visualizer for understanding real GitHub changes. Current demonstration: **10 non-consecutive Spring Petclinic commits**, expanded into **25 learning steps**.
 
-## Open the demo
+**Live site:** https://sabareeshrao.github.io/Three-Lanes/
 
-Open [index.html](./index.html) in a web browser. This is a standalone HTML application; no build process or dependencies are required.
+## The three lanes
 
-## Layout
+- **Backend (left):** SVG architecture diagrams and the relevant original code.
+- **Commit timeline (middle):** commit numbers, expandable learning steps, keyboard navigation.
+- **Frontend (right):** rendered UI previews and relevant HTML/code.
+- **View** keeps the visual explanation and focused code. **GitHub** retains the visual while showing exact diffs, original source, and a **View here** before/after comparison.
 
-- **Backend (left):** SVG engineering diagrams with relevant Java, SQL, or configuration code underneath.
-- **Commit timeline (center):** 10 selected GitHub commits expanded into 25 learning steps.
-- **Frontend (right):** focused user-facing UI previews with source code underneath.
+## Modular structure
 
-## Controls
+```text
+Three-Lanes/
+├── index.html                            # Small HTML shell
+├── styles/
+│   └── app.css                           # App theme and layout
+├── src/
+│   ├── app.js                             # Navigation, GitHub loading, source viewer
+│   ├── data/
+│   │   └── petclinic-demo.js             # 10 commits / 25 teaching steps
+│   └── visuals/
+│       ├── asset-library.js              # Optional standalone asset loader
+│       ├── visual-registry.js            # Choose a file for a particular SHA + step
+│       ├── backend-svg/
+│       │   └── petclinic-diagrams.js     # Existing dynamic backend diagrams
+│       └── frontend-ui/
+│           └── petclinic-previews.js     # Existing interactive UI previews
+├── visuals/
+│   ├── svg/
+│   │   ├── README.md
+│   │   └── petclinic-*.svg               # 17 archived original SVGs
+│   └── frontend-ui/
+│       ├── README.md
+│       └── petclinic-*.html              # 8 standalone HTML previews
+└── .github/workflows/pages.yml
+```
 
-- **View:** visual learning mode and focused code.
-- **GitHub:** diagrams and previews alongside authentic commit changes and original source files.
-- **View here:** an in-page source comparison.
-- **Arrow keys:** navigate the lessons and commits.
-- **Search:** find one of the selected commits or steps by number, SHA, or keyword.
+## Copy and paste an existing visual
 
-The app uses the public GitHub API for exact commit data. Loading original files may require network access and is subject to GitHub's API limits. Diagrams and UI previews are teaching visualizations rather than screenshots of running historical versions.
+All **25 existing visual steps** have been exported individually. You can reuse or modify them without editing the app's UI rendering logic.
 
-## Repository
+**Backend:** copy a finished SVG into `visuals/svg/` (example: [petclinic-8.1.svg](./visuals/svg/petclinic-8.1.svg)).
 
-The canonical standalone demo lives at [index.html](./index.html). Source commits are linked back to [spring-projects/spring-petclinic](https://github.com/spring-projects/spring-petclinic).
+**Frontend:** copy a finished HTML preview into `visuals/frontend-ui/` (example: [petclinic-5.1.html](./visuals/frontend-ui/petclinic-5.1.html)).
+
+Then open [src/visuals/visual-registry.js](./src/visuals/visual-registry.js) and register the file under the real commit SHA + learning-step ID. For example:
+
+```javascript
+window.THREE_LANES_VISUAL_ASSETS = Object.freeze({
+  "bb37aad8c332264723817d855e8b3b96b7c392bc:8.1": {
+    backend: "visuals/svg/petclinic-8.1.svg"
+  },
+  "f9399b7a9fe3a244ba75e83bf2bc6f2cb32b3011:5.1": {
+    frontend: "visuals/frontend-ui/petclinic-5.1.html"
+  }
+});
+```
+
+The registered file replaces **only** that step's visual. Other steps continue using the original dynamic SVG and UI preview generators. The registry starts empty to preserve the existing visuals until you deliberately register an override.
+
+New standalone HTML previews are isolated in sandboxed iframes to keep their CSS and JavaScript from affecting the overall site.
+
+## Run locally
+
+The app is static and has no build step. For local testing, serve the repository over HTTP (e.g. `python -m http.server 8000` from the repo root), then open `http://localhost:8000`. GitHub Pages serves the same files automatically.
+
+## Scaling beyond the initial 10 commits
+
+The new file structure improves **maintainability and reusability**, but it does not by itself index 100,000 commits. For very large repositories, the next layer should add paginated commit ingestion, cached/sharded commit metadata, on-demand diffs, virtualized timeline navigation, and indexed search. The current demo still deliberately loads only its 10 selected commits.
+
+The UI diagrams are instructional reconstructions, not screenshots of a running historical application. Original GitHub source is loaded live where supported by the GitHub API, subject to network and rate limits.
