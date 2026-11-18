@@ -112,7 +112,7 @@ function mount(args){
  nav.dataset.current=stamp;
  nav.innerHTML='<div class="nav-links-title">SOURCE LINKS <span>Resolving at '+escapeHtml(args.sha.slice(0,8))+'…</span></div>';
  const refs=buildRefs({...step,id:args.id},side);
- Promise.all(refs.map(ref=>resolve(args.sha,ref))).then(resolved=>{
+ return Promise.all(refs.map(ref=>resolve(args.sha,ref))).then(resolved=>{
   if(nav.dataset.current!==stamp)return;
   const items=resolved.filter(x=>x.available).map(x=>({...x,sha:args.sha}));
   if(!items.length){
