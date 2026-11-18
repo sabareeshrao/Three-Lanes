@@ -8,6 +8,10 @@ Copy this directory to `projects/<slug>/` for **one new GitHub repository**.
 
 Import [../../design-system/tokens.css](../../design-system/tokens.css) using a route-correct URL. Read [../../design-system/README.md](../../design-system/README.md) and [../../design-system/registry.json](../../design-system/registry.json). Reuse approved visual patterns, create candidate patterns for new mechanisms and secure approval before reusing them. Keep the commit conveyor scrollable with its scrollbar hidden. Run both automated quality checks and review screenshots.
 
+## Open-ended illustration rule (latest)
+
+**Before creating diagrams, consult the 50 modular illustrations in `illustration-library/catalog.json` and their SVG source files. They are individual building blocks with stable IDs, not a whitelist. You MAY reuse, combine, alter or invent new SVG components and original diagrams without candidate approval or catalog registration. Assign unique IDs and keep source fidelity, accessibility, thin arrows (≤3px connector stroke; ≤12px arrowheads), no collisions or clipping, and desktop/mobile screenshot QA.** Prior text requiring an *approved pattern ID*, *candidate registration* or *SVG click-to-focus* is superseded for the root prototype. No generic text-only box drawings. The fixed design tokens and one-file-per-step rule still apply.
+
 ## Required 10-commit quality gate
 
 Read [../../DIAGRAM-QUALITY-STANDARD.md](../../DIAGRAM-QUALITY-STANDARD.md) before producing any diagram or frontend UI. Work in **10 real commits per batch**; the first three should be visual showpieces, and **all ten** must be distinctive, source-accurate and free of overlapping/clipped text, bulky arrows, unreadable mobile labels and nonfunctional navigation.

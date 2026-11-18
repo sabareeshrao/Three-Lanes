@@ -16,6 +16,10 @@ When opening this repository in a supported coding agent, give it the **target G
 
 The registry starts with six approved patterns and can grow to unlimited new candidate/approved patterns. Project viewers import shared fonts and colors. `npm run audit:design` and `npm run test:visual` validate tokens, SVG metadata, responsive rendering and screenshot evidence. The Pages deployment depends on these automated gates; they do not replace human visual/source review.
 
+## Open-ended illustration rule (latest)
+
+**Before creating diagrams, consult the 50 modular illustrations in `illustration-library/catalog.json` and their SVG source files. They are individual building blocks with stable IDs, not a whitelist. You MAY reuse, combine, alter or invent new SVG components and original diagrams without candidate approval or catalog registration. Assign unique IDs and keep source fidelity, accessibility, thin arrows (≤3px connector stroke; ≤12px arrowheads), no collisions or clipping, and desktop/mobile screenshot QA.** Prior text requiring an *approved pattern ID*, *candidate registration* or *SVG click-to-focus* is superseded for the root prototype. No generic text-only box drawings. The fixed design tokens and one-file-per-step rule still apply.
+
 ## Visual quality standard for 10-commit batches
 
 Read **[DIAGRAM-QUALITY-STANDARD.md](./DIAGRAM-QUALITY-STANDARD.md)** before producing any new diagrams. Every batch must include ten verified commits; each deserves a distinctive, source-accurate visual. The first three are visual showpieces, but every diagram must pass overlap/clipping, readability, arrow/connector, responsive desktop/mobile, source-navigation, and scroll-persistence checks. Use the copied **[VISUAL-QA-TRACKER.md](./projects/_template/VISUAL-QA-TRACKER.md)** to record the results; no batch is called complete before all ten pass.

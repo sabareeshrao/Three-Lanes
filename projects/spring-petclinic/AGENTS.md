@@ -8,6 +8,10 @@ Before doing work here, also read the repository root **AGENTS.md** and **HANDOV
 
 **Read [../../design-system/README.md](../../design-system/README.md), [../../design-system/registry.json](../../design-system/registry.json), and [../../design-system/tokens.css](../../design-system/tokens.css) first.** Import shared tokens in every project viewer. Reuse approved SVG patterns; a new mechanism can produce a **candidate** pattern that requires review before approval. No custom font/color skin, yellow full-stack chips or visible scrollbar in the independently scrolling commit lane. New SVGs require pattern ID, design version, viewBox, title/desc and file-specific source fidelity. Run both automated audits and manual screenshot QA.
 
+## Open-ended illustration rule (latest)
+
+**Before creating diagrams, consult the 50 modular illustrations in `illustration-library/catalog.json` and their SVG source files. They are individual building blocks with stable IDs, not a whitelist. You MAY reuse, combine, alter or invent new SVG components and original diagrams without candidate approval or catalog registration. Assign unique IDs and keep source fidelity, accessibility, thin arrows (≤3px connector stroke; ≤12px arrowheads), no collisions or clipping, and desktop/mobile screenshot QA.** Prior text requiring an *approved pattern ID*, *candidate registration* or *SVG click-to-focus* is superseded for the root prototype. No generic text-only box drawings. The fixed design tokens and one-file-per-step rule still apply.
+
 ## Mandatory 10-commit diagram quality
 
 **Before building visuals, read `../../DIAGRAM-QUALITY-STANDARD.md` and follow it as a blocking acceptance test.** Create exactly **10 distinct verified commits per batch** (each may have multiple learning substeps), and do not trade diagram quality for speed. The **first three commits must be visual showpieces**; every other commit must also have purposeful, polished, technically faithful SVG/HTML, not repeated text-in-box flowcharts.

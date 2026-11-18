@@ -2,6 +2,10 @@
 
 **Mandatory design-system review:** Before drawing, read [design-system/README.md](./design-system/README.md), [design-system/registry.json](./design-system/registry.json) and [design-system/tokens.css](./design-system/tokens.css). Use approved diagram patterns and canonical tokens. A genuinely new code mechanism may introduce a **candidate** pattern, requiring source/visual review before approval. Run the design and browser screenshot audits, then manually inspect compositions and real source.
 
+## Open-ended illustration rule (latest)
+
+**Before creating diagrams, consult the 50 modular illustrations in `illustration-library/catalog.json` and their SVG source files. They are individual building blocks with stable IDs, not a whitelist. You MAY reuse, combine, alter or invent new SVG components and original diagrams without candidate approval or catalog registration. Assign unique IDs and keep source fidelity, accessibility, thin arrows (≤3px connector stroke; ≤12px arrowheads), no collisions or clipping, and desktop/mobile screenshot QA.** Prior text requiring an *approved pattern ID*, *candidate registration* or *SVG click-to-focus* is superseded for the root prototype. No generic text-only box drawings. The fixed design tokens and one-file-per-step rule still apply.
+
 **Applies to:** Every new project, every batch of **exactly 10 selected, real GitHub commits**, every SVG architecture diagram, and every focused frontend UI preview. This file is mandatory for agents reading the root `AGENTS.md` or a copied `projects/<slug>/AGENTS.md`.
 
 **Goal:** Publish a visually compelling, technically correct learning experience—not 10 automatically generated generic diagrams. Quality takes priority over throughput. A batch is **not complete until all 10 commit entries and their applicable visuals pass review**. If work cannot be completed, report the accurate count and remaining defects instead of claiming success.

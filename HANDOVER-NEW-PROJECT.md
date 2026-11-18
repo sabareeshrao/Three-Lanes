@@ -7,6 +7,10 @@
 **Default project:** `spring-projects/spring-petclinic`  
 **Current curated scope:** 10 real, nonconsecutive commits, expanded into 25 learning steps. Existing assets: 17 SVGs and 8 standalone frontend HTML previews.
 
+## Open-ended illustration rule (latest)
+
+**Before creating diagrams, consult the 50 modular illustrations in `illustration-library/catalog.json` and their SVG source files. They are individual building blocks with stable IDs, not a whitelist. You MAY reuse, combine, alter or invent new SVG components and original diagrams without candidate approval or catalog registration. Assign unique IDs and keep source fidelity, accessibility, thin arrows (≤3px connector stroke; ≤12px arrowheads), no collisions or clipping, and desktop/mobile screenshot QA.** Prior text requiring an *approved pattern ID*, *candidate registration* or *SVG click-to-focus* is superseded for the root prototype. No generic text-only box drawings. The fixed design tokens and one-file-per-step rule still apply.
+
 ## Central catalog required
 
 Read [design-system/README.md](./design-system/README.md), [design-system/registry.json](./design-system/registry.json), and [design-system/tokens.css](./design-system/tokens.css) before authoring. Load tokens in project viewers; only approved visual patterns can be published. New code mechanisms may have candidate patterns after visual review. Commit belts scroll vertically with invisible bars. Run both design/Chromium audits and inspect screenshots.
