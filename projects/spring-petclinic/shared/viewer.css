@@ -49,3 +49,51 @@ button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:fo
 .batchlinks a{text-decoration:none;color:#bfbfbf;border-radius:6px;padding:5px 9px;font-size:11px;font-weight:850}
 .batchlinks a:hover{background:#434343;color:white;text-decoration:none}
 html[data-batch="001"] a[data-batch-link="001"],html[data-batch="002"] a[data-batch-link="002"]{color:#c1f8e1;background:#15593f}
+
+
+/* Compact, independently scrollable commit lane for long historical batches.
+   Its scrollbar is low-profile; the source and visual panels never become 129 steps tall. */
+.workspace>.rail{
+  display:flex;
+  flex-direction:column;
+  align-self:start;
+  height:clamp(380px, 68vh, 620px);
+  min-height:0;
+  overflow:hidden;
+}
+.workspace>.rail .railhead{
+  flex:none;
+  margin:0;
+  padding:10px 7px 11px;
+  border-bottom:1px solid #434d59;
+  background:#292d33;
+}
+.workspace>.rail .railitems{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  grid-auto-rows:max-content;
+  align-content:start;
+  flex:1 1 0;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior-y:contain;
+  scroll-behavior:auto;
+  scrollbar-width:thin;
+  scrollbar-color:#71839b #282d35;
+  padding:9px 7px 12px;
+  gap:7px;
+}
+.workspace>.rail .railitems::-webkit-scrollbar{width:6px}
+.workspace>.rail .railitems::-webkit-scrollbar-track{background:#282d35;border-radius:99px}
+.workspace>.rail .railitems::-webkit-scrollbar-thumb{background:#66788d;border-radius:99px}
+.workspace>.rail .railitems::-webkit-scrollbar-thumb:hover{background:#94a7bd}
+.workspace>.rail .commitgroup{min-width:0}
+@media(max-width:820px){
+  .workspace>.rail{height:clamp(210px,39vh,360px);min-height:0}
+  .workspace>.rail .railitems{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+}
+@media(max-width:440px){
+  .workspace>.rail{height:clamp(210px,39vh,345px)}
+  .workspace>.rail .railitems{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
