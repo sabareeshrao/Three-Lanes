@@ -302,7 +302,7 @@ function typeLabel(t){return t==='frontend'?'FRONTEND':t==='both'?'FULL STACK':'
 function head(){
  const {c,s}=current();if(!c)return;
  const kind=s.kind||c.kind;
- byId('summary').innerHTML=`<div class="summary-main"><span class="chip summary-kind ${H(kind)}">${H(typeLabel(kind))}</span><h2>${H(c.name)}</h2><p><b>${H(s.name)}.</b> ${H(s.explain)}</p></div><div class="rightsummary"><span class="commit-position-label">Commit ${String(commitNumber()).padStart(2,'0')}</span><a class="source" href="https://github.com/${H(repo)}/commit/${encodeURIComponent(c.sha)}" target="_blank" rel="noopener noreferrer">GitHub commit ↗</a></div>`;
+ byId('summary').innerHTML=`<div class="summary-main"><span class="chip summary-kind ${H(kind)}">${H(typeLabel(kind))}</span><h2>${H(c.name)}</h2><p><b>${H(s.name)}.</b> ${H(s.explain)}</p></div><div class="rightsummary"><span class="commit-position-label" aria-label="Commit ID">Commit ID · ${H(shortSha(c.sha))}</span><a class="source" href="https://github.com/${H(repo)}/commit/${encodeURIComponent(c.sha)}" target="_blank" rel="noopener noreferrer">GitHub commit ↗</a></div>`;
  updateStepper();
 }
 
