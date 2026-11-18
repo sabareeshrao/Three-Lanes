@@ -4,6 +4,12 @@ A modular, browser-based three-lane visualizer for understanding real GitHub cha
 
 **Live site:** https://sabareeshrao.github.io/Three-Lanes/
 
+## AI agents: start here
+
+**[AGENTS.md](./AGENTS.md)** is the repository-level instruction file for coding agents that support it. **[GitHub Copilot instructions](./.github/copilot-instructions.md)** provide equivalent guidance for Copilot; every copied project folder also contains its own `AGENTS.md`.
+
+When opening this repository in a supported coding agent, give it the **target GitHub repository URL and the goal**. The agent can read these files and the detailed [handover](./HANDOVER-NEW-PROJECT.md), create `projects/<slug>/`, and implement the project using the existing UI and source-integrity rules. The current JSON template still needs a repository-agnostic runtime loader; do not assume it is plug-and-play.
+
 ## Start a new GitHub project using Three-Lanes
 
 **[Read the complete new-project handover](./HANDOVER-NEW-PROJECT.md)**, then copy the **[projects/_template](./projects/_template)** starter folder to `projects/<your-project-slug>/`. The handover includes the new-chat prompt, code-integrity rules, shared-engine migration plan, UI requirements, and acceptance tests.
