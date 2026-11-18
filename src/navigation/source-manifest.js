@@ -71,7 +71,7 @@ const steps={
   ],svg:['pets table','owner_id','VARCHAR_IGNORECASE','UNIQUE constraint']},
   '7.3':{needle:'CREATE UNIQUE INDEX unique_owner_pet_name',related:[
     R('H2 uniqueness constraint',D+'h2/schema.sql','unique_owner_pet_name','schema',['H2']),
-    R('MySQL pet-name constraint',D+'mysql/schema.sql','UNIQUE','schema',['MySQL']),
+    R('MySQL pet-name constraint',D+'mysql/schema.sql','UNIQUE (owner_id, name)','schema',['MySQL']),
     R('PetController exception handling',J+'PetController.java','isDuplicatePetNameViolation','controller')
   ],svg:['PostgreSQL','LOWER','UNIQUE','H2','MySQL']},
   '7.4':{needle:'CountDownLatch readyLatch',related:[
