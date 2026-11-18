@@ -34,8 +34,13 @@ jobs:
         run: npm run audit:design
         env:
           DESIGN_DIFF_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
-      - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+      - name: Use runner Chrome or install Playwright Chromium
+        run: |
+          if command -v google-chrome >/dev/null 2>&1; then
+            google-chrome --version
+          else
+            npx playwright install chromium
+          fi
       - name: Render desktop and mobile checks
         run: npm run test:visual
       - name: Upload screenshot evidence

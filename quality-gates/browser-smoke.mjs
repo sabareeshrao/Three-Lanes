@@ -18,7 +18,9 @@ const server=http.createServer((req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const base='http://127.0.0.1:'+server.address().port;
-const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+// GitHub Actions Ubuntu 24.04 provides Chrome; use it to avoid a slow browser download.
+const useSystemChrome=process.env.CI==='true'&&fs.existsSync('/usr/bin/google-chrome');
+const browser=await chromium.launch({headless:true,channel:useSystemChrome?'chrome':undefined,args:['--no-sandbox']});
 const errors=[];
 const assert=(ok,msg)=>{if(!ok)errors.push(msg)};
 const manifest=JSON.parse(fs.readFileSync('design-system/registry.json','utf8'));
