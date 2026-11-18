@@ -14,6 +14,9 @@
   "data": {
     "batch001": "./batches/001/commits.json",
     "steps": "./batches/001/steps.json",
-    "visuals": "./batches/001/visuals.json"
+    "visuals": "./batches/001/visuals.json",
+    "batch002": "./batches/002/commits.json",
+    "batch002Steps": "./batches/002/steps.json",
+    "batch002Visuals": "./batches/002/visuals.json"
   }
 }

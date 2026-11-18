@@ -43,3 +43,9 @@ button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:fo
 .mentor-part b{color:#f2f6ee;font-size:12px}.mentor-part p{color:#ccd7cd;font-size:12px;line-height:1.65;margin:3px 0 0;overflow-wrap:anywhere}
 .mentor-follow{border:1px solid #465f4d;border-radius:7px;background:#243a30;padding:8px 10px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:9px}
 .mentor-follow span{font-size:9px;color:#aed1b8;font-weight:850;letter-spacing:.8px}.mentor-follow a{font:11px ui-monospace,Consolas,monospace;color:#93eabd;overflow-wrap:anywhere}
+
+.batchlinks{display:inline-flex;align-items:center;gap:3px;padding:3px 4px;border:1px solid #454545;background:#2f2f2f;border-radius:8px}
+.batchlinks small{color:#9bafaa;font-size:9px;letter-spacing:.8px;font-weight:850;padding:0 4px}
+.batchlinks a{text-decoration:none;color:#bfbfbf;border-radius:6px;padding:5px 9px;font-size:11px;font-weight:850}
+.batchlinks a:hover{background:#434343;color:white;text-decoration:none}
+html[data-batch="001"] a[data-batch-link="001"],html[data-batch="002"] a[data-batch-link="002"]{color:#c1f8e1;background:#15593f}
