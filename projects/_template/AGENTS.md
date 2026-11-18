@@ -4,6 +4,12 @@ This file is intentionally copied from `projects/_template/AGENTS.md` into each 
 
 Before doing work here, also read the repository root **AGENTS.md** and **HANDOVER-NEW-PROJECT.md**; those define the required viewer features and nonregression tests.
 
+## Mandatory 10-commit diagram quality
+
+**Before building visuals, read `../../DIAGRAM-QUALITY-STANDARD.md` and follow it as a blocking acceptance test.** Create exactly **10 distinct verified commits per batch** (each may have multiple learning substeps), and do not trade diagram quality for speed. The **first three commits must be visual showpieces**; every other commit must also have purposeful, polished, technically faithful SVG/HTML, not repeated text-in-box flowcharts.
+
+Inspect every visual at **1440px and 390px**: zero overlaps/clipping, readable text, controlled arrows, real code/line navigation, no invented frontend behavior, and preserved scroll position. Track all 10 in this folder's `VISUAL-QA-TRACKER.md` (included in the copied template). A batch is only COMPLETE when all 10 have passed source/visual/navigation review; otherwise give the accurate progress and unresolved defects.
+
 ## Project initialization
 
 1. Treat the project at `project.json` as the only source repository for this folder. Replace every `REPLACE_*` placeholder with actual verified details.
