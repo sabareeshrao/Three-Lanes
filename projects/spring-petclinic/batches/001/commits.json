@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "batchId": "001",
+  "repository": "spring-projects/spring-petclinic",
+  "selection": "Earliest ten consecutive commits in main ancestry; verified parent chain and REST list",
+  "status": "IN PROGRESS",
+  "maxLearningLinesPerSubcommit": 100,
+  "commits": [
+    {
+      "position": 1,
+      "sha": "349fdef18bcf688709f19097c140c69724905768",
+      "parentSha": null,
+      "authoredAt": "2013-01-09T09:05:18Z",
+      "committedAt": "2013-01-09T09:05:18Z",
+      "title": "Initial commit",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/349fdef18bcf688709f19097c140c69724905768",
+      "fileCount": 1,
+      "files": [
+        {
+          "path": "README.md",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 4
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "sha": "f09d67cc1c216b445d01f1893f37ff391bb3b4b7",
+      "parentSha": "349fdef18bcf688709f19097c140c69724905768",
+      "authoredAt": "2009-05-05T17:22:49Z",
+      "committedAt": "2013-01-09T09:13:11Z",
+      "title": "petclinic 3 initial commit - wip",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/f09d67cc1c216b445d01f1893f37ff391bb3b4b7",
+      "fileCount": 32,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/.classpath",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 14
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.project",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 42
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/com.springsource.server.ide.jdt.core.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 2
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/org.eclipse.jdt.core.prefs",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 12
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/org.eclipse.jst.common.project.facet.core.prefs",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 3
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/org.eclipse.wst.common.component",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 10
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/org.eclipse.wst.common.project.facet.core.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 7
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/org.eclipse.wst.validation.prefs",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 6
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/org.maven.ide.eclipse.prefs",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 9
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/org.springframework.ide.eclipse.beans.core.prefs",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 3
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.settings/org.springframework.ide.eclipse.core.prefs",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 67
+        },
+        {
+          "path": "org.springframework.samples.petclinic/.springBeans",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 13
+        },
+        {
+          "path": "org.springframework.samples.petclinic/pom.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 106
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/HomeController.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 14
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/owner/Owner.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 26
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/owner/OwnerController.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 36
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/owner/OwnerRepository.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 13
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/owner/OwnersController.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 39
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/pet/Gender.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 5
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/pet/Pet.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 25
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/pet/PetController.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 41
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/pet/PetRepository.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 9
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/util/Measurement.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 10
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/util/ResponseContext.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 9
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/util/Unit.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 5
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/resources/log4j.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 42
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/home.jsp",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 12
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/spring/app-config.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 14
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/spring/mvc-config.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 36
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/urlrewrite.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 12
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/web.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 36
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/test/resources/log4j.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 42
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "sha": "7ff5e857fdb41a9f3e012c56390c2baa1f8b0f3e",
+      "parentSha": "f09d67cc1c216b445d01f1893f37ff391bb3b4b7",
+      "authoredAt": "2009-05-05T17:30:38Z",
+      "committedAt": "2013-01-09T09:13:11Z",
+      "title": "app deploys and runs - initial commit",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/7ff5e857fdb41a9f3e012c56390c2baa1f8b0f3e",
+      "fileCount": 3,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/HomeController.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 9
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/owner/StubOwnerRepository.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 21
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/pet/StubPetRepository.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 15
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "sha": "556824d7c7f31405deb6ba7bc066cf957eed0be5",
+      "parentSha": "7ff5e857fdb41a9f3e012c56390c2baa1f8b0f3e",
+      "authoredAt": "2009-05-05T22:00:59Z",
+      "committedAt": "2013-01-09T09:13:12Z",
+      "title": "styles",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/556824d7c7f31405deb6ba7bc066cf957eed0be5",
+      "fileCount": 9,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/pom.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 54
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/home.jsp",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 17
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/spring/mvc-config.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 21
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/urlrewrite.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 10
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/web.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 18
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/images/banner-graphic.png",
+          "patchAvailable": false,
+          "instructionalDiffLineCount": null
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/images/pets.png",
+          "patchAvailable": false,
+          "instructionalDiffLineCount": null
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/images/springsource-logo.png",
+          "patchAvailable": false,
+          "instructionalDiffLineCount": null
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/styles/main.css",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 118
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "sha": "d5cf15107a3dc797354e5d3c353a846f377a64a1",
+      "parentSha": "556824d7c7f31405deb6ba7bc066cf957eed0be5",
+      "authoredAt": "2009-05-05T22:12:23Z",
+      "committedAt": "2013-01-09T09:13:12Z",
+      "title": "will add css later",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/d5cf15107a3dc797354e5d3c353a846f377a64a1",
+      "fileCount": 4,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/HomeController.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 8
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/owner/Owner.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 6
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/java/org/springframework/samples/petclinic/owner/OwnersController.java",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 13
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/styles/main.css",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 118
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "sha": "e7a6c22ef05ba86c57477b3971818459c471f6e6",
+      "parentSha": "d5cf15107a3dc797354e5d3c353a846f377a64a1",
+      "authoredAt": "2009-05-05T22:14:54Z",
+      "committedAt": "2013-01-09T09:13:12Z",
+      "title": "logging",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/e7a6c22ef05ba86c57477b3971818459c471f6e6",
+      "fileCount": 2,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/src/main/resources/log4j.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 8
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/test/resources/log4j.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 8
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "sha": "d8014ae193f5190625a338c4d7faf095ddcd65bd",
+      "parentSha": "e7a6c22ef05ba86c57477b3971818459c471f6e6",
+      "authoredAt": "2009-05-06T16:37:16Z",
+      "committedAt": "2013-01-09T09:13:12Z",
+      "title": "petclinic tiles",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/d8014ae193f5190625a338c4d7faf095ddcd65bd",
+      "fileCount": 2,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/layouts/page.jsp",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 45
+        },
+        {
+          "path": "org.springframework.samples.petclinic/src/main/webapp/WEB-INF/tiles.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 21
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "sha": "098cfb60b6de7d75d9c2d39f6b2ee23b8b6ead43",
+      "parentSha": "d8014ae193f5190625a338c4d7faf095ddcd65bd",
+      "authoredAt": "2009-05-06T17:50:03Z",
+      "committedAt": "2013-01-09T09:13:12Z",
+      "title": "upgrade to spring 3.0.0.m3",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/098cfb60b6de7d75d9c2d39f6b2ee23b8b6ead43",
+      "fileCount": 1,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/pom.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 21
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "sha": "24ea3e9916d08cd2034f4f97d4af844ebf7c2bae",
+      "parentSha": "098cfb60b6de7d75d9c2d39f6b2ee23b8b6ead43",
+      "authoredAt": "2009-05-06T17:55:57Z",
+      "committedAt": "2013-01-09T09:13:13Z",
+      "title": "artifact id update",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/24ea3e9916d08cd2034f4f97d4af844ebf7c2bae",
+      "fileCount": 1,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/pom.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 10
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "sha": "775e85dd1716c8c3da53722a645f2cd51bdf4abc",
+      "parentSha": "24ea3e9916d08cd2034f4f97d4af844ebf7c2bae",
+      "authoredAt": "2009-05-06T18:02:27Z",
+      "committedAt": "2013-01-09T09:13:13Z",
+      "title": "polish",
+      "githubUrl": "https://github.com/spring-projects/spring-petclinic/commit/775e85dd1716c8c3da53722a645f2cd51bdf4abc",
+      "fileCount": 1,
+      "files": [
+        {
+          "path": "org.springframework.samples.petclinic/pom.xml",
+          "patchAvailable": true,
+          "instructionalDiffLineCount": 8
+        }
+      ]
+    }
+  ]
+}
