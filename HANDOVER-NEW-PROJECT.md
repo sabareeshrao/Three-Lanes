@@ -59,6 +59,10 @@ Never use a diagram that has overlapping labels, off-canvas elements, bulky arro
 
 **Required audit:** visually inspect at 1440px and 390px, test source links and click-to-toggle, compare before/after, and check layout/scroll persistence for each applicable step. Copy `projects/_template/VISUAL-QA-TRACKER.md` into each new project. A batch is only COMPLETE after **10/10 commit entries** pass these checks. Report actual progress and defects if anything is unfinished; do not invent quality scores or inspection results.
 
+## Strict limit for large commits: 100-line learning subcommits
+
+See [SUBCOMMIT-100-LINE-RULE.md](./SUBCOMMIT-100-LINE-RULE.md), which is mandatory for any new project. A real commit with thousands of lines must be broken into as many **small, cohesive numbered learning subcommits** as required. Each subcommit covers and displays **at most 100 physical code/diff lines across all its files** (including added, removed, and context). Do not truncate at 100; cover **all changed lines** of the original verified commit across the sequence and audit line-range coverage. Preserve real SHA, path, old/new line numbers, dependencies, Before/After, and clickable SVG-to-code navigation. Large full-file archival/source views remain available. A batch is still 10 real GitHub commits even if their subcommit count is far greater than 10.
+
 ## 3. Approved product behavior — preserve exactly
 
 1. Three lanes: backend SVG/architecture **left**, commit/substep rail **middle**, focused frontend UI **right**.
