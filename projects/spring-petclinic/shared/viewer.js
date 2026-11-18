@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const byId=x=>document.getElementById(x),H=v=>String(v==null?'':v).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[x])),BASE=document.documentElement.dataset.repository||'spring-projects/spring-petclinic';
 const BATCH=document.documentElement.dataset.batch||'001',STORAGE='three-lanes-'+(BASE==='spring-projects/spring-petclinic'?'':'nanoGPT-')+'b'+BATCH+'-v2',VERT='three-lanes-'+(BASE==='spring-projects/spring-petclinic'?'':'nanoGPT-')+'b'+BATCH+'-scroll',MAX_LINES=100;
-let data=[],commits=[],index=0,mode='view',tab='compare',selectedFile='',renderToken=0,sourceToken=0,activePeek={backend:null,frontend:null},restoreDone=false,pageFloor=0,expandedCommit=null;
+let data=[],commits=[],index=0,mode='view',tab='compare',selectedFile='',renderToken=0,sourceToken=0,activePeek={backend:null,frontend:null},restoreDone=false,pageFloor=0;
 const store=(k,v)=>{try{localStorage.setItem(k,v)}catch{}},read=k=>{try{return localStorage.getItem(k)}catch{return null}};
 try{const v=JSON.parse(read(STORAGE)||'{}');if(Number.isInteger(v.index))index=v.index;if(v.mode==='github'||v.mode==='view')mode=v.mode;}catch{}
 const shaUrl=(sha,path,line)=>'https://github.com/'+BASE+'/blob/'+encodeURIComponent(sha)+'/'+path.split('/').map(encodeURIComponent).join('/')+(Number.isInteger(line)&&line>0?'#L'+line:'');
@@ -29,12 +29,10 @@ function renderTimeline(){
  const priorTop=initial?Math.max(0,Number(read(RAIL_VERT))||0):rail.scrollTop;
  rail.innerHTML=commits.map(item=>{
   const all=data.filter(s=>s.commitPosition===item.position),active=selected?.commitPosition===item.position;
-  const cls=commitKind(all),at=all.findIndex(s=>s.id===selected?.id);
-  const windowed=active&&all.length>7&&expandedCommit!==item.position;
-  const lo=windowed?Math.max(0,Math.min(all.length-7,at-3)):0;
-  const visible=active?(windowed?all.slice(lo,lo+7):all):[];
-  let listing=visible.map(s=>'<button type="button" data-step="'+H(s.id)+'" class="'+stepKind(s)+(s.id===selected?.id?' chosen':'')+'"'+(s.id===selected?.id?' aria-current="step"':'')+'><strong>'+H(s.id)+'</strong><span class="label">'+H(short(s.title,27))+'</span></button>').join('');
-  if(active&&all.length>7)listing+='<button class="expandsteps" type="button" data-expand="'+item.position+'">'+(windowed?'Show all '+all.length+' steps':'Show fewer steps')+'</button>';
+  const cls=commitKind(all);
+  // All subcommits live inside a scrollable rail, not a 7-step paging window.
+  const visible=active?all:[];
+  const listing=visible.map(s=>'<button type="button" data-step="'+H(s.id)+'" class="'+stepKind(s)+(s.id===selected?.id?' chosen':'')+'"'+(s.id===selected?.id?' aria-current="step"':'')+'><strong>'+H(s.id)+'</strong><span class="label">'+H(short(s.title,27))+'</span></button>').join('');
   return '<div class="commitgroup '+cls+(active?' active':'')+'"><button class="commitbtn" type="button" data-commit="'+item.position+'" aria-label="Commit '+item.position+', '+H(item.title)+'"><span class="commitno '+cls+'">'+String(item.position).padStart(2,'0')+'</span><span><b>'+H(short(item.title,23))+'</b><small>'+H(item.sha.slice(0,8))+' · '+all.length+' steps</small></span></button>'+(active?'<div class="substeps">'+listing+'</div>':'')+'</div>';
  }).join('');
  rail.scrollTop=priorTop;
@@ -124,7 +122,7 @@ byId('viewMode').onclick=()=>{mode='view';render()};byId('githubMode').onclick=(
 byId('compareTab').onclick=()=>preserve(()=>{tab='compare';renderSource()});byId('diffTab').onclick=()=>preserve(()=>{tab='diff';renderSource()});byId('fullTab').onclick=()=>preserve(()=>{tab='source';renderSource()});
 byId('fileSelect').onchange=e=>preserve(()=>{selectedFile=e.target.value;renderSource()});
 byId('timeline').addEventListener('scroll',e=>{store(RAIL_VERT,String(Math.round(e.currentTarget.scrollTop)))},{passive:true});
-byId('timeline').onclick=e=>{const expand=e.target.closest('[data-expand]');if(expand){preserve(()=>{const id=Number(expand.dataset.expand);expandedCommit=expandedCommit===id?null:id;renderTimeline()});return}const step=e.target.closest('[data-step]');if(step){const i=data.findIndex(s=>s.id===step.dataset.step);if(i>=0)changeSelection(i);return}const c=e.target.closest('[data-commit]');if(c){const i=data.findIndex(s=>s.commitPosition===Number(c.dataset.commit));if(i>=0)changeSelection(i)}};
+byId('timeline').onclick=e=>{const step=e.target.closest('[data-step]');if(step){const i=data.findIndex(s=>s.id===step.dataset.step);if(i>=0)changeSelection(i);return}const c=e.target.closest('[data-commit]');if(c){const i=data.findIndex(s=>s.commitPosition===Number(c.dataset.commit));if(i>=0)changeSelection(i)}};
 for(const side of ['backend','frontend']){
  byId(side+'Links').addEventListener('click',e=>{const btn=e.target.closest('[data-source-ref]');if(btn)previewTarget(+btn.dataset.sourceRef)});
  byId(side+'Peek').addEventListener('click',e=>{if(e.target.closest('[data-close-peek]'))preserve(()=>{byId(side+'Peek').hidden=true;activePeek[side]=null})});
