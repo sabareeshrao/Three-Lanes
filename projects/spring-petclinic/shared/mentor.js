@@ -31,7 +31,7 @@
   const [a,b]=special||kinds[s.category]||kinds.other;
   const t=s.sourceTargets?.[0],file=s.parts?.[0]?.path?.split('/').pop()||'source';
   const link=t?'<a href="https://github.com/spring-projects/spring-petclinic/blob/'+encodeURIComponent(t.sha)+'/'+t.path.split('/').map(encodeURIComponent).join('/')+'#L'+t.line+'" rel="noopener noreferrer" target="_blank">'+esc(t.label||file)+' · L'+t.line+' ↗</a>':'<span>'+esc(file)+'</span>';
-  return '<div class="mentor-head"><span class="mentor-icon">✦</span> MENTOR EXPLANATION <span class="mentor-id">'+esc(s.id)+'</span></div>'+
+  return '<summary class="mentor-head"><span class="mentor-icon">✦</span> MENTOR EXPLANATION <span class="mentor-id">'+esc(s.id)+'</span></summary>'+
    '<div class="mentor-content"><div class="mentor-part"><b>Why does this matter?</b><p>'+esc(a)+'</p></div>'+
    '<div class="mentor-part"><b>Now connect it to the source</b><p>'+esc(b)+'</p></div>'+
    '<div class="mentor-follow"><span>READ THE REAL CODE</span>'+link+'</div></div>';

@@ -56,17 +56,61 @@ byId('summary').innerHTML='<div><h2>Commit '+s.commitPosition+' · '+H(s.commitT
 byId('commitLink').href=commitUrl(s.sha);
 }
 function linksMarkup(s){return s.sourceTargets.map((t,i)=>'<span class="refunit"><button type="button" data-source-ref="'+i+'">'+H(short(t.label,22))+':'+t.line+'</button><a href="'+H(shaUrl(t.sha,t.path,t.line))+'" target="_blank" rel="noopener noreferrer" aria-label="Open '+H(t.label)+' on GitHub">↗</a></span>').join('')}
+
+/* Render-only neutral palette for saved teaching visuals.
+   Do not edit source code, historical GitHub links, or green added-code highlighting. */
+function neutralVisualColor(hex){
+ const digits=hex.slice(1);if(!/^(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(digits))return hex;
+ const full=digits.length===3?digits.split('').map(x=>x+x).join(''):digits;
+ const r=parseInt(full.slice(0,2),16)/255,g=parseInt(full.slice(2,4),16)/255,b=parseInt(full.slice(4,6),16)/255;
+ const max=Math.max(r,g,b),min=Math.min(r,g,b),delta=max-min;
+ if(delta<0.015)return hex;
+ let hue;
+ if(max===r)hue=60*(((g-b)/delta)%6);
+ else if(max===g)hue=60*((b-r)/delta+2);
+ else hue=60*((r-g)/delta+4);
+ if(hue<0)hue+=360;
+ // Mint, lime, teal, and blue-green are removed from diagrams/previews only.
+ if(hue<68||hue>191)return hex;
+ const light=(max+min)/2;
+ if(light>=.95)return '#F7F8FA';
+ if(light>=.87)return '#EEF2F7';
+ if(light>=.76)return '#DEE6EF';
+ if(light>=.62)return '#B9C9DA';
+ if(light>=.46)return '#7D98B6';
+ if(light>=.30)return '#4D739C';
+ return '#335777';
+}
+function neutralVisualPalette(markup){
+ return String(markup).replace(/#(?:[0-9a-f]{6}|[0-9a-f]{3})\b/gi,neutralVisualColor);
+}
+function neutralPreviewPalette(html){
+ // Recolor presentation CSS, not text/code examples, scripts, or historical source links.
+ return String(html).replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,neutralVisualPalette)
+  .replace(/\b(?:fill|stroke|stop-color|bgcolor|color)\s*=\s*(["'])([^"']*)\1/gi,
+   (full,q,v)=>full.replace(v,neutralVisualPalette(v)));
+}
+
 function renderVisual(){const s=current(),token=++renderToken;for(const side of ['backend','frontend']){byId(side+'Peek').hidden=true;byId(side+'Peek').replaceChildren();activePeek[side]=null}
 const backend=byId('backendGraphic'),frontend=byId('frontendGraphic');
 const backendLinks=byId('backendLinks'),frontendLinks=byId('frontendLinks');
-for(const side of ['backend','frontend']){const guide=byId(side+'Mentor');guide.hidden=side!==s.lane;guide.innerHTML=guide.hidden?'':window.THREE_LANES_MENTOR?.render(s,BATCH)||'';}
+for(const side of ['backend','frontend']){const guide=byId(side+'Mentor');guide.hidden=side!==s.lane;if(guide.dataset.stepId!==s.id){guide.open=false;guide.dataset.stepId=s.id;}guide.innerHTML=guide.hidden?'':window.THREE_LANES_MENTOR?.render(s,BATCH)||'';}
 if(s.lane==='backend'){
  backend.innerHTML='<div class="loading">Loading commit-specific SVG…</div>';
- fetch(s.visual).then(r=>{if(!r.ok)throw Error('SVG unavailable (HTTP '+r.status+')');return r.text()}).then(svg=>{if(token!==renderToken)return;if(!/^\s*<svg[\s\S]*<\/svg>\s*$/.test(svg))throw Error('Invalid SVG asset');preserve(()=>{backend.innerHTML=svg;})}).catch(e=>{if(token===renderToken)backend.innerHTML='<div class="error">'+H(e.message)+'</div>'});
+ fetch(s.visual).then(r=>{if(!r.ok)throw Error('SVG unavailable (HTTP '+r.status+')');return r.text()}).then(svg=>{if(token!==renderToken)return;if(!/^\s*<svg[\s\S]*<\/svg>\s*$/.test(svg))throw Error('Invalid SVG asset');preserve(()=>{backend.innerHTML=neutralVisualPalette(svg);})}).catch(e=>{if(token===renderToken)backend.innerHTML='<div class="error">'+H(e.message)+'</div>'});
  frontend.innerHTML='<div class="quiet"><span class="quiet-glyph">▣</span><b>No frontend source changed</b><p>This subcommit concerns source code or configuration outside the presentation layer.</p></div>';
 }else{
  backend.innerHTML='<div class="quiet"><span class="quiet-glyph">◇</span><b>Presentation-focused change</b><p>The source change is in JSP, CSS or historical static assets. No backend source is fabricated.</p></div>';
- frontend.innerHTML='<iframe sandbox="allow-scripts allow-popups" scrolling="no" title="'+H(s.title)+' — historical presentation illustration" src="'+H(s.visual)+'"></iframe>';
+ frontend.innerHTML='<div class="loading">Loading historical UI preview…</div>';
+ fetch(s.visual).then(r=>{if(!r.ok)throw Error('UI preview HTTP '+r.status);return r.text()}).then(html=>{
+  if(token!==renderToken)return;
+  preserve(()=>{
+   frontend.innerHTML='<iframe sandbox="allow-scripts allow-popups" scrolling="no" title="'+H(s.title)+' — historical presentation illustration"></iframe>';
+   const base='<base href="'+H(new URL(s.visual,location.href).href)+'">';
+   const framed=html.replace(/<head([^>]*)>/i,(_,attributes)=>'<head'+attributes+'>'+base);
+   frontend.querySelector('iframe').srcdoc=neutralPreviewPalette(framed);
+  });
+ }).catch(e=>{if(token===renderToken)frontend.innerHTML='<div class="error">Historical UI preview unavailable: '+H(e.message)+'</div>'});
 }
 for(const side of ['backend','frontend']){
  const links=byId(side+'Links');links.hidden=side!==s.lane||!s.sourceTargets.length;

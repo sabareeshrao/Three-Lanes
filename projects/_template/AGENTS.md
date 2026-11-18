@@ -32,3 +32,7 @@ When a real commit expands into dozens or hundreds of learning subcommits, **sho
 Use the root handover's acceptance checklist. In particular: historical GitHub source lines, View/GitHub modes, default full-width View here Before/After, clickable SVG-source toggle, keyboard controls, preserved scroll, responsive UI, and accurate source dependencies. Report verifiable links and exact commit SHAs. Never claim a GitHub Pages site is published before verifying it.
 
 Start implementing the user's specific project request once the target repo and goal are provided; don't ask them to re-paste the handover.
+
+## Strict neutral visual skin
+
+For all derived project viewers, preserve the approved charcoal/dark-grey prototype feel. **No green film, mint gradient, green-tinted card, active-step background, batch selector or mentor box**. The mentor explanation must be a collapsed-by-default native disclosure beneath its visual. Only authentic source-code add highlights and the compact **green frontend commit chip** may use green; backend chips are blue, full-stack chips orange. The middle commit rail stays independently scrollable and its selected row neutral. Saved learning SVGs/UI previews must be presented without mint/green wash (use neutral or blue-grey instead). Do not modify the original root prototype while working on project routes.

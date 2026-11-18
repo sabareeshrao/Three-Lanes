@@ -34,3 +34,7 @@ Start implementing the user's specific project request once the target repo and 
 All Spring Petclinic historical batches belong under `projects/spring-petclinic/`. Preserve the original root `index.html`, `styles/app.css`, `src/app.js`, and original visual libraries byte-for-byte. Batch 001 must remain a separate page and data/visual set. Any proposal to refactor the shared prototype requires explicit separate user authorization; it is **not** authorized by 'continue Batch 001'.
 
 Before calling a batch COMPLETE, read `VISUAL-QA-TRACKER.md` and audit all 34 saved step visuals at desktop and mobile sizes, not just existence or source syntax.
+
+## Strict neutral visual skin
+
+For all derived project viewers, preserve the approved charcoal/dark-grey prototype feel. **No green film, mint gradient, green-tinted card, active-step background, batch selector or mentor box**. The mentor explanation must be a collapsed-by-default native disclosure beneath its visual. Only authentic source-code add highlights and the compact **green frontend commit chip** may use green; backend chips are blue, full-stack chips orange. The middle commit rail stays independently scrollable and its selected row neutral. Saved learning SVGs/UI previews must be presented without mint/green wash (use neutral or blue-grey instead). Do not modify the original root prototype while working on project routes.

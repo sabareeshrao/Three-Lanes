@@ -97,3 +97,49 @@ html[data-batch="001"] a[data-batch-link="001"],html[data-batch="002"] a[data-ba
   .workspace>.rail{height:clamp(210px,39vh,345px)}
   .workspace>.rail .railitems{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Project viewer skin: neutral charcoal only.
+   Semantic EXCEPTIONS: green FRONTEND commit chips and green added-code diff rows.
+   This block overrides the old mint/green card and selected-control treatments. */
+:root{--teal:#8c9aad;--green:#6ecf98}
+body{background:#212121}
+button:focus-visible,a:focus-visible,select:focus-visible{outline-color:#90a9c7}
+a{color:#bdd0ea}
+.logo{color:#dce2e9;background:#363636}
+.eyebrow{color:#adb6c0}
+.chip.code{color:#cad6e4;border-color:#536174;background:#32363c}
+.lane-chip.backend{background:#244862;color:#b5daf7}
+.lane-chip.frontend{background:#225337;color:#b1eccc}
+.quiet .quiet-glyph{color:#587fa6}
+.commitgroup.active{border-color:#68717c;background:#303237}
+.commitbtn:hover,.substeps button:hover{background:#3e4146}
+.substeps button.chosen{background:#444a53;color:#f0f3f7}
+.substeps button strong{color:#acb8c5}
+.commitno.backend{background:#254762;color:#a8dafa}
+.commitno.frontend{background:#225337;color:#b1eccc}
+.commitno.fullstack{background:#7b4625;color:#ffd2a4}
+.substeps button.expandsteps{border-color:#586271;color:#d2dbe6;background:#343941}
+.substeps button.expandsteps:hover{background:#424a56}
+.refunit a,.inspect-head>a{color:#bdd0ea}
+.source-primary button.chosen,.source-secondary button.chosen{background:#495566;border-color:#75869a;color:#fff}
+html[data-batch="001"] a[data-batch-link="001"],
+html[data-batch="002"] a[data-batch-link="002"]{color:#f4f5f7;background:#50545b}
+[data-target]:hover{filter:drop-shadow(0 0 2px #8298b3)}
+[data-target]:focus{outline-color:#90a9c7}
+.auditline{color:#abb4bf}
+.mentor{margin:0 9px 10px;border:1px solid #4c4c4c;border-radius:9px;background:#2b2b2b;overflow:hidden}
+.mentor-head{display:flex;align-items:center;gap:8px;padding:10px 12px;border:0;color:#e7e7e7;font-size:11px;font-weight:760;letter-spacing:.5px;background:#303030}
+details.mentor>summary{cursor:pointer;list-style:none;user-select:none}
+details.mentor>summary::-webkit-details-marker{display:none}
+details.mentor>summary::after{content:"⌄";font-size:17px;color:#b8c2cf;line-height:1;margin-left:3px;transition:transform .15s ease}
+details.mentor[open]>summary::after{transform:rotate(180deg)}
+details.mentor>summary:hover{background:#393939}
+details.mentor>summary:focus-visible{outline:2px solid #91a5c0;outline-offset:-2px}
+.mentor-icon{font-size:15px;color:#c7d0da}
+.mentor-id{margin-left:auto;color:#b1b9c3}
+.mentor-content{border-top:1px solid #474747;padding:13px 14px;display:grid;gap:12px}
+.mentor-part b{color:#f3f3f3}
+.mentor-part p{color:#d1d1d1}
+.mentor-follow{border:1px solid #4c4c4c;background:#313131}
+.mentor-follow span{color:#c5cad0}
+.mentor-follow a{color:#bdd0ea}
