@@ -30,6 +30,10 @@ try{
   await page.goto(base+'/design-system/catalog/',{waitUntil:'networkidle'});
   await page.locator('.pattern-card').first().waitFor({timeout:12000});
   assert(await page.locator('.pattern-card').count()===manifest.patterns.length,'Catalog does not show all approved patterns at '+viewport.name);
+  // Images below the viewport are lazy. Explicitly request all previews before auditing.
+  await page.locator('.pattern-preview img').evaluateAll(imgs=>imgs.forEach(img=>{img.loading='eager';}));
+  await page.waitForFunction(()=>[...document.querySelectorAll('.pattern-preview img')].length>0&&
+    [...document.querySelectorAll('.pattern-preview img')].every(img=>img.complete&&img.naturalWidth>0&&img.naturalHeight>0),null,{timeout:20000});
   const images=await page.locator('.pattern-preview img').evaluateAll(imgs=>imgs.every(img=>img.complete&&img.naturalWidth>0&&img.naturalHeight>0));
   assert(images,'Diagram SVG specimens failed to load at '+viewport.name);
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+3),'Catalog horizontal overflow at '+viewport.name);
