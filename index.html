@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212121"><title>Spring Petclinic | Three-Lane Commit Lab</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles/app.css?v=apple-type-20261118"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212121"><title>Spring Petclinic | Three-Lane Commit Lab</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles/app.css?v=stable-lanes-20261118"></head>
 <body>
 <div class="app">
 <header class="top"><div class="brand"><div class="brandicon">⟠</div><div><h1 class="title">PetClinic <span>Commit Lab</span></h1></div></div></header>
@@ -21,9 +21,20 @@
 <section class="lane" id="backendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">◇</span><div><div class="lanetitle">Backend / system internals</div><div class="lanesub" id="backendName">Controller and database flow</div></div></div><span class="lanechip" id="backendInfo">ACTIVE</span></div><div class="blocktitle"><span>01 &nbsp; BACKEND ARCHITECTURE</span></div><div class="visual" id="backendGraphic"></div><div class="source-nav" id="backendSourceNav" hidden aria-label="Backend source navigation"></div><div class="source-peek" id="backendSourcePeek" hidden aria-live="polite"></div><div class="backend-note" id="backendInfoLine" hidden></div><div class="source-region" id="backendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="backendSourceActions" role="group" aria-label="Source code view"><div class="source-primary-row"><button type="button" id="backendViewHereTab" data-code-mode="compare" class="source-view-here chosen">View</button><button type="button" id="backendDiffTab" data-code-mode="diff" class="source-view-here">Commit changes</button><select id="backendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="backendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div></div><div class="filebar"><span class="filename" id="backendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="backendCode"></div><div class="source-stats" id="backendCodeStats"></div></div></section>
 <aside class="rail" aria-label="Commit timeline"><div class="railhead">COMMIT<small>STEP</small></div><div class="railscroll" id="railItems"></div></aside>
 <section class="lane" id="frontendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">▣</span><div><div class="lanetitle">Frontend / what users see</div><div class="lanesub" id="frontendName">Rendered UI and relevant markup</div></div></div><span class="lanechip" id="frontendInfo">PERSISTENT UI</span></div><div class="blocktitle"><span>01 &nbsp; UI CHANGE</span></div><div class="visual" id="frontendGraphic"></div><div class="source-nav" id="frontendSourceNav" hidden aria-label="Frontend source navigation"></div><div class="source-peek" id="frontendSourcePeek" hidden aria-live="polite"></div><div class="source-region" id="frontendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="frontendSourceActions" role="group" aria-label="Source code view"><div class="source-primary-row"><button type="button" id="frontendViewHereTab" data-code-mode="compare" class="source-view-here chosen">View</button><button type="button" id="frontendDiffTab" data-code-mode="diff" class="source-view-here">Commit changes</button><select id="frontendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="frontendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div></div><div class="filebar"><span class="filename" id="frontendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="frontendCode"></div><div class="source-stats" id="frontendCodeStats"></div></div></section>
+
+<section id="sharedSourceDock" class="shared-source-dock" aria-label="Shared source controls">
+  <span class="shared-source-label">REAL SOURCE CODE</span>
+  <div class="shared-source-controls">
+    <button type="button" id="sharedViewTab" data-shared-code-mode="compare" class="source-view-here chosen" aria-pressed="true">View</button>
+    <button type="button" id="sharedDiffTab" data-shared-code-mode="diff" class="source-view-here" aria-pressed="false">Commit changes</button>
+    <select id="sharedFileSelect" class="source-fileselect" aria-label="Choose a changed file from this commit"></select>
+    <a id="sharedFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a>
+  </div>
+</section>
+
   <section class="wide-compare" id="wideCompare" hidden aria-label="Full width GitHub change comparison">
   <div class="compare-top"><div><div class="compare-kicker">SOURCE INSPECTOR</div><h3 id="compareTitle">Before / After</h3><span id="comparePath"></span></div><button class="compare-close" type="button" id="closeCompare" aria-label="Close code comparison">Close ×</button></div>
-  <div class="compare-columns"><div class="compare-pane"><div class="compare-panehead">Before commit</div><div id="compareBefore"></div></div><div class="compare-pane"><div class="compare-panehead">After commit</div><div id="compareAfter"></div></div></div>
+  <div class="compare-columns" id="compareColumns"><div class="compare-pane"><div class="compare-panehead">Before commit</div><div id="compareBefore"></div></div><div class="compare-pane"><div class="compare-panehead">After commit</div><div id="compareAfter"></div></div></div><div id="compareDiff" class="compare-diff" hidden></div>
 </section>
 </main>
 
@@ -32,6 +43,6 @@
 <script src="src/data/petclinic-demo.js"></script><script src="src/visuals/backend-svg/petclinic-diagrams.js"></script><script src="src/visuals/frontend-ui/petclinic-previews.js"></script><script src="src/visuals/visual-registry.js"></script>
 <script src="src/visuals/asset-library.js"></script>
 <script src="src/navigation/source-manifest.js"></script>
-<script src="src/navigation/code-navigation.js"></script>
-<script src="src/app.js"></script>
+<!-- SVG drawings are static and have no click-to-code focus. -->
+<script src="src/app.js?v=stable-lanes-20261118"></script>
 </body></html>

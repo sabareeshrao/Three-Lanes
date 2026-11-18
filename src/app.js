@@ -62,6 +62,7 @@ const exactCommitCache=new Map();
 const originalFileCache=new Map();
 let codeMode={backend:'compare',frontend:'compare'};
 let chosenFile={backend:null,frontend:null};
+let selectedSharedFile=null,inspectorOpen=true;
 let exactFetchSeq=0;
 
 let modeEpoch=0;
@@ -203,83 +204,59 @@ function compareRows(commit,file,which){
   }).join('');
 }
 function showComparison(side,commit,file){
-  const holder=byId('wideCompare');
-  holder.hidden=false;
+  const holder=byId('wideCompare');holder.hidden=false;
+  byId('compareColumns').hidden=false;byId('compareDiff').hidden=true;
   byId('compareTitle').textContent=`${namePath(file.filename)} · before / after`;
   byId('comparePath').textContent=file.filename;
   byId('compareBefore').innerHTML=compareRows(commit,file,'old');
   byId('compareAfter').innerHTML=compareRows(commit,file,'new');
   holder.dataset.side=side;
 }
+function showSharedDiff(side,commit,file){
+  const holder=byId('wideCompare');holder.hidden=false;
+  byId('compareColumns').hidden=true;byId('compareDiff').hidden=false;
+  byId('compareTitle').textContent=`${namePath(file.filename)} · commit changes`;
+  byId('comparePath').textContent=file.filename;
+  byId('compareDiff').innerHTML=completeDiffHtml(commit,file);
+  holder.dataset.side=side;
+}
+function showSharedSourceState(message,error=false){
+  const holder=byId('wideCompare');holder.hidden=!inspectorOpen;
+  byId('compareColumns').hidden=true;byId('compareDiff').hidden=false;
+  byId('compareTitle').textContent='Verified GitHub source';
+  byId('comparePath').textContent=current().s.file||'';
+  byId('compareDiff').innerHTML='<div class="source-state '+(error?'source-error':'')+'">'+H(message)+'</div>';
+  holder.dataset.side=current().s.kind==='frontend'?'frontend':'backend';
+}
 function hideComparison(){return keepReadingLevel(()=>{byId('wideCompare').hidden=true;delete byId('wideCompare').dataset.side})}
 function renderSourcePanel(side){return keepReadingLevel(()=>renderSourcePanelCore(side))}
 function renderSourcePanelCore(side){
-  if(mode==='demo'){hideComparison();renderGuidedSource(side);return}
-  const lane=byId(side+'Lane'),panel=byId(side+'SourceActions'),code=byId(side+'Code'),region=byId(side+'SourceRegion');
-  if(!panel||!code)return;
-  const {c,s}=current();
-  const entry=exactCommitCache.get(c.sha);
-  const raw=entry?.raw,curated=DEMO[selection.ci];
-  const filebar=byId(side+'File');
-  if(!raw){
-    if(byId('wideCompare').dataset.side===side)hideComparison();
-    region.classList.remove('compare-active');
-    region.style.display=s.kind===side?'':'none';
-    panel.style.display='';
-    const loading=entry?.error?`Could not load GitHub source: ${entry.error}`:'Loading exact GitHub commit source…';
-    filebar.textContent=s.file;
-    byId(side+'CodeStats').textContent='';
-    code.innerHTML=`<div class="source-state ${entry?.error?'source-error':''}">${H(loading)} ${entry?.error?'<button class="source-retry" type="button" data-exact-retry="1">Retry</button>':''}</div>`;
-    byId(side+'SourceActions').style.display='none';
-    return;
+  // The one shared footer serves the selected step, irrespective of which lane it belongs to.
+  const {c,s}=current(),activeSide=s.kind==='frontend'?'frontend':'backend';
+  if(side!==activeSide)return;
+  const entry=exactCommitCache.get(c.sha),raw=entry?.raw;
+  const files=raw?.files||[],wanted=selectedSharedFile||s.file;
+  const target=files.find(f=>f.filename===wanted||f.previous_filename===wanted)
+    ||files.find(f=>f.filename===s.file)||files[0]||null;
+  const picker=byId('sharedFileSelect');
+  picker.innerHTML=files.length?files.map(f=>'<option value="'+H(f.filename)+'"'+(target&&f.filename===target.filename?' selected':'')+'>'+H(f.filename)+(f.status==='removed'?' (deleted)':'')+'</option>').join('')
+    :'<option value="">'+(entry?.error?'Source unavailable':'Loading changed files…')+'</option>';
+  picker.disabled=!target;
+  byId('sharedFileLink').href=target?fileUrl(raw,target,null,target.status==='removed')
+    :'https://github.com/'+DEFAULT_REPO+'/commit/'+encodeURIComponent(c.sha);
+  byId('sharedFileLink').textContent=target?'Open file ↗':'GitHub commit ↗';
+  syncOriginalSourceLink();
+  for(const view of ['compare','diff']){
+    const button=byId(view==='compare'?'sharedViewTab':'sharedDiffTab');
+    const selected=codeMode[activeSide]===view;
+    button.classList.toggle('chosen',selected);
+    button.setAttribute('aria-pressed',String(selected));
   }
-  const files=(raw.files||[]).filter(f=>{
-    const kind=changedFileKind(f,curated);
-    return kind===side;
-  });
-  // A missing lane never displays invented code; the relevant code remains under its lane.
-  if(!files.length){region.style.display='none';return}
-  region.style.display='';panel.style.display='';
-  region.classList.toggle('compare-active',codeMode[side]==='compare');
-  const selectedPath=chosenFile[side];
-  const relevant=files.some(f=>f.filename===s.file)?s.file:files[0].filename;
-  const target=files.find(f=>f.filename===selectedPath)||files.find(f=>f.filename===relevant)||files[0];
-  const selectEl=byId(side+'FileSelect');
-  selectEl.innerHTML=files.map(f=>`<option value="${H(f.filename)}" ${f.filename===target.filename?'selected':''}>${H(f.filename)}${f.status==='removed'?' (deleted)':''}</option>`).join('');
-  selectEl.title='';
-  byId(side+'SourceActions').style.display='flex';
-  byId(side+'DiffTab').classList.toggle('chosen',codeMode[side]==='diff');
-  byId(side+'ViewHereTab').classList.toggle('chosen',codeMode[side]==='compare');
-  const targetUrl=fileUrl(raw,target,null,target.status==='removed');
-  byId(side+'FileLink').href=targetUrl;
-  if(side===(s.kind==='frontend'?'frontend':'backend'))syncOriginalSourceLink();
-  byId(side+'FileLink').textContent='Open file ↗';
-  const rowCount=codeMode[side]==='diff'?parseFullPatch(target.patch||'').rows.length:null;
-  filebar.innerHTML=`<b>${H(namePath(target.filename))}</b><span>${H(target.filename)}</span>`;
-  const versionLabel=target.status==='removed'?' · version before deletion':'';
-  byId(side+'CodeStats').textContent=codeMode[side]==='diff'?`${rowCount||0} diff lines`:`Full file${versionLabel}`;
-  if(codeMode[side]==='diff'){
-    if(byId('wideCompare').dataset.side===side)hideComparison();
-    code.innerHTML=completeDiffHtml(raw,target);
-    return;
-  }
-  if(codeMode[side]==='compare'){
-    // The full-width before/after inspector is the code view, not a duplicate below a diff.
-    region.classList.add('compare-active');
-    code.innerHTML='';
-    byId(side+'CodeStats').textContent='';
-    showComparison(side,raw,target);
-    return;
-  }
-  if(byId('wideCompare').dataset.side===side)hideComparison();
-  const ref=target.status==='removed'?(raw.parents?.[0]?.sha||raw.sha):raw.sha;
-  const path=target.status==='removed'?(target.previous_filename||target.filename):target.filename;
-  const key=ref+'|'+path;
-  const cached=originalFileCache.get(key);
-  if(!cached||cached.pending){code.innerHTML='<div class="source-state">Loading complete original file…</div>';if(!cached)fetchOriginal(ref,path).then(()=>{const now=current();if(now.c.sha===raw.sha&&codeMode[side]==='source')renderSourcePanel(side)});return}
-  if(cached.error){code.innerHTML=`<div class="source-state source-error">${H(cached.error)} <button class="source-retry" type="button" data-file-retry="${H(side)}">Retry</button></div>`;return}
-  code.innerHTML=wholeSourceHtml(raw,target,cached.content,target.status==='removed');
-  byId(side+'CodeStats').textContent=`${cached.content.replace(/\r\n/g,'\n').replace(/\n$/,'').split('\n').length} original lines · ${H(shortSha(ref))}`;
+  if(!inspectorOpen){byId('wideCompare').hidden=true;return;}
+  if(!raw){showSharedSourceState(entry?.error?'GitHub source unavailable: '+entry.error:'Loading verified GitHub commit source…',!!entry?.error);return;}
+  if(!target){showSharedSourceState('GitHub returned no changed source files for this historical commit.',true);return;}
+  if(codeMode[activeSide]==='diff')showSharedDiff(activeSide,raw,target);
+  else showComparison(activeSide,raw,target);
 }
 async function fetchOriginal(ref,path,force=false){
   const key=ref+'|'+path;
@@ -329,7 +306,7 @@ function originalSourceUrl(){
   const {c,s}=current();
   const side=s.kind==='frontend'?'frontend':'backend';
   const raw=exactCommitCache.get(c.sha)?.raw;
-  const wanted=chosenFile[side]||s.file;
+  const wanted=selectedSharedFile||s.file;
   const file=raw?.files?.find(f=>f.filename===wanted||f.previous_filename===wanted);
   const deleted=file?.status==='removed';
   const revision=deleted?(raw.parents?.[0]?.sha||c.sha):c.sha;
@@ -349,8 +326,21 @@ function head(){
  updateStepper();
 }
 
-function timeline(){const rail=byId('railItems');rail.innerHTML=commits.map((c,i)=>{let picked=i===selection.ci;let num=String(commitNumber(i));return `<div class="railitem ${H(c.kind)}"><button class="commitBtn ${H(c.kind)} ${picked?'selected':''}" data-c="${i}" data-s="0"><span class="no">${H(num)}</span><span class="mini">${H(shortSha(c.sha).slice(0,5))}</span></button>${picked?`<div class="substeps">${c.steps.map((s,j)=>`<button class="subbtn ${j===selection.si?'selected':''}" data-c="${i}" data-s="${j}">${H(commitNumber(i))}.${j+1}</button>`).join('')}</div>`:'<div style="height:13px"></div>'}</div>`}).join('');const active=rail.querySelector('.subbtn.selected');
-// No automatic scrolling: the timeline and both lanes expand in normal document flow.
+function timeline(){
+  const rail=byId('railItems');
+  rail.innerHTML=commits.map((commit,i)=>{
+    const selected=i===selection.ci,n=String(commitNumber(i));
+    const chip='<button type="button" class="commitBtn '+H(commit.kind)+' '+(selected?'selected':'')+'" data-c="'+i+'" data-s="0" aria-current="'+(selected?'true':'false')+'" aria-label="Commit '+H(n)+(selected?' current':'')+'"><span class="no">'+H(n)+'</span><span class="mini">'+H(shortSha(commit.sha).slice(0,5))+'</span></button>';
+    const steps=selected?'<div class="substeps">'+commit.steps.map((step,j)=>'<button type="button" class="subbtn '+(j===selection.si?'selected':'')+'" data-c="'+i+'" data-s="'+j+'" aria-current="'+(j===selection.si?'step':'false')+'" aria-label="Step '+H(n)+'.'+(j+1)+(j===selection.si?' current':'')+'">'+H(n)+'.'+(j+1)+'</button>').join('')+'</div>':'<div class="rail-gap" aria-hidden="true"></div>';
+    return '<div class="railitem '+H(commit.kind)+'">'+chip+steps+'</div>';
+  }).join('');
+  // Scroll the rail only when the current substep is outside its visible area.
+  const picked=rail.querySelector('.subbtn.selected')||rail.querySelector('.commitBtn.selected');
+  if(picked){
+    const pos=picked.offsetTop,bottom=pos+picked.offsetHeight;
+    if(pos<rail.scrollTop)rail.scrollTop=Math.max(0,pos-12);
+    else if(bottom>rail.scrollTop+rail.clientHeight)rail.scrollTop=bottom-rail.clientHeight+12;
+  }
 }
 function backendDiagram(s){if(s.kind==='frontend')return window.PETCLINIC_DIAGRAMS.quiet();if(mode==='demo'||s.curatedStep)return window.PETCLINIC_DIAGRAMS.draw(selection.ci+1,selection.si+1,s);const k=({petBirthdate:3,petEdit:4,visitDate:6,petNameUnique:7,ownerSearch:8,petAssociation:9,ownerLength:10,petNameLength:9})[s.feature];return window.PETCLINIC_DIAGRAMS.draw(k||0,k===7&&s.lang==='sql'?3:selection.si+1,s)}
 
@@ -360,7 +350,7 @@ function displayMobile(){return keepReadingLevel(displayMobileCore)}
 function displayMobileCore(){const isMobile=matchMedia('(max-width:820px)').matches;document.querySelector('.workspace').classList.toggle('mobile-both',isMobile&&mobileView==='both');byId('backendLane').classList.toggle('mobilehide',isMobile&&mobileView==='frontend');byId('frontendLane').classList.toggle('mobilehide',isMobile&&mobileView==='backend');for(const b of document.querySelectorAll('[data-mview]'))b.classList.toggle('active',b.dataset.mview===mobileView)}
 function renderBackend(){const {s}=current(),quiet=s.kind==='frontend';byId('backendInfo').textContent=quiet?'NO BACKEND CHANGE':'CHANGED IN THIS STEP';byId('backendName').textContent=quiet?'No server source modified':s.name;byId('backendGraphic').innerHTML=backendDiagram(s);
 window.THREE_LANES_VISUAL_LIBRARY?.mount('backend',current().c.sha,stepIndex(),byId('backendGraphic'));
-window.THREE_LANES_CODE_NAV?.mount({side:'backend',sha:current().c.sha,id:stepIndex(),step:s,visual:byId('backendGraphic')});
+// SVGs are static drawings, not interactive source-link targets.
 byId('backendInfoLine').textContent='';
 byId('backendCode').style.display='';byId('backendFile').parentElement.style.display='';byId('backendFile').parentElement.previousElementSibling.style.display='';if(!quiet){byId('backendFile').textContent=s.file;}
 }
@@ -373,13 +363,13 @@ byId('frontendInfo').textContent=quiet?(mode==='live'?'NO FRONTEND FILE':effect?
 byId('frontendName').textContent=quiet?(mode==='live'?'No frontend file changed':effect?'Impact of '+s.name:'No view file changed in this step'):s.name;
 byId('frontendGraphic').innerHTML=makePreview();
 window.THREE_LANES_VISUAL_LIBRARY?.mount('frontend',current().c.sha,stepIndex(),byId('frontendGraphic'));
-window.THREE_LANES_CODE_NAV?.mount({side:'frontend',sha:current().c.sha,id:stepIndex(),step:s,visual:byId('frontendGraphic')});
+// No SVG-to-code focus; actual frontend form controls remain interactive.
 byId('frontendFile').parentElement.style.display='';byId('frontendCode').style.display='';byId('frontendFile').parentElement.previousElementSibling.style.display='';
 if(!quiet){byId('frontendFile').textContent=s.file;}
 }
 
 function render(){return keepReadingLevel(renderCore)}
-function renderCore(){if(!commits.length)return;document.body.classList.toggle('github-source-mode',mode==='live');document.querySelector('.workspace').classList.toggle('github-source-mode',mode==='live');selection.ci=Math.min(Math.max(selection.ci,0),commits.length-1);selection.si=Math.min(Math.max(selection.si,0),commits[selection.ci].steps.length-1);const {c,s}=current();if(selection.ci!==render.prevci||selection.si!==render.prevsi){previewMode='after';message='';chosenFile={backend:null,frontend:null}}render.prevci=selection.ci;render.prevsi=selection.si;head();timeline();renderBackend();renderFrontend();renderSourceForSelection();setFocus(mode==='live'?c.kind:(s.kind||c.kind));byId('status').innerHTML=`${mode==='demo'?'10 hand-picked real commits · '+DEMO.reduce((a,c)=>a+c.steps.length,0)+' focused learning steps':'Exactly 10 selected commits · refreshed from GitHub'} · <span class="statusok">Selected ${H(stepIndex())}</span>`;persist()}
+function renderCore(){if(!commits.length)return;document.body.classList.toggle('github-source-mode',mode==='live');document.querySelector('.workspace').classList.toggle('github-source-mode',mode==='live');selection.ci=Math.min(Math.max(selection.ci,0),commits.length-1);selection.si=Math.min(Math.max(selection.si,0),commits[selection.ci].steps.length-1);const {c,s}=current();if(selection.ci!==render.prevci||selection.si!==render.prevsi){previewMode='after';message='';chosenFile={backend:null,frontend:null};selectedSharedFile=null}render.prevci=selection.ci;render.prevsi=selection.si;head();timeline();renderBackend();renderFrontend();renderSourceForSelection();setFocus(mode==='live'?c.kind:(s.kind||c.kind));byId('status').innerHTML=`${mode==='demo'?'10 hand-picked real commits · '+DEMO.reduce((a,c)=>a+c.steps.length,0)+' focused learning steps':'Exactly 10 selected commits · refreshed from GitHub'} · <span class="statusok">Selected ${H(stepIndex())}</span>`;persist()}
 function select(ci,si){if(ci<0||ci>=10||ci>=commits.length)return;if(mode==='live'&&commits[ci]?.needsFetch){selectLive(ci,si);return}selection={ci,si};mobileView='auto';render()}
 byId('railItems').addEventListener('click',e=>{let b=e.target.closest('button[data-c]');if(!b)return;select(+b.dataset.c,+b.dataset.s)});
 byId('mobileTabs').addEventListener('click',e=>{const b=e.target.closest('[data-mview]');if(!b)return;mobileView=b.dataset.mview;displayMobile()});
@@ -474,11 +464,17 @@ async function selectLive(i,si=0){
     if(selection.ci===i){render();byId('status').innerHTML=`<span class="error">GitHub unavailable (${H(e.message)}). Kept step ${H(stepIndex())}; the source editor reports the load failure.</span>`}
   }
 }
-byId('closeCompare').addEventListener('click',()=>{
-  const side=byId('wideCompare').dataset.side;
-  if(side)codeMode[side]='diff';
-  hideComparison();
-  if(side)renderSourcePanel(side);
+byId('closeCompare').addEventListener('click',()=>{inspectorOpen=false;hideComparison();});
+byId('sharedSourceDock').addEventListener('click',event=>{
+  const button=event.target.closest('[data-shared-code-mode]');if(!button)return;
+  const side=current().s.kind==='frontend'?'frontend':'backend',next=button.dataset.sharedCodeMode;
+  if(next!=='compare'&&next!=='diff')return;
+  codeMode[side]=next;inspectorOpen=true;renderSourcePanel(side);
+});
+byId('sharedFileSelect').addEventListener('change',event=>{
+  selectedSharedFile=event.target.value||null;inspectorOpen=true;
+  syncOriginalSourceLink();
+  renderSourcePanel(current().s.kind==='frontend'?'frontend':'backend');
 });
 window.addEventListener('resize',displayMobile);
 
