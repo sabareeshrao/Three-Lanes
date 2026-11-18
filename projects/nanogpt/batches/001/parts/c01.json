@@ -1,0 +1,3880 @@
+{
+  "steps": {
+    "1.1": [
+      {
+        "path": "README.md",
+        "oldPath": "README.md",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 1,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 2,
+            "text": "# nanoGPT"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 3,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": "The cleanest, fastest repository for training/finetuning medium-sized GPTs."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 5,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "This repo currently requires reading the code, but it's not that bad. work ongoing..."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 7,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": "Getting started:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 9,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "We need a few dependencies:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 11,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 12,
+            "text": "- [pytorch](https://pytorch.org), of course"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 13,
+            "text": "- numpy"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 14,
+            "text": "- `pip install datasets` for huggingface datasets"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 15,
+            "text": "- `pip install tiktoken` for OpenAI's fast bpe code"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 16,
+            "text": "- `pip install wandb` for optional logging"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 17,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "```"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 19,
+            "text": "$ cd data/openwebtext"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 20,
+            "text": "$ python prepare.py"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 21,
+            "text": "```"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 22,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 23,
+            "text": "To download and tokenize the [openwebtext](https://huggingface.co/datasets/openwebtext) dataset. It will create a `train.bin` and `val.bin` which holds the GPT2 BPE token ids in a massive sequence. Then we're ready to kick off training. First open up train.py and read it, make sure the settings look ok. Then:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 24,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 25,
+            "text": "```"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 26,
+            "text": "$ python train.py"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 27,
+            "text": "```"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 28,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 29,
+            "text": "Once some checkpoints are written to the output directory `out`, we're ready to sample from the model:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 30,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 31,
+            "text": "```"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 32,
+            "text": "$ python sample.py"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 33,
+            "text": "```"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 34,
+            "text": ""
+          }
+        ]
+      }
+    ],
+    "1.2": [
+      {
+        "path": "data/openwebtext/prepare.py",
+        "oldPath": "data/openwebtext/prepare.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 1,
+            "text": "# saves the openwebtext dataset to a binary file for training. following was helpful:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 2,
+            "text": "# https://github.com/HazyResearch/flash-attention/blob/main/training/src/datamodules/language_modeling_hf.py"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 3,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": "import mmap"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 5,
+            "text": "import subprocess"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "import numpy as np"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 7,
+            "text": "import tiktoken"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": "from datasets import load_dataset # huggingface datasets"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 9,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "# number of workers in .map() calls"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 11,
+            "text": "# good number to use is ~order num_cpu_cores()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 12,
+            "text": "num_proc = 16"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 13,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 14,
+            "text": "# takes 54GB in huggingface .cache dir, about 8M documents (8,013,769)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 15,
+            "text": "dataset = load_dataset(\"openwebtext\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 16,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 17,
+            "text": "# owt by default only contains the 'train' split, so create a test split"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "split_dataset = dataset[\"train\"].train_test_split(test_size=0.0005, seed=2357, shuffle=True)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 19,
+            "text": "split_dataset['val'] = split_dataset.pop('test') # rename the test split to val"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 20,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 21,
+            "text": "# this results in:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 22,
+            "text": "# >>> split_dataset"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 23,
+            "text": "# DatasetDict({"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 24,
+            "text": "#     train: Dataset({"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 25,
+            "text": "#         features: ['text'],"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 26,
+            "text": "#         num_rows: 8009762"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 27,
+            "text": "#     })"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 28,
+            "text": "#     val: Dataset({"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 29,
+            "text": "#         features: ['text'],"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 30,
+            "text": "#         num_rows: 4007"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 31,
+            "text": "#     })"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 32,
+            "text": "# })"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 33,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 34,
+            "text": "# we now want to tokenize the dataset. first define the encoding function (gpt2 bpe)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 35,
+            "text": "enc = tiktoken.get_encoding(\"gpt2\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 36,
+            "text": "def process(example):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 37,
+            "text": "    ids = enc.encode_ordinary(example['text']) # encode_ordinary ignores any special tokens"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 38,
+            "text": "    ids.append(enc.eot_token) # add the end of text token, e.g. 50256 for gpt2 bpe"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 39,
+            "text": "    out = {'ids': ids, 'len': len(ids)}"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 40,
+            "text": "    return out"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 41,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 42,
+            "text": "# tokenize the dataset"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 43,
+            "text": "tokenized = split_dataset.map("
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 44,
+            "text": "    process,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 45,
+            "text": "    remove_columns=['text'],"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 46,
+            "text": "    desc=\"tokenizing the splits\","
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 47,
+            "text": "    num_proc=num_proc,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 48,
+            "text": ")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 49,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 50,
+            "text": "# concatenate all the ids in each dataset into one large file we can use for training"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 51,
+            "text": "for split, dset in tokenized.items():"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 52,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 53,
+            "text": "    offset = np.cumsum(dset['len']).tolist()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 54,
+            "text": "    total = offset[-1] # total number of tokens in the dataset"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 55,
+            "text": "    dset = dset.add_column('offset', offset)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 56,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 57,
+            "text": "    # preallocate space in a temporary file to store the concatenated ids"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 58,
+            "text": "    filename = f'{split}.bin'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 59,
+            "text": "    dtype = np.uint16 # (can do since enc.max_token_value == 50256 is < 2**16)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 60,
+            "text": "    bytes_per_token = 2 # i.e. np.dtype(dtype).itemsize"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 61,
+            "text": "    subprocess.run(['truncate', '-s', str(total * bytes_per_token), filename], check=True)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 62,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 63,
+            "text": "    # write the ids to the file"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 64,
+            "text": "    def write_to_file(example):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 65,
+            "text": "        with open(filename, 'r+b') as f:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 66,
+            "text": "            arr_len = len(example['ids'])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 67,
+            "text": "            start = example['offset'] - arr_len"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 68,
+            "text": "            mm = mmap.mmap(f.fileno(), 0)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 69,
+            "text": "            arr = np.ndarray((arr_len,), dtype=dtype, buffer=mm, offset=bytes_per_token * start)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 70,
+            "text": "            arr[:] = example['ids']"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 71,
+            "text": "            mm.flush()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 72,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 73,
+            "text": "    dset.map("
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 74,
+            "text": "        write_to_file,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 75,
+            "text": "        desc=f\"writing {split} split to file {filename}\","
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 76,
+            "text": "        num_proc=num_proc,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 77,
+            "text": "    )"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 78,
+            "text": ""
+          }
+        ]
+      }
+    ],
+    "1.3": [
+      {
+        "path": "data/openwebtext/prepare.py",
+        "oldPath": "data/openwebtext/prepare.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 79,
+            "text": "# train.bin is ~17GB, val.bin ~8.5MB"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 80,
+            "text": "# train has ~9B tokens (9,035,582,198)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 81,
+            "text": "# val has ~4M tokens (4,434,897)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 82,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 83,
+            "text": "# to read the bin files later, e.g. with numpy:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 84,
+            "text": "# m = np.memmap('train.bin', dtype=np.uint16, mode='r')"
+          }
+        ]
+      }
+    ],
+    "1.4": [
+      {
+        "path": "data/openwebtext/readme.md",
+        "oldPath": "data/openwebtext/readme.md",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 1,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 2,
+            "text": "## openwebtext dataset"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 3,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": "after running `prepare.py` (preprocess) we get:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 5,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "- train.bin is ~17GB, val.bin ~8.5MB"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 7,
+            "text": "- train has ~9B tokens (9,035,582,198)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": "- val has ~4M tokens (4,434,897)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 9,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "this came from 8,013,769 documents in total."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 11,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 12,
+            "text": "references:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 13,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 14,
+            "text": "- OpenAI's WebText dataset is discussed in [GPT-2 paper](https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 15,
+            "text": "- [OpenWebText](https://skylion007.github.io/OpenWebTextCorpus/) dataset"
+          }
+        ]
+      }
+    ],
+    "1.5": [
+      {
+        "path": "model.py",
+        "oldPath": "model.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 1,
+            "text": "\"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 2,
+            "text": "Full definition of a GPT Language Model, all of it in this single file."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 3,
+            "text": "References:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": "1) the official GPT-2 TensorFlow implementation released by OpenAI:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 5,
+            "text": "https://github.com/openai/gpt-2/blob/master/src/model.py"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "2) huggingface/transformers PyTorch implementation:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 7,
+            "text": "https://github.com/huggingface/transformers/blob/main/src/transformers/models/gpt2/modeling_gpt2.py"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": "\"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 9,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "import math"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 11,
+            "text": "from dataclasses import dataclass"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 12,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 13,
+            "text": "import torch"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 14,
+            "text": "import torch.nn as nn"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 15,
+            "text": "from torch.nn import functional as F"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 16,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 17,
+            "text": "@torch.jit.script"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "def fused_gelu(x):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 19,
+            "text": "    \"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 20,
+            "text": "    Implementation of the GELU activation function currently in Google BERT repo (identical to OpenAI GPT)."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 21,
+            "text": "    Reference: Gaussian Error Linear Units (GELU) paper: https://arxiv.org/abs/1606.08415"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 22,
+            "text": "    \"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 23,
+            "text": "    return 0.5 * x * (1.0 + torch.tanh(math.sqrt(2.0 / math.pi) * (x + 0.044715 * torch.pow(x, 3.0))))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 24,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 25,
+            "text": "class CausalSelfAttention(nn.Module):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 26,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 27,
+            "text": "    def __init__(self, config):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 28,
+            "text": "        super().__init__()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 29,
+            "text": "        assert config.n_embd % config.n_head == 0"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 30,
+            "text": "        # key, query, value projections for all heads, but in a batch"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 31,
+            "text": "        self.c_attn = nn.Linear(config.n_embd, 3 * config.n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 32,
+            "text": "        # output projection"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 33,
+            "text": "        self.c_proj = nn.Linear(config.n_embd, config.n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 34,
+            "text": "        # regularization"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 35,
+            "text": "        self.attn_dropout = nn.Dropout(config.dropout)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 36,
+            "text": "        self.resid_dropout = nn.Dropout(config.dropout)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 37,
+            "text": "        # causal mask to ensure that attention is only applied to the left in the input sequence"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 38,
+            "text": "        self.register_buffer(\"bias\", torch.tril(torch.ones(config.block_size, config.block_size))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 39,
+            "text": "                                    .view(1, 1, config.block_size, config.block_size))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 40,
+            "text": "        self.n_head = config.n_head"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 41,
+            "text": "        self.n_embd = config.n_embd"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 42,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 43,
+            "text": "    def forward(self, x):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 44,
+            "text": "        B, T, C = x.size() # batch size, sequence length, embedding dimensionality (n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 45,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 46,
+            "text": "        # calculate query, key, values for all heads in batch and move head forward to be the batch dim"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 47,
+            "text": "        q, k ,v  = self.c_attn(x).split(self.n_embd, dim=2)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 48,
+            "text": "        k = k.view(B, T, self.n_head, C // self.n_head).transpose(1, 2) # (B, nh, T, hs)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 49,
+            "text": "        q = q.view(B, T, self.n_head, C // self.n_head).transpose(1, 2) # (B, nh, T, hs)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 50,
+            "text": "        v = v.view(B, T, self.n_head, C // self.n_head).transpose(1, 2) # (B, nh, T, hs)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 51,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 52,
+            "text": "        # causal self-attention; Self-attend: (B, nh, T, hs) x (B, nh, hs, T) -> (B, nh, T, T)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 53,
+            "text": "        att = (q @ k.transpose(-2, -1)) * (1.0 / math.sqrt(k.size(-1)))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 54,
+            "text": "        att = att.masked_fill(self.bias[:,:,:T,:T] == 0, float('-inf'))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 55,
+            "text": "        att = F.softmax(att, dim=-1)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 56,
+            "text": "        att = self.attn_dropout(att)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 57,
+            "text": "        y = att @ v # (B, nh, T, T) x (B, nh, T, hs) -> (B, nh, T, hs)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 58,
+            "text": "        y = y.transpose(1, 2).contiguous().view(B, T, C) # re-assemble all head outputs side by side"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 59,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 60,
+            "text": "        # output projection"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 61,
+            "text": "        y = self.resid_dropout(self.c_proj(y))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 62,
+            "text": "        return y"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 63,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 64,
+            "text": "class MLP(nn.Module):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 65,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 66,
+            "text": "    def __init__(self, config):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 67,
+            "text": "        super().__init__()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 68,
+            "text": "        self.c_fc    = nn.Linear(config.n_embd, 4 * config.n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 69,
+            "text": "        self.c_proj  = nn.Linear(4 * config.n_embd, config.n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 70,
+            "text": "        self.dropout = nn.Dropout(config.dropout)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 71,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 72,
+            "text": "    def forward(self, x):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 73,
+            "text": "        x = self.c_fc(x)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 74,
+            "text": "        x = fused_gelu(x)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 75,
+            "text": "        x = self.c_proj(x)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 76,
+            "text": "        x = self.dropout(x)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 77,
+            "text": "        return x"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 78,
+            "text": ""
+          }
+        ]
+      }
+    ],
+    "1.6": [
+      {
+        "path": "model.py",
+        "oldPath": "model.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 79,
+            "text": "class Block(nn.Module):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 80,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 81,
+            "text": "    def __init__(self, config):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 82,
+            "text": "        super().__init__()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 83,
+            "text": "        self.ln_1 = nn.LayerNorm(config.n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 84,
+            "text": "        self.attn = CausalSelfAttention(config)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 85,
+            "text": "        self.ln_2 = nn.LayerNorm(config.n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 86,
+            "text": "        self.mlp = MLP(config)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 87,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 88,
+            "text": "    def forward(self, x):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 89,
+            "text": "        x = x + self.attn(self.ln_1(x))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 90,
+            "text": "        x = x + self.mlp(self.ln_2(x))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 91,
+            "text": "        return x"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 92,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 93,
+            "text": "@dataclass"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 94,
+            "text": "class GPTConfig:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 95,
+            "text": "    block_size: int = 1024"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 96,
+            "text": "    vocab_size: int = 50257"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 97,
+            "text": "    n_layer: int = 12"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 98,
+            "text": "    n_head: int = 12"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 99,
+            "text": "    n_embd: int = 768"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 100,
+            "text": "    dropout: float = 0.1"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 101,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 102,
+            "text": "class GPT(nn.Module):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 103,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 104,
+            "text": "    def __init__(self, config):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 105,
+            "text": "        super().__init__()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 106,
+            "text": "        assert config.vocab_size is not None"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 107,
+            "text": "        assert config.block_size is not None"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 108,
+            "text": "        self.block_size = config.block_size"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 109,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 110,
+            "text": "        self.transformer = nn.ModuleDict(dict("
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 111,
+            "text": "            wte = nn.Embedding(config.vocab_size, config.n_embd),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 112,
+            "text": "            wpe = nn.Embedding(config.block_size, config.n_embd),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 113,
+            "text": "            drop = nn.Dropout(config.dropout),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 114,
+            "text": "            h = nn.ModuleList([Block(config) for _ in range(config.n_layer)]),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 115,
+            "text": "            ln_f = nn.LayerNorm(config.n_embd),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 116,
+            "text": "        ))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 117,
+            "text": "        self.lm_head = nn.Linear(config.n_embd, config.vocab_size, bias=False)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 118,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 119,
+            "text": "        # report number of parameters (note we don't count the decoder parameters in lm_head)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 120,
+            "text": "        n_params = sum(p.numel() for p in self.transformer.parameters())"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 121,
+            "text": "        print(\"number of parameters: %.2fM\" % (n_params/1e6,))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 122,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 123,
+            "text": "    def forward(self, idx, targets=None):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 124,
+            "text": "        device = idx.device"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 125,
+            "text": "        b, t = idx.size()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 126,
+            "text": "        assert t <= self.block_size, f\"Cannot forward sequence of length {t}, block size is only {self.block_size}\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 127,
+            "text": "        pos = torch.arange(0, t, dtype=torch.long, device=device).unsqueeze(0) # shape (1, t)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 128,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 129,
+            "text": "        # forward the GPT model itself"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 130,
+            "text": "        tok_emb = self.transformer.wte(idx) # token embeddings of shape (b, t, n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 131,
+            "text": "        pos_emb = self.transformer.wpe(pos) # position embeddings of shape (1, t, n_embd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 132,
+            "text": "        x = self.transformer.drop(tok_emb + pos_emb)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 133,
+            "text": "        for block in self.transformer.h:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 134,
+            "text": "            x = block(x)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 135,
+            "text": "        x = self.transformer.ln_f(x)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 136,
+            "text": "        logits = self.lm_head(x)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 137,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 138,
+            "text": "        # if we are given some desired targets also calculate the loss"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 139,
+            "text": "        loss = None"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 140,
+            "text": "        if targets is not None:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 141,
+            "text": "            loss = F.cross_entropy(logits.view(-1, logits.size(-1)), targets.view(-1), ignore_index=-1)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 142,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 143,
+            "text": "        return logits, loss"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 144,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 145,
+            "text": "    def crop_block_size(self, block_size):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 146,
+            "text": "        # model surgery to decrease the block size if necessary"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 147,
+            "text": "        # e.g. we may load the GPT2 pretrained model checkpoint (block size 1024)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 148,
+            "text": "        # but want to use a smaller block size for some smaller, simpler model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 149,
+            "text": "        assert block_size <= self.block_size"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 150,
+            "text": "        self.block_size = block_size"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 151,
+            "text": "        self.transformer.wpe.weight = nn.Parameter(self.transformer.wpe.weight[:block_size])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 152,
+            "text": "        for block in self.transformer.h:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 153,
+            "text": "            block.attn.bias = block.attn.bias[:,:,:block_size,:block_size]"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 154,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 155,
+            "text": "    @classmethod"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 156,
+            "text": "    def from_pretrained(cls, model_type):"
+          }
+        ]
+      }
+    ],
+    "1.7": [
+      {
+        "path": "model.py",
+        "oldPath": "model.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 157,
+            "text": "        assert model_type in {'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'}"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 158,
+            "text": "        from transformers import GPT2LMHeadModel"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 159,
+            "text": "        print(\"loading weights from pretrained gpt: %s\" % model_type)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 160,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 161,
+            "text": "        layer_config = {"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 162,
+            "text": "            'gpt2':         dict(n_layer=12, n_head=12, n_embd=768),  # 124M params"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 163,
+            "text": "            'gpt2-medium':  dict(n_layer=24, n_head=16, n_embd=1024), # 350M params"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 164,
+            "text": "            'gpt2-large':   dict(n_layer=36, n_head=20, n_embd=1280), # 774M params"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 165,
+            "text": "            'gpt2-xl':      dict(n_layer=48, n_head=25, n_embd=1600), # 1558M params"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 166,
+            "text": "        }[model_type]"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 167,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 168,
+            "text": "        # create a from-scratch initialized minGPT model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 169,
+            "text": "        config = GPTConfig(block_size=1024, **layer_config)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 170,
+            "text": "        model = GPT(config)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 171,
+            "text": "        sd = model.state_dict()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 172,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 173,
+            "text": "        # init a huggingface/transformers model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 174,
+            "text": "        model_hf = GPT2LMHeadModel.from_pretrained(model_type)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 175,
+            "text": "        sd_hf = model_hf.state_dict()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 176,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 177,
+            "text": "        # copy while ensuring all of the parameters are aligned and match in names and shapes"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 178,
+            "text": "        keys = [k for k in sd_hf if not k.endswith('attn.masked_bias')] # ignore these"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 179,
+            "text": "        transposed = ['attn.c_attn.weight', 'attn.c_proj.weight', 'mlp.c_fc.weight', 'mlp.c_proj.weight']"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 180,
+            "text": "        # basically the openai checkpoints use a \"Conv1D\" module, but we only want to use a vanilla Linear"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 181,
+            "text": "        # this means that we have to transpose these weights when we import them"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 182,
+            "text": "        assert len(keys) == len(sd)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 183,
+            "text": "        for k in keys:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 184,
+            "text": "            if any(k.endswith(w) for w in transposed):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 185,
+            "text": "                # special treatment for the Conv1D weights we need to transpose"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 186,
+            "text": "                assert sd_hf[k].shape[::-1] == sd[k].shape"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 187,
+            "text": "                with torch.no_grad():"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 188,
+            "text": "                    sd[k].copy_(sd_hf[k].t())"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 189,
+            "text": "            else:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 190,
+            "text": "                # vanilla copy over the other parameters"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 191,
+            "text": "                assert sd_hf[k].shape == sd[k].shape"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 192,
+            "text": "                with torch.no_grad():"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 193,
+            "text": "                    sd[k].copy_(sd_hf[k])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 194,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 195,
+            "text": "        return model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 196,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 197,
+            "text": "    def configure_optimizers(self, weight_decay, learning_rate, betas):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 198,
+            "text": "        \"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 199,
+            "text": "        This long function is unfortunately doing something very simple and is being very defensive:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 200,
+            "text": "        We are separating out all parameters of the model into two buckets: those that will experience"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 201,
+            "text": "        weight decay for regularization and those that won't (biases, and layernorm/embedding weights)."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 202,
+            "text": "        We are then returning the PyTorch optimizer object."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 203,
+            "text": "        \"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 204,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 205,
+            "text": "        # separate out all parameters to those that will and won't experience regularizing weight decay"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 206,
+            "text": "        decay = set()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 207,
+            "text": "        no_decay = set()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 208,
+            "text": "        whitelist_weight_modules = (torch.nn.Linear, )"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 209,
+            "text": "        blacklist_weight_modules = (torch.nn.LayerNorm, torch.nn.Embedding)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 210,
+            "text": "        for mn, m in self.named_modules():"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 211,
+            "text": "            for pn, p in m.named_parameters():"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 212,
+            "text": "                fpn = '%s.%s' % (mn, pn) if mn else pn # full param name"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 213,
+            "text": "                # random note: because named_modules and named_parameters are recursive"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 214,
+            "text": "                # we will see the same tensors p many many times. but doing it this way"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 215,
+            "text": "                # allows us to know which parent module any tensor p belongs to..."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 216,
+            "text": "                if pn.endswith('bias'):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 217,
+            "text": "                    # all biases will not be decayed"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 218,
+            "text": "                    no_decay.add(fpn)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 219,
+            "text": "                elif pn.endswith('weight') and isinstance(m, whitelist_weight_modules):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 220,
+            "text": "                    # weights of whitelist modules will be weight decayed"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 221,
+            "text": "                    decay.add(fpn)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 222,
+            "text": "                elif pn.endswith('weight') and isinstance(m, blacklist_weight_modules):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 223,
+            "text": "                    # weights of blacklist modules will NOT be weight decayed"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 224,
+            "text": "                    no_decay.add(fpn)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 225,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 226,
+            "text": "        # validate that we considered every parameter"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 227,
+            "text": "        param_dict = {pn: p for pn, p in self.named_parameters()}"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 228,
+            "text": "        inter_params = decay & no_decay"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 229,
+            "text": "        union_params = decay | no_decay"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 230,
+            "text": "        assert len(inter_params) == 0, \"parameters %s made it into both decay/no_decay sets!\" % (str(inter_params), )"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 231,
+            "text": "        assert len(param_dict.keys() - union_params) == 0, \"parameters %s were not separated into either decay/no_decay set!\" \\"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 232,
+            "text": "                                                    % (str(param_dict.keys() - union_params), )"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 233,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 234,
+            "text": "        # create the pytorch optimizer object"
+          }
+        ]
+      }
+    ],
+    "1.8": [
+      {
+        "path": "model.py",
+        "oldPath": "model.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 235,
+            "text": "        optim_groups = ["
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 236,
+            "text": "            {\"params\": [param_dict[pn] for pn in sorted(list(decay))], \"weight_decay\": weight_decay},"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 237,
+            "text": "            {\"params\": [param_dict[pn] for pn in sorted(list(no_decay))], \"weight_decay\": 0.0},"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 238,
+            "text": "        ]"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 239,
+            "text": "        optimizer = torch.optim.AdamW(optim_groups, lr=learning_rate, betas=betas)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 240,
+            "text": "        return optimizer"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 241,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 242,
+            "text": "    @torch.no_grad()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 243,
+            "text": "    def generate(self, idx, max_new_tokens, temperature=1.0, top_k=None):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 244,
+            "text": "        \"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 245,
+            "text": "        Take a conditioning sequence of indices idx (LongTensor of shape (b,t)) and complete"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 246,
+            "text": "        the sequence max_new_tokens times, feeding the predictions back into the model each time."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 247,
+            "text": "        Most likely you'll want to make sure to be in model.eval() mode of operation for this."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 248,
+            "text": "        \"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 249,
+            "text": "        for _ in range(max_new_tokens):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 250,
+            "text": "            # if the sequence context is growing too long we must crop it at block_size"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 251,
+            "text": "            idx_cond = idx if idx.size(1) <= self.block_size else idx[:, -self.block_size:]"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 252,
+            "text": "            # forward the model to get the logits for the index in the sequence"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 253,
+            "text": "            logits, _ = self(idx_cond)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 254,
+            "text": "            # pluck the logits at the final step and scale by desired temperature"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 255,
+            "text": "            logits = logits[:, -1, :] / temperature"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 256,
+            "text": "            # optionally crop the logits to only the top k options"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 257,
+            "text": "            if top_k is not None:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 258,
+            "text": "                v, _ = torch.topk(logits, top_k)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 259,
+            "text": "                logits[logits < v[:, [-1]]] = -float('Inf')"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 260,
+            "text": "            # apply softmax to convert logits to (normalized) probabilities"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 261,
+            "text": "            probs = F.softmax(logits, dim=-1)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 262,
+            "text": "            # sample from the distribution"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 263,
+            "text": "            idx_next = torch.multinomial(probs, num_samples=1)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 264,
+            "text": "            # append sampled index to the running sequence and continue"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 265,
+            "text": "            idx = torch.cat((idx, idx_next), dim=1)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 266,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 267,
+            "text": "        return idx"
+          }
+        ]
+      }
+    ],
+    "1.9": [
+      {
+        "path": "sample.py",
+        "oldPath": "sample.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 1,
+            "text": "\"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 2,
+            "text": "Sample from a trained model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 3,
+            "text": "\"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": "import os"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 5,
+            "text": "import torch"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "import tiktoken"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 7,
+            "text": "from model import GPTConfig, GPT"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 9,
+            "text": "device = 'cuda:2'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "torch.manual_seed(1337)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 11,
+            "text": "torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 12,
+            "text": "torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 13,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 14,
+            "text": "out_dir = 'out'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 15,
+            "text": "ckpt_path = os.path.join(out_dir, 'ckpt.pt')"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 16,
+            "text": "checkpoint = torch.load(ckpt_path, map_location=device)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 17,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "# model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 19,
+            "text": "gptconf = GPTConfig(**checkpoint['model_args'])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 20,
+            "text": "model = GPT(gptconf)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 21,
+            "text": "model.load_state_dict(checkpoint['model'])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 22,
+            "text": "model.eval()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 23,
+            "text": "model.to(device)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 24,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 25,
+            "text": "enc = tiktoken.get_encoding(\"gpt2\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 26,
+            "text": "#start = enc.encode(\"\\n\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 27,
+            "text": "start = [enc.eot_token]"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 28,
+            "text": "x = (torch.tensor(start, dtype=torch.long, device=device)[None, ...])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 29,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 30,
+            "text": "for k in range(1):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 31,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 32,
+            "text": "    with torch.no_grad():"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 33,
+            "text": "        with torch.amp.autocast(device_type=\"cuda\", dtype=torch.bfloat16):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 34,
+            "text": "            y = model.generate(x, 300, temperature=0.8, top_k=200)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 35,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 36,
+            "text": "    print(enc.decode(y[0].tolist()))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 37,
+            "text": "    print('---------------')"
+          }
+        ]
+      }
+    ],
+    "1.10": [
+      {
+        "path": "train.py",
+        "oldPath": "train.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 1,
+            "text": "\"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 2,
+            "text": "Train a GPT model on a dataset of text. One GPU version."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 3,
+            "text": "The text is assumed to pre-tokenized and inside files train.pt and val.pt"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": "\"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 5,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "import os"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 7,
+            "text": "import time"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": "import math"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 9,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "import numpy as np"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 11,
+            "text": "import torch"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 12,
+            "text": "import wandb"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 13,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 14,
+            "text": "from model import GPTConfig, GPT"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 15,
+            "text": "# -----------------------------------------------------------------------------"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 16,
+            "text": "# settings, todo argparse or something"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 17,
+            "text": "# I/O"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "out_dir = 'out'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 19,
+            "text": "eval_interval = 500"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 20,
+            "text": "log_interval = 1"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 21,
+            "text": "# wandb logging"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 22,
+            "text": "wandb_log = False"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 23,
+            "text": "wandb_entity = 'karpathy'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 24,
+            "text": "wandb_project = 'owt'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 25,
+            "text": "wandb_run_name = 'owt1' # 'run' + str(time.time())"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 26,
+            "text": "# data"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 27,
+            "text": "dataset = 'openwebtext'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 28,
+            "text": "batch_size = 32"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 29,
+            "text": "block_size = 512"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 30,
+            "text": "# model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 31,
+            "text": "device = 'cuda:0'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 32,
+            "text": "init_from = 'scratch' # 'scratch' or 'resume' or 'gpt2*'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 33,
+            "text": "dropout = 0.1"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 34,
+            "text": "n_layer = 12"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 35,
+            "text": "n_head = 12"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 36,
+            "text": "n_embd = 768"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 37,
+            "text": "# adamw optimizer"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 38,
+            "text": "learning_rate = 2.5e-4 # max learning rate"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 39,
+            "text": "max_iters = 500000 # total number of training iterations"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 40,
+            "text": "weight_decay = 1e-2"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 41,
+            "text": "betas = (0.9, 0.95)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 42,
+            "text": "# learning rate decay settings"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 43,
+            "text": "decay_lr = True # whether to decay the learning rate"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 44,
+            "text": "warmup_iters = 2000 # how many steps to warm up for"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 45,
+            "text": "lr_decay_iters = 320000 # how many steps to decay the learning rate for"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 46,
+            "text": "min_lr = 1e-5 # minimum learning rate"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 47,
+            "text": "# -----------------------------------------------------------------------------"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 48,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 49,
+            "text": "os.makedirs(out_dir, exist_ok=True)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 50,
+            "text": "torch.manual_seed(1337)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 51,
+            "text": "torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 52,
+            "text": "torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 53,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 54,
+            "text": "# poor man's data loader, TODO use real DataLoader..."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 55,
+            "text": "data_dir = os.path.join('data', dataset)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 56,
+            "text": "train_data = np.memmap(os.path.join(data_dir, 'train.bin'), dtype=np.uint16, mode='r')"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 57,
+            "text": "val_data = np.memmap(os.path.join(data_dir, 'val.bin'), dtype=np.uint16, mode='r')"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 58,
+            "text": "def get_batch(split):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 59,
+            "text": "    data = train_data if split == 'train' else val_data"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 60,
+            "text": "    ix = torch.randint(len(data) - block_size, (batch_size,))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 61,
+            "text": "    x = torch.stack([torch.from_numpy((data[i:i+block_size]).astype(np.int64)) for i in ix])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 62,
+            "text": "    y = torch.stack([torch.from_numpy((data[i+1:i+1+block_size]).astype(np.int64)) for i in ix])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 63,
+            "text": "    x, y = x.to(device), y.to(device)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 64,
+            "text": "    return x, y"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 65,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 66,
+            "text": "# model init"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 67,
+            "text": "# TODO I don't love this whole part/API yet"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 68,
+            "text": "model_args = dict(n_layer = n_layer, n_head = n_head, n_embd = n_embd, block_size = block_size, dropout = dropout)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 69,
+            "text": "if init_from == 'scratch':"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 70,
+            "text": "    # init a new model from scratch"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 71,
+            "text": "    gptconf = GPTConfig(**model_args)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 72,
+            "text": "    model = GPT(gptconf)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 73,
+            "text": "elif init_from == 'resume':"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 74,
+            "text": "    # resume training from a checkpoint. TODO: do we resume iter_num etc too? (yes...)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 75,
+            "text": "    ckpt_path = os.path.join(out_dir, 'ckpt.pt')"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 76,
+            "text": "    checkpoint = torch.load(ckpt_path)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 77,
+            "text": "    checkpoint_model_args = checkpoint['model_args']"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 78,
+            "text": "    for k, v in model_args.items():"
+          }
+        ]
+      }
+    ],
+    "1.11": [
+      {
+        "path": "train.py",
+        "oldPath": "train.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 79,
+            "text": "        assert checkpoint_model_args[k] == v, \"for now\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 80,
+            "text": "    gptconf = GPTConfig(**model_args)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 81,
+            "text": "    model = GPT(gptconf)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 82,
+            "text": "    model.load_state_dict(checkpoint['model'])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 83,
+            "text": "elif init_from.startswith('gpt2'):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 84,
+            "text": "    # initialize from OpenAI GPT-2 weights"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 85,
+            "text": "    model = GPT.from_pretrained(init_from)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 86,
+            "text": "    if block_size < model.block_size:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 87,
+            "text": "        model.crop_block_size(block_size)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 88,
+            "text": "model.to(device)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 89,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 90,
+            "text": "@torch.no_grad()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 91,
+            "text": "def estimate_loss(eval_iters=50):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 92,
+            "text": "    out = {}"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 93,
+            "text": "    model.eval()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 94,
+            "text": "    for split in ['train', 'val']:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 95,
+            "text": "        losses = torch.zeros(eval_iters)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 96,
+            "text": "        for k in range(eval_iters):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 97,
+            "text": "            X, Y = get_batch(split)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 98,
+            "text": "            with torch.amp.autocast(device_type=\"cuda\", dtype=torch.bfloat16):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 99,
+            "text": "                logits, loss = model(X, Y)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 100,
+            "text": "            losses[k] = loss.item()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 101,
+            "text": "        out[split] = losses.mean()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 102,
+            "text": "    model.train()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 103,
+            "text": "    return out"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 104,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 105,
+            "text": "# optimizer"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 106,
+            "text": "optimizer = model.configure_optimizers(weight_decay, learning_rate, betas)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 107,
+            "text": "if init_from == 'resume':"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 108,
+            "text": "    optimizer.load_state_dict(checkpoint['optimizer'])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 109,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 110,
+            "text": "# learning rate decay scheduler (cosine with warmup)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 111,
+            "text": "def get_lr(iter):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 112,
+            "text": "    # 1) linear warmup for warmup_iters steps"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 113,
+            "text": "    if iter < warmup_iters:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 114,
+            "text": "        return learning_rate * iter / warmup_iters"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 115,
+            "text": "    # 2) if iter > lr_decay_iters, return min learning rate"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 116,
+            "text": "    if iter > lr_decay_iters:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 117,
+            "text": "        return min_lr"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 118,
+            "text": "    # 3) in between, use cosine decay down to min learning rate"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 119,
+            "text": "    decay_ratio = (iter - warmup_iters) / (lr_decay_iters - warmup_iters)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 120,
+            "text": "    assert 0 <= decay_ratio <= 1"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 121,
+            "text": "    coeff = 0.5 * (1.0 + math.cos(math.pi * decay_ratio)) # ranges 0..1"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 122,
+            "text": "    return min_lr + coeff * (learning_rate - min_lr)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 123,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 124,
+            "text": "# logging"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 125,
+            "text": "if wandb_log:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 126,
+            "text": "    wandb.init(project=wandb_project, entity=wandb_entity, name=wandb_run_name)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 127,
+            "text": "    wandb.config = {"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 128,
+            "text": "        \"batch_size\": batch_size,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 129,
+            "text": "        \"block_size\": block_size,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 130,
+            "text": "        \"learning_rate\": learning_rate, # TODO log everything else too"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 131,
+            "text": "    }"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 132,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 133,
+            "text": "# training loop"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 134,
+            "text": "iter_num = 0"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 135,
+            "text": "num_tokens = 0"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 136,
+            "text": "best_val_loss = 1e9"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 137,
+            "text": "t0 = time.time()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 138,
+            "text": "while True:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 139,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 140,
+            "text": "    # determine the learning rate for this iteration"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 141,
+            "text": "    if decay_lr:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 142,
+            "text": "        lr = get_lr(iter_num)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 143,
+            "text": "        for param_group in optimizer.param_groups:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 144,
+            "text": "            param_group['lr'] = lr"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 145,
+            "text": "    else:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 146,
+            "text": "        lr = learning_rate"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 147,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 148,
+            "text": "    if iter_num % eval_interval == 0:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 149,
+            "text": "        losses = estimate_loss()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 150,
+            "text": "        print(f\"step {iter_num}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 151,
+            "text": "        if wandb_log:"
+          }
+        ]
+      }
+    ],
+    "1.12": [
+      {
+        "path": "train.py",
+        "oldPath": "train.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 152,
+            "text": "            wandb.log({"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 153,
+            "text": "                \"iter\": iter_num,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 154,
+            "text": "                \"num_tokens\": num_tokens,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 155,
+            "text": "                \"train/loss\": losses['train'],"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 156,
+            "text": "                \"val/loss\": losses['val'],"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 157,
+            "text": "                \"lr\": lr,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 158,
+            "text": "            })"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 159,
+            "text": "        if losses['val'] < best_val_loss:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 160,
+            "text": "            best_val_loss = losses['val']"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 161,
+            "text": "            if iter_num > 0: # don't save checkpoints on very first iteration..."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 162,
+            "text": "                checkpoint = {"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 163,
+            "text": "                    'model': model.state_dict(),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 164,
+            "text": "                    'optimizer': optimizer.state_dict(),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 165,
+            "text": "                    'model_args': model_args,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 166,
+            "text": "                    'iter_num': iter_num,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 167,
+            "text": "                }"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 168,
+            "text": "                torch.save(checkpoint, os.path.join(out_dir, 'ckpt.pt'))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 169,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 170,
+            "text": "    X, Y = get_batch('train')"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 171,
+            "text": "    with torch.amp.autocast(device_type=\"cuda\", dtype=torch.bfloat16):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 172,
+            "text": "        logits, loss = model(X, Y)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 173,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 174,
+            "text": "    optimizer.zero_grad(set_to_none=True)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 175,
+            "text": "    loss.backward()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 176,
+            "text": "    # TODO: gradient clipping"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 177,
+            "text": "    optimizer.step()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 178,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 179,
+            "text": "    t1 = time.time()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 180,
+            "text": "    dt = t1 - t0"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 181,
+            "text": "    t0 = t1"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 182,
+            "text": "    if iter_num % log_interval == 0:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 183,
+            "text": "        lossf = loss.item() # loss as float. TODO CPU-GPU sync: profile, make sure not slow af"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 184,
+            "text": "        print(f\"iter {iter_num}: loss {lossf:.4f}, time {dt*1000:.2f}ms\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 185,
+            "text": "    iter_num += 1"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 186,
+            "text": "    num_tokens += X.numel()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 187,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 188,
+            "text": "    # termination conditions"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 189,
+            "text": "    if iter_num >= max_iters:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 190,
+            "text": "        break"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 191,
+            "text": ""
+          }
+        ]
+      }
+    ]
+  }
+}

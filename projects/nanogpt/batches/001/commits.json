@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "batchId": "001",
+  "repository": "karpathy/nanoGPT",
+  "selection": "First 10 consecutive default branch ancestral commits (oldest first)",
+  "status": "IN PROGRESS — source-verified; visual QA pending",
+  "maxLearningLinesPerSubcommit": 100,
+  "commits": [
+    {
+      "position": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "authoredAt": "2022-12-28T00:58:19Z",
+      "committedAt": "2022-12-28T00:58:19Z",
+      "title": "first very bad commit",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "fileCount": 6,
+      "additions": 628,
+      "deletions": 0,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "added",
+          "instructionalDiffLineCount": 34,
+          "patchAvailable": true
+        },
+        {
+          "path": "data/openwebtext/prepare.py",
+          "status": "added",
+          "instructionalDiffLineCount": 84,
+          "patchAvailable": true
+        },
+        {
+          "path": "data/openwebtext/readme.md",
+          "status": "added",
+          "instructionalDiffLineCount": 15,
+          "patchAvailable": true
+        },
+        {
+          "path": "model.py",
+          "status": "added",
+          "instructionalDiffLineCount": 267,
+          "patchAvailable": true
+        },
+        {
+          "path": "sample.py",
+          "status": "added",
+          "instructionalDiffLineCount": 37,
+          "patchAvailable": true
+        },
+        {
+          "path": "train.py",
+          "status": "added",
+          "instructionalDiffLineCount": 191,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 2,
+      "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "parentSha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "authoredAt": "2022-12-28T01:45:55Z",
+      "committedAt": "2022-12-28T01:45:55Z",
+      "title": "small readme clarification and training script defaults changes",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "fileCount": 2,
+      "additions": 7,
+      "deletions": 5,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "modified",
+          "instructionalDiffLineCount": 4,
+          "patchAvailable": true
+        },
+        {
+          "path": "train.py",
+          "status": "modified",
+          "instructionalDiffLineCount": 8,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "parentSha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "authoredAt": "2022-12-28T23:31:23Z",
+      "committedAt": "2022-12-28T23:31:23Z",
+      "title": "adding a lightweight configurator that may be a terrible mistake lol. also adding configs to evaluate the baseline GPT2 versions released by OpenAI on OWT. we have some ways to go to match those numbers atm",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "fileCount": 6,
+      "additions": 96,
+      "deletions": 2,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "modified",
+          "instructionalDiffLineCount": 23,
+          "patchAvailable": true
+        },
+        {
+          "path": "config/eval_gpt2.py",
+          "status": "added",
+          "instructionalDiffLineCount": 8,
+          "patchAvailable": true
+        },
+        {
+          "path": "config/eval_gpt2_large.py",
+          "status": "added",
+          "instructionalDiffLineCount": 8,
+          "patchAvailable": true
+        },
+        {
+          "path": "config/eval_gpt2_medium.py",
+          "status": "added",
+          "instructionalDiffLineCount": 8,
+          "patchAvailable": true
+        },
+        {
+          "path": "config/eval_gpt2_xl.py",
+          "status": "added",
+          "instructionalDiffLineCount": 8,
+          "patchAvailable": true
+        },
+        {
+          "path": "train.py",
+          "status": "modified",
+          "instructionalDiffLineCount": 43,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 4,
+      "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a",
+      "parentSha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "authoredAt": "2022-12-28T23:55:43Z",
+      "committedAt": "2022-12-28T23:55:43Z",
+      "title": "add benchmarking script v0",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a",
+      "fileCount": 2,
+      "additions": 52,
+      "deletions": 0,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "modified",
+          "instructionalDiffLineCount": 4,
+          "patchAvailable": true
+        },
+        {
+          "path": "bench.py",
+          "status": "added",
+          "instructionalDiffLineCount": 48,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 5,
+      "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2",
+      "parentSha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a",
+      "authoredAt": "2022-12-29T00:05:32Z",
+      "committedAt": "2022-12-29T00:05:32Z",
+      "title": "add data loading into benchmarking as well, just for completeness",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2",
+      "fileCount": 2,
+      "additions": 26,
+      "deletions": 7,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "modified",
+          "instructionalDiffLineCount": 2,
+          "patchAvailable": true
+        },
+        {
+          "path": "bench.py",
+          "status": "modified",
+          "instructionalDiffLineCount": 31,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 6,
+      "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72",
+      "parentSha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2",
+      "authoredAt": "2022-12-29T01:49:53Z",
+      "committedAt": "2022-12-29T01:49:53Z",
+      "title": "add pytorch profiler support. not sure how to support both profiler and simple benchmarking, a bit gnarly atm hmm",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/3000cf5dda0e3e7069f78748345a9a3a28a6cd72",
+      "fileCount": 1,
+      "additions": 46,
+      "deletions": 17,
+      "files": [
+        {
+          "path": "bench.py",
+          "status": "modified",
+          "instructionalDiffLineCount": 63,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 7,
+      "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "parentSha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72",
+      "authoredAt": "2022-12-29T02:00:25Z",
+      "committedAt": "2022-12-29T02:00:25Z",
+      "title": "readme tweaks",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "fileCount": 1,
+      "additions": 7,
+      "deletions": 7,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "modified",
+          "instructionalDiffLineCount": 14,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 8,
+      "sha": "dea15072526871e2726b1b893a3018ba46f0a199",
+      "parentSha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "authoredAt": "2022-12-29T05:06:07Z",
+      "committedAt": "2022-12-29T05:06:07Z",
+      "title": "add support for DDP training. the scaling timings right now do not look good by default, have to dig more into",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/dea15072526871e2726b1b893a3018ba46f0a199",
+      "fileCount": 2,
+      "additions": 68,
+      "deletions": 39,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "modified",
+          "instructionalDiffLineCount": 26,
+          "patchAvailable": true
+        },
+        {
+          "path": "train.py",
+          "status": "modified",
+          "instructionalDiffLineCount": 81,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 9,
+      "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9",
+      "parentSha": "dea15072526871e2726b1b893a3018ba46f0a199",
+      "authoredAt": "2022-12-29T05:11:26Z",
+      "committedAt": "2022-12-29T05:11:26Z",
+      "title": "Add MIT LICENSE file",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/cc11744131390eae3fa1db65ab027e95a84f76b9",
+      "fileCount": 1,
+      "additions": 21,
+      "deletions": 0,
+      "files": [
+        {
+          "path": "LICENSE",
+          "status": "added",
+          "instructionalDiffLineCount": 21,
+          "patchAvailable": true
+        }
+      ]
+    },
+    {
+      "position": 10,
+      "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7",
+      "parentSha": "cc11744131390eae3fa1db65ab027e95a84f76b9",
+      "authoredAt": "2022-12-29T05:23:36Z",
+      "committedAt": "2022-12-29T05:23:36Z",
+      "title": "enhance readme, add some todos",
+      "githubUrl": "https://github.com/karpathy/nanoGPT/commit/97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7",
+      "fileCount": 1,
+      "additions": 13,
+      "deletions": 1,
+      "files": [
+        {
+          "path": "README.md",
+          "status": "modified",
+          "instructionalDiffLineCount": 14,
+          "patchAvailable": true
+        }
+      ]
+    }
+  ]
+}

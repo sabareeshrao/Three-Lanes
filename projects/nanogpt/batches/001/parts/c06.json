@@ -1,0 +1,469 @@
+{
+  "steps": {
+    "6.1": [
+      {
+        "path": "bench.py",
+        "oldPath": "bench.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "context",
+            "old": 7,
+            "new": 7,
+            "text": "import torch"
+          },
+          {
+            "type": "context",
+            "old": 8,
+            "new": 8,
+            "text": "from model import GPTConfig, GPT"
+          },
+          {
+            "type": "context",
+            "old": 9,
+            "new": 9,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 10,
+            "new": null,
+            "text": "device = 'cuda:3'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "device = 'cuda'"
+          },
+          {
+            "type": "context",
+            "old": 11,
+            "new": 11,
+            "text": "torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul"
+          },
+          {
+            "type": "context",
+            "old": 12,
+            "new": 12,
+            "text": "torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn"
+          },
+          {
+            "type": "context",
+            "old": 13,
+            "new": 13,
+            "text": "torch.manual_seed(1337)"
+          },
+          {
+            "type": "context",
+            "old": 45,
+            "new": 45,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 46,
+            "new": 46,
+            "text": "optimizer = model.configure_optimizers(weight_decay=1e-2, learning_rate=1e-4, betas=(0.9, 0.95))"
+          },
+          {
+            "type": "context",
+            "old": 47,
+            "new": 47,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 48,
+            "new": null,
+            "text": "burn_in = 10 # number of burn in steps where we don't measure time"
+          },
+          {
+            "type": "del",
+            "old": 49,
+            "new": null,
+            "text": "num_steps = 30"
+          },
+          {
+            "type": "del",
+            "old": 50,
+            "new": null,
+            "text": "for k in range(num_steps):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 48,
+            "text": "profile = False # use pytorch profiler, or just simple benchmarking?"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 49,
+            "text": "if profile:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 50,
+            "text": "    # useful docs on pytorch profiler:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 51,
+            "text": "    # - tutorial https://pytorch.org/tutorials/intermediate/tensorboard_profiler_tutorial.html"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 52,
+            "text": "    # - api https://pytorch.org/docs/stable/profiler.html#torch.profiler.profile"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 53,
+            "text": "    wait, warmup, active = 5, 5, 5"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 54,
+            "text": "    num_steps = wait + warmup + active"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 55,
+            "text": "    with torch.profiler.profile("
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 56,
+            "text": "        activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA],"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 57,
+            "text": "        schedule=torch.profiler.schedule(wait=wait, warmup=warmup, active=active, repeat=1),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 58,
+            "text": "        on_trace_ready=torch.profiler.tensorboard_trace_handler('./bench_log'),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 59,
+            "text": "        record_shapes=True,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 60,
+            "text": "        profile_memory=True,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 61,
+            "text": "        with_stack=True, # incurs an additional overhead, disable if not needed"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 62,
+            "text": "        with_flops=True,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 63,
+            "text": "        with_modules=False, # only for torchscript models atm"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 64,
+            "text": "    ) as prof:"
+          },
+          {
+            "type": "context",
+            "old": 51,
+            "new": 65,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 52,
+            "new": null,
+            "text": "    if k == burn_in:"
+          },
+          {
+            "type": "del",
+            "old": 53,
+            "new": null,
+            "text": "        t0 = time.time() # start the timer"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 66,
+            "text": "        for k in range(num_steps):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 67,
+            "text": "            X, Y = get_batch('train')"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 68,
+            "text": "            with torch.autocast(device_type='cuda', dtype=torch.bfloat16):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 69,
+            "text": "                logits, loss = model(X, Y)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 70,
+            "text": "            optimizer.zero_grad(set_to_none=True)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 71,
+            "text": "            loss.backward()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 72,
+            "text": "            optimizer.step()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 73,
+            "text": "            lossf = loss.item()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 74,
+            "text": "            print(f\"{k}/{num_steps} loss: {lossf:.4f}\")"
+          },
+          {
+            "type": "context",
+            "old": 54,
+            "new": 75,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 55,
+            "new": null,
+            "text": "    X, Y = get_batch('train')"
+          },
+          {
+            "type": "del",
+            "old": 56,
+            "new": null,
+            "text": "    with torch.autocast(device_type='cuda', dtype=torch.bfloat16):"
+          },
+          {
+            "type": "del",
+            "old": 57,
+            "new": null,
+            "text": "        logits, loss = model(X, Y)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 76,
+            "text": "            prof.step() # notify the profiler at end of each step"
+          },
+          {
+            "type": "context",
+            "old": 58,
+            "new": 77,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 59,
+            "new": null,
+            "text": "    optimizer.zero_grad(set_to_none=True)"
+          },
+          {
+            "type": "del",
+            "old": 60,
+            "new": null,
+            "text": "    loss.backward()"
+          },
+          {
+            "type": "del",
+            "old": 61,
+            "new": null,
+            "text": "    optimizer.step()"
+          },
+          {
+            "type": "del",
+            "old": 62,
+            "new": null,
+            "text": "    lossf = loss.item()"
+          },
+          {
+            "type": "del",
+            "old": 63,
+            "new": null,
+            "text": "    print(f\"{k}/{num_steps} loss: {lossf:.4f}\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 78,
+            "text": "else:"
+          },
+          {
+            "type": "context",
+            "old": 64,
+            "new": 79,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 65,
+            "new": null,
+            "text": "torch.cuda.synchronize()"
+          },
+          {
+            "type": "del",
+            "old": 66,
+            "new": null,
+            "text": "t1 = time.time()"
+          },
+          {
+            "type": "del",
+            "old": 67,
+            "new": null,
+            "text": "print(\"time in ms per iteration: %.2f\" % ((t1 - t0) / (num_steps - burn_in) * 1000))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 80,
+            "text": "    # simple benchmarking"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 81,
+            "text": "    torch.cuda.synchronize()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 82,
+            "text": "    for stage, num_steps in enumerate([10, 20]): # burnin, then benchmark"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 83,
+            "text": "        t0 = time.time()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 84,
+            "text": "        for k in range(num_steps):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 85,
+            "text": "            X, Y = get_batch('train')"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 86,
+            "text": "            with torch.autocast(device_type='cuda', dtype=torch.bfloat16):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 87,
+            "text": "                logits, loss = model(X, Y)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 88,
+            "text": "            optimizer.zero_grad(set_to_none=True)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 89,
+            "text": "            loss.backward()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 90,
+            "text": "            optimizer.step()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 91,
+            "text": "            lossf = loss.item()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 92,
+            "text": "            print(f\"{k}/{num_steps} loss: {lossf:.4f}\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 93,
+            "text": "        torch.cuda.synchronize()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 94,
+            "text": "        t1 = time.time()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 95,
+            "text": "        if stage == 1:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 96,
+            "text": "            print(f\"time per iteration: {(t1-t0)/num_steps*1000:.4f}ms\")"
+          }
+        ]
+      }
+    ]
+  }
+}

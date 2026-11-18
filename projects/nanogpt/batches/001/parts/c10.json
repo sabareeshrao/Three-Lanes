@@ -1,0 +1,151 @@
+{
+  "steps": {
+    "10.1": [
+      {
+        "path": "README.md",
+        "oldPath": "README.md",
+        "binary": false,
+        "rows": [
+          {
+            "type": "context",
+            "old": 34,
+            "new": 34,
+            "text": "$ torchrun --standalone --nproc_per_node=4 train.py"
+          },
+          {
+            "type": "context",
+            "old": 35,
+            "new": 35,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 36,
+            "new": 36,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 37,
+            "new": null,
+            "text": "Once some checkpoints are written to the output directory (e.g. `./out` by default), we can sample from the model:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 37,
+            "text": "To my knowledge, running this with the current script with the GPT-2 hyperparameters should reproduce the GPT-2 result, provided that OpenWebText ~= WebText. I'd like to make the code more efficient before attempting to go there. Once some checkpoints are written to the output directory (e.g. `./out` by default), we can sample from the model:"
+          },
+          {
+            "type": "context",
+            "old": 38,
+            "new": 38,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 39,
+            "new": 39,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 40,
+            "new": 40,
+            "text": "$ python sample.py"
+          },
+          {
+            "type": "context",
+            "old": 67,
+            "new": 67,
+            "text": "## benchmarking"
+          },
+          {
+            "type": "context",
+            "old": 68,
+            "new": 68,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 69,
+            "new": 69,
+            "text": "For model benchmarking `bench.py` might be useful. It's identical what happens in the meat of the training loop of `train.py`, but omits much of the other complexities."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 70,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 71,
+            "text": "# todos"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 72,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 73,
+            "text": "A few that I'm aware of, other than the ones mentioned in code:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 74,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 75,
+            "text": "- Additional optimizations to the running time"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 76,
+            "text": "- Report and track other metrics e.g. PPL"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 77,
+            "text": "- Eval zero-shot perplexities on PTB, WikiText, other related benchmarks"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 78,
+            "text": "- Current initialization (PyTorch default) departs from GPT-2. In a very quick experiment I found it to be superior to the one suggested in the papers, but that can't be right"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 79,
+            "text": "- Currently fp16 is much faster than bf16. Potentially revert back to using fp16 and re-introduce the gradient scaler?"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 80,
+            "text": "- Add some finetuning dataset and guide on some dataset for demonstration."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 81,
+            "text": "- Reproduce GPT-2 results. It was estimated ~3 years ago that the training cost of 1.5B model was ~$50K"
+          }
+        ]
+      }
+    ]
+  }
+}

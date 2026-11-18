@@ -1,0 +1,1510 @@
+{
+  "steps": {
+    "8.1": [
+      {
+        "path": "README.md",
+        "oldPath": "README.md",
+        "binary": false,
+        "rows": [
+          {
+            "type": "context",
+            "old": 1,
+            "new": 1,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 2,
+            "new": 2,
+            "text": "# nanoGPT"
+          },
+          {
+            "type": "context",
+            "old": 3,
+            "new": 3,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 4,
+            "new": null,
+            "text": "The cleanest, fastest repository for training/finetuning medium-sized GPTs. Still under active development, currently trying to reproduce GPT-2 on OpenWebText dataset. The code itself is tiny, plain and readable. At the moment `train.py` is a ~200-line boilerplate training loop and `model.py` a ~300-line GPT model definition, which can also load the GPT-2 weights from OpenAI."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": "The cleanest, smallest, fastest repository for training/finetuning medium-sized GPTs. Still under active development, currently working to reproduce GPT-2 on OpenWebText dataset. The code itself aims by design to be plain and readable: `train.py` is a ~300-line boilerplate training loop and `model.py` a ~300-line GPT model definition, which can optionally load the GPT-2 weights from OpenAI. That's it."
+          },
+          {
+            "type": "context",
+            "old": 5,
+            "new": 5,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 6,
+            "new": 6,
+            "text": "## install"
+          },
+          {
+            "type": "context",
+            "old": 7,
+            "new": 7,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 8,
+            "new": null,
+            "text": "We need a few dependencies:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": "Dependencies:"
+          },
+          {
+            "type": "context",
+            "old": 9,
+            "new": 9,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 10,
+            "new": null,
+            "text": "- [pytorch](https://pytorch.org), of course"
+          },
+          {
+            "type": "del",
+            "old": 11,
+            "new": null,
+            "text": "- numpy"
+          },
+          {
+            "type": "del",
+            "old": 12,
+            "new": null,
+            "text": "- `pip install datasets` for huggingface datasets"
+          },
+          {
+            "type": "del",
+            "old": 13,
+            "new": null,
+            "text": "- `pip install tiktoken` for OpenAI's fast bpe code"
+          },
+          {
+            "type": "del",
+            "old": 14,
+            "new": null,
+            "text": "- `pip install wandb` for optional logging"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "- [pytorch](https://pytorch.org) <3"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 11,
+            "text": "- numpy <3"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 12,
+            "text": "- `pip install datasets` for huggingface datasets <3"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 13,
+            "text": "- `pip install tiktoken` for OpenAI's fast bpe code <3"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 14,
+            "text": "- `pip install wandb` for optional logging <3"
+          },
+          {
+            "type": "context",
+            "old": 15,
+            "new": 15,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 16,
+            "new": 16,
+            "text": "## usage"
+          },
+          {
+            "type": "context",
+            "old": 17,
+            "new": 17,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 18,
+            "new": null,
+            "text": "To render a dataset we first tokenize some documents into one giant array of indices. E.g. for OpenWebText see:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "To render a dataset we first tokenize some documents into one simple long 1D array of indices. E.g. for OpenWebText see:"
+          },
+          {
+            "type": "context",
+            "old": 19,
+            "new": 19,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 20,
+            "new": 20,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 21,
+            "new": 21,
+            "text": "$ cd data/openwebtext"
+          },
+          {
+            "type": "context",
+            "old": 22,
+            "new": 22,
+            "text": "$ python prepare.py"
+          },
+          {
+            "type": "context",
+            "old": 23,
+            "new": 23,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 24,
+            "new": 24,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 25,
+            "new": null,
+            "text": "To download and tokenize the [OpenWebText](https://huggingface.co/datasets/openwebtext) dataset. It will create a `train.bin` and `val.bin` which holds the GPT2 BPE token ids in one sequence, stored as raw uint16 bytes. Then we're ready to kick off training. The training script currently by default tries to reproduce the smallest GPT-2 released by OpenAI, i.e. the 124M version of GPT-2. We can train as follows, though I encourage you to read the code and see all of the settings and paths up top in the file:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 25,
+            "text": "To download and tokenize the [OpenWebText](https://huggingface.co/datasets/openwebtext) dataset. This will create a `train.bin` and `val.bin` which holds the GPT2 BPE token ids in one sequence, stored as raw uint16 bytes. Then we're ready to kick off training. The training script currently by default tries to reproduce the smallest GPT-2 released by OpenAI, i.e. the 124M version of GPT-2. We can demo train as follows on a single device, though I encourage you to read the code and see all of the settings and paths up top in the file:"
+          },
+          {
+            "type": "context",
+            "old": 26,
+            "new": 26,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 27,
+            "new": 27,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 28,
+            "new": 28,
+            "text": "$ python train.py"
+          },
+          {
+            "type": "context",
+            "old": 29,
+            "new": 29,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 30,
+            "new": 30,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 31,
+            "new": null,
+            "text": "Once some checkpoints are written to the output directory `out`, we can sample from the model:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 31,
+            "text": "To train using PyTorch Distributed Data Parallel (DDP) run the script with torchrun. For example to train on a node with 4 GPUs run:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 32,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 33,
+            "text": "```"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 34,
+            "text": "$ torchrun --standalone --nproc_per_node=4 train.py"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 35,
+            "text": "```"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 36,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 37,
+            "text": "Once some checkpoints are written to the output directory (e.g. `./out` by default), we can sample from the model:"
+          },
+          {
+            "type": "context",
+            "old": 32,
+            "new": 38,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 33,
+            "new": 39,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 34,
+            "new": 40,
+            "text": "$ python sample.py"
+          }
+        ]
+      }
+    ],
+    "8.2": [
+      {
+        "path": "train.py",
+        "oldPath": "train.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "context",
+            "old": 1,
+            "new": 1,
+            "text": "\"\"\""
+          },
+          {
+            "type": "del",
+            "old": 2,
+            "new": null,
+            "text": "Train a GPT model on a dataset of text. One GPU version."
+          },
+          {
+            "type": "del",
+            "old": 3,
+            "new": null,
+            "text": "The text is assumed to pre-tokenized and inside files train.pt and val.pt"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 2,
+            "text": "This training script can be run both on a single gpu in debug mode,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 3,
+            "text": "and also in a larger training run with distributed data parallel (ddp)."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 5,
+            "text": "To run in debug mode example:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "$ python train.py --batch_size=32 --other=args"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 7,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": "To run DDP on 4 gpus on one node, example:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 9,
+            "text": "$ torchrun --standalone --nproc_per_node=4 train.py"
+          },
+          {
+            "type": "context",
+            "old": 4,
+            "new": 10,
+            "text": "\"\"\""
+          },
+          {
+            "type": "context",
+            "old": 5,
+            "new": 11,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 6,
+            "new": 12,
+            "text": "import os"
+          },
+          {
+            "type": "context",
+            "old": 9,
+            "new": 15,
+            "text": "import math"
+          },
+          {
+            "type": "context",
+            "old": 10,
+            "new": 16,
+            "text": "from ast import literal_eval"
+          },
+          {
+            "type": "context",
+            "old": 11,
+            "new": 17,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "import wandb"
+          },
+          {
+            "type": "context",
+            "old": 12,
+            "new": 19,
+            "text": "import numpy as np"
+          },
+          {
+            "type": "context",
+            "old": 13,
+            "new": 20,
+            "text": "import torch"
+          },
+          {
+            "type": "del",
+            "old": 14,
+            "new": null,
+            "text": "import wandb"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 21,
+            "text": "from torch.nn.parallel import DistributedDataParallel as DDP"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 22,
+            "text": "from torch.distributed import init_process_group, destroy_process_group"
+          },
+          {
+            "type": "context",
+            "old": 15,
+            "new": 23,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 16,
+            "new": 24,
+            "text": "from model import GPTConfig, GPT"
+          },
+          {
+            "type": "context",
+            "old": 17,
+            "new": 25,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 49,
+            "new": 57,
+            "text": "warmup_iters = 2000 # how many steps to warm up for"
+          },
+          {
+            "type": "context",
+            "old": 50,
+            "new": 58,
+            "text": "lr_decay_iters = 320000 # how many steps to decay the learning rate for"
+          },
+          {
+            "type": "context",
+            "old": 51,
+            "new": 59,
+            "text": "min_lr = 1e-5 # minimum learning rate"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 60,
+            "text": "# DDP settings"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 61,
+            "text": "backend = 'nccl' # 'nccl', 'gloo', etc."
+          },
+          {
+            "type": "context",
+            "old": 52,
+            "new": 62,
+            "text": "# -----------------------------------------------------------------------------"
+          },
+          {
+            "type": "context",
+            "old": 53,
+            "new": 63,
+            "text": "# poor man's Configurator. Potentially a bad idea. Example usage:"
+          },
+          {
+            "type": "del",
+            "old": 54,
+            "new": null,
+            "text": "# python train.py override_file --batch_size=32"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 64,
+            "text": "# $ python train.py override_file --batch_size=32"
+          },
+          {
+            "type": "context",
+            "old": 55,
+            "new": 65,
+            "text": "# this will first run config/override_file.py, then override batch_size to 32"
+          },
+          {
+            "type": "context",
+            "old": 56,
+            "new": 66,
+            "text": "for arg in sys.argv[1:]:"
+          },
+          {
+            "type": "context",
+            "old": 57,
+            "new": 67,
+            "text": "    if '=' not in arg:"
+          },
+          {
+            "type": "context",
+            "old": 71,
+            "new": 81,
+            "text": "            try:"
+          },
+          {
+            "type": "context",
+            "old": 72,
+            "new": 82,
+            "text": "                # attempt to eval it it (e.g. if bool, number, or etc)"
+          },
+          {
+            "type": "context",
+            "old": 73,
+            "new": 83,
+            "text": "                attempt = literal_eval(val)"
+          },
+          {
+            "type": "del",
+            "old": 74,
+            "new": null,
+            "text": "            except SyntaxError:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 84,
+            "text": "            except (SyntaxError, ValueError):"
+          },
+          {
+            "type": "context",
+            "old": 75,
+            "new": 85,
+            "text": "                # if that goes wrong, just use the string"
+          },
+          {
+            "type": "context",
+            "old": 76,
+            "new": 86,
+            "text": "                attempt = val"
+          },
+          {
+            "type": "context",
+            "old": 77,
+            "new": 87,
+            "text": "            # ensure the types match ok"
+          },
+          {
+            "type": "context",
+            "old": 82,
+            "new": 92,
+            "text": "        else:"
+          },
+          {
+            "type": "context",
+            "old": 83,
+            "new": 93,
+            "text": "            raise ValueError(f\"Unknown config key: {key}\")"
+          },
+          {
+            "type": "context",
+            "old": 84,
+            "new": 94,
+            "text": "# -----------------------------------------------------------------------------"
+          },
+          {
+            "type": "del",
+            "old": 85,
+            "new": null,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 86,
+            "new": null,
+            "text": "os.makedirs(out_dir, exist_ok=True)"
+          },
+          {
+            "type": "del",
+            "old": 87,
+            "new": null,
+            "text": "torch.manual_seed(1337)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 95,
+            "text": "ddp = int(os.environ.get('LOCAL_RANK', -1)) != -1 # is this a ddp run?"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 96,
+            "text": "if ddp:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 97,
+            "text": "    init_process_group(backend=backend)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 98,
+            "text": "    gpu_id = int(os.environ[\"LOCAL_RANK\"])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 99,
+            "text": "    device = f\"cuda:{gpu_id}\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 100,
+            "text": "else:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 101,
+            "text": "    gpu_id = 0 # gpu_id 0 means this is the (single) master process, basically"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 102,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 103,
+            "text": "if gpu_id == 0:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 104,
+            "text": "    os.makedirs(out_dir, exist_ok=True)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 105,
+            "text": "torch.manual_seed(1337 + gpu_id) # note: each worker gets a different seed"
+          },
+          {
+            "type": "context",
+            "old": 88,
+            "new": 106,
+            "text": "torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul"
+          },
+          {
+            "type": "context",
+            "old": 89,
+            "new": 107,
+            "text": "torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn"
+          },
+          {
+            "type": "context",
+            "old": 90,
+            "new": 108,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 91,
+            "new": null,
+            "text": "# poor man's data loader, TODO use real DataLoader..."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 109,
+            "text": "# poor man's data loader, TODO evaluate need for actual DataLoader"
+          },
+          {
+            "type": "context",
+            "old": 92,
+            "new": 110,
+            "text": "data_dir = os.path.join('data', dataset)"
+          },
+          {
+            "type": "context",
+            "old": 93,
+            "new": 111,
+            "text": "train_data = np.memmap(os.path.join(data_dir, 'train.bin'), dtype=np.uint16, mode='r')"
+          },
+          {
+            "type": "context",
+            "old": 94,
+            "new": 112,
+            "text": "val_data = np.memmap(os.path.join(data_dir, 'val.bin'), dtype=np.uint16, mode='r')"
+          },
+          {
+            "type": "context",
+            "old": 101,
+            "new": 119,
+            "text": "    return x, y"
+          },
+          {
+            "type": "context",
+            "old": 102,
+            "new": 120,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 103,
+            "new": 121,
+            "text": "# model init"
+          },
+          {
+            "type": "del",
+            "old": 104,
+            "new": null,
+            "text": "# TODO I don't love this whole part/API yet"
+          },
+          {
+            "type": "context",
+            "old": 105,
+            "new": 122,
+            "text": "model_args = dict(n_layer = n_layer, n_head = n_head, n_embd = n_embd, block_size = block_size, dropout = dropout)"
+          },
+          {
+            "type": "context",
+            "old": 106,
+            "new": 123,
+            "text": "if init_from == 'scratch':"
+          },
+          {
+            "type": "context",
+            "old": 107,
+            "new": 124,
+            "text": "    # init a new model from scratch"
+          }
+        ]
+      }
+    ],
+    "8.3": [
+      {
+        "path": "train.py",
+        "oldPath": "train.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "context",
+            "old": 108,
+            "new": 125,
+            "text": "    gptconf = GPTConfig(**model_args)"
+          },
+          {
+            "type": "context",
+            "old": 109,
+            "new": 126,
+            "text": "    model = GPT(gptconf)"
+          },
+          {
+            "type": "context",
+            "old": 110,
+            "new": 127,
+            "text": "elif init_from == 'resume':"
+          },
+          {
+            "type": "del",
+            "old": 111,
+            "new": null,
+            "text": "    # resume training from a checkpoint. TODO: do we resume iter_num etc too? (yes...)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 128,
+            "text": "    # resume training from a checkpoint."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 129,
+            "text": "    # TODO: should we also resume iter_num and best_val_loss?"
+          },
+          {
+            "type": "context",
+            "old": 112,
+            "new": 130,
+            "text": "    ckpt_path = os.path.join(out_dir, 'ckpt.pt')"
+          },
+          {
+            "type": "del",
+            "old": 113,
+            "new": null,
+            "text": "    checkpoint = torch.load(ckpt_path)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 131,
+            "text": "    checkpoint = torch.load(ckpt_path, map_location=device)"
+          },
+          {
+            "type": "context",
+            "old": 114,
+            "new": 132,
+            "text": "    checkpoint_model_args = checkpoint['model_args']"
+          },
+          {
+            "type": "context",
+            "old": 115,
+            "new": 133,
+            "text": "    for k, v in model_args.items():"
+          },
+          {
+            "type": "context",
+            "old": 116,
+            "new": 134,
+            "text": "        assert checkpoint_model_args[k] == v, \"for now\""
+          },
+          {
+            "type": "context",
+            "old": 120,
+            "new": 138,
+            "text": "elif init_from.startswith('gpt2'):"
+          },
+          {
+            "type": "context",
+            "old": 121,
+            "new": 139,
+            "text": "    # initialize from OpenAI GPT-2 weights"
+          },
+          {
+            "type": "context",
+            "old": 122,
+            "new": 140,
+            "text": "    model = GPT.from_pretrained(init_from)"
+          },
+          {
+            "type": "del",
+            "old": 123,
+            "new": null,
+            "text": "    if block_size < model.block_size:"
+          },
+          {
+            "type": "del",
+            "old": 124,
+            "new": null,
+            "text": "        model.crop_block_size(block_size)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 141,
+            "text": "# crop down the model block size if desired"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 142,
+            "text": "if block_size < model.block_size:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 143,
+            "text": "    model.crop_block_size(block_size)"
+          },
+          {
+            "type": "context",
+            "old": 125,
+            "new": 144,
+            "text": "model.to(device)"
+          },
+          {
+            "type": "context",
+            "old": 126,
+            "new": 145,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 146,
+            "text": "# optimizer"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 147,
+            "text": "optimizer = model.configure_optimizers(weight_decay, learning_rate, betas)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 148,
+            "text": "if init_from == 'resume':"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 149,
+            "text": "    optimizer.load_state_dict(checkpoint['optimizer'])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 150,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 151,
+            "text": "# wrap model into DDP container"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 152,
+            "text": "if ddp:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 153,
+            "text": "    model = DDP(model, device_ids=[gpu_id])"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 154,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 127,
+            "new": 155,
+            "text": "@torch.no_grad()"
+          },
+          {
+            "type": "context",
+            "old": 128,
+            "new": 156,
+            "text": "def estimate_loss():"
+          },
+          {
+            "type": "context",
+            "old": 129,
+            "new": 157,
+            "text": "    out = {}"
+          },
+          {
+            "type": "context",
+            "old": 139,
+            "new": 167,
+            "text": "    model.train()"
+          },
+          {
+            "type": "context",
+            "old": 140,
+            "new": 168,
+            "text": "    return out"
+          },
+          {
+            "type": "context",
+            "old": 141,
+            "new": 169,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 142,
+            "new": null,
+            "text": "# optimizer"
+          },
+          {
+            "type": "del",
+            "old": 143,
+            "new": null,
+            "text": "optimizer = model.configure_optimizers(weight_decay, learning_rate, betas)"
+          },
+          {
+            "type": "del",
+            "old": 144,
+            "new": null,
+            "text": "if init_from == 'resume':"
+          },
+          {
+            "type": "del",
+            "old": 145,
+            "new": null,
+            "text": "    optimizer.load_state_dict(checkpoint['optimizer'])"
+          },
+          {
+            "type": "del",
+            "old": 146,
+            "new": null,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 147,
+            "new": 170,
+            "text": "# learning rate decay scheduler (cosine with warmup)"
+          },
+          {
+            "type": "context",
+            "old": 148,
+            "new": 171,
+            "text": "def get_lr(iter):"
+          },
+          {
+            "type": "context",
+            "old": 149,
+            "new": 172,
+            "text": "    # 1) linear warmup for warmup_iters steps"
+          },
+          {
+            "type": "context",
+            "old": 155,
+            "new": 178,
+            "text": "    # 3) in between, use cosine decay down to min learning rate"
+          },
+          {
+            "type": "context",
+            "old": 156,
+            "new": 179,
+            "text": "    decay_ratio = (iter - warmup_iters) / (lr_decay_iters - warmup_iters)"
+          },
+          {
+            "type": "context",
+            "old": 157,
+            "new": 180,
+            "text": "    assert 0 <= decay_ratio <= 1"
+          },
+          {
+            "type": "del",
+            "old": 158,
+            "new": null,
+            "text": "    coeff = 0.5 * (1.0 + math.cos(math.pi * decay_ratio)) # ranges 0..1"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 181,
+            "text": "    coeff = 0.5 * (1.0 + math.cos(math.pi * decay_ratio)) # coeff ranges 0..1"
+          },
+          {
+            "type": "context",
+            "old": 159,
+            "new": 182,
+            "text": "    return min_lr + coeff * (learning_rate - min_lr)"
+          },
+          {
+            "type": "context",
+            "old": 160,
+            "new": 183,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 161,
+            "new": 184,
+            "text": "# logging"
+          },
+          {
+            "type": "del",
+            "old": 162,
+            "new": null,
+            "text": "if wandb_log:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 185,
+            "text": "if wandb_log and gpu_id == 0:"
+          },
+          {
+            "type": "context",
+            "old": 163,
+            "new": 186,
+            "text": "    wandb.init(project=wandb_project, entity=wandb_entity, name=wandb_run_name)"
+          },
+          {
+            "type": "context",
+            "old": 164,
+            "new": 187,
+            "text": "    wandb.config = {"
+          },
+          {
+            "type": "context",
+            "old": 165,
+            "new": 188,
+            "text": "        \"batch_size\": batch_size,"
+          },
+          {
+            "type": "context",
+            "old": 169,
+            "new": 192,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 170,
+            "new": 193,
+            "text": "# training loop"
+          },
+          {
+            "type": "context",
+            "old": 171,
+            "new": 194,
+            "text": "iter_num = 0"
+          },
+          {
+            "type": "del",
+            "old": 172,
+            "new": null,
+            "text": "num_tokens = 0"
+          },
+          {
+            "type": "context",
+            "old": 173,
+            "new": 195,
+            "text": "best_val_loss = 1e9"
+          },
+          {
+            "type": "context",
+            "old": 174,
+            "new": 196,
+            "text": "t0 = time.time()"
+          },
+          {
+            "type": "context",
+            "old": 175,
+            "new": 197,
+            "text": "while True:"
+          },
+          {
+            "type": "context",
+            "old": 182,
+            "new": 204,
+            "text": "    else:"
+          },
+          {
+            "type": "context",
+            "old": 183,
+            "new": 205,
+            "text": "        lr = learning_rate"
+          },
+          {
+            "type": "context",
+            "old": 184,
+            "new": 206,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 185,
+            "new": null,
+            "text": "    if iter_num % eval_interval == 0:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 207,
+            "text": "    if iter_num % eval_interval == 0 and gpu_id == 0:"
+          },
+          {
+            "type": "context",
+            "old": 186,
+            "new": 208,
+            "text": "        losses = estimate_loss()"
+          },
+          {
+            "type": "context",
+            "old": 187,
+            "new": 209,
+            "text": "        print(f\"step {iter_num}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}\")"
+          },
+          {
+            "type": "context",
+            "old": 188,
+            "new": 210,
+            "text": "        if wandb_log:"
+          }
+        ]
+      }
+    ],
+    "8.4": [
+      {
+        "path": "train.py",
+        "oldPath": "train.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "context",
+            "old": 189,
+            "new": 211,
+            "text": "            wandb.log({"
+          },
+          {
+            "type": "context",
+            "old": 190,
+            "new": 212,
+            "text": "                \"iter\": iter_num,"
+          },
+          {
+            "type": "del",
+            "old": 191,
+            "new": null,
+            "text": "                \"num_tokens\": num_tokens,"
+          },
+          {
+            "type": "context",
+            "old": 192,
+            "new": 213,
+            "text": "                \"train/loss\": losses['train'],"
+          },
+          {
+            "type": "context",
+            "old": 193,
+            "new": 214,
+            "text": "                \"val/loss\": losses['val'],"
+          },
+          {
+            "type": "context",
+            "old": 194,
+            "new": 215,
+            "text": "                \"lr\": lr,"
+          },
+          {
+            "type": "context",
+            "old": 195,
+            "new": 216,
+            "text": "            })"
+          },
+          {
+            "type": "context",
+            "old": 196,
+            "new": 217,
+            "text": "        if losses['val'] < best_val_loss:"
+          },
+          {
+            "type": "context",
+            "old": 197,
+            "new": 218,
+            "text": "            best_val_loss = losses['val']"
+          },
+          {
+            "type": "del",
+            "old": 198,
+            "new": null,
+            "text": "            if iter_num > 0: # don't save checkpoints on very first iteration..."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 219,
+            "text": "            raw_model = model.module if ddp else model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 220,
+            "text": "            if iter_num > 0:"
+          },
+          {
+            "type": "context",
+            "old": 199,
+            "new": 221,
+            "text": "                checkpoint = {"
+          },
+          {
+            "type": "del",
+            "old": 200,
+            "new": null,
+            "text": "                    'model': model.state_dict(),"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 222,
+            "text": "                    'model': raw_model.state_dict(),"
+          },
+          {
+            "type": "context",
+            "old": 201,
+            "new": 223,
+            "text": "                    'optimizer': optimizer.state_dict(),"
+          },
+          {
+            "type": "context",
+            "old": 202,
+            "new": 224,
+            "text": "                    'model_args': model_args,"
+          },
+          {
+            "type": "context",
+            "old": 203,
+            "new": 225,
+            "text": "                    'iter_num': iter_num,"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 226,
+            "text": "                    'best_val_loss': best_val_loss,"
+          },
+          {
+            "type": "context",
+            "old": 204,
+            "new": 227,
+            "text": "                }"
+          },
+          {
+            "type": "context",
+            "old": 205,
+            "new": 228,
+            "text": "                torch.save(checkpoint, os.path.join(out_dir, 'ckpt.pt'))"
+          },
+          {
+            "type": "context",
+            "old": 206,
+            "new": 229,
+            "text": "    if iter_num == 0 and eval_only:"
+          },
+          {
+            "type": "context",
+            "old": 212,
+            "new": 235,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 213,
+            "new": 236,
+            "text": "    optimizer.zero_grad(set_to_none=True)"
+          },
+          {
+            "type": "context",
+            "old": 214,
+            "new": 237,
+            "text": "    loss.backward()"
+          },
+          {
+            "type": "del",
+            "old": 215,
+            "new": null,
+            "text": "    # TODO: gradient clipping"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 238,
+            "text": "    # TODO: gradient clipping evaluate need for"
+          },
+          {
+            "type": "context",
+            "old": 216,
+            "new": 239,
+            "text": "    optimizer.step()"
+          },
+          {
+            "type": "context",
+            "old": 217,
+            "new": 240,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 218,
+            "new": 241,
+            "text": "    t1 = time.time()"
+          },
+          {
+            "type": "context",
+            "old": 219,
+            "new": 242,
+            "text": "    dt = t1 - t0"
+          },
+          {
+            "type": "context",
+            "old": 220,
+            "new": 243,
+            "text": "    t0 = t1"
+          },
+          {
+            "type": "del",
+            "old": 221,
+            "new": null,
+            "text": "    if iter_num % log_interval == 0:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 244,
+            "text": "    if iter_num % log_interval == 0 and gpu_id == 0:"
+          },
+          {
+            "type": "context",
+            "old": 222,
+            "new": 245,
+            "text": "        lossf = loss.item() # loss as float. TODO CPU-GPU sync: profile, make sure not slow af"
+          },
+          {
+            "type": "context",
+            "old": 223,
+            "new": 246,
+            "text": "        print(f\"iter {iter_num}: loss {lossf:.4f}, time {dt*1000:.2f}ms\")"
+          },
+          {
+            "type": "context",
+            "old": 224,
+            "new": 247,
+            "text": "    iter_num += 1"
+          },
+          {
+            "type": "del",
+            "old": 225,
+            "new": null,
+            "text": "    num_tokens += X.numel()"
+          },
+          {
+            "type": "context",
+            "old": 226,
+            "new": 248,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 227,
+            "new": 249,
+            "text": "    # termination conditions"
+          },
+          {
+            "type": "context",
+            "old": 228,
+            "new": 250,
+            "text": "    if iter_num >= max_iters:"
+          },
+          {
+            "type": "context",
+            "old": 229,
+            "new": 251,
+            "text": "        break"
+          },
+          {
+            "type": "context",
+            "old": 230,
+            "new": 252,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 253,
+            "text": "destroy_process_group()"
+          }
+        ]
+      }
+    ]
+  }
+}

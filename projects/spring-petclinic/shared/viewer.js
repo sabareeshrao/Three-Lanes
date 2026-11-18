@@ -1,6 +1,6 @@
 (()=>{'use strict';
-const byId=x=>document.getElementById(x),H=v=>String(v==null?'':v).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[x])),BASE='spring-projects/spring-petclinic';
-const BATCH=document.documentElement.dataset.batch||'001',STORAGE='three-lanes-b'+BATCH+'-v2',VERT='three-lanes-b'+BATCH+'-scroll',MAX_LINES=100;
+const byId=x=>document.getElementById(x),H=v=>String(v==null?'':v).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[x])),BASE=document.documentElement.dataset.repository||'spring-projects/spring-petclinic';
+const BATCH=document.documentElement.dataset.batch||'001',STORAGE='three-lanes-'+(BASE==='spring-projects/spring-petclinic'?'':'nanoGPT-')+'b'+BATCH+'-v2',VERT='three-lanes-'+(BASE==='spring-projects/spring-petclinic'?'':'nanoGPT-')+'b'+BATCH+'-scroll',MAX_LINES=100;
 let data=[],commits=[],index=0,mode='view',tab='compare',selectedFile='',renderToken=0,sourceToken=0,activePeek={backend:null,frontend:null},restoreDone=false,pageFloor=0,expandedCommit=null;
 const store=(k,v)=>{try{localStorage.setItem(k,v)}catch{}},read=k=>{try{return localStorage.getItem(k)}catch{return null}};
 try{const v=JSON.parse(read(STORAGE)||'{}');if(Number.isInteger(v.index))index=v.index;if(v.mode==='github'||v.mode==='view')mode=v.mode;}catch{}

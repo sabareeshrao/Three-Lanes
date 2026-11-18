@@ -1,0 +1,241 @@
+{
+  "steps": {
+    "7.1": [
+      {
+        "path": "README.md",
+        "oldPath": "README.md",
+        "binary": false,
+        "rows": [
+          {
+            "type": "context",
+            "old": 1,
+            "new": 1,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 2,
+            "new": 2,
+            "text": "# nanoGPT"
+          },
+          {
+            "type": "context",
+            "old": 3,
+            "new": 3,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 4,
+            "new": null,
+            "text": "The cleanest, fastest repository for training/finetuning medium-sized GPTs."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": "The cleanest, fastest repository for training/finetuning medium-sized GPTs. Still under active development, currently trying to reproduce GPT-2 on OpenWebText dataset. The code itself is tiny, plain and readable. At the moment `train.py` is a ~200-line boilerplate training loop and `model.py` a ~300-line GPT model definition, which can also load the GPT-2 weights from OpenAI."
+          },
+          {
+            "type": "context",
+            "old": 5,
+            "new": 5,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 6,
+            "new": null,
+            "text": "This repo currently requires reading the code, but it's not that bad. work ongoing..."
+          },
+          {
+            "type": "del",
+            "old": 7,
+            "new": null,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 8,
+            "new": null,
+            "text": "Getting started:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "## install"
+          },
+          {
+            "type": "context",
+            "old": 9,
+            "new": 7,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 10,
+            "new": 8,
+            "text": "We need a few dependencies:"
+          },
+          {
+            "type": "context",
+            "old": 11,
+            "new": 9,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 15,
+            "new": 13,
+            "text": "- `pip install tiktoken` for OpenAI's fast bpe code"
+          },
+          {
+            "type": "context",
+            "old": 16,
+            "new": 14,
+            "text": "- `pip install wandb` for optional logging"
+          },
+          {
+            "type": "context",
+            "old": 17,
+            "new": 15,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 18,
+            "new": null,
+            "text": "Then we want to render the detaset:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 16,
+            "text": "## usage"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 17,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "To render a dataset we first tokenize some documents into one giant array of indices. E.g. for OpenWebText see:"
+          },
+          {
+            "type": "context",
+            "old": 19,
+            "new": 19,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 20,
+            "new": 20,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 21,
+            "new": 21,
+            "text": "$ cd data/openwebtext"
+          },
+          {
+            "type": "context",
+            "old": 22,
+            "new": 22,
+            "text": "$ python prepare.py"
+          },
+          {
+            "type": "context",
+            "old": 23,
+            "new": 23,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 24,
+            "new": 24,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 25,
+            "new": null,
+            "text": "To download and tokenize the [openwebtext](https://huggingface.co/datasets/openwebtext) dataset. It will create a `train.bin` and `val.bin` which holds the GPT2 BPE token ids in a massive sequence. Then we're ready to kick off training. The training script currently tries to reproduce the smallest GPT-2 released by OpenAI, i.e. the 124M version of GPT-2. We can run it like so:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 25,
+            "text": "To download and tokenize the [OpenWebText](https://huggingface.co/datasets/openwebtext) dataset. It will create a `train.bin` and `val.bin` which holds the GPT2 BPE token ids in one sequence, stored as raw uint16 bytes. Then we're ready to kick off training. The training script currently by default tries to reproduce the smallest GPT-2 released by OpenAI, i.e. the 124M version of GPT-2. We can train as follows, though I encourage you to read the code and see all of the settings and paths up top in the file:"
+          },
+          {
+            "type": "context",
+            "old": 26,
+            "new": 26,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 27,
+            "new": 27,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 28,
+            "new": 28,
+            "text": "$ python train.py"
+          },
+          {
+            "type": "context",
+            "old": 29,
+            "new": 29,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 30,
+            "new": 30,
+            "text": ""
+          },
+          {
+            "type": "del",
+            "old": 31,
+            "new": null,
+            "text": "Once some checkpoints are written to the output directory `out`, we're ready to sample from the model:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 31,
+            "text": "Once some checkpoints are written to the output directory `out`, we can sample from the model:"
+          },
+          {
+            "type": "context",
+            "old": 32,
+            "new": 32,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 33,
+            "new": 33,
+            "text": "```"
+          },
+          {
+            "type": "context",
+            "old": 34,
+            "new": 34,
+            "text": "$ python sample.py"
+          }
+        ]
+      }
+    ]
+  }
+}

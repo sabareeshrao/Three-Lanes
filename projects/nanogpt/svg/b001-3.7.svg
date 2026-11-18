@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 540" role="img" aria-label="train.py · lines 209–210"><title>train.py · lines 209–210</title><rect width="840" height="540" fill="#e8eff3"/><rect x="19" y="17" width="802" height="506" rx="19" fill="white" stroke="#d1e0e9"/>
+ <path d="M38 116H802" stroke="#d9e6ed"/><circle cx="58" cy="64" r="23" fill="#986324"/><text x="58" y="70" text-anchor="middle" font-size="14" font-weight="800" fill="white">3.7</text>
+ <text x="99" y="46" font-size="11" font-weight="800" letter-spacing="1" fill="#986324">TRAINING · HISTORICAL PATCH</text>
+ <text x="99" y="76" font-size="20" font-weight="800" fill="#193047">train.py · lines 209–210</text>
+ <text x="100" y="99" font-size="12" fill="#60788b" font-family="monospace">train.py</text>
+ <text x="790" y="47" text-anchor="end" fill="#7b8fa0" font-size="11">COMMIT 3/10</text>
+ <text x="790" y="68" text-anchor="end" fill="#7b8fa0" font-family="monospace" font-size="11">5d2b4807bf</text><text x="49" y="159" fill="#607b8b" font-size="12" font-weight="800">SOURCE WALKTHROUGH · AUTHENTIC STATEMENTS</text>
+  <g data-target="0" role="button" tabindex="0" aria-label="Inspect with torch.amp.autocast(device_type=&quot;cuda&quot;, dtype=t…" style="cursor:pointer"><rect x="53" y="184" width="356" height="87" rx="12" fill="white" stroke="#b9d0dc" stroke-width="1.5"/><rect x="63" y="197" width="26" height="26" rx="7" fill="#986324"/><text x="76" y="215" font-size="13" text-anchor="middle" font-weight="800" fill="white">1</text><text x="99" y="214" font-family="monospace" font-size="13" fill="#234359">with torch.amp.autocast(device_type=&quot;cuda…</text></g>
+  <text x="49" y="414" fill="#6d8192" font-size="11">Nodes mark editable source locations; no training run or output is claimed.</text><rect x="42" y="449" width="755" height="51" rx="11" fill="#eef6f2"/><circle cx="61" cy="475" r="6" fill="#0eae81"/>
+ <text x="78" y="475" font-size="12" font-weight="750" fill="#446657">REAL DIFF · +0 / −0 · 2/100 physical lines</text>
+ <text x="781" y="491" text-anchor="end" font-size="10" fill="#728c80">Click source nodes → verified SHA-pinned code (click again to close)</text></svg>

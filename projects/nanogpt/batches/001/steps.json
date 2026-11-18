@@ -1,0 +1,1032 @@
+{
+  "schemaVersion": 1,
+  "batchId": "001",
+  "repository": "karpathy/nanoGPT",
+  "status": "IN PROGRESS — source-verified; visual QA pending",
+  "codeLineCap": 100,
+  "steps": [
+    {
+      "id": "1.1",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "README.md",
+      "caption": "README.md",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 34,
+      "changedLineCount": 34,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "README.md",
+          "path": "README.md",
+          "line": 1,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 34 actual diff/context lines from README.md. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "1.2",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "prepare.py · process · lines 1–78",
+      "caption": "data/openwebtext/prepare.py",
+      "category": "data",
+      "lane": "backend",
+      "codeLineCount": 78,
+      "changedLineCount": 78,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "prepare.py",
+          "path": "data/openwebtext/prepare.py",
+          "line": 1,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.2.svg",
+      "mentor": {
+        "idea": "This slice contains historical data-preparation code or documentation; no dataset run is simulated.",
+        "reason": "Read the 78 actual diff/context lines from data/openwebtext/prepare.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "1.3",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "prepare.py · lines 79–84",
+      "caption": "data/openwebtext/prepare.py",
+      "category": "data",
+      "lane": "backend",
+      "codeLineCount": 6,
+      "changedLineCount": 6,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "prepare.py",
+          "path": "data/openwebtext/prepare.py",
+          "line": 79,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.3.svg",
+      "mentor": {
+        "idea": "This slice contains historical data-preparation code or documentation; no dataset run is simulated.",
+        "reason": "Read the 6 actual diff/context lines from data/openwebtext/prepare.py. The source link is pinned to this commit at line 79."
+      }
+    },
+    {
+      "id": "1.4",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "readme.md",
+      "caption": "data/openwebtext/readme.md",
+      "category": "data",
+      "lane": "backend",
+      "codeLineCount": 15,
+      "changedLineCount": 15,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "readme.md",
+          "path": "data/openwebtext/readme.md",
+          "line": 1,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.4.svg",
+      "mentor": {
+        "idea": "This slice contains historical data-preparation code or documentation; no dataset run is simulated.",
+        "reason": "Read the 15 actual diff/context lines from data/openwebtext/readme.md. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "1.5",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "model.py · fused_gelu · lines 1–78",
+      "caption": "model.py",
+      "category": "model",
+      "lane": "backend",
+      "codeLineCount": 78,
+      "changedLineCount": 78,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "model.py",
+          "path": "model.py",
+          "line": 1,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.5.svg",
+      "mentor": {
+        "idea": "This is actual nanoGPT model.py source at the selected historical SHA, not a new model architecture.",
+        "reason": "Read the 78 actual diff/context lines from model.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "1.6",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "model.py · Block · lines 79–156",
+      "caption": "model.py",
+      "category": "model",
+      "lane": "backend",
+      "codeLineCount": 78,
+      "changedLineCount": 78,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "model.py",
+          "path": "model.py",
+          "line": 79,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.6.svg",
+      "mentor": {
+        "idea": "This is actual nanoGPT model.py source at the selected historical SHA, not a new model architecture.",
+        "reason": "Read the 78 actual diff/context lines from model.py. The source link is pinned to this commit at line 79."
+      }
+    },
+    {
+      "id": "1.7",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "model.py · configure_optimizers · lines 157–234",
+      "caption": "model.py",
+      "category": "model",
+      "lane": "backend",
+      "codeLineCount": 78,
+      "changedLineCount": 78,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "model.py",
+          "path": "model.py",
+          "line": 157,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.7.svg",
+      "mentor": {
+        "idea": "This is actual nanoGPT model.py source at the selected historical SHA, not a new model architecture.",
+        "reason": "Read the 78 actual diff/context lines from model.py. The source link is pinned to this commit at line 157."
+      }
+    },
+    {
+      "id": "1.8",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "model.py · generate · lines 235–267",
+      "caption": "model.py",
+      "category": "model",
+      "lane": "backend",
+      "codeLineCount": 33,
+      "changedLineCount": 33,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "model.py",
+          "path": "model.py",
+          "line": 235,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.8.svg",
+      "mentor": {
+        "idea": "This is actual nanoGPT model.py source at the selected historical SHA, not a new model architecture.",
+        "reason": "Read the 33 actual diff/context lines from model.py. The source link is pinned to this commit at line 235."
+      }
+    },
+    {
+      "id": "1.9",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "sample.py",
+      "caption": "sample.py",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 37,
+      "changedLineCount": 37,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "sample.py",
+          "path": "sample.py",
+          "line": 1,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.9.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 37 actual diff/context lines from sample.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "1.10",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "train.py · get_batch · lines 1–78",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 78,
+      "changedLineCount": 78,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 1,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.10.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 78 actual diff/context lines from train.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "1.11",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "train.py · estimate_loss · lines 79–151",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 73,
+      "changedLineCount": 73,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 79,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.11.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 73 actual diff/context lines from train.py. The source link is pinned to this commit at line 79."
+      }
+    },
+    {
+      "id": "1.12",
+      "commitPosition": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "parentSha": null,
+      "commitTitle": "first very bad commit",
+      "title": "train.py · lines 152–191",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 40,
+      "changedLineCount": 40,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c01.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 152,
+          "side": "after",
+          "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26"
+        }
+      ],
+      "visual": "../../svg/b001-1.12.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 40 actual diff/context lines from train.py. The source link is pinned to this commit at line 152."
+      }
+    },
+    {
+      "id": "2.1",
+      "commitPosition": 2,
+      "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "parentSha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "commitTitle": "small readme clarification and training script defaults changes",
+      "title": "README.md",
+      "caption": "README.md",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 15,
+      "changedLineCount": 4,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c02.json",
+      "sourceTargets": [
+        {
+          "label": "README.md",
+          "path": "README.md",
+          "line": 18,
+          "side": "after",
+          "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
+        }
+      ],
+      "visual": "../../svg/b001-2.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 15 actual diff/context lines from README.md. The source link is pinned to this commit at line 18."
+      }
+    },
+    {
+      "id": "2.2",
+      "commitPosition": 2,
+      "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "parentSha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "commitTitle": "small readme clarification and training script defaults changes",
+      "title": "train.py",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 18,
+      "changedLineCount": 8,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c02.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 22,
+          "side": "after",
+          "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b"
+        }
+      ],
+      "visual": "../../svg/b001-2.2.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 18 actual diff/context lines from train.py. The source link is pinned to this commit at line 22."
+      }
+    },
+    {
+      "id": "3.1",
+      "commitPosition": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "parentSha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "commitTitle": "adding a lightweight configurator that may be a terrible mistake lol. also adding configs to evaluate the baseline GPT2 versions released by OpenAI on OWT. we have some ways to go to match those numbers atm",
+      "title": "README.md",
+      "caption": "README.md",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 26,
+      "changedLineCount": 23,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c03.json",
+      "sourceTargets": [
+        {
+          "label": "README.md",
+          "path": "README.md",
+          "line": 37,
+          "side": "after",
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        }
+      ],
+      "visual": "../../svg/b001-3.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 26 actual diff/context lines from README.md. The source link is pinned to this commit at line 37."
+      }
+    },
+    {
+      "id": "3.2",
+      "commitPosition": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "parentSha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "commitTitle": "adding a lightweight configurator that may be a terrible mistake lol. also adding configs to evaluate the baseline GPT2 versions released by OpenAI on OWT. we have some ways to go to match those numbers atm",
+      "title": "eval_gpt2.py",
+      "caption": "config/eval_gpt2.py",
+      "category": "config",
+      "lane": "backend",
+      "codeLineCount": 8,
+      "changedLineCount": 8,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c03.json",
+      "sourceTargets": [
+        {
+          "label": "eval_gpt2.py",
+          "path": "config/eval_gpt2.py",
+          "line": 1,
+          "side": "after",
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        }
+      ],
+      "visual": "../../svg/b001-3.2.svg",
+      "mentor": {
+        "idea": "These values and options come from the original configuration file.",
+        "reason": "Read the 8 actual diff/context lines from config/eval_gpt2.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "3.3",
+      "commitPosition": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "parentSha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "commitTitle": "adding a lightweight configurator that may be a terrible mistake lol. also adding configs to evaluate the baseline GPT2 versions released by OpenAI on OWT. we have some ways to go to match those numbers atm",
+      "title": "eval_gpt2_large.py",
+      "caption": "config/eval_gpt2_large.py",
+      "category": "config",
+      "lane": "backend",
+      "codeLineCount": 8,
+      "changedLineCount": 8,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c03.json",
+      "sourceTargets": [
+        {
+          "label": "eval_gpt2_large.py",
+          "path": "config/eval_gpt2_large.py",
+          "line": 1,
+          "side": "after",
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        }
+      ],
+      "visual": "../../svg/b001-3.3.svg",
+      "mentor": {
+        "idea": "These values and options come from the original configuration file.",
+        "reason": "Read the 8 actual diff/context lines from config/eval_gpt2_large.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "3.4",
+      "commitPosition": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "parentSha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "commitTitle": "adding a lightweight configurator that may be a terrible mistake lol. also adding configs to evaluate the baseline GPT2 versions released by OpenAI on OWT. we have some ways to go to match those numbers atm",
+      "title": "eval_gpt2_medium.py",
+      "caption": "config/eval_gpt2_medium.py",
+      "category": "config",
+      "lane": "backend",
+      "codeLineCount": 8,
+      "changedLineCount": 8,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c03.json",
+      "sourceTargets": [
+        {
+          "label": "eval_gpt2_medium.py",
+          "path": "config/eval_gpt2_medium.py",
+          "line": 1,
+          "side": "after",
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        }
+      ],
+      "visual": "../../svg/b001-3.4.svg",
+      "mentor": {
+        "idea": "These values and options come from the original configuration file.",
+        "reason": "Read the 8 actual diff/context lines from config/eval_gpt2_medium.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "3.5",
+      "commitPosition": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "parentSha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "commitTitle": "adding a lightweight configurator that may be a terrible mistake lol. also adding configs to evaluate the baseline GPT2 versions released by OpenAI on OWT. we have some ways to go to match those numbers atm",
+      "title": "eval_gpt2_xl.py",
+      "caption": "config/eval_gpt2_xl.py",
+      "category": "config",
+      "lane": "backend",
+      "codeLineCount": 8,
+      "changedLineCount": 8,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c03.json",
+      "sourceTargets": [
+        {
+          "label": "eval_gpt2_xl.py",
+          "path": "config/eval_gpt2_xl.py",
+          "line": 1,
+          "side": "after",
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        }
+      ],
+      "visual": "../../svg/b001-3.5.svg",
+      "mentor": {
+        "idea": "These values and options come from the original configuration file.",
+        "reason": "Read the 8 actual diff/context lines from config/eval_gpt2_xl.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "3.6",
+      "commitPosition": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "parentSha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "commitTitle": "adding a lightweight configurator that may be a terrible mistake lol. also adding configs to evaluate the baseline GPT2 versions released by OpenAI on OWT. we have some ways to go to match those numbers atm",
+      "title": "train.py · estimate_loss · lines 4–208",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 78,
+      "changedLineCount": 43,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c03.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 7,
+          "side": "after",
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        }
+      ],
+      "visual": "../../svg/b001-3.6.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 78 actual diff/context lines from train.py. The source link is pinned to this commit at line 7."
+      }
+    },
+    {
+      "id": "3.7",
+      "commitPosition": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "parentSha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "commitTitle": "adding a lightweight configurator that may be a terrible mistake lol. also adding configs to evaluate the baseline GPT2 versions released by OpenAI on OWT. we have some ways to go to match those numbers atm",
+      "title": "train.py · lines 209–210",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 2,
+      "changedLineCount": 0,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c03.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 209,
+          "side": "after",
+          "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2"
+        }
+      ],
+      "visual": "../../svg/b001-3.7.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 2 actual diff/context lines from train.py. The source link is pinned to this commit at line 209."
+      }
+    },
+    {
+      "id": "4.1",
+      "commitPosition": 4,
+      "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a",
+      "parentSha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "commitTitle": "add benchmarking script v0",
+      "title": "README.md",
+      "caption": "README.md",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 7,
+      "changedLineCount": 4,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c04.json",
+      "sourceTargets": [
+        {
+          "label": "README.md",
+          "path": "README.md",
+          "line": 60,
+          "side": "after",
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        }
+      ],
+      "visual": "../../svg/b001-4.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 7 actual diff/context lines from README.md. The source link is pinned to this commit at line 60."
+      }
+    },
+    {
+      "id": "4.2",
+      "commitPosition": 4,
+      "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a",
+      "parentSha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "commitTitle": "add benchmarking script v0",
+      "title": "bench.py",
+      "caption": "bench.py",
+      "category": "benchmark",
+      "lane": "backend",
+      "codeLineCount": 48,
+      "changedLineCount": 48,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c04.json",
+      "sourceTargets": [
+        {
+          "label": "bench.py",
+          "path": "bench.py",
+          "line": 1,
+          "side": "after",
+          "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a"
+        }
+      ],
+      "visual": "../../svg/b001-4.2.svg",
+      "mentor": {
+        "idea": "This slice belongs to the benchmark script; no benchmark results are invented.",
+        "reason": "Read the 48 actual diff/context lines from bench.py. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "5.1",
+      "commitPosition": 5,
+      "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2",
+      "parentSha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a",
+      "commitTitle": "add data loading into benchmarking as well, just for completeness",
+      "title": "README.md",
+      "caption": "README.md",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 5,
+      "changedLineCount": 2,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c05.json",
+      "sourceTargets": [
+        {
+          "label": "README.md",
+          "path": "README.md",
+          "line": 63,
+          "side": "after",
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        }
+      ],
+      "visual": "../../svg/b001-5.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 5 actual diff/context lines from README.md. The source link is pinned to this commit at line 63."
+      }
+    },
+    {
+      "id": "5.2",
+      "commitPosition": 5,
+      "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2",
+      "parentSha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a",
+      "commitTitle": "add data loading into benchmarking as well, just for completeness",
+      "title": "bench.py · get_batch",
+      "caption": "bench.py",
+      "category": "benchmark",
+      "lane": "backend",
+      "codeLineCount": 55,
+      "changedLineCount": 31,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c05.json",
+      "sourceTargets": [
+        {
+          "label": "bench.py",
+          "path": "bench.py",
+          "line": 2,
+          "side": "after",
+          "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2"
+        }
+      ],
+      "visual": "../../svg/b001-5.2.svg",
+      "mentor": {
+        "idea": "This slice belongs to the benchmark script; no benchmark results are invented.",
+        "reason": "Read the 55 actual diff/context lines from bench.py. The source link is pinned to this commit at line 2."
+      }
+    },
+    {
+      "id": "6.1",
+      "commitPosition": 6,
+      "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72",
+      "parentSha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2",
+      "commitTitle": "add pytorch profiler support. not sure how to support both profiler and simple benchmarking, a bit gnarly atm hmm",
+      "title": "bench.py",
+      "caption": "bench.py",
+      "category": "benchmark",
+      "lane": "backend",
+      "codeLineCount": 76,
+      "changedLineCount": 63,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c06.json",
+      "sourceTargets": [
+        {
+          "label": "bench.py",
+          "path": "bench.py",
+          "line": 10,
+          "side": "after",
+          "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72"
+        }
+      ],
+      "visual": "../../svg/b001-6.1.svg",
+      "mentor": {
+        "idea": "This slice belongs to the benchmark script; no benchmark results are invented.",
+        "reason": "Read the 76 actual diff/context lines from bench.py. The source link is pinned to this commit at line 10."
+      }
+    },
+    {
+      "id": "7.1",
+      "commitPosition": 7,
+      "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "parentSha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72",
+      "commitTitle": "readme tweaks",
+      "title": "README.md",
+      "caption": "README.md",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 38,
+      "changedLineCount": 14,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c07.json",
+      "sourceTargets": [
+        {
+          "label": "README.md",
+          "path": "README.md",
+          "line": 4,
+          "side": "after",
+          "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9"
+        }
+      ],
+      "visual": "../../svg/b001-7.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 38 actual diff/context lines from README.md. The source link is pinned to this commit at line 4."
+      }
+    },
+    {
+      "id": "8.1",
+      "commitPosition": 8,
+      "sha": "dea15072526871e2726b1b893a3018ba46f0a199",
+      "parentSha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "commitTitle": "add support for DDP training. the scaling timings right now do not look good by default, have to dig more into",
+      "title": "README.md",
+      "caption": "README.md",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 50,
+      "changedLineCount": 26,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c08.json",
+      "sourceTargets": [
+        {
+          "label": "README.md",
+          "path": "README.md",
+          "line": 4,
+          "side": "after",
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        }
+      ],
+      "visual": "../../svg/b001-8.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 50 actual diff/context lines from README.md. The source link is pinned to this commit at line 4."
+      }
+    },
+    {
+      "id": "8.2",
+      "commitPosition": 8,
+      "sha": "dea15072526871e2726b1b893a3018ba46f0a199",
+      "parentSha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "commitTitle": "add support for DDP training. the scaling timings right now do not look good by default, have to dig more into",
+      "title": "train.py · lines 1–124",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 78,
+      "changedLineCount": 37,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c08.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 2,
+          "side": "after",
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        }
+      ],
+      "visual": "../../svg/b001-8.2.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 78 actual diff/context lines from train.py. The source link is pinned to this commit at line 2."
+      }
+    },
+    {
+      "id": "8.3",
+      "commitPosition": 8,
+      "sha": "dea15072526871e2726b1b893a3018ba46f0a199",
+      "parentSha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "commitTitle": "add support for DDP training. the scaling timings right now do not look good by default, have to dig more into",
+      "title": "train.py · estimate_loss · lines 125–210",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 73,
+      "changedLineCount": 31,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c08.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 128,
+          "side": "after",
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        }
+      ],
+      "visual": "../../svg/b001-8.3.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 73 actual diff/context lines from train.py. The source link is pinned to this commit at line 128."
+      }
+    },
+    {
+      "id": "8.4",
+      "commitPosition": 8,
+      "sha": "dea15072526871e2726b1b893a3018ba46f0a199",
+      "parentSha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "commitTitle": "add support for DDP training. the scaling timings right now do not look good by default, have to dig more into",
+      "title": "train.py · lines 211–253",
+      "caption": "train.py",
+      "category": "training",
+      "lane": "backend",
+      "codeLineCount": 44,
+      "changedLineCount": 13,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c08.json",
+      "sourceTargets": [
+        {
+          "label": "train.py",
+          "path": "train.py",
+          "line": 219,
+          "side": "after",
+          "sha": "dea15072526871e2726b1b893a3018ba46f0a199"
+        }
+      ],
+      "visual": "../../svg/b001-8.4.svg",
+      "mentor": {
+        "idea": "This slice edits the training script, showing statements that exist in this particular GitHub commit.",
+        "reason": "Read the 44 actual diff/context lines from train.py. The source link is pinned to this commit at line 219."
+      }
+    },
+    {
+      "id": "9.1",
+      "commitPosition": 9,
+      "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9",
+      "parentSha": "dea15072526871e2726b1b893a3018ba46f0a199",
+      "commitTitle": "Add MIT LICENSE file",
+      "title": "LICENSE",
+      "caption": "LICENSE",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 21,
+      "changedLineCount": 21,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c09.json",
+      "sourceTargets": [
+        {
+          "label": "LICENSE",
+          "path": "LICENSE",
+          "line": 1,
+          "side": "after",
+          "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9"
+        }
+      ],
+      "visual": "../../svg/b001-9.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 21 actual diff/context lines from LICENSE. The source link is pinned to this commit at line 1."
+      }
+    },
+    {
+      "id": "10.1",
+      "commitPosition": 10,
+      "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7",
+      "parentSha": "cc11744131390eae3fa1db65ab027e95a84f76b9",
+      "commitTitle": "enhance readme, add some todos",
+      "title": "README.md",
+      "caption": "README.md",
+      "category": "docs",
+      "lane": "backend",
+      "codeLineCount": 23,
+      "changedLineCount": 14,
+      "binaryCount": 0,
+      "partCount": 1,
+      "parts": [],
+      "partsUrl": "./parts/c10.json",
+      "sourceTargets": [
+        {
+          "label": "README.md",
+          "path": "README.md",
+          "line": 37,
+          "side": "after",
+          "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7"
+        }
+      ],
+      "visual": "../../svg/b001-10.1.svg",
+      "mentor": {
+        "idea": "This change edits repository documentation or license text, not runtime behavior.",
+        "reason": "Read the 23 actual diff/context lines from README.md. The source link is pinned to this commit at line 37."
+      }
+    }
+  ]
+}

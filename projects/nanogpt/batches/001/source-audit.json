@@ -1,0 +1,99 @@
+{
+  "repository": "karpathy/nanoGPT",
+  "totalRealCommits": 10,
+  "totalSteps": 33,
+  "totalPatchLines": 1317,
+  "allTextChangedLinesAssigned": true,
+  "commits": [
+    {
+      "position": 1,
+      "sha": "fe8042867ca499aef1df0d6c2606aabae3124b26",
+      "additions": 628,
+      "deletions": 0,
+      "assignedChangedLines": 628,
+      "subcommits": 12,
+      "pass": true
+    },
+    {
+      "position": 2,
+      "sha": "c9fe00c0e9fb9e03a13f7761665b475252c2107b",
+      "additions": 7,
+      "deletions": 5,
+      "assignedChangedLines": 12,
+      "subcommits": 2,
+      "pass": true
+    },
+    {
+      "position": 3,
+      "sha": "5d2b4807bf46bb8985b6f861a662d2d56a6001a2",
+      "additions": 96,
+      "deletions": 2,
+      "assignedChangedLines": 98,
+      "subcommits": 7,
+      "pass": true
+    },
+    {
+      "position": 4,
+      "sha": "70b5d93aeece4e29fc2b8d3426ac63e2b2f22c1a",
+      "additions": 52,
+      "deletions": 0,
+      "assignedChangedLines": 52,
+      "subcommits": 2,
+      "pass": true
+    },
+    {
+      "position": 5,
+      "sha": "b760ef1358eaf470b3b1f10bbf83bc47b8f2dcd2",
+      "additions": 26,
+      "deletions": 7,
+      "assignedChangedLines": 33,
+      "subcommits": 2,
+      "pass": true
+    },
+    {
+      "position": 6,
+      "sha": "3000cf5dda0e3e7069f78748345a9a3a28a6cd72",
+      "additions": 46,
+      "deletions": 17,
+      "assignedChangedLines": 63,
+      "subcommits": 1,
+      "pass": true
+    },
+    {
+      "position": 7,
+      "sha": "ee6459f1d0fbfce67a66e51d9584e862481f50b9",
+      "additions": 7,
+      "deletions": 7,
+      "assignedChangedLines": 14,
+      "subcommits": 1,
+      "pass": true
+    },
+    {
+      "position": 8,
+      "sha": "dea15072526871e2726b1b893a3018ba46f0a199",
+      "additions": 68,
+      "deletions": 39,
+      "assignedChangedLines": 107,
+      "subcommits": 4,
+      "pass": true
+    },
+    {
+      "position": 9,
+      "sha": "cc11744131390eae3fa1db65ab027e95a84f76b9",
+      "additions": 21,
+      "deletions": 0,
+      "assignedChangedLines": 21,
+      "subcommits": 1,
+      "pass": true
+    },
+    {
+      "position": 10,
+      "sha": "97e2ab1b8dae68e76bacd2797bfd1c87feeb63a7",
+      "additions": 13,
+      "deletions": 1,
+      "assignedChangedLines": 14,
+      "subcommits": 1,
+      "pass": true
+    }
+  ]
+}

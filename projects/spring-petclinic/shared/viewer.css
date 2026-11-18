@@ -36,45 +36,16 @@ button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,a:fo
 .summary h2{overflow-wrap:anywhere;white-space:normal;line-height:1.45;margin:0 0 5px}
 .summary small{white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.65;display:block;max-width:100%}
 .summary .meta{flex:0 1 auto;min-width:0;align-items:center;gap:7px}.summary .meta .chip{white-space:nowrap}
-/* Mentor disclosure matches the approved dark navy lane. Collapsed by default. */
-.mentor{margin:0 9px 10px;border:1px solid #304763;border-radius:11px;background:#0d1929;color:#dbe6f4;overflow:hidden}
-.mentor[hidden]{display:none!important}
-.mentor-head{list-style:none;display:flex;align-items:center;gap:9px;padding:12px 13px;min-height:46px;cursor:pointer;background:#15243a;color:#d2e3f7;font-size:11px;font-weight:820;letter-spacing:.2px;user-select:none}
-.mentor-head::-webkit-details-marker{display:none}.mentor-head::marker{content:""}
-.mentor-head:hover{background:#1c304a}.mentor-head:focus-visible{outline:2px solid #7eb2fa;outline-offset:-2px}
-.mentor-icon{display:grid;place-items:center;width:23px;height:23px;border-radius:6px;border:1px solid #3d5a78;background:#1a304b;color:#9cc9ff;font-size:17px;flex:none}
-.mentor-label{flex:1;text-transform:none}.mentor-id{font:10px ui-monospace,Consolas,monospace;color:#9ab2cd;white-space:nowrap;letter-spacing:0}
-.mentor-chevron{font-size:19px;line-height:1;color:#94b3d7;display:inline-block;transition:transform .15s ease}
-.mentor[open] .mentor-chevron{transform:rotate(180deg)}
-.mentor[open] .mentor-head{border-bottom:1px solid #2f4560}
-.mentor-content{padding:13px 15px;display:grid;gap:12px;background:#101f33}
-.mentor-part b{color:#eef5ff;font-size:12px;font-weight:770}
-.mentor-part p{color:#b7c9df;font-size:12px;line-height:1.65;margin:5px 0 0;overflow-wrap:anywhere}
-.mentor-follow{padding:10px 11px;border:1px solid #354e6a;border-radius:7px;background:#192c44;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:9px}
-.mentor-follow span{color:#9db5d4;font-size:9px;font-weight:830;letter-spacing:.5px}
-.mentor-follow a{color:#aad2ff;font:11px ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
-.mentor-follow a:hover{color:#fff}
+.mentor{margin:0 9px 10px;border:1px solid #485950;border-radius:10px;background:linear-gradient(145deg,#26362d,#2b302b);overflow:hidden}.mentor[hidden]{display:none!important}
+.mentor-head{display:flex;align-items:center;gap:8px;padding:9px 12px;border-bottom:1px solid #43534a;color:#b5f1d0;font-size:10px;font-weight:850;letter-spacing:1px}
+.mentor-icon{font-size:17px;color:#7de3b4}.mentor-id{margin-left:auto;color:#a5baa8;font:10px ui-monospace,Consolas,monospace}
+.mentor-content{padding:11px 13px 12px;display:grid;gap:12px}
+.mentor-part b{color:#f2f6ee;font-size:12px}.mentor-part p{color:#ccd7cd;font-size:12px;line-height:1.65;margin:3px 0 0;overflow-wrap:anywhere}
+.mentor-follow{border:1px solid #465f4d;border-radius:7px;background:#243a30;padding:8px 10px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:9px}
+.mentor-follow span{font-size:9px;color:#aed1b8;font-weight:850;letter-spacing:.8px}.mentor-follow a{font:11px ui-monospace,Consolas,monospace;color:#93eabd;overflow-wrap:anywhere}
 
 .batchlinks{display:inline-flex;align-items:center;gap:3px;padding:3px 4px;border:1px solid #454545;background:#2f2f2f;border-radius:8px}
 .batchlinks small{color:#9bafaa;font-size:9px;letter-spacing:.8px;font-weight:850;padding:0 4px}
 .batchlinks a{text-decoration:none;color:#bfbfbf;border-radius:6px;padding:5px 9px;font-size:11px;font-weight:850}
 .batchlinks a:hover{background:#434343;color:white;text-decoration:none}
 html[data-batch="001"] a[data-batch-link="001"],html[data-batch="002"] a[data-batch-link="002"]{color:#c1f8e1;background:#15593f}
-
-
-/* Semantic commit/step colors: backend blue, frontend green, full-stack yellow. */
-.commitgroup.backend{border-left:3px solid #4f9fe3}
-.commitgroup.frontend{border-left:3px solid #63d899}
-.commitgroup.fullstack{border-left:3px solid #e7bd60}
-.commitno.backend{background:#1b4169;color:#b0dbff;border:1px solid #437baa}
-.commitno.frontend{background:#174932;color:#baf4ce;border:1px solid #388d62}
-.commitno.fullstack{background:#5e451d;color:#ffe6a5;border:1px solid #b28c45}
-.substeps button.backend strong{color:#85c1f5}
-.substeps button.frontend strong{color:#8ae5b1}
-.substeps button.fullstack strong{color:#f5cd75}
-.substeps button.backend.chosen{background:#204f7a;color:#ecf6ff}
-.substeps button.frontend.chosen{background:#1c593b;color:#edfff4}
-.substeps button.fullstack.chosen{background:#725322;color:#fff7dc}
-.substeps button.backend.chosen strong,.substeps button.frontend.chosen strong,.substeps button.fullstack.chosen strong{color:inherit}
-.substeps button.expandsteps{background:#263245!important;border:1px solid #485f7e!important;color:#b6cde4!important}
-.substeps button.expandsteps:hover{background:#32435a!important}

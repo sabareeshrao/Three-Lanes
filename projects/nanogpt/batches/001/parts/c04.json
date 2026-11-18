@@ -1,0 +1,352 @@
+{
+  "steps": {
+    "4.1": [
+      {
+        "path": "README.md",
+        "oldPath": "README.md",
+        "binary": false,
+        "rows": [
+          {
+            "type": "context",
+            "old": 57,
+            "new": 57,
+            "text": "| gpt2-xl | 1558M     | 2.56  | 2.54     |"
+          },
+          {
+            "type": "context",
+            "old": 58,
+            "new": 58,
+            "text": ""
+          },
+          {
+            "type": "context",
+            "old": 59,
+            "new": 59,
+            "text": "I briefly tried finetuning gpt2 a bit more on our OWT and didn't notice dramatic improvements, suggesting that OWT is not much much different from WT in terms of the data distribution, but this needs a bit more thorough attempt once the code is in a better place."
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 60,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 61,
+            "text": "## benchmarking"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 62,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 63,
+            "text": "For model benchmarking `bench.py` might be useful. It's identical what happens in `train.py` except we're measuring just the fwd+bwd+update time of the model on a fixed random batch of data."
+          }
+        ]
+      }
+    ],
+    "4.2": [
+      {
+        "path": "bench.py",
+        "oldPath": "bench.py",
+        "binary": false,
+        "rows": [
+          {
+            "type": "add",
+            "old": null,
+            "new": 1,
+            "text": "\"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 2,
+            "text": "A much shorter version of train.py for benchmarking the model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 3,
+            "text": "\"\"\""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 4,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 5,
+            "text": "import time"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 6,
+            "text": "import torch"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 7,
+            "text": "from model import GPTConfig, GPT"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 8,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 9,
+            "text": "device = 'cuda:3'"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 10,
+            "text": "torch.backends.cuda.matmul.allow_tf32 = True # allow tf32 on matmul"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 11,
+            "text": "torch.backends.cudnn.allow_tf32 = True # allow tf32 on cudnn"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 12,
+            "text": "torch.manual_seed(1337)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 13,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 14,
+            "text": "batch_size = 8"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 15,
+            "text": "block_size = 1024"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 16,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 17,
+            "text": "gptconf = GPTConfig("
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 18,
+            "text": "    block_size = block_size, # how far back does the model look? i.e. context size"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 19,
+            "text": "    n_layer = 12, n_head = 12, n_embd = 768, # size of the model"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 20,
+            "text": "    dropout = 0, # for determinism"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 21,
+            "text": ")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 22,
+            "text": "model = GPT(gptconf)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 23,
+            "text": "model.to(device)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 24,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 25,
+            "text": "x = torch.randint(50257, (batch_size, block_size), device=device)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 26,
+            "text": "y = torch.randint(50257, (batch_size, block_size), device=device)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 27,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 28,
+            "text": "optimizer = model.configure_optimizers(weight_decay=1e-2, learning_rate=1e-4, betas=(0.9, 0.95))"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 29,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 30,
+            "text": "burn_in = 10 # number of burn in steps where we don't measure time"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 31,
+            "text": "num_steps = 30"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 32,
+            "text": "for k in range(num_steps):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 33,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 34,
+            "text": "    if k == burn_in:"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 35,
+            "text": "        t0 = time.time() # start the timer"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 36,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 37,
+            "text": "    with torch.autocast(device_type='cuda', dtype=torch.bfloat16):"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 38,
+            "text": "        logits, loss = model(x, y)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 39,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 40,
+            "text": "    optimizer.zero_grad(set_to_none=True)"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 41,
+            "text": "    loss.backward()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 42,
+            "text": "    optimizer.step()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 43,
+            "text": "    lossf = loss.item()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 44,
+            "text": "    print(f\"{k}/{num_steps} loss: {lossf:.4f}\")"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 45,
+            "text": ""
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 46,
+            "text": "torch.cuda.synchronize()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 47,
+            "text": "t1 = time.time()"
+          },
+          {
+            "type": "add",
+            "old": null,
+            "new": 48,
+            "text": "print(\"time in ms per iteration: %.2f\" % ((t1 - t0) / (num_steps - burn_in) * 1000))"
+          }
+        ]
+      }
+    ]
+  }
+}
