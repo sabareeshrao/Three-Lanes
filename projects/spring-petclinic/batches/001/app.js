@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const byId=x=>document.getElementById(x),H=v=>String(v==null?'':v).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[x])),BASE='spring-projects/spring-petclinic';
 const STORAGE='three-lanes-b001-v1',VERT='three-lanes-b001-scroll',MAX_LINES=100;
-let data=[],commits=[],index=0,mode='view',tab='compare',selectedFile='',renderToken=0,sourceToken=0,activePeek={backend:null,frontend:null},restoreDone=false,pageFloor=0;
+let data=[],commits=[],index=0,mode='view',tab='compare',selectedFile='',renderToken=0,sourceToken=0,activePeek={backend:null,frontend:null},restoreDone=false,pageFloor=0,expandedCommit=null;
 const store=(k,v)=>{try{localStorage.setItem(k,v)}catch{}},read=k=>{try{return localStorage.getItem(k)}catch{return null}};
 try{const v=JSON.parse(read(STORAGE)||'{}');if(Number.isInteger(v.index))index=v.index;if(v.mode==='github'||v.mode==='view')mode=v.mode;}catch{}
 const shaUrl=(sha,path,line)=>'https://github.com/'+BASE+'/blob/'+encodeURIComponent(sha)+'/'+path.split('/').map(encodeURIComponent).join('/')+(Number.isInteger(line)&&line>0?'#L'+line:'');
@@ -11,11 +11,18 @@ const current=()=>data[index];
 function preserve(fn){const y=window.scrollY,x=window.scrollX,app=byId('app');if(app){pageFloor=Math.max(pageFloor,app.offsetHeight,document.documentElement.scrollHeight,y+window.innerHeight+40);app.style.minHeight=Math.ceil(pageFloor)+'px';}const ret=fn();window.scrollTo({top:y,left:x,behavior:'instant'});requestAnimationFrame(()=>{if(Math.abs(window.scrollY-y)>1)window.scrollTo({top:y,left:x,behavior:'instant'})});return ret}
 window.addEventListener('scroll',()=>{if(restoreDone)store(VERT,String(Math.round(window.scrollY)))},{passive:true});
 function rowFileParts(s){return s.parts.filter(p=>p.rows?.length||p.binary);}
-function renderTimeline(){const c=byId('timeline');c.innerHTML=commits.map(item=>{
-const all=data.filter(s=>s.commitPosition===item.position),active=current()?.commitPosition===item.position;
-const frontend=all.every(s=>s.lane==='frontend'),cls=frontend?'frontend':'backend';
-return '<div class="commitgroup'+(active?' active':'')+'"><button class="commitbtn" type="button" data-commit="'+item.position+'"><span class="commitno '+cls+'">'+String(item.position).padStart(2,'0')+'</span><span><b>'+H(short(item.title,23))+'</b><small>'+H(item.sha.slice(0,8))+' · '+all.length+' steps</small></span></button><div class="substeps">'+all.map(s=>'<button type="button" data-step="'+H(s.id)+'" class="'+(s.id===current()?.id?'chosen':'')+'"><strong>'+H(s.id)+'</strong><span class="label">'+H(short(s.title,27))+'</span></button>').join('')+'</div></div>';
-}).join('')}
+function renderTimeline(){
+ const rail=byId('timeline'),selected=current();
+ rail.innerHTML=commits.map(item=>{
+  const all=data.filter(s=>s.commitPosition===item.position),active=selected?.commitPosition===item.position;
+  const cls=all.every(s=>s.lane==='frontend')?'frontend':'backend';
+  const at=all.findIndex(s=>s.id===selected?.id),windowed=active&&all.length>7&&expandedCommit!==item.position;
+  const lo=windowed?Math.max(0,Math.min(all.length-7,at-3)):0,visible=active?(windowed?all.slice(lo,lo+7):all):[];
+  let listing=visible.map(s=>'<button type="button" data-step="'+H(s.id)+'" class="'+(s.id===selected?.id?'chosen':'')+'"><strong>'+H(s.id)+'</strong><span class="label">'+H(short(s.title,27))+'</span></button>').join('');
+  if(active&&all.length>7)listing+='<button class="expandsteps" type="button" data-expand="'+item.position+'">'+(windowed?'Show all '+all.length+' steps':'Show fewer steps')+'</button>';
+  return '<div class="commitgroup'+(active?' active':'')+'"><button class="commitbtn" type="button" data-commit="'+item.position+'"><span class="commitno '+cls+'">'+String(item.position).padStart(2,'0')+'</span><span><b>'+H(short(item.title,23))+'</b><small>'+H(item.sha.slice(0,8))+' · '+all.length+' steps</small></span></button>'+(active?'<div class="substeps">'+listing+'</div>':'')+'</div>';
+ }).join('');
+}
 function renderHeader(){const s=current();if(!s)return;byId('stepPosition').textContent=(index+1)+' / '+data.length;byId('prevStep').disabled=index<=0;byId('nextStep').disabled=index===data.length-1;
 byId('viewMode').classList.toggle('chosen',mode==='view');byId('githubMode').classList.toggle('chosen',mode==='github');byId('inspectorTitle').textContent=mode==='view'?'Focused historical source':(tab==='compare'?'Before / After':tab==='diff'?'Commit changes':'Original source');
 byId('backendCaption').textContent=s.lane==='backend'?s.title:'No backend source in this slice';byId('frontendCaption').textContent=s.lane==='frontend'?s.title:'No frontend source in this slice';
@@ -86,7 +93,7 @@ byId('prevStep').onclick=()=>changeSelection(index-1);byId('nextStep').onclick=(
 byId('viewMode').onclick=()=>{mode='view';render()};byId('githubMode').onclick=()=>{mode='github';tab='compare';render()};
 byId('compareTab').onclick=()=>preserve(()=>{tab='compare';renderSource()});byId('diffTab').onclick=()=>preserve(()=>{tab='diff';renderSource()});byId('fullTab').onclick=()=>preserve(()=>{tab='source';renderSource()});
 byId('fileSelect').onchange=e=>preserve(()=>{selectedFile=e.target.value;renderSource()});
-byId('timeline').onclick=e=>{const step=e.target.closest('[data-step]');if(step){const i=data.findIndex(s=>s.id===step.dataset.step);if(i>=0)changeSelection(i);return}const c=e.target.closest('[data-commit]');if(c){const i=data.findIndex(s=>s.commitPosition===Number(c.dataset.commit));if(i>=0)changeSelection(i)}};
+byId('timeline').onclick=e=>{const expand=e.target.closest('[data-expand]');if(expand){preserve(()=>{const id=Number(expand.dataset.expand);expandedCommit=expandedCommit===id?null:id;renderTimeline()});return}const step=e.target.closest('[data-step]');if(step){const i=data.findIndex(s=>s.id===step.dataset.step);if(i>=0)changeSelection(i);return}const c=e.target.closest('[data-commit]');if(c){const i=data.findIndex(s=>s.commitPosition===Number(c.dataset.commit));if(i>=0)changeSelection(i)}};
 for(const side of ['backend','frontend']){
  byId(side+'Links').addEventListener('click',e=>{const btn=e.target.closest('[data-source-ref]');if(btn)previewTarget(+btn.dataset.sourceRef)});
  byId(side+'Peek').addEventListener('click',e=>{if(e.target.closest('[data-close-peek]'))preserve(()=>{byId(side+'Peek').hidden=true;activePeek[side]=null})});
