@@ -4,6 +4,10 @@ Copy this directory to `projects/<slug>/` for **one new GitHub repository**.
 
 **Start with:** [../../HANDOVER-NEW-PROJECT.md](../../HANDOVER-NEW-PROJECT.md).
 
+## Central catalog required in new projects
+
+Import [../../design-system/tokens.css](../../design-system/tokens.css) using a route-correct URL. Read [../../design-system/README.md](../../design-system/README.md) and [../../design-system/registry.json](../../design-system/registry.json). Reuse approved visual patterns, create candidate patterns for new mechanisms and secure approval before reusing them. Keep the commit conveyor scrollable with its scrollbar hidden. Run both automated quality checks and review screenshots.
+
 ## Required 10-commit quality gate
 
 Read [../../DIAGRAM-QUALITY-STANDARD.md](../../DIAGRAM-QUALITY-STANDARD.md) before producing any diagram or frontend UI. Work in **10 real commits per batch**; the first three should be visual showpieces, and **all ten** must be distinctive, source-accurate and free of overlapping/clipped text, bulky arrows, unreadable mobile labels and nonfunctional navigation.

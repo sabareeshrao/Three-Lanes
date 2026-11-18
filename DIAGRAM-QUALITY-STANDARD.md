@@ -1,5 +1,7 @@
 # Three-Lanes — Non-negotiable 10-commit visual quality standard
 
+**Mandatory design-system review:** Before drawing, read [design-system/README.md](./design-system/README.md), [design-system/registry.json](./design-system/registry.json) and [design-system/tokens.css](./design-system/tokens.css). Use approved diagram patterns and canonical tokens. A genuinely new code mechanism may introduce a **candidate** pattern, requiring source/visual review before approval. Run the design and browser screenshot audits, then manually inspect compositions and real source.
+
 **Applies to:** Every new project, every batch of **exactly 10 selected, real GitHub commits**, every SVG architecture diagram, and every focused frontend UI preview. This file is mandatory for agents reading the root `AGENTS.md` or a copied `projects/<slug>/AGENTS.md`.
 
 **Goal:** Publish a visually compelling, technically correct learning experience—not 10 automatically generated generic diagrams. Quality takes priority over throughput. A batch is **not complete until all 10 commit entries and their applicable visuals pass review**. If work cannot be completed, report the accurate count and remaining defects instead of claiming success.

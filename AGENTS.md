@@ -4,6 +4,10 @@
 >
 > These are repository instructions, not proof of implementation. The new-project JSON template is **not yet connected to a generic runtime loader**; the current running viewer remains Spring Petclinic-specific.
 
+## Mandatory AI design-system bootstrap (highest priority)
+
+**Read first:** [design-system/README.md](./design-system/README.md), [design-system/registry.json](./design-system/registry.json), [design-system/tokens.css](./design-system/tokens.css). Use their canonical Apple-style fonts, charcoal panels, blue/green/**orange** semantic chips, continuous SVG blueprint canvas, fixed lane height and invisible-but-scrollable commit conveyor. New project entrypoints must import tokens. New/modified SVGs must identify an **approved** pattern ID and design version, with viewBox/title/description. New mechanisms may introduce a **candidate** pattern; review it before approving or publishing. **Run `npm run audit:design`, `npm run test:visual`, inspect screenshots and verify historical source** before claiming QA. This section overrides conflicting older guidance. Root SVGs are static, without click-to-focus source.
+
 ## Hard rule — split large real commits into ≤100-line learning subcommits
 
 **Read [SUBCOMMIT-100-LINE-RULE.md](./SUBCOMMIT-100-LINE-RULE.md) before selecting or processing commits.** Every real commit, including one with thousands of changed lines, must be decomposed into semantically coherent **numbered learning subcommits** (`1.1`, `1.2`, …). A learning subcommit shows **at most 100 code/diff lines in total across its source snippets and files** (count added, removed and context; no 101-line segments). Split any larger section again rather than truncating it or shrinking it into an illegible diagram. Source archival views may still show full authentic diffs/files.
