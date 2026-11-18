@@ -337,7 +337,7 @@ function timeline(){
   // Scroll the rail only when the current substep is outside its visible area.
   const picked=rail.querySelector('.subbtn.selected')||rail.querySelector('.commitBtn.selected');
   if(picked){
-    const pos=picked.offsetTop,bottom=pos+picked.offsetHeight;
+    const pos=picked.getBoundingClientRect().top-rail.getBoundingClientRect().top+rail.scrollTop,bottom=pos+picked.offsetHeight;
     if(pos<rail.scrollTop)rail.scrollTop=Math.max(0,pos-12);
     else if(bottom>rail.scrollTop+rail.clientHeight)rail.scrollTop=bottom-rail.clientHeight+12;
   }

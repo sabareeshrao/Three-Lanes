@@ -786,3 +786,9 @@ html,body{
   .shared-source-controls{width:100%;flex:1 1 100%;flex-wrap:wrap;justify-content:flex-end}
   .shared-source-controls .source-fileselect{flex:1 1 150px;min-width:90px}
 }
+
+/* A single visible lane on mobile needs just one row before the shared source dock. */
+@media(max-width:820px){
+ .workspace:not(.mobile-both)>.shared-source-dock{grid-row:2}
+ .workspace:not(.mobile-both)>.wide-compare{grid-row:3}
+}
