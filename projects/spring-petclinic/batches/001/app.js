@@ -43,7 +43,7 @@ for(const side of ['backend','frontend']){
 function previewTarget(i){const s=current(),t=s?.sourceTargets?.[i];if(!t)return;const side=s.lane,peek=byId(side+'Peek'),key=t.sha+'|'+t.path+'|'+t.line;
 return preserve(()=>{if(!peek.hidden&&activePeek[side]===key){peek.hidden=true;activePeek[side]=null;return}activePeek[side]=key;
 const rows=s.parts.filter(p=>p.path===t.path).flatMap(p=>p.rows),loc=rows.findIndex(r=>r.new===t.line||r.old===t.line),near=rows.slice(Math.max(0,loc-5),loc+6);
-peek.innerHTML='<div class="peekhead"><div><b>'+H(t.label)+'</b><small>'+H(t.path)+' · L'+t.line+' · '+H(t.sha.slice(0,8))+'</small></div><div><a href="'+H(shaUrl(t.sha,t.path,t.line))+'" target="_blank" rel="noopener noreferrer">GitHub ↗</a> <button type="button" data-close-peek="1">×</button></div></div><div class="peekcode codetable">'+near.map(r=>renderRow(r,t.path,!!r.new,t.sha,r.new===t.line||r.old===t.line)).join('')+'</div>';
+peek.innerHTML='<div class="peekhead"><div><b>'+H(t.label)+'</b><small>'+H(t.path)+' · L'+t.line+' · '+H(t.sha.slice(0,8))+'</small></div><div><a href="'+H(shaUrl(t.sha,t.path,t.line))+'" target="_blank" rel="noopener noreferrer">GitHub ↗</a> <button type="button" data-close-peek="1">×</button></div></div><div class="peekcode codetable">'+near.map(r=>renderRow(r,t.path,!!r.new,null,r.new===t.line||r.old===t.line)).join('')+'</div>';
 peek.hidden=false});
 }
 function renderRow(row,path,useNew,revOverride,highlight=false){const n=useNew?row.new:row.old;if(!Number.isInteger(n))return '';
@@ -84,8 +84,8 @@ function render(){if(!data.length)return;index=Math.max(0,Math.min(data.length-1
 function changeSelection(n){if(!data.length||n<0||n>=data.length)return;index=n;selectedFile='';tab='compare';render()}
 byId('prevStep').onclick=()=>changeSelection(index-1);byId('nextStep').onclick=()=>changeSelection(index+1);
 byId('viewMode').onclick=()=>{mode='view';render()};byId('githubMode').onclick=()=>{mode='github';tab='compare';render()};
-byId('compareTab').onclick=()=>{tab='compare';renderSource()};byId('diffTab').onclick=()=>{tab='diff';renderSource()};byId('fullTab').onclick=()=>{tab='source';renderSource()};
-byId('fileSelect').onchange=e=>{selectedFile=e.target.value;renderSource()};
+byId('compareTab').onclick=()=>preserve(()=>{tab='compare';renderSource()});byId('diffTab').onclick=()=>preserve(()=>{tab='diff';renderSource()});byId('fullTab').onclick=()=>preserve(()=>{tab='source';renderSource()});
+byId('fileSelect').onchange=e=>preserve(()=>{selectedFile=e.target.value;renderSource()});
 byId('timeline').onclick=e=>{const step=e.target.closest('[data-step]');if(step){const i=data.findIndex(s=>s.id===step.dataset.step);if(i>=0)changeSelection(i);return}const c=e.target.closest('[data-commit]');if(c){const i=data.findIndex(s=>s.commitPosition===Number(c.dataset.commit));if(i>=0)changeSelection(i)}};
 for(const side of ['backend','frontend']){
  byId(side+'Links').addEventListener('click',e=>{const btn=e.target.closest('[data-source-ref]');if(btn)previewTarget(+btn.dataset.sourceRef)});
