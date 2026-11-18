@@ -4,6 +4,12 @@ A modular, browser-based three-lane visualizer for understanding real GitHub cha
 
 **Live site:** https://sabareeshrao.github.io/Three-Lanes/
 
+## Start a new GitHub project using Three-Lanes
+
+**[Read the complete new-project handover](./HANDOVER-NEW-PROJECT.md)**, then copy the **[projects/_template](./projects/_template)** starter folder to `projects/<your-project-slug>/`. The handover includes the new-chat prompt, code-integrity rules, shared-engine migration plan, UI requirements, and acceptance tests.
+
+**Important:** The starter is not connected to a project-agnostic loader yet. The existing Spring Petclinic demo remains the behavior reference; a shared project loader must be implemented before a new repository's JSON files can drive the viewer.
+
 ## The three lanes
 
 - **Backend (left):** SVG architecture diagrams and the relevant original code.
