@@ -173,3 +173,21 @@ details.mentor>summary:focus-visible{outline:2px solid #91a5c0;outline-offset:-2
 .lane-chip.fullstack,.lane-chip.both{
  background:#a94512!important;color:#fff7ed!important;border:1px solid #f97316!important;
 }
+
+
+/* Three-Lanes Design System v1.0: shared fonts and invisible commit conveyor. */
+body,button,input,select,textarea{font-family:var(--tl-font-ui)!important}
+pre,code,.codepane,.source-code,.mentor-code-line code{font-family:var(--tl-font-code)!important}
+.workspace>.rail .railitems{
+  overflow-y:auto!important;overflow-x:hidden!important;
+  overscroll-behavior-y:contain!important;
+  scrollbar-width:none!important;-ms-overflow-style:none!important;
+}
+.workspace>.rail .railitems::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+.workspace>.rail{position:relative}
+.workspace>.rail::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:12px;
+  background:linear-gradient(to bottom,transparent,var(--tl-surface));
+  pointer-events:none;z-index:3;
+}
+.commitno.fullstack,.commitno.both{background:var(--tl-fullstack)!important;color:#fff!important}

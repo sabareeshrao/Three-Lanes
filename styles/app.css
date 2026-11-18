@@ -996,3 +996,22 @@ html,body{
 .workspace>.rail .commitBtn:focus-visible,.workspace>.rail .subbtn:focus-visible{
   outline:2px solid #e5edf8!important;outline-offset:2px!important;
 }
+
+
+/* Three-Lanes Design System v1.0: canonical typography and invisible commit belt. */
+html,body,button,input,select,textarea{font-family:var(--tl-font-ui)!important}
+pre,code,.codeview,.editorline,.guided-row,.compare-row,.source-row{font-family:var(--tl-font-code)!important}
+.workspace>.rail>.railscroll{
+  overflow-y:auto!important;overflow-x:hidden!important;
+  overscroll-behavior-y:contain!important;
+  scrollbar-width:none!important;-ms-overflow-style:none!important;
+}
+.workspace>.rail>.railscroll::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+.workspace>.rail{position:relative}
+.workspace>.rail::after{
+  content:"";position:absolute;bottom:0;left:0;right:0;height:13px;
+  border-radius:0 0 var(--tl-radius-card) var(--tl-radius-card);
+  background:linear-gradient(to bottom,transparent,var(--tl-surface));
+  pointer-events:none;z-index:3;
+}
+.rail .commitBtn.both.selected{background:var(--tl-fullstack)!important}
