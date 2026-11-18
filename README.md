@@ -14,6 +14,10 @@ When opening this repository in a supported coding agent, give it the **target G
 
 Read **[DIAGRAM-QUALITY-STANDARD.md](./DIAGRAM-QUALITY-STANDARD.md)** before producing any new diagrams. Every batch must include ten verified commits; each deserves a distinctive, source-accurate visual. The first three are visual showpieces, but every diagram must pass overlap/clipping, readability, arrow/connector, responsive desktop/mobile, source-navigation, and scroll-persistence checks. Use the copied **[VISUAL-QA-TRACKER.md](./projects/_template/VISUAL-QA-TRACKER.md)** to record the results; no batch is called complete before all ten pass.
 
+## Large commits: 100-line learning subcommits
+
+Read **[SUBCOMMIT-100-LINE-RULE.md](./SUBCOMMIT-100-LINE-RULE.md)**. Each of the 10 real commits can expand into **any number of numbered explanatory subcommits**. Each subcommit is limited to **100 total code/diff lines** (including additions, removals and context), so a 1,000+ line change gets broken into small, meaningful pieces instead of being truncated or presented as one massive diagram. All original changed lines must be covered and all GitHub links must preserve the real SHA and old/new line numbers. Track line counts, visual quality and full coverage in the batch QA tracker; explanatory subcommits do **not** create new Git commits.
+
 ## Start a new GitHub project using Three-Lanes
 
 **[Read the complete new-project handover](./HANDOVER-NEW-PROJECT.md)**, then copy the **[projects/_template](./projects/_template)** starter folder to `projects/<your-project-slug>/`. The handover includes the new-chat prompt, code-integrity rules, shared-engine migration plan, UI requirements, and acceptance tests.
