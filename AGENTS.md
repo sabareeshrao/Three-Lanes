@@ -4,6 +4,20 @@
 >
 > These are repository instructions, not proof of implementation. The new-project JSON template is **not yet connected to a generic runtime loader**; the current running viewer remains Spring Petclinic-specific.
 
+## Mandatory 10-commit visual-quality gate
+
+**Every request for a batch of 10 commits must comply with [DIAGRAM-QUALITY-STANDARD.md](./DIAGRAM-QUALITY-STANDARD.md).** Read that file before selecting commits or drawing any visual. This is a blocking review gate, not optional guidance:
+
+- Exactly **10 distinct real commits per batch**, with genuine full SHAs; a multi-step commit still counts as one commit. Create a purposeful visual for every meaningful changed substep.
+- **First three commits are showcase quality** (extraordinary layouts and technical clarity), but all ten must meet the same strict standard. Never compromise visual quality for volume.
+- No generic repeated three-box flowcharts, text stuffed into rectangles, dull diagrams with only headings changed, overlapping labels, clipping, minuscule text, bulky arrowheads, illegible mobile layouts or meaningless decorations. Use actual mechanism-specific drawings: real interface states, architecture, request/response flows, data transitions, object graphs, SQL constraints, lifelines, and Before/After results as supported by source.
+- Source integrity wins: every diagram and UI preview must depict what the exact SHA supports; verify historical code links and semantic SVG-to-code navigation. Do not fabricate a frontend screen for a backend-only change.
+- Render, visually inspect and fix **every visual at 1440px desktop and 390px mobile**. Test same-click-to-close SVG previews, controls, GitHub diff and viewport persistence. Do not claim this was done without actual tests.
+- Each new project inherits **`projects/_template/VISUAL-QA-TRACKER.md`**. Mark each commit PASS only after source, visual and navigation gates pass; keep the whole batch IN PROGRESS until all **10/10** pass. Record evidence, failures and screenshots when available.
+- Store files modularly under the project-specific `svg/` and `frontend-ui/` folders, mapped to stable `<SHA>:<step-id>` identifiers.
+
+If any quality gate is blocked, report the true completion count and remaining defects instead of declaring the batch done.
+
 ## Mission
 
 Turn this repository into a reusable, modular **Three-Lanes visual commit learning platform**. Each target GitHub repository gets its own folder under `projects/<slug>/`. Reuse a common viewer, CSS, navigation, source inspection, SVG/HTML visual libraries, and tests. **Never create another monolithic copy of `index.html` for each project.**
