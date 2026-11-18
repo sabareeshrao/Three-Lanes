@@ -59,7 +59,8 @@ function activateSvg(svg,items,side){
  for(const label of targets){
    const phrase=(label.textContent||'').trim().toLowerCase();
    if(!phrase)continue;
-   const match=visible.find(item=>(item.ref.svg||[]).some(term=>term.length>=4&&phrase.includes(term.toLowerCase())));
+   const candidates=visible.filter(item=>(item.ref.svg||[]).some(term=>term.length>=4&&phrase.includes(term.toLowerCase())));
+   const match=candidates.find(item=>item.ref.role!=='change')||candidates[0];
    if(!match)continue;
    label.classList.add('nav-svg-target');
    label.setAttribute('role','link');
