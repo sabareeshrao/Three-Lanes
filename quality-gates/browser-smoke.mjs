@@ -72,7 +72,7 @@ try{
    const root=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal;
    const all=[...svg.querySelectorAll('[data-motif="illustration-main"]')];
    const box=all[0]?.getBBox();
-   return {ok:!!box&&box.width>50&&box.height>25,
+   return {ok:!!box&&Math.max(box.width,box.height)>50,
      region:box?{x:box.x,y:box.y,w:box.width,h:box.height}:null,
      view:{width:vb.width,height:vb.height},loaded:root.width>0&&root.height>0};
   });
