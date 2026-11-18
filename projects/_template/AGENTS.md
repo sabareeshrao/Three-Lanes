@@ -10,6 +10,10 @@ Before doing work here, also read the repository root **AGENTS.md** and **HANDOV
 
 Inspect every visual at **1440px and 390px**: zero overlaps/clipping, readable text, controlled arrows, real code/line navigation, no invented frontend behavior, and preserved scroll position. Track all 10 in this folder's `VISUAL-QA-TRACKER.md` (included in the copied template). A batch is only COMPLETE when all 10 have passed source/visual/navigation review; otherwise give the accurate progress and unresolved defects.
 
+## Mandatory max-100-line subcommits
+
+Follow [../../SUBCOMMIT-100-LINE-RULE.md](../../SUBCOMMIT-100-LINE-RULE.md). Each **real historical commit** may be divided into unlimited numbered explanatory subcommits, e.g., `7.1` through `7.20`. **Each learning subcommit must contain at most 100 source/diff lines in total** (additions, deletions and context, summed across files). Break giant commits into more meaningful steps, never truncate, and confirm **every changed line** in the complete real diff is covered. Keep real SHA, original paths and both old/new line numbers, with a unique visual when appropriate. Record per-subcommit line counts and complete-diff coverage in the copied `VISUAL-QA-TRACKER.md`. Ten original SHAs still make one batch; these subcommits do not create Git history.
+
 ## Project initialization
 
 1. Treat the project at `project.json` as the only source repository for this folder. Replace every `REPLACE_*` placeholder with actual verified details.
