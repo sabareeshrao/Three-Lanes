@@ -1041,6 +1041,7 @@ function guidedFallbackCode(s,kind){
 }
 function renderGuidedSource(side){
   const {c,s}=current(),region=byId(side+'SourceRegion'),code=byId(side+'Code');
+  region.classList.remove('compare-active');
   const active=s.kind===side||s.kind==='both';
   region.style.display=active?'':'none';if(!active)return;
   const actions=byId(side+'SourceActions');actions.style.display='none';
@@ -1094,6 +1095,7 @@ function renderSourcePanel(side){
   const filebar=byId(side+'File');
   if(!raw){
     if(byId('wideCompare').dataset.side===side)hideComparison();
+    region.classList.remove('compare-active');
     region.style.display=s.kind===side?'':'none';
     panel.style.display='';
     const loading=entry?.error?`Could not load GitHub source: ${entry.error}`:'Loading exact GitHub commit source…';
