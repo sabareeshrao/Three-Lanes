@@ -616,3 +616,39 @@ html{scroll-behavior:auto!important}
  .source-actions .source-primary-row{flex-wrap:wrap!important;gap:6px}
  .source-actions .source-fileselect{flex:1 1 calc(100% - 100px)!important;min-width:0!important}
 }
+
+
+/* Apple-inspired UI typography — SF Pro on Apple platforms, native fallbacks elsewhere. */
+:root{
+  --apple-ui-font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Inter,"Segoe UI",Arial,sans-serif;
+}
+html,body,button,input,select,textarea,.micro-workbench,.appui{
+  font-family:var(--apple-ui-font)!important;
+}
+html,body{
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
+  letter-spacing:-.008em;
+}
+.title,.title span,.summary h2,.lanetitle,.appui h3,.micro-header h3{
+  font-family:var(--apple-ui-font)!important;
+  font-weight:650!important;
+  letter-spacing:-.028em!important;
+}
+.summary p,.lanesub,.repo,.source,.source-filelink,.source-fileselect,.search{
+  letter-spacing:-.012em!important;
+}
+.b,.source-view-here,.source-tabs button,.source-filelink,
+.original-launch,.commitBtn,.subbtn,.lanechip,.chip{
+  font-family:var(--apple-ui-font)!important;
+  font-weight:600!important;
+  letter-spacing:-.012em!important;
+}
+/* Keep code, line numbers and inline source previews in readable monospace. */
+.codeview,.codeview *,pre,code,.editorline,.source-row,.source-text,
+.source-peek .nav-source-row,.guided-row,.compare-row,
+.compare-text,.compare-ln,.sourceno,.ln,.guided-ln,.source-hunk{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace!important;
+  letter-spacing:normal!important;
+}
