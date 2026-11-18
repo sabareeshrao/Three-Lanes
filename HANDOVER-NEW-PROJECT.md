@@ -1,3 +1,7 @@
+## CURRENT VISUAL STANDARD — LIGHTWEIGHT PETCLINIC STYLE (supersedes bulky 50-asset library)
+
+The former 50 large, shaded, detailed hardware/cloud/server SVGs have been **deleted from main**. Do not restore, link or imitate them. Use **only the simple, flat, thin-outline visual vocabulary shown in the original Petclinic prototype**, available in `illustration-library/catalog.json` and `design-system/diagram-catalog/`. Icons are transparent, outlined, softly blue/green/red, easy to understand; connectors 1.5–2.2px with compact outlined tips (~7px); subtle dots and 120px grid on full diagrams, abundant whitespace. No bulky arrowheads, 3D rack renders, gradients, clutter, or text-only boxes. Compose symbols as needed or freely invent new components; the list is NOT a whitelist. Keep source-accurate one-file-per-step explanations and screenshot QA.
+
 # Three-Lanes — New Project Handover
 
 **Purpose:** Use the Spring Petclinic prototype as the *reference implementation* for building a Three-Lanes visual commit explorer for **any GitHub source repository**. Open this document at the start of a new ChatGPT conversation or a new project folder. This is an implementation handover, not a claim that the current Petclinic app is already repository-agnostic.
@@ -9,7 +13,7 @@
 
 ## Open-ended illustration rule (latest)
 
-**Before creating diagrams, consult the 50 modular illustrations in `illustration-library/catalog.json` and their SVG source files. They are individual building blocks with stable IDs, not a whitelist. You MAY reuse, combine, alter or invent new SVG components and original diagrams without candidate approval or catalog registration. Assign unique IDs and keep source fidelity, accessibility, thin arrows (≤3px connector stroke; ≤12px arrowheads), no collisions or clipping, and desktop/mobile screenshot QA.** Prior text requiring an *approved pattern ID*, *candidate registration* or *SVG click-to-focus* is superseded for the root prototype. No generic text-only box drawings. The fixed design tokens and one-file-per-step rule still apply.
+**Before creating diagrams, consult the lightweight modular SVG kit in `illustration-library/catalog.json` and their SVG source files. They are individual building blocks with stable IDs, not a whitelist. You MAY reuse, combine, alter or invent new SVG components and original diagrams without candidate approval or catalog registration. Assign unique IDs and keep source fidelity, accessibility, thin arrows (≤3px connector stroke; ≤12px arrowheads), no collisions or clipping, and desktop/mobile screenshot QA.** Prior text requiring an *approved pattern ID*, *candidate registration* or *SVG click-to-focus* is superseded for the root prototype. No generic text-only box drawings. The fixed design tokens and one-file-per-step rule still apply.
 
 ## Central catalog required
 

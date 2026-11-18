@@ -1,6 +1,6 @@
 # Three-Lanes Design System · v1.0.0
 
-**Status:** shared design tokens, six optional reference compositions and fifty modular reusable illustrations. References are not binding or evidence for a historical commit.
+**Status:** shared design tokens, six optional reference compositions and 25 lightweight SVG primitives and connectors. References are not binding or evidence for a historical commit.
 
 - [Browse the design catalog](./catalog/index.html) (GitHub Pages: `/Three-Lanes/design-system/catalog/`)
 - [Canonical colors, fonts, sizes and scroll utilities](./tokens.css)
@@ -10,7 +10,7 @@
 
 ## Mandatory start-of-task sequence for every AI coding agent
 
-1. Read the repository root `AGENTS.md`, project-level `AGENTS.md`, and **this document**. Before generating visuals, read `registry.json` and `tokens.css`; inspect at least one relevant approved SVG example.
+1. Read the repository root `AGENTS.md`, project-level `AGENTS.md`, and **this document**. Before generating visuals, read `registry.json` and `tokens.css`; inspect a Petclinic-style SVG primitive or recipe.
 2. Analyze the **actual changed file at the immutable commit SHA**. One teaching step = one changed file. Split that file further if it needs more than 100 instructional diff/code lines; every file in the real commit must be covered.
 3. Choose, combine or adapt relevant independent illustrations from `../illustration-library/catalog.json` or freely invent a new diagram with its own ID. Reference compositions are optional. Do not draw a generic pipeline for a database constraint or UI state. The first three commit diagrams need exceptional composition.
 4. Build from the shared tokens. Do not invent a new font stack, green/mint page skin, yellow full-stack chip, painted short SVG canvas, alternate grid background, bulky arrows or an expanding lane height.
@@ -19,7 +19,7 @@
 
 ## Reuse and extension — open vocabulary
 
-Browse **[50 modular illustrations](../illustration-library/)** and their [machine-readable IDs](../illustration-library/catalog.json). A database illustration, router, server, CPU, RAM, SQL table or arrow is a standalone editable SVG. These are **ingredients**, not rigid templates. AI may compose any number of these, change them or invent a completely new diagram. It must **not** force a code change into the six reference compositions, and no prior catalog registration or candidate/approved flag is required for new project diagrams.
+Browse **[Lightweight SVG kit](../illustration-library/)** and their [machine-readable IDs](../illustration-library/catalog.json). A database illustration, router, server, CPU, RAM, SQL table or arrow is a standalone editable SVG. These are **ingredients**, not rigid templates. AI may compose any number of these, change them or invent a completely new diagram. It must **not** force a code change into the six reference compositions, and no prior catalog registration or candidate/approved flag is required for new project diagrams.
 
 New diagrams should have a unique `data-tl-diagram-id`, descriptive `title`, `desc`, `viewBox` and `preserveAspectRatio="xMidYMid meet"`. Optional `data-tl-illustration-id` is reserved for reusable standalone components. Diagram ids are open-ended; validation checks structure, safety and visual geometry, **not membership in a fixed list**.
 

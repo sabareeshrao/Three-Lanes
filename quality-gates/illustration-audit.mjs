@@ -1,37 +1,32 @@
 #!/usr/bin/env node
-// Audits 50 independent reusable SVG modules without restricting future diagram types.
+// Enforce source-safe thin, modular SVGs without imposing a diagram whitelist.
 import fs from 'node:fs';
 import path from 'node:path';
-const errors=[];
-const assert=(x,m)=>{if(!x)errors.push(m)};
-const root=process.cwd();
-const catalog=JSON.parse(fs.readFileSync(path.join(root,'illustration-library/catalog.json'),'utf8'));
-assert(catalog.openVocabulary===true,'AI must be allowed to create arbitrary new diagram IDs');
-const seen=new Set();
-for(const entry of catalog.assets||[]){
- const file=path.join(root,'illustration-library',entry.source);
- assert(!seen.has(entry.id),'Duplicate illustration ID '+entry.id);seen.add(entry.id);
- assert(fs.existsSync(file),'Missing illustration '+entry.id);if(!fs.existsSync(file))continue;
- const s=fs.readFileSync(file,'utf8');
- const first=s.match(/<svg\b[^>]*>/s)?.[0]||'';
- assert(first.includes('data-tl-illustration-id="'+entry.id+'"'),entry.id+' ID mismatch');
- assert(/viewBox="0 0 640 400"/.test(first),entry.id+' missing viewBox');
- assert(first.includes('role="img"')&&first.includes('aria-labelledby='),entry.id+' missing accessible labeling');
- assert(s.includes('<title id="'+entry.id+'-title">')&&s.includes('<desc id="'+entry.id+'-desc">'),entry.id+' missing title or description');
- assert(!/<script\b|<foreignObject\b|javascript:|\bon(?:click|load|mouse\w+|key\w+)\s*=/.test(s),entry.id+' includes unsafe markup');
- const thick=[...s.matchAll(/<path\b[^>]*stroke-width="([\d.]+)"[^>]*\/>/g)].filter(m=>Number(m[1])>3.1);
- assert(!thick.length,entry.id+' oversized stroked paths: '+thick.length);
- if(entry.kind==='connector'){
-  const cut=s.slice(s.indexOf('data-motif="illustration-main"'));
-  const arrowHeads=[...cut.matchAll(/<path\b[^>]*d="([^"]+)"[^>]*>/g)];
-  assert(arrowHeads.every(m=>Number((m[0].match(/stroke-width="([\d.]+)"/)||[])[1]||0)<=3.1),entry.id+' heavy arrow line');
-  assert(!/stroke-width="(?:[5-9]|1\d)"/.test(cut),entry.id+' heavy connector arrow');
- }
+const errs=[],root=process.cwd();
+const check=(ok,msg)=>{if(!ok)errs.push(msg)};
+const cat=JSON.parse(fs.readFileSync(path.join(root,'illustration-library/catalog.json'),'utf8'));
+check(cat.openVocabulary===true,'Illustration catalog must permit new IDs');
+check(cat.style.includes('Petclinic'),'Approved visual reference must be the original Petclinic template');
+const seen=new Set(),entries=cat.assets||[];
+for(const a of entries){
+ const file=path.join(root,'illustration-library',a.source);
+ check(!seen.has(a.id),'Duplicate ID '+a.id);seen.add(a.id);
+ check(fs.existsSync(file),'Missing SVG '+a.id);if(!fs.existsSync(file))continue;
+ const s=fs.readFileSync(file,'utf8'),first=s.match(/<svg\b[^>]*>/)?.[0]||'';
+ check(first.includes('data-tl-illustration-id="'+a.id+'"'),'ID does not match source '+a.id);
+ check(/viewBox="0 0 [1-9]\d* [1-9]\d*"/.test(first),'Missing viewBox '+a.id);
+ check(first.includes('role="img"')&&first.includes('aria-labelledby='),'Missing SVG accessibility '+a.id);
+ check(s.includes('<title id="'+a.id+'-title">')&&s.includes('<desc id="'+a.id+'-desc">'),'Missing title/desc '+a.id);
+ check(s.includes('data-motif="illustration-main"'),'Missing central artwork '+a.id);
+ check(!/<script\b|<foreignObject\b|javascript:|\bon(?:click|load|mouse\w+|key\w+)\s*=/.test(s),'Unsafe SVG markup '+a.id);
+ const lines=[...s.matchAll(/<path\b[^>]*stroke-width="([\d.]+)"[^>]*\/>/g)].map(m=>Number(m[1]));
+ check(lines.every(w=>w<=3.6),'Overly thick SVG path in '+a.id);
+ if(a.kind==='connector')check(lines.every(w=>w<=2.3),'Bulky connector in '+a.id);
 }
-assert(seen.size>=50,'Expected 50 unique reusable illustrations');
-const dir=fs.readdirSync(path.join(root,'illustration-library/assets')).filter(f=>f.endsWith('.svg'));
-assert(dir.length===seen.size,'Illustration gallery catalog and actual SVG files differ');
-for(const filename of dir)assert(seen.has(filename.slice(0,-4)),'Missing metadata for '+filename);
-console.log('Illustration audit: '+seen.size+' standalone SVG assets; open-vocabulary custom diagrams allowed.');
-if(errors.length){errors.forEach(x=>console.error('FAIL '+x));process.exitCode=1;}
-else console.log('PASS: all modular SVG IDs, code files, safety markers and connector thickness.');
+const files=fs.readdirSync(path.join(root,'illustration-library/assets')).filter(f=>f.endsWith('.svg'));
+check(files.length===entries.length,'Gallery inventory differs from SVG source inventory');
+for(const f of files)check(seen.has(f.slice(0,-4)),'Uncatalogued SVG '+f);
+check(entries.length>=20,'Expected a meaningful initial set of lightweight primitives and connectors');
+console.log('Illustration audit: '+entries.length+' lightweight, open-ended primitives and connectors.');
+if(errs.length){for(const e of errs)console.error('FAIL '+e);process.exitCode=1}
+else console.log('PASS: SVG source, thin strokes, gallery inventory and open vocabulary.');

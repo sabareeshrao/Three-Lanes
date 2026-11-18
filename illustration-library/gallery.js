@@ -1,7 +1,6 @@
-import {composeSvg} from './scripts/compose.mjs';
 const q=id=>document.getElementById(id);
 const state={assets:[],category:'All',query:'',selected:null,source:''};
-const categories=['All','Hardware','Infrastructure','Networking','Web','Data & AI','Arrows'];
+const categories=()=>['All',...new Set(state.assets.map(a=>a.category))];
 const escape=s=>String(s);
 function element(tag,klass,text){const e=document.createElement(tag);if(klass)e.className=klass;if(text!==undefined)e.textContent=text;return e;}
 async function copy(text,button){
@@ -11,7 +10,7 @@ async function copy(text,button){
 function makeCard(asset){
  const a=element('article','card');
  const preview=element('div','preview'),img=document.createElement('img');
- img.src=asset.source;img.alt=asset.title+' illustration';img.loading='lazy';
+ img.src=asset.source+'?v=light-v2';img.alt=asset.title+' illustration';img.loading='lazy';
  preview.append(img);a.append(preview);
  const meta=element('div','meta');
  meta.append(element('span','category',asset.category),element('h3','',asset.title),element('code','id',asset.id));
@@ -30,7 +29,7 @@ function render(){
 }
 function renderCategories(){
  const filters=q('filters');filters.replaceChildren();
- for(const cat of categories){
+ for(const cat of categories()){
   const b=element('button','filter',cat);b.type='button';b.setAttribute('aria-pressed',String(cat===state.category));
   b.addEventListener('click',()=>{state.category=cat;renderCategories();render()});filters.append(b);
  }

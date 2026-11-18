@@ -11,7 +11,7 @@ function render(){
   const card=node("article","pattern-card");
   const preview=node("div","pattern-preview");
   const image=document.createElement("img");
-  image.src="../"+p.sample;image.alt=p.title+" — illustrated style specimen";image.loading="lazy";
+  image.src="../"+p.sample+"?v=light-v2";image.alt=p.title+" — illustrated style specimen";image.loading="lazy";
   preview.append(image);
   const info=node("div","pattern-info"),tags=node("div","pattern-tags");
   tags.append(node("span","",p.category+" · "+p.id),node("span","approved",p.status.toUpperCase()));

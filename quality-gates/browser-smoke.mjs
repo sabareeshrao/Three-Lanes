@@ -61,9 +61,9 @@ try{
   await page.close();
  }
  // Verify every standalone reusable SVG actually parses and renders in Chromium.
- const catalog50=JSON.parse(fs.readFileSync('illustration-library/catalog.json','utf8'));
- const assetPage=await browser.newPage({viewport:{width:640,height:400}});
- for(const asset of catalog50.assets){
+ const illustrations=JSON.parse(fs.readFileSync('illustration-library/catalog.json','utf8'));
+ const assetPage=await browser.newPage({viewport:{width:760,height:430}});
+ for(const asset of illustrations.assets){
   const response=await assetPage.goto(base+'/illustration-library/'+asset.source,{waitUntil:'load'});
   assert(response?.ok(),asset.id+' browser HTTP failure');
   const validity=await assetPage.evaluate(()=>{
@@ -79,14 +79,15 @@ try{
   assert(validity.ok&&validity.loaded,asset.id+' rendered no valid geometry: '+JSON.stringify(validity));
   if(validity.region){
    const {x,y,w,h}=validity.region;
-   assert(x>=-5&&y>=-5&&x+w<=645&&y+h<=405,asset.id+' spills outside 640×400 viewBox: '+JSON.stringify(validity.region));
+   const {width,height}=validity.view;
+   assert(x>=-5&&y>=-5&&x+w<=width+5&&y+h<=height+5,asset.id+' spills outside SVG viewBox: '+JSON.stringify(validity.region));
   }
   // Per-asset screenshots are human review evidence; the test cannot judge aesthetics.
   await assetPage.screenshot({path:path.join(out,'module-'+asset.id+'.png'),animations:'disabled'});
  }
  await assetPage.goto(base+'/illustration-library/',{waitUntil:'domcontentloaded'});
  await assetPage.locator('.card').first().waitFor({timeout:10000});
- assert(await assetPage.locator('.card').count()===catalog50.assets.length,'Modular illustration gallery missing assets');
+ assert(await assetPage.locator('.card').count()===illustrations.assets.length,'Modular illustration gallery missing assets');
  await assetPage.close();
  // Inspect SVG geometry in its own viewBox. The browser is the authority for text bounds.
  const page=await browser.newPage({viewport:{width:760,height:430}});
