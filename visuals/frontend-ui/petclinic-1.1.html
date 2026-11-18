@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Load Bootstrap via WebJars — Three-Lanes</title>
+<link rel="stylesheet" href="../../styles/app.css">
+<style>
+:root{color-scheme:light}
+html,body{margin:0;padding:0;background:#fff;color:#233746;min-height:100%;font-family:Inter,Arial,sans-serif}
+[hidden]{display:none!important}
+.micro-workbench{width:100%;margin:0;border-radius:0;min-height:350px}
+.micro-stage{min-height:220px}
+</style>
+</head>
+<body>
+<div data-state="before" hidden><div class="micro-workbench"><div class="micro-header"><div><span class="micro-eyebrow">ONE CHANGE AT A TIME</span><h3>Bootstrap becomes available</h3></div><span class="micro-step">1.1</span></div><div class="micro-stage"><div class="micro-dependency"><div class="micro-hexagon">B</div><div class="micro-arrow">→</div><div class="micro-fileicon">.css</div></div><h3 class="micro-center">A dependency was added</h3><p class="micro-note">No new screen or button was built in this substep. Bootstrap is now available to the project.</p></div></div></div>
+<div data-state="after"><div class="micro-workbench"><div class="micro-header"><div><span class="micro-eyebrow">ONE CHANGE AT A TIME</span><h3>Bootstrap becomes available</h3></div><span class="micro-step">1.1</span></div><div class="micro-stage"><div class="micro-dependency"><div class="micro-hexagon">B</div><div class="micro-arrow">→</div><div class="micro-fileicon">.css</div></div><h3 class="micro-center">A dependency was added</h3><p class="micro-note">No new screen or button was built in this substep. Bootstrap is now available to the project.</p></div></div></div>
+<script>
+document.addEventListener('click', function (event) {
+  const control=event.target.closest('[data-micro="toggle"]');
+  if(!control)return;
+  const state=control.getAttribute('data-value')==='before'?'before':'after';
+  for(const pane of document.querySelectorAll('[data-state]')){
+    pane.hidden=pane.dataset.state!==state;
+  }
+});
+</script>
+</body></html>
