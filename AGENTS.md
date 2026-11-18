@@ -10,6 +10,20 @@
 
 **Cover every changed text line** of the verified complete real commit diff across those subcommits, preserve original old/new coordinates and commit/parent SHA, and record line counts plus coverage in the project's QA tracker. No upper limit on the subcommit count. A 10-commit batch still means **10 distinct original GitHub SHAs** regardless of substep count; these learning subcommits are not new Git commits. Do not claim complete unless the complete code coverage has been audited.
 
+## Required: exactly one changed file per learning substep
+
+**ONE step = exactly ONE changed file.** A historical GitHub commit changing N files requires at least N numbered learning substeps, all referencing that same real commit SHA. Split by canonical changed-file path BEFORE splitting by functionality. A controller and its test, two XML files, or Java and HTML must never be combined in one learning step.
+
+- Each step's focused diff/code, mentor explanation, visualization, and source lines belong to its single owning file. Other changed files can be named as context only; their changed code must have a separate step.
+- If ONE file exceeds 100 instructional code/diff lines, split that same file into multiple sequential steps. Never relax the 100-line cap and never impose an arbitrary step-count limit.
+- A rename/move counts as one logical file with both old and new paths. Binary assets each receive their own file-scoped metadata step, with zero invented code lines.
+- Audit complete GitHub commit file inventory and diff coordinates: every changed file needs at least one step; every changed line belongs to a step for that file. A multi-file step, missing changed file/line, absent canonical file owner, or more than 100 instructional lines fails QA.
+- The archival full-commit source view may show all files, but the focused teaching step must not mix changed files.
+
+**Chip color contract:** backend blue, frontend green, full-stack ORANGE (#EA580C / #F97316), never yellow. Inactive commit chips are neutral charcoal with a subtle category edge.
+
+**Commit conveyor belt:** when there are many commits/substeps, the middle rail has a fixed-height, independently VERTICALLY SCROLLABLE list with a stationary heading. Mouse wheel, touch, keyboard and selected-step navigation scroll only the rail, not the backend/frontend panels or the whole page. Keep the selected step visible without snapping the page or resetting scroll unnecessarily.
+
 ## Mandatory 10-commit visual-quality gate
 
 **Every request for a batch of 10 commits must comply with [DIAGRAM-QUALITY-STANDARD.md](./DIAGRAM-QUALITY-STANDARD.md).** Read that file before selecting commits or drawing any visual. This is a blocking review gate, not optional guidance:
