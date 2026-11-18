@@ -59,8 +59,23 @@ function activateSvg(svg,items,side){
  for(const label of targets){
    const phrase=(label.textContent||'').trim().toLowerCase();
    if(!phrase)continue;
-   const candidates=visible.filter(item=>(item.ref.svg||[]).some(term=>term.length>=4&&phrase.includes(term.toLowerCase())));
-   const match=candidates.find(item=>item.ref.role!=='change')||candidates[0];
+   const symbolMatch=(term)=>{
+     const needle=term.toLowerCase();
+     if(needle.length<2)return false;
+     let start=0,at;
+     while((at=phrase.indexOf(needle,start))>=0){
+       const prev=at>0?phrase[at-1]:'';
+       const after=phrase[at+needle.length]||'';
+       if((!prev||!/[a-z0-9]/.test(prev))&&(!after||!/[a-z0-9]/.test(after)))return true;
+       start=at+1;
+     }
+     return false;
+   };
+   const candidates=visible.map(item=>({
+     item,
+     score:(item.ref.svg||[]).reduce((score,term)=>symbolMatch(term)?Math.max(score,term.length):score,0)
+   })).filter(x=>x.score>0).sort((a,b)=>b.score-a.score||Number(b.item.ref.role!=='change')-Number(a.item.ref.role!=='change'));
+   const match=candidates[0]?.item;
    if(!match)continue;
    label.classList.add('nav-svg-target');
    label.setAttribute('role','link');
