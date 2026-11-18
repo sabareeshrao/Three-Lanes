@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "projectId": "REPLACE_PROJECT_SLUG",
+  "title": "REPLACE_PROJECT_TITLE",
+  "repository": {
+    "owner": "REPLACE_OWNER",
+    "name": "REPLACE_REPO",
+    "defaultBranch": "main"
+  },
+  "ui": {
+    "theme": "chatgpt-dark",
+    "initialViewerMode": "view",
+    "initialGitHubSourceMode": "compare"
+  },
+  "data": {
+    "commits": "./commits.json",
+    "sourceLinks": "./source-links.json",
+    "visuals": "./visuals.json"
+  }
+}
