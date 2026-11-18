@@ -10,6 +10,14 @@ Read [../../DIAGRAM-QUALITY-STANDARD.md](../../DIAGRAM-QUALITY-STANDARD.md) befo
 
 Use the supplied [VISUAL-QA-TRACKER.md](./VISUAL-QA-TRACKER.md) to audit the source and visual at 1440px and 390px, verify SVG click-to-open/click-again-to-close and vertical scroll stability, and record defects and completion for each commit. Do not call the batch complete until **10/10** commits pass these checks.
 
+## Mandatory one-file steps and scrolling commit conveyor
+
+Each numbered learning step covers **exactly one changed file**. For a real commit touching 20 files, make at least 20 numbered substeps under its original SHA. Never combine changes from different files (including tests and config). If any one file contains more than 100 instructional lines, break THAT file into smaller substeps. Renames count as one file with old/new paths; binary assets have their own metadata-only step. Audit the verified complete commit to ensure every file and changed line is covered.
+
+With many commits or substeps, the middle commit conveyor is **vertically scrollable inside a fixed-height rail**, its header stays in place, and the selected step is kept visible by scrolling ONLY the rail. Do not expand the page or shift either visual lane. Preserve the current rail scroll offset on ordinary redraws.
+
+Semantic chips: backend blue; frontend green; full-stack **orange, not yellow**; unselected commits neutral.
+
 ## Maximum 100 instructional code lines per subcommit
 
 **Read [../../SUBCOMMIT-100-LINE-RULE.md](../../SUBCOMMIT-100-LINE-RULE.md).** For large source commits, create as many numbered **learning subcommits** as necessary. Each may show **no more than 100 total code/diff lines across every file and snippet** (context + deletions + additions). Audit that **all** actual changed lines are covered and that real SHA, paths and old/new line coordinates remain intact. The whole original commit/diff remains externally accessible. Track counts and completeness in `VISUAL-QA-TRACKER.md`. The count of real GitHub commits stays at 10 per batch regardless of how many subcommits you make.
