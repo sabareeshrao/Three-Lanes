@@ -493,6 +493,19 @@ body.github-source-mode #liveButton{background:#3a3a3a;border-color:#aaa;color:#
 /* Inactive lanes do not stretch into long empty cards when the active lane's source is lengthy. */
 @media(min-width:821px){.workspace:not(.github-source-mode) .lane.idle{align-self:start;min-height:0!important}}
 
+
+/* Source selector: primary View here above secondary code modes. */
+.source-actions{flex-direction:column;align-items:stretch!important;gap:7px!important}
+.source-primary-row,.source-secondary-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;width:100%}
+.source-primary-row{padding-bottom:7px;border-bottom:1px solid #454545}
+.source-primary-row .source-fileselect{flex:1 1 140px;min-width:120px}
+.source-primary-row .source-filelink{margin-left:auto}
+.source-view-here{appearance:none;border:1px solid #555;background:#303030;color:#eee;padding:8px 13px;border-radius:7px;font-size:11px;font-weight:750;white-space:nowrap;cursor:pointer}
+.source-view-here.chosen{background:#10a37f;border-color:#20b58e;color:#fff}
+.source-view-here:hover{border-color:#3cc39b}
+.source-secondary-row .source-tabs{width:max-content}
+.source-secondary-row .source-tabs button{min-height:29px}
+@media(max-width:520px){.source-primary-row .source-fileselect{flex-basis:100%;order:3}.source-primary-row .source-filelink{margin-left:auto}.source-secondary-row .source-tabs{width:100%}.source-secondary-row .source-tabs button{flex:1}}
 </style></head>
 <body>
 <div class="app">
@@ -515,9 +528,9 @@ body.github-source-mode #liveButton{background:#3a3a3a;border-color:#aaa;color:#
 <div class="summary" id="summary"></div>
 <nav class="tabs" id="mobileTabs" aria-label="Mobile lane selector"><button class="b" data-mview="backend" type="button">◇ Backend SVG + code</button><button class="b" data-mview="frontend" type="button">▣ Real UI + code</button><button class="b" data-mview="both" type="button">◫ Both lanes</button></nav>
 <main class="workspace" aria-label="Backend, commit timeline and frontend workbench">
-<section class="lane" id="backendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">◇</span><div><div class="lanetitle">Backend / system internals</div><div class="lanesub" id="backendName">Controller and database flow</div></div></div><span class="lanechip" id="backendInfo">ACTIVE</span></div><div class="blocktitle"><span>01 &nbsp; BACKEND ARCHITECTURE</span></div><div class="visual" id="backendGraphic"></div><div class="backend-note" id="backendInfoLine" hidden></div><div class="source-region" id="backendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="backendSourceActions" role="group" aria-label="Source code view"><div class="source-tabs"><button type="button" id="backendDiffTab" data-code-mode="diff" class="chosen">Commit changes</button><button type="button" id="backendOriginalTab" data-code-mode="source">Original source</button><button type="button" id="backendViewHereTab" data-code-mode="compare">View here</button></div><select id="backendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="backendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div><div class="filebar"><span class="filename" id="backendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="backendCode"></div><div class="source-stats" id="backendCodeStats"></div></div></section>
+<section class="lane" id="backendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">◇</span><div><div class="lanetitle">Backend / system internals</div><div class="lanesub" id="backendName">Controller and database flow</div></div></div><span class="lanechip" id="backendInfo">ACTIVE</span></div><div class="blocktitle"><span>01 &nbsp; BACKEND ARCHITECTURE</span></div><div class="visual" id="backendGraphic"></div><div class="backend-note" id="backendInfoLine" hidden></div><div class="source-region" id="backendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="backendSourceActions" role="group" aria-label="Source code view"><div class="source-primary-row"><button type="button" id="backendViewHereTab" data-code-mode="compare" class="source-view-here chosen">View here</button><select id="backendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="backendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div><div class="source-secondary-row"><div class="source-tabs"><button type="button" id="backendDiffTab" data-code-mode="diff">Commit changes</button><button type="button" id="backendOriginalTab" data-code-mode="source">Original source</button></div></div></div><div class="filebar"><span class="filename" id="backendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="backendCode"></div><div class="source-stats" id="backendCodeStats"></div></div></section>
 <aside class="rail" aria-label="Commit timeline"><div class="railhead">COMMIT<small>STEP</small></div><div class="railscroll" id="railItems"></div></aside>
-<section class="lane" id="frontendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">▣</span><div><div class="lanetitle">Frontend / what users see</div><div class="lanesub" id="frontendName">Rendered UI and relevant markup</div></div></div><span class="lanechip" id="frontendInfo">PERSISTENT UI</span></div><div class="blocktitle"><span>01 &nbsp; UI CHANGE</span></div><div class="visual" id="frontendGraphic"></div><div class="source-region" id="frontendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="frontendSourceActions" role="group" aria-label="Source code view"><div class="source-tabs"><button type="button" id="frontendDiffTab" data-code-mode="diff" class="chosen">Commit changes</button><button type="button" id="frontendOriginalTab" data-code-mode="source">Original source</button><button type="button" id="frontendViewHereTab" data-code-mode="compare">View here</button></div><select id="frontendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="frontendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div><div class="filebar"><span class="filename" id="frontendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="frontendCode"></div><div class="source-stats" id="frontendCodeStats"></div></div></section>
+<section class="lane" id="frontendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">▣</span><div><div class="lanetitle">Frontend / what users see</div><div class="lanesub" id="frontendName">Rendered UI and relevant markup</div></div></div><span class="lanechip" id="frontendInfo">PERSISTENT UI</span></div><div class="blocktitle"><span>01 &nbsp; UI CHANGE</span></div><div class="visual" id="frontendGraphic"></div><div class="source-region" id="frontendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="frontendSourceActions" role="group" aria-label="Source code view"><div class="source-primary-row"><button type="button" id="frontendViewHereTab" data-code-mode="compare" class="source-view-here chosen">View here</button><select id="frontendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="frontendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div><div class="source-secondary-row"><div class="source-tabs"><button type="button" id="frontendDiffTab" data-code-mode="diff">Commit changes</button><button type="button" id="frontendOriginalTab" data-code-mode="source">Original source</button></div></div></div><div class="filebar"><span class="filename" id="frontendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="frontendCode"></div><div class="source-stats" id="frontendCodeStats"></div></div></section>
 </main>
 <section class="wide-compare" id="wideCompare" hidden aria-label="Full width GitHub change comparison">
   <div class="compare-top"><div><div class="compare-kicker">SOURCE INSPECTOR</div><h3 id="compareTitle">Before / After</h3><span id="comparePath"></span></div><button class="compare-close" type="button" id="closeCompare" aria-label="Close code comparison">Close ×</button></div>
@@ -907,7 +920,7 @@ const liveCache=new Map();
 // Cache complete GitHub commit metadata and full source files by immutable SHA.
 const exactCommitCache=new Map();
 const originalFileCache=new Map();
-let codeMode={backend:'diff',frontend:'diff'};
+let codeMode={backend:'compare',frontend:'compare'};
 let chosenFile={backend:null,frontend:null};
 let exactFetchSeq=0;
 
@@ -1150,18 +1163,21 @@ async function ensureExactCommit(ci,force=false){
   const promise=api('commits/'+encodeURIComponent(item.sha)).then(raw=>{
     if(raw.sha!==item.sha)throw Error('Commit SHA mismatch');
     const value={raw};exactCommitCache.set(item.sha,value);
-    if(current().c.sha===item.sha){renderSourcePanel('backend');renderSourcePanel('frontend')}
+    if(current().c.sha===item.sha){const side=current().s.kind==='frontend'?'frontend':'backend';renderSourcePanel(side==='frontend'?'backend':'frontend');renderSourcePanel(side)}
     return value;
   }).catch(error=>{
     const value={error:String(error.message||error)};exactCommitCache.set(item.sha,value);
-    if(current().c.sha===item.sha){renderSourcePanel('backend');renderSourcePanel('frontend')}
+    if(current().c.sha===item.sha){const side=current().s.kind==='frontend'?'frontend':'backend';renderSourcePanel(side==='frontend'?'backend':'frontend');renderSourcePanel(side)}
     return value;
   });
   exactCommitCache.set(item.sha,{promise});
   return promise;
 }
 function renderSourceForSelection(){
-  renderSourcePanel('backend');renderSourcePanel('frontend');
+  // Focus the expanded comparison on the lane belonging to this learning step.
+  const side=current().s.kind==='frontend'?'frontend':'backend';
+  renderSourcePanel(side==='frontend'?'backend':'frontend');
+  renderSourcePanel(side);
   ensureExactCommit(selection.ci);
 }
 function typeLabel(t){return t==='frontend'?'FRONTEND':t==='both'?'FULL STACK':'BACKEND'}
@@ -1354,7 +1370,7 @@ byId('summary').addEventListener('click',e=>{
 for(const side of ['backend','frontend']){
   byId(side+'SourceActions').addEventListener('click',event=>{
     const tab=event.target.closest('[data-code-mode]');
-    if(tab){codeMode[side]=tab.dataset.codeMode;renderSourcePanel(side);if(codeMode[side]==='compare'&&!byId('wideCompare').hidden)byId('wideCompare').scrollIntoView({behavior:'smooth',block:'start'});return;}
+    if(tab){codeMode[side]=tab.dataset.codeMode;renderSourcePanel(side);return;}
   });
   byId(side+'FileSelect').addEventListener('change',event=>{
     chosenFile[side]=event.target.value;renderSourcePanel(side);
