@@ -1,6 +1,6 @@
 (()=>{'use strict';
-const byId=x=>document.getElementById(x),H=v=>String(v==null?'':v).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[x])),BASE=document.documentElement.dataset.repository||'spring-projects/spring-petclinic';
-const BATCH=document.documentElement.dataset.batch||'001',STORAGE='three-lanes-'+(BASE==='spring-projects/spring-petclinic'?'':'nanoGPT-')+'b'+BATCH+'-v2',VERT='three-lanes-'+(BASE==='spring-projects/spring-petclinic'?'':'nanoGPT-')+'b'+BATCH+'-scroll',MAX_LINES=100;
+const byId=x=>document.getElementById(x),H=v=>String(v==null?'':v).replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[x])),BASE='spring-projects/spring-petclinic';
+const BATCH=document.documentElement.dataset.batch||'001',STORAGE='three-lanes-b'+BATCH+'-v2',VERT='three-lanes-b'+BATCH+'-scroll',MAX_LINES=100;
 let data=[],commits=[],index=0,mode='view',tab='compare',selectedFile='',renderToken=0,sourceToken=0,activePeek={backend:null,frontend:null},restoreDone=false,pageFloor=0;
 const store=(k,v)=>{try{localStorage.setItem(k,v)}catch{}},read=k=>{try{return localStorage.getItem(k)}catch{return null}};
 try{const v=JSON.parse(read(STORAGE)||'{}');if(Number.isInteger(v.index))index=v.index;if(v.mode==='github'||v.mode==='view')mode=v.mode;}catch{}
@@ -49,7 +49,7 @@ function renderTimeline(){
  store(RAIL_VERT,String(Math.round(rail.scrollTop)));
 }
 function renderHeader(){const s=current();if(!s)return;byId('stepPosition').textContent=(index+1)+' / '+data.length;byId('prevStep').disabled=index<=0;byId('nextStep').disabled=index===data.length-1;
-byId('viewMode').classList.toggle('chosen',mode==='view');byId('githubMode').classList.toggle('chosen',mode==='github');byId('inspectorTitle').textContent=mode==='view'?(document.documentElement.dataset.splitDefault==='true'?'Before / After · focused historical source':'Focused historical source'):(tab==='compare'?'Before / After':tab==='diff'?'Commit changes':'Original source');
+byId('viewMode').classList.toggle('chosen',mode==='view');byId('githubMode').classList.toggle('chosen',mode==='github');byId('inspectorTitle').textContent=mode==='view'?'Focused historical source':(tab==='compare'?'Before / After':tab==='diff'?'Commit changes':'Original source');
 byId('backendCaption').textContent=s.lane==='backend'?s.title:'No backend source in this slice';byId('frontendCaption').textContent=s.lane==='frontend'?s.title:'No frontend source in this slice';
 byId('backendChip').textContent=s.lane==='backend'?'CHANGED':'QUIET';byId('frontendChip').textContent=s.lane==='frontend'?'CHANGED':'QUIET';
 byId('summary').innerHTML='<div><h2>Commit '+s.commitPosition+' · '+H(s.commitTitle)+'</h2><small>SHA '+H(s.sha)+' · Step '+H(s.id)+' · '+H(s.title)+'</small></div><div class="meta"><span class="chip">'+'Batch '+BATCH+' · '+(commits.findIndex(c=>c.position===s.commitPosition)+1)+' / 10 commits</span><span class="chip code">'+s.codeLineCount+' / 100 code lines</span><span class="chip">'+(s.partCount??s.parts.length)+' changed file slices</span><a href="'+H(commitUrl(s.sha))+'" target="_blank" rel="noopener noreferrer">Exact commit ↗</a></div>';
@@ -147,14 +147,12 @@ try{
 function renderSource(){const s=current();if(!s)return;sourceToken++;
 if(s.partsUrl&&!s.partsLoaded){byId('sourceContent').innerHTML='<div class="loading">Loading verified historical source…</div>';hydrate(s);return;}
 selectFileOptions();
-byId('compareTab').classList.toggle('chosen',(mode==='github'&&tab==='compare')||(mode==='view'&&document.documentElement.dataset.splitDefault==='true'));byId('diffTab').classList.toggle('chosen',mode==='github'&&tab==='diff');byId('fullTab').classList.toggle('chosen',mode==='github'&&tab==='source');
-byId('compareTab').disabled=mode==='view'&&document.documentElement.dataset.splitDefault!=='true';byId('diffTab').disabled=mode==='view';byId('fullTab').disabled=mode==='view';
+byId('compareTab').classList.toggle('chosen',mode==='github'&&tab==='compare');byId('diffTab').classList.toggle('chosen',mode==='github'&&tab==='diff');byId('fullTab').classList.toggle('chosen',mode==='github'&&tab==='source');
+byId('compareTab').disabled=mode==='view';byId('diffTab').disabled=mode==='view';byId('fullTab').disabled=mode==='view';
 const target=byId('sourceContent');
 if(s.codeLineCount>MAX_LINES){target.innerHTML='<div class="error">Source audit failed: code step exceeds '+MAX_LINES+' lines.</div>';return}
 if(mode==='view'){
- if(document.documentElement.dataset.splitDefault==='true'){
- target.innerHTML='<div class="codecolumns"><div class="codepane"><div class="panehead before">Before · '+(s.parentSha?'parent '+H(s.parentSha.slice(0,8)):'initial commit / no parent')+'</div><div class="codetable">'+codeFiles('before')+'</div></div><div class="codepane"><div class="panehead after">After · commit '+H(s.sha.slice(0,8))+'</div><div class="codetable">'+codeFiles('after')+'</div></div></div>';
-}else target.innerHTML='<div class="singlepane"><div class="panehead">Focused code after selected commit · '+s.codeLineCount+' diff lines across all files</div><div class="codetable">'+codeFiles('after')+'</div></div>';
+ target.innerHTML='<div class="singlepane"><div class="panehead">Focused code after selected commit · '+s.codeLineCount+' diff lines across all files</div><div class="codetable">'+codeFiles('after')+'</div></div>';
 }else if(tab==='compare'){
  target.innerHTML='<div class="codecolumns"><div class="codepane"><div class="panehead before">Before · parent '+H((s.parentSha||'root').slice(0,8))+'</div><div class="codetable">'+codeFiles('before')+'</div></div><div class="codepane"><div class="panehead after">After · commit '+H(s.sha.slice(0,8))+'</div><div class="codetable">'+codeFiles('after')+'</div></div></div>';
 }else if(tab==='diff'){
