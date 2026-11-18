@@ -17,7 +17,8 @@ concurrency:
 
 jobs:
   visual-quality-gate:
-    runs-on: ubuntu-latest
+    # Playwright 1.56.1 supports Ubuntu 24.04; ubuntu-latest moved to 26.04.
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out history for changed-asset audits
         uses: actions/checkout@v4
