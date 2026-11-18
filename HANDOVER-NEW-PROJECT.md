@@ -59,6 +59,14 @@ Never use a diagram that has overlapping labels, off-canvas elements, bulky arro
 
 **Required audit:** visually inspect at 1440px and 390px, test source links and click-to-toggle, compare before/after, and check layout/scroll persistence for each applicable step. Copy `projects/_template/VISUAL-QA-TRACKER.md` into each new project. A batch is only COMPLETE after **10/10 commit entries** pass these checks. Report actual progress and defects if anything is unfinished; do not invent quality scores or inspection results.
 
+## Mandatory one-file steps and scrolling commit conveyor
+
+Each numbered learning step covers **exactly one changed file**. For a real commit touching 20 files, make at least 20 numbered substeps under its original SHA. Never combine changes from different files (including tests and config). If any one file contains more than 100 instructional lines, break THAT file into smaller substeps. Renames count as one file with old/new paths; binary assets have their own metadata-only step. Audit the verified complete commit to ensure every file and changed line is covered.
+
+With many commits or substeps, the middle commit conveyor is **vertically scrollable inside a fixed-height rail**, its header stays in place, and the selected step is kept visible by scrolling ONLY the rail. Do not expand the page or shift either visual lane. Preserve the current rail scroll offset on ordinary redraws.
+
+Semantic chips: backend blue; frontend green; full-stack **orange, not yellow**; unselected commits neutral.
+
 ## Strict limit for large commits: 100-line learning subcommits
 
 See [SUBCOMMIT-100-LINE-RULE.md](./SUBCOMMIT-100-LINE-RULE.md), which is mandatory for any new project. A real commit with thousands of lines must be broken into as many **small, cohesive numbered learning subcommits** as required. Each subcommit covers and displays **at most 100 physical code/diff lines across all its files** (including added, removed, and context). Do not truncate at 100; cover **all changed lines** of the original verified commit across the sequence and audit line-range coverage. Preserve real SHA, path, old/new line numbers, dependencies, Before/After, and clickable SVG-to-code navigation. Large full-file archival/source views remain available. A batch is still 10 real GitHub commits even if their subcommit count is far greater than 10.
