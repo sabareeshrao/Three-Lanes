@@ -62,7 +62,7 @@ for(const file of ['styles/app.css','projects/spring-petclinic/shared/viewer.css
  check(s.includes('overflow-y:auto'),'Commit belt must keep vertical scroll: '+file);
  check(s.includes('--tl-font-ui'),'Viewer must use canonical UI font: '+file);
 }
-check(read('design-system/README.md').includes('candidate'),'Diagram contribution workflow must distinguish candidate from approved');
+check(read('design-system/README.md').includes('illustration-library/catalog.json'),'AI instructions must mention 50 independent illustrations');
 function changedFiles(){
  let base=process.env.DESIGN_DIFF_BASE||'';
  if(!/^[0-9a-f]{40}$/.test(base)||/^0{40}$/.test(base)){
@@ -77,20 +77,22 @@ for(const file of changed){
  if(!exists(file))continue;
  if(/^projects\/[^/]+\/.*\/svg\/[^/]+\.svg$/.test(file)||/^projects\/[^/]+\/svg\/[^/]+\.svg$/.test(file)){
   const s=read(file);
-  const id=s.match(/data-tl-diagram-type="([^"]+)"/)?.[1];
-  check(!!id,file+' new or modified SVG must declare an approved diagram type');
-  if(id){
-   const match=registry.patterns.find(p=>p.id===id);
-   check(!!match,file+' references unknown pattern '+id);
-   check(match?.status==='approved',file+' cannot publish a candidate pattern before approval: '+id);
-   inspectSvg(file,id);
-  }
+  const first=s.match(/<svg\\b[^>]*>/s)?.[0]||'';
+  const id=first.match(/data-tl-diagram-id="([^"]+)"/)?.[1]||first.match(/data-tl-diagram-type="([^"]+)"/)?.[1];
+  check(!!id,file+' needs a unique diagram ID (no approved-pattern whitelist)');
+  check(/viewBox="0 0 \\d+ \\d+"/.test(first),file+' must declare a positive viewBox');
+  check(first.includes('data-design-version="1"'),file+' needs design version');
+  check(first.includes('role="img"')&&first.includes('aria-labelledby='),file+' needs accessible image labeling');
+  check(/<title\\b[^>]*>[^<]+<\\/title>/.test(s)&&/<desc\\b[^>]*>[^<]+<\\/desc>/.test(s),file+' requires nonempty title and description');
+  check(!/<script\\b|<foreignObject\\b|\\bon(?:click|load|mouse\\w+|key\\w+)\\s*=|javascript:/i.test(s),file+' must not contain executable SVG');
+  check(!/<image\\b[^>]*(?:https?:|data:)/i.test(s),file+' must not embed remote or data images');
+  // Open vocabulary: inventing a new diagram type or composition is always allowed.
  }
  if(/^projects\/[^/]+\/.*frontend-ui\/[^/]+\.html$/.test(file)){
   check(read(file).includes('data-tl-design-version="1"'),file+' must identify design-system version (legacy files are exempt until changed)');
  }
 }
-console.log('Three-Lanes design audit: '+registry.patterns.length+' catalog patterns, '+changed.length+' changed files checked.');
+console.log('Three-Lanes design audit: '+registry.patterns.length+' optional reference compositions, '+changed.length+' changed files checked. Diagram IDs are open-ended.');
 warnings.forEach(w=>console.warn('WARN '+w));
 if(errors.length){for(const e of errors)console.error('FAIL '+e);console.error(errors.length+' design gate failure(s)');process.exitCode=1;}
 else console.log('PASS: tokens, catalog, agent instructions, scroll contract and changed visual assets.');

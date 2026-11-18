@@ -4,7 +4,7 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "audit:design": "node quality-gates/design-audit.mjs",
+    "audit:design": "node quality-gates/design-audit.mjs && node quality-gates/illustration-audit.mjs",
     "test:visual": "node quality-gates/browser-smoke.mjs"
   },
   "devDependencies": {

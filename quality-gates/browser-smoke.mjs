@@ -60,6 +60,34 @@ try{
   }
   await page.close();
  }
+ // Verify every standalone reusable SVG actually parses and renders in Chromium.
+ const catalog50=JSON.parse(fs.readFileSync('illustration-library/catalog.json','utf8'));
+ const assetPage=await browser.newPage({viewport:{width:640,height:400}});
+ for(const asset of catalog50.assets){
+  const response=await assetPage.goto(base+'/illustration-library/'+asset.source,{waitUntil:'load'});
+  assert(response?.ok(),asset.id+' browser HTTP failure');
+  const validity=await assetPage.evaluate(()=>{
+   const svg=document.querySelector('svg');
+   if(!svg)return {ok:false,reason:document.body.textContent.slice(0,100)};
+   const root=svg.getBoundingClientRect(),vb=svg.viewBox.baseVal;
+   const all=[...svg.querySelectorAll('[data-motif="illustration-main"]')];
+   const box=all[0]?.getBBox();
+   return {ok:!!box&&box.width>50&&box.height>25,
+     region:box?{x:box.x,y:box.y,w:box.width,h:box.height}:null,
+     view:{width:vb.width,height:vb.height},loaded:root.width>0&&root.height>0};
+  });
+  assert(validity.ok&&validity.loaded,asset.id+' rendered no valid geometry: '+JSON.stringify(validity));
+  if(validity.region){
+   const {x,y,w,h}=validity.region;
+   assert(x>=-5&&y>=-5&&x+w<=645&&y+h<=405,asset.id+' spills outside 640×400 viewBox: '+JSON.stringify(validity.region));
+  }
+  // Per-asset screenshots are human review evidence; the test cannot judge aesthetics.
+  await assetPage.screenshot({path:path.join(out,'module-'+asset.id+'.png'),animations:'disabled'});
+ }
+ await assetPage.goto(base+'/illustration-library/',{waitUntil:'domcontentloaded'});
+ await assetPage.locator('.card').first().waitFor({timeout:10000});
+ assert(await assetPage.locator('.card').count()===catalog50.assets.length,'Modular illustration gallery missing assets');
+ await assetPage.close();
  // Inspect SVG geometry in its own viewBox. The browser is the authority for text bounds.
  const page=await browser.newPage({viewport:{width:760,height:430}});
  for(const p of manifest.patterns){
