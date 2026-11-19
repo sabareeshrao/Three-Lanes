@@ -23,10 +23,11 @@ Every original added/deleted patch line is assigned to exactly one source file a
 - [x] Exact changed-file inventory, no file merged across substeps
 - [x] Full original unified patches and source snapshots at historical SHAs
 - [x] All 192 additions/deletions mapped to old/new source coordinates
-- [x] Fourteen diagrams authored separately, source-specific and in light Petclinic style
+- [x] Fourteen diagrams authored separately, source-specific and in light Petclinic style, with duplicate background grids and filler footers removed
 - [x] All substeps below 100 instructional code/diff lines
-- [x] Three-Lanes design tokens imported, no prototype changes
+- [x] Original root Three-Lanes CSS reused directly; the two-visual-lane shell and source inspector are preserved; no prototype changes
 - [x] Representative historical file snapshots spot-checked byte-for-byte against original GitHub source (1.1, 2.2, 3.3, 5.4, 5.5)
+- [x] Original root prototype and nested viewer structural ID audit: all 55 IDs preserved, plus two mentor IDs
 - [ ] Browser screenshots of this **nested viewer** at 1440px and 390px inspected manually
 - [ ] Click/keyboard/scroll interactions independently exercised in a rendered browser
 - [ ] Each diagram manually reviewed for balance and technical semantics
@@ -41,4 +42,4 @@ npm run audit:design
 npm run test:visual
 ```
 
-The project's static source validator enforces 14 file scopes, real SHA links, 192 changed lines, token imports and SVG safety/weight. The root smoke test covers the root prototype and illustration catalog but does not automatically inspect this nested viewer.
+The project's static source validator enforces 14 file scopes, real SHA links, 192 changed lines, original DOM element parity, shared original stylesheet, and transparent SVG safety/weight. The root smoke test covers the root prototype and illustration catalog but does not automatically inspect this nested viewer.

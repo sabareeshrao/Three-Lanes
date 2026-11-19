@@ -3,7 +3,7 @@
 **[Launch nested viewer](https://sabareeshrao.github.io/Three-Lanes/projects/project-rebuild/)**  
 Original source repository (read-only): https://github.com/sabareeshrao/Project-Rebuild
 
-This standalone Three-Lanes project explains the **first five historical commits** of an original, learning-first nanoGPT implementation. The code belongs to the source repository; these visualization files live only in `sabareeshrao/Three-Lanes/projects/project-rebuild/`.
+This prototype-compatible Three-Lanes project explains the **first five historical commits** of an original, learning-first nanoGPT implementation. The code belongs to the source repository; these visualization files live only in `sabareeshrao/Three-Lanes/projects/project-rebuild/`.
 
 ## The first five commits
 
@@ -17,7 +17,7 @@ These five real commits require **14 teaching steps** because each changed file 
 
 ## Viewer behavior
 
-The left lane displays a source-specific lightweight blueprint diagram; the middle lane scrolls vertically through the five SHAs and their numbered file-scoped steps; the right lane shows authentic source snapshots and the complete changed-file diff. Use **View / Commit changes**, **Before / After**, **Open file** at an immutable SHA, previous/next buttons or left/right keyboard arrows. Mentor explanations are collapsible. On mobile, switch between the Visual and Source panes while the commit rail remains accessible.
+The **original Three-Lanes prototype HTML and shared CSS** define the interface. Just like the Petclinic viewer, it has two fixed-height visual canvases and a **narrow middle conveyor** displaying real SHA chips and file-specific substep chips. The left visual is a source-grounded lightweight SVG; the right visual shows the genuine Python example, documented setup, or expected behavior (not a fictional browser frontend). The one **shared source-control bar** below the three columns opens full-width **Before / After** source or complete **Commit changes** with real GitHub line coordinates. Clicking the same mode again closes it, and **Open file** targets the original SHA. Mentor explanations are optional dropdowns that do not resize the 700px lanes. Keyboard navigation and the original mobile lane selector remain available.
 
 ## Folder contract
 
@@ -29,5 +29,7 @@ The left lane displays a source-specific lightweight blueprint diagram; the midd
 - `svg/` — 14 individually authored SVGs matching the Three-Lanes light blueprint look.
 - `coverage-audit.json` and `VISUAL-QA-TRACKER.md` — provenance and acceptance checklist.
 - `tests/validate.mjs` — local source/asset integrity check.
+
+**Implementation policy:** `index.html` is a closely preserved copy of the original root prototype markup, `styles.css` contains only project-specific additions, and the full UI skin is imported directly from `../../styles/app.css`. Do not introduce a separate visual design, custom main grid, or independent commit rail. Source-level structural parity is checked against all 55 original element IDs.
 
 New batches should start from the sixth chronological source commit, retain real SHAs and split any file with more than 100 diff/code lines. **Do not copy, overwrite or change the root Petclinic prototype.**
