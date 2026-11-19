@@ -120,7 +120,9 @@
   rail.innerHTML=commits.map((c,i)=>{
    const selected=i===selection.ci,sha=c.sha.slice(0,7),activeStep=selection.si;
    const chip='<button class="commitBtn backend '+(selected?"selected":"")+'" type="button" data-c="'+i+'" data-s="0" aria-current="'+selected+'" aria-label="Commit '+sha+': '+esc(c.title)+'" data-commit-title="'+esc(c.title)+'"><span class="no">'+c.number+'</span></button>';
-   const sub=selected?'<div class="substeps">'+c.steps.map((s,j)=>'<button type="button" class="subbtn '+(activeStep===j?"selected":"")+'" data-c="'+i+'" data-s="'+j+'" aria-current="'+(activeStep===j?"step":"false")+'" title="'+esc(s.title)+'">'+esc(s.id)+'</button>').join("")+'</div>':'<div class="rail-gap" aria-hidden="true"></div>';
+   // Keep every commit group the same height regardless of selection.
+   // Reserve no "expanded only" area: all file substeps have a stable rail position.
+   const sub='<div class="substeps">'+c.steps.map((s,j)=>'<button type="button" class="subbtn '+(selected&&activeStep===j?"selected":"")+'" data-c="'+i+'" data-s="'+j+'" aria-current="'+(selected&&activeStep===j?"step":"false")+'" title="'+esc(s.title)+'" aria-label="'+esc("Step "+s.id+": "+s.title)+'">'+esc(s.id)+'</button>').join("")+'</div>';
    return '<div class="railitem backend">'+chip+sub+'</div>';
   }).join("");
   rail.scrollTop=previous;

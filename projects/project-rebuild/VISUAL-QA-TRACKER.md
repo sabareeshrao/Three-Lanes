@@ -51,3 +51,13 @@ The project's static source validator enforces 14 file scopes, real SHA links, 1
 - [x] Commit belt shows ordinal numbers; actual SHA remains in summary and original links
 - [x] Added project-local static regression checks for default source visibility and numeric chips
 - [ ] Browser verification for source persistence and numbered rail across steps
+
+## Persistent stable geometry v3
+
+- [x] 700px both visual lanes and conveyor, regardless of selected commit
+- [x] Every substep chip remains rendered, not added/removed on selection
+- [x] Fixed summary row and clipped long text
+- [x] Fixed 430px source inspector with separate internal Before/After/Diff scrolling
+- [x] Default-open code persists across commits and files
+- [x] Mobile source row and two-lane grid heights fixed at their breakpoints
+- [ ] Desktop/mobile actual browser bounding-box tests on the nested viewer

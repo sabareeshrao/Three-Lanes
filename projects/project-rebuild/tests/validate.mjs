@@ -79,6 +79,16 @@ const chooseBlock=(appJs.match(/function choose\(ci,si\)\{[\s\S]*?\n \}/)||[])[0
 check(chooseBlock.includes('selection={ci,si};')&&!chooseBlock.includes('inspectorOpen=false'),'Step navigation must not close source inspector');
 check(chooseBlock.indexOf('inspectorMode="compare"')===-1,'Step navigation must retain selected source mode');
 check(appJs.includes('class="no"')&&appJs.includes("'+c.number+'"),'Commit carousel must display ordinal numbers rather than SHA hashes');
+check(appJs.includes('const sub=') && !appJs.includes("const sub=selected?"),'All commit substep groups must remain in fixed positions');
+check(appJs.includes('selected&&activeStep===j'),'Only currently selected substep should be highlighted');
+const css=fs.readFileSync(path.join(root,'styles.css'),'utf8');
+check(css.includes('--rebuild-lane-height:700px'),'Lane height must be a fixed 700px');
+check(css.includes('--rebuild-inspector-height:430px'),'Source inspector must have a fixed height independent of source length');
+check(css.includes('grid-template-rows:var(--rebuild-lane-height) var(--rebuild-sourcebar-height) var(--rebuild-inspector-height)'),'Source dock and viewer require stable grid rows');
+check(css.includes('#compareBefore,#compareAfter')&&css.includes('overflow:auto!important'),'Code panes must scroll inside inspector');
+check(css.includes('.workspace.mobile-both')&&css.includes('--rebuild-sourcebar-height:88px'),'Mobile geometry must be pinned per breakpoint');
+check(css.includes('height:var(--rebuild-summary-height)!important'),'Summary row must not resize when commit title changes');
+
 check(!html.includes('id="wideCompare" hidden'),'Source inspector should not start hidden in HTML');
 check(html.includes('app.js?v=code-default-2'),'Viewer JS should bypass the prior cached implementation');
 check(audit.checkedCommits===5&&audit.checkedFiles===14&&audit.lineCoordinateCoverage,'Coverage tracker inconsistent');

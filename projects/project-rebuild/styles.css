@@ -85,3 +85,153 @@ body{background:var(--tl-bg)!important}
  .rail .commitBtn .no{font-size:15px!important}
  .prot-runtime .learning-chips b{font-size:10px;padding:5px 6px}
 }
+
+
+/* ===== Project-Rebuild stable geometry v3 =====
+   Keep the original prototype skin, but prevent source length and active
+   step count from resizing the whole viewer. No modifications to root CSS. */
+:root{
+  --rebuild-lane-height:700px;
+  --rebuild-sourcebar-height:52px;
+  --rebuild-inspector-height:430px;
+  --rebuild-summary-height:62px;
+}
+html,body{overflow-anchor:none!important;scroll-behavior:auto!important}
+.app{overflow-anchor:none!important}
+.summary,
+body.github-source-mode .summary{
+  box-sizing:border-box!important;
+  height:var(--rebuild-summary-height)!important;
+  min-height:var(--rebuild-summary-height)!important;
+  max-height:var(--rebuild-summary-height)!important;
+  overflow:hidden!important;
+  align-items:center!important;
+}
+.summary .summary-main,.summary .rightsummary{min-width:0}
+.summary .summary-main>p,.summary h2{
+  overflow:hidden!important;text-overflow:ellipsis!important;
+  white-space:nowrap!important;min-width:0!important;
+}
+.workspace{
+  align-items:start!important;
+  grid-template-rows:var(--rebuild-lane-height) var(--rebuild-sourcebar-height) var(--rebuild-inspector-height)!important;
+  overflow-anchor:none!important;
+}
+.workspace>.lane,
+.workspace>.rail{
+  box-sizing:border-box!important;
+  height:var(--rebuild-lane-height)!important;
+  min-height:var(--rebuild-lane-height)!important;
+  max-height:var(--rebuild-lane-height)!important;
+  align-self:start!important;
+  overflow:hidden!important;
+}
+.workspace>.lane>.visual{
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.workspace>.shared-source-dock{
+  box-sizing:border-box!important;
+  grid-row:2!important;
+  height:var(--rebuild-sourcebar-height)!important;
+  min-height:var(--rebuild-sourcebar-height)!important;
+  max-height:var(--rebuild-sourcebar-height)!important;
+  overflow:hidden!important;
+}
+.workspace>.wide-compare:not([hidden]){
+  box-sizing:border-box!important;
+  grid-row:3!important;
+  display:flex!important;
+  flex-direction:column!important;
+  height:var(--rebuild-inspector-height)!important;
+  min-height:var(--rebuild-inspector-height)!important;
+  max-height:var(--rebuild-inspector-height)!important;
+  overflow:hidden!important;
+}
+.workspace>.wide-compare>.compare-top{
+  box-sizing:border-box;
+  flex:0 0 70px!important;
+  height:70px!important;
+  min-height:70px!important;
+  max-height:70px!important;
+  overflow:hidden!important;
+}
+.workspace>.wide-compare>.compare-top>div{min-width:0;overflow:hidden}
+.workspace>.wide-compare>.compare-top span{
+  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.workspace>.wide-compare>.compare-columns:not([hidden]){
+  flex:1 1 0!important;
+  min-height:0!important;
+  height:auto!important;
+  overflow:hidden!important;
+  display:grid!important;
+  grid-template-rows:minmax(0,1fr)!important;
+}
+.workspace>.wide-compare>.compare-columns>.compare-pane{
+  min-height:0!important;
+  height:100%!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.workspace>.wide-compare>.compare-columns>.compare-pane>.compare-panehead{
+  flex:0 0 auto!important;
+}
+#compareBefore,#compareAfter{
+  box-sizing:border-box!important;
+  flex:1 1 0!important;
+  min-height:0!important;
+  overflow:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-width:none!important;
+}
+#compareBefore::-webkit-scrollbar,#compareAfter::-webkit-scrollbar,
+#compareDiff::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
+.workspace>.wide-compare>#compareDiff:not([hidden]){
+  box-sizing:border-box!important;
+  flex:1 1 0!important;
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:auto!important;
+  overscroll-behavior:contain;
+  scrollbar-width:none!important;
+}
+/* The entire commit rail is static. Selection updates color only; no chip is
+   added/removed and the rail itself scrolls without scrolling the page. */
+.workspace>.rail>.railscroll{height:auto!important;min-height:0!important;scroll-behavior:auto!important;overflow-anchor:none!important}
+.workspace>.rail .railitem{contain:layout style}
+.workspace>.rail .substeps{visibility:visible!important}
+.workspace>.rail .rail-gap{display:none!important}
+.workspace>.rail .commitBtn,
+.workspace>.rail .subbtn{transform:none!important;transition:background-color .12s,border-color .12s,color .12s!important}
+@media(max-width:900px){
+  .workspace>.wide-compare>.compare-columns:not([hidden]){
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:minmax(0,1fr) minmax(0,1fr)!important;
+  }
+  .workspace>.wide-compare>.compare-columns>.compare-pane{height:auto!important}
+}
+@media(max-width:820px){
+  :root{--rebuild-sourcebar-height:88px}
+  .workspace.mobile-both{
+    grid-template-rows:var(--rebuild-lane-height) var(--rebuild-lane-height) var(--rebuild-sourcebar-height) var(--rebuild-inspector-height)!important;
+  }
+  .workspace.mobile-both>.shared-source-dock{grid-row:3!important}
+  .workspace.mobile-both>.wide-compare:not([hidden]){grid-row:4!important}
+  .workspace:not(.mobile-both){
+    grid-template-rows:var(--rebuild-lane-height) var(--rebuild-sourcebar-height) var(--rebuild-inspector-height)!important;
+  }
+  .workspace:not(.mobile-both)>.shared-source-dock{grid-row:2!important}
+  .workspace:not(.mobile-both)>.wide-compare:not([hidden]){grid-row:3!important}
+  .workspace>.shared-source-dock{
+    min-height:var(--rebuild-sourcebar-height)!important;
+    max-height:var(--rebuild-sourcebar-height)!important;
+  }
+}
+@media(max-width:620px){
+  :root{--rebuild-summary-height:78px;--rebuild-sourcebar-height:102px}
+  .summary .rightsummary{max-width:44%;overflow:hidden}
+  .workspace>.shared-source-dock .shared-source-controls{flex-wrap:wrap!important}
+}
