@@ -2,6 +2,7 @@
  "use strict";
  const $=id=>document.getElementById(id);
  const esc=v=>String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
+ const colorize=(line,step)=>window.ThreeLanesSyntax?window.ThreeLanesSyntax.highlightLine(line,step.language):esc(line);
  let commits=[],steps=[],visuals={};
  let selection={ci:0,si:0},inspectorOpen=true,inspectorMode="compare",mobileView="both";
  function current(){
@@ -20,7 +21,7 @@
   const a=row.oldLine!=null?fileLink(step,true,row.oldLine):"·",b=row.newLine!=null?fileLink(step,false,row.newLine):"·";
   const type=row.type==="add"?"added":row.type==="remove"?"removed":"context";
   const mark=row.type==="add"?"+":row.type==="remove"?"-":" ";
-  return '<div class="source-row '+type+'"><span class="sourceno">'+a+'</span><span class="sourceno">'+b+'</span><span class="source-mark">'+mark+'</span><span class="source-text">'+esc(row.text)+'</span></div>';
+  return '<div class="source-row '+type+'"><span class="sourceno">'+a+'</span><span class="sourceno">'+b+'</span><span class="source-mark">'+mark+'</span><span class="source-text">'+colorize(row.text,step)+'</span></div>';
  }
  function renderFullDiff(step){
   let out="",oldLine=0,newLine=0;
@@ -40,7 +41,7 @@
   const changed=new Set(step.changedCoordinates.filter(x=>x.type===(oldVersion?"remove":"add")).map(x=>oldVersion?x.oldLine:x.newLine));
   return raw.replace(/\n$/,"").split("\n").map((line,i)=>{
    const num=i+1,affected=changed.has(num);
-   return '<div class="compare-row '+(affected?(oldVersion?"removed":"added"):"")+'"><a class="compare-ln" href="'+esc(sourceUrl(step,oldVersion?"before":"after",num))+'" target="_blank" rel="noopener noreferrer">'+num+'</a><span class="compare-text">'+esc(line)+'</span></div>';
+   return '<div class="compare-row '+(affected?(oldVersion?"removed":"added"):"")+'"><a class="compare-ln" href="'+esc(sourceUrl(step,oldVersion?"before":"after",num))+'" target="_blank" rel="noopener noreferrer">'+num+'</a><span class="compare-text">'+colorize(line,step)+'</span></div>';
   }).join("");
  }
  function renderInspector(){
@@ -70,7 +71,11 @@
   const shell=(kicker,heading,inside,footer)=>{
     $("frontendGraphic").innerHTML='<section class="micro-workbench prot-runtime" aria-label="Source-grounded Python behavior"><header><span class="runtime-kicker">'+esc(kicker)+'</span><h3>'+esc(heading)+'</h3></header><main>'+inside+'<div class="runtime-foot">'+esc(footer)+'</div></main></section>';
   };
-  const card=(title,body)=>'<div class="terminal-view"><div class="terminal-title"><span>'+esc(title)+'</span><span class="lights"><i></i><i></i><i></i></span></div><pre>'+esc(body)+'</pre></div>';
+  const card=(title,body)=>{
+     const lang=title.includes(".toml")?"toml":title.includes(".gitignore")?"text":title.includes("commands")?"shell":title.includes(".md")?"markdown":"python";
+     const colored=window.ThreeLanesSyntax?window.ThreeLanesSyntax.highlightBlock(body,lang):esc(body);
+     return '<div class="terminal-view"><div class="terminal-title"><span>'+esc(title)+'</span><span class="lights"><i></i><i></i><i></i></span></div><pre>'+colored+'</pre></div>';
+   };
   const chips=(list)=>'<div class="learning-chips">'+list.map(item=>'<b class="'+(item.good?"good":item.bad?"bad":"")+'">'+esc(item.value)+'</b>').join("")+'</div>';
   switch(step.visualKind){
    case "roadmap":

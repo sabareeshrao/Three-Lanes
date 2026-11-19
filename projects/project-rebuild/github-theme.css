@@ -1,0 +1,85 @@
+/* GITHUB DARK COLOR PALETTE ONLY — NO GEOMETRY, LAYOUT, OR SIZING CHANGES.
+   The Three-Lanes original HTML, proportions, diagram canvas, and interactions remain unchanged. */
+.github-dark{
+  --gh-bg:#0d1117; --gh-surface:#161b22; --gh-raised:#21262d;
+  --gh-border:#30363d; --gh-text:#c9d1d9; --gh-muted:#8b949e;
+  --gh-link:#58a6ff; --gh-green:#238636; --gh-blue:#1f6feb;
+  --gh-red:#f85149; --gh-yellow:#d29922;
+  background-color:var(--gh-bg)!important;color:var(--gh-text)!important;
+}
+.github-dark .top{color:var(--gh-text)!important}
+.github-dark .brandicon{background:#21262d!important;border-color:var(--gh-border)!important;color:#79c0ff!important;box-shadow:none!important}
+.github-dark .title,.github-dark .title span{color:#f0f6fc!important}
+.github-dark .controlbar,.github-dark .summary,.github-dark .lane,.github-dark .rail,
+.github-dark .shared-source-dock,.github-dark .wide-compare,
+.github-dark .mentor-dropdown{background:var(--gh-surface)!important;border-color:var(--gh-border)!important;box-shadow:none!important;color:var(--gh-text)!important}
+.github-dark .controlbar .repo{color:var(--gh-muted)!important}
+.github-dark .controlbar .repo b{color:#f0f6fc!important}
+.github-dark .search,.github-dark .shared-source-controls .source-fileselect{background:var(--gh-bg)!important;color:var(--gh-text)!important;border-color:var(--gh-border)!important}
+.github-dark .search::placeholder{color:var(--gh-muted)!important}
+.github-dark .search:focus{border-color:var(--gh-link)!important;box-shadow:0 0 0 2px #58a6ff35!important}
+.github-dark .b,.github-dark .stepnav,.github-dark .source-view-here,
+.github-dark .compare-close{background:var(--gh-raised)!important;color:var(--gh-text)!important;border-color:var(--gh-border)!important}
+.github-dark .b:hover,.github-dark .stepnav:hover,.github-dark .source-view-here:hover{background:#30363d!important;border-color:#6e7681!important}
+.github-dark .b.primary,.github-dark .source-view-here.chosen{background:var(--gh-green)!important;border-color:#2ea043!important;color:#fff!important}
+.github-dark .b.primary:hover,.github-dark .source-view-here.chosen:hover{background:#2ea043!important}
+.github-dark .stepper output,.github-dark .stepper b{color:var(--gh-text)!important}
+.github-dark .summary h2,.github-dark .summary h2 b{color:#f0f6fc!important}
+.github-dark .summary p,.github-dark .summary .commit-position-label{color:var(--gh-muted)!important}
+.github-dark a,.github-dark .source,.github-dark .shared-source-controls .source-filelink{color:var(--gh-link)!important}
+.github-dark a:hover{color:#79c0ff!important}
+.github-dark .lanehead,.github-dark .railhead,.github-dark .compare-top,
+.github-dark .compare-panehead,.github-dark .prot-runtime .terminal-title{background:var(--gh-raised)!important;border-color:var(--gh-border)!important;color:var(--gh-text)!important}
+.github-dark .lanetitle,.github-dark .railhead{color:#f0f6fc!important}
+.github-dark .lanesub,.github-dark .blocktitle,.github-dark .compare-kicker,.github-dark .compare-top span{color:var(--gh-muted)!important}
+.github-dark .laneicon,.github-dark .lanechip{background:#1b314b!important;color:#79c0ff!important;border-color:#30547b!important}
+.github-dark .rail .commitBtn:not(.selected),.github-dark .rail .subbtn:not(.selected){background:var(--gh-raised)!important;border-color:var(--gh-border)!important;color:var(--gh-muted)!important}
+.github-dark .railitem.backend .commitBtn.selected{background:var(--gh-blue)!important;border-color:#79c0ff!important;color:#fff!important}
+.github-dark .railitem.frontend .commitBtn.selected{background:var(--gh-green)!important;border-color:#3fb950!important;color:#fff!important}
+.github-dark .railitem.both .commitBtn.selected{background:#bc6b19!important;border-color:#e3a15b!important;color:#fff!important}
+.github-dark .rail .subbtn.selected{background:#c9d1d9!important;border-color:#f0f6fc!important;color:#0d1117!important}
+.github-dark .rail .railitem:after{background:var(--gh-border)!important}
+.github-dark .railhead small{color:var(--gh-muted)!important}
+.github-dark .shared-source-label{color:var(--gh-muted)!important}
+.github-dark .mentor-dropdown summary{background:var(--gh-surface)!important;color:var(--gh-text)!important}
+.github-dark .mentor-dropdown .mentor-content{background:var(--gh-bg)!important;border-color:var(--gh-border)!important;color:var(--gh-text)!important}
+.github-dark .wide-compare .compare-top h3{color:#f0f6fc!important}
+.github-dark .wide-compare .compare-columns,.github-dark .compare-pane,.github-dark .compare-diff,
+.github-dark #compareBefore,.github-dark #compareAfter,.github-dark #compareDiff{background:var(--gh-bg)!important;border-color:var(--gh-border)!important}
+.github-dark .compare-panehead{background:var(--gh-raised)!important;color:var(--gh-text)!important}
+.github-dark .compare-ln,.github-dark .sourceno{color:#7d8590!important;border-color:var(--gh-border)!important}
+.github-dark .compare-ln:hover,.github-dark .sourceno a:hover{color:var(--gh-link)!important}
+.github-dark .compare-text,.github-dark .source-text{color:var(--gh-text)!important}
+.github-dark .compare-row.added,.github-dark .source-row.added{background:#12261e!important}
+.github-dark .compare-row.removed,.github-dark .source-row.removed{background:#2d191c!important}
+.github-dark .compare-row:hover:not(.added):not(.removed),.github-dark .source-row:hover:not(.added):not(.removed){background:#161b22!important}
+.github-dark .compare-row.added .compare-ln,.github-dark .source-row.added .sourceno{color:#7ee787!important}
+.github-dark .compare-row.removed .compare-ln,.github-dark .source-row.removed .sourceno{color:#ffa198!important}
+.github-dark .source-mark{color:#8b949e!important}
+.github-dark .source-hunk,.github-dark .compare-hunk{background:#1b2a40!important;color:#79c0ff!important;border-color:var(--gh-border)!important}
+.github-dark .source-meta,.github-dark .source-state{color:var(--gh-muted)!important}
+.github-dark .prot-runtime .terminal-view{background:var(--gh-bg)!important;border-color:var(--gh-border)!important;box-shadow:none!important}
+.github-dark .prot-runtime .terminal-title{background:var(--gh-raised)!important;border-color:var(--gh-border)!important;color:var(--gh-muted)!important}
+.github-dark .prot-runtime .terminal-view pre{color:var(--gh-text)!important}
+.github-dark .prot-runtime .terminal-title .lights i{background:#6e7681!important}
+.github-dark .prot-runtime .terminal-view pre span:not(.gh-token){color:var(--gh-text)!important}
+/* GitHub Dark syntax token colors; tokens are escaped HTML spans inside the existing code line. */
+.github-dark .gh-token.gh-keyword{color:#ff7b72!important}
+.github-dark .gh-token.gh-operator{color:#ff7b72!important}
+.github-dark .gh-token.gh-string{color:#a5d6ff!important}
+.github-dark .gh-token.gh-function{color:#d2a8ff!important}
+.github-dark .gh-token.gh-decorator{color:#d2a8ff!important}
+.github-dark .gh-token.gh-number{color:#79c0ff!important}
+.github-dark .gh-token.gh-constant{color:#79c0ff!important}
+.github-dark .gh-token.gh-builtin{color:#79c0ff!important}
+.github-dark .gh-token.gh-type{color:#ffa657!important}
+.github-dark .gh-token.gh-comment{color:#8b949e!important}
+.github-dark .gh-token.gh-heading{color:#79c0ff!important}
+.github-dark .gh-token.gh-key{color:#79c0ff!important}
+.github-dark .gh-token.gh-section{color:#d2a8ff!important}
+.github-dark .gh-token.gh-list{color:#ff7b72!important}
+.github-dark .gh-token.gh-strong{color:#f0f6fc!important}
+.github-dark .gh-token.gh-inline-code{color:#a5d6ff!important}
+.github-dark .gh-token.gh-link{color:#58a6ff!important}
+.github-dark .gh-token.gh-path{color:#8b949e!important}
+.github-dark .gh-token.gh-fence,.github-dark .gh-token.gh-quote{color:#8b949e!important}
