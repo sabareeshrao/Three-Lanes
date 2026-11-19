@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212121">
+<title>nanoGPT Rebuild · Three-Lanes Commit Lab</title>
+<link rel="stylesheet" href="../../design-system/tokens.css"><link rel="stylesheet" href="./styles.css?v=1">
+<script type="module" src="./app.js?v=1"></script>
+</head><body>
+<div class="app">
+<header class="top">
+ <div class="brand"><span class="brand-symbol" aria-hidden="true">⟠</span><h1>nanoGPT <span>Commit Lab</span></h1></div>
+ <a class="repo-link" href="https://github.com/sabareeshrao/Project-Rebuild" target="_blank" rel="noopener noreferrer">sabareeshrao / <strong>Project-Rebuild</strong></a>
+</header>
+<div class="toolbar">
+ <label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" placeholder="Find commit, file or step…" aria-label="Search commit SHA, file or topic"></label>
+ <span class="step-count" id="stepCount" aria-live="polite">1 / 14</span>
+ <button type="button" class="nav" id="prev" aria-label="Previous learning step">‹</button><button type="button" class="nav" id="next" aria-label="Next learning step">›</button>
+</div>
+<nav class="mobile-toggle" aria-label="Show mobile panel"><button type="button" data-panel="visual" class="active">Visual</button><button type="button" data-panel="source">Source</button></nav>
+<div class="context-row"><strong id="stepTitle">Loading verified commits…</strong><span class="context-details" id="stepLocation"></span></div>
+<main class="workspace">
+ <section class="lane visual-lane" id="visualLane" aria-labelledby="visualHeading">
+  <header class="lane-head"><div class="lane-title"><span class="lane-dot"></span><strong id="visualHeading">Mechanism</strong></div><span class="file-chip" id="visualType">BACKEND</span></header>
+  <div class="diagram tl-paper-grid" id="diagramWrap"><img id="diagram" alt="Learning diagram for the selected source file" decoding="async"/></div>
+  <div class="diagram-caption"><span class="caption-label">WHAT CHANGED</span><strong id="diagramTitle"> </strong><p id="visualFocus"></p></div>
+  <details class="mentor" id="mentor"><summary>Mentor explanation <span aria-hidden="true" class="chevron">⌄</span></summary><p id="mentorText"></p></details>
+ </section>
+ <aside class="conveyor" aria-label="Commit conveyor">
+  <header class="conveyor-head"><strong>COMMITS</strong><span id="commitCount">5</span></header>
+  <div class="conveyor-list tl-scroll-invisible" id="conveyor" role="navigation" aria-label="Five original commits and their file-specific learning steps"></div>
+ </aside>
+ <section class="lane source-lane" id="sourceLane" aria-labelledby="sourceHeading">
+  <header class="lane-head"><div class="lane-title"><span class="lane-dot source-dot"></span><strong id="sourceHeading">Real source</strong></div><span class="sha-text" id="sourceSha"></span></header>
+  <div class="source-context">
+   <span id="filename" class="source-file"> </span>
+   <a id="openFile" target="_blank" rel="noopener noreferrer">Open file ↗</a>
+  </div>
+  <div class="source-tabs">
+   <div class="view-switch" role="group" aria-label="Source mode"><button type="button" id="sourceView" class="active">View</button><button type="button" id="changesView">Commit changes</button></div>
+   <div class="side-switch" role="group" aria-label="Historical file revision"><button type="button" id="afterView" class="active">After</button><button type="button" id="beforeView">Before</button></div>
+  </div>
+  <div class="editor" id="editor" tabindex="0" aria-label="Source code with original GitHub line coordinates"></div>
+  <footer class="source-foot"><span id="coverage"></span><a id="commitLink" target="_blank" rel="noopener noreferrer">GitHub commit ↗</a></footer>
+ </section>
+</main>
+<footer class="page-footer"><span>Original five commits · one changed file per teaching step · no invented frontend</span><span>← → navigate · exact source pinned to SHA</span></footer>
+<div id="liveStatus" role="status" aria-live="polite" class="sr-only"></div>
+</div>
+</body></html>
