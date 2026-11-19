@@ -78,3 +78,5 @@ h1{font-size:20px;line-height:1.2;letter-spacing:-.045em;margin:0;font-weight:78
  .source-foot{padding:0 8px;font-size:9px}.page-footer{font-size:9px}
 }
 @media(max-width:390px){.repo-link{font-size:10px}.toolbar{gap:4px}.search-wrap{max-width:none}.nav{width:28px;height:32px}.step-count{font-size:10px}.diagram-caption p{font-size:11px}}
+
+[hidden]{display:none!important}
