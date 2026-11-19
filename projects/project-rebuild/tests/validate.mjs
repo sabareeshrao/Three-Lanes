@@ -48,6 +48,7 @@ for(const s of steps){
    check(xml.includes('viewBox="0 0 760 430"'),'Wrong SVG geometry '+s.id);
    check(!/<script\b|<foreignObject\b|javascript:/i.test(xml),'Unsafe SVG '+s.id);
    check(!/&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);)/i.test(xml),'Unescaped XML entity '+s.id);
+   check(!xml.includes('id="dots"')&&!xml.includes('PROJECT-REBUILD · SOURCE-GROUNDED'),'Diagrams must use continuous parent grid without branded footer: '+s.id);
    const strokes=[...xml.matchAll(/stroke-width="([\d.]+)"/g)].map(x=>Number(x[1]));
    check(strokes.every(v=>v<=3.5),'Bulky SVG strokes '+s.id);
   }
@@ -56,9 +57,22 @@ for(const s of steps){
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 check(html.includes('../../design-system/tokens.css'),'Viewer must import shared Three-Lanes tokens');
 check(html.includes('./app.js'),'Missing nested project viewer');
-check(html.includes('id="conveyor"')&&html.includes('id="mentor"'),'Viewer missing rail or mentor dropdown');
-check(html.includes('id="openFile"')&&html.includes('id="changesView"'),'Viewer missing original code links or diff mode');
+const original=fs.readFileSync(path.resolve(root,'../../index.html'),'utf8');
+const originalIds=new Set([...original.matchAll(/\\bid="([^"]+)"/g)].map(x=>x[1]));
+const currentIds=new Set([...html.matchAll(/\\bid="([^"]+)"/g)].map(x=>x[1]));
+for(const id of originalIds)check(currentIds.has(id),'Original prototype element missing: '+id);
+check(html.includes('../../styles/app.css'),'Viewer must use original prototype CSS, not a replacement skin');
+check(html.includes('id="railItems"')&&html.includes('class="rail"'),'Original SHA conveyor missing');
+check(html.includes('id="backendLane"')&&html.includes('id="frontendLane"'),'Original two visual lanes missing');
+check(html.includes('id="mentorDropdown"')&&html.includes('id="mentorText"'),'Collapsible mentor explanation missing');
+check(html.includes('id="sharedSourceDock"')&&html.includes('id="sharedViewTab"')&&html.includes('id="sharedDiffTab"'),'Original shared code bar missing');
+check(html.includes('id="wideCompare"')&&html.includes('id="compareBefore"')&&html.includes('id="compareAfter"'),'Original full-width Before/After inspector missing');
+const appJs=fs.readFileSync(path.join(root,'app.js'),'utf8');
+check(appJs.includes('projectApp')&&appJs.includes('renderTimeline')&&appJs.includes('renderInspector'),'Project behavior must be wired to prototype controls');
+const customCSS=fs.readFileSync(path.join(root,'styles.css'),'utf8');
+check(!customCSS.includes('grid-template-columns:minmax(0,1fr) 180px minmax(0,1fr)'),'Must not recreate independent viewer grid');
+check(!customCSS.includes('.conveyor{'),'Must not recreate alternate conveyor system');
 check(audit.checkedCommits===5&&audit.checkedFiles===14&&audit.lineCoordinateCoverage,'Coverage tracker inconsistent');
 console.log('Project-Rebuild QA: '+commits.length+' historical commits / '+steps.length+' file-scoped steps / 14 SVGs / 192 changed lines.');
 if(errors.length){errors.forEach(e=>console.error('FAIL '+e));process.exitCode=1;}
-else console.log('PASS: structure, exact commit coverage, source links, accessible thin-outline SVGs, UI contracts.');
+else console.log('PASS: source coverage, transparent SVGs and structural ID parity with original prototype.');
