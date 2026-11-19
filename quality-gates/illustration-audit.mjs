@@ -26,7 +26,8 @@ for(const a of entries){
 const files=fs.readdirSync(path.join(root,'illustration-library/assets')).filter(f=>f.endsWith('.svg'));
 check(files.length===entries.length,'Gallery inventory differs from SVG source inventory');
 for(const f of files)check(seen.has(f.slice(0,-4)),'Uncatalogued SVG '+f);
-check(entries.length>=20,'Expected a meaningful initial set of lightweight primitives and connectors');
+check(entries.length===200,'Expected exactly 200 lightweight SVG source assets and catalog entries');
+check(new Set(entries.map(x=>x.category)).size>=12,'Expected organized technical categories');
 console.log('Illustration audit: '+entries.length+' lightweight, open-ended primitives and connectors.');
 if(errs.length){for(const e of errs)console.error('FAIL '+e);process.exitCode=1}
 else console.log('PASS: SVG source, thin strokes, gallery inventory and open vocabulary.');
