@@ -71,6 +71,6 @@
  const color=item.mini==="error"?P.red:item.mini==="check"?P.green:P.blue;
  // Tag at bottom is a secondary annotation, not a text box pretending to be the diagram.
  const badge=label?r(110-Math.max(21,label.length*4.1+8),133,Math.max(42,label.length*8.2+16),20,5,"#fff","#D5E2F1",1)+t(110,147,label,10.5,color):"";
- return `<svg xmlns="http://www.w3.org/2000/svg" width="220" height="160" viewBox="0 0 220 160" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="${item.id}-title ${item.id}-desc" data-tl-illustration-id="${item.id}" data-design-version="1"><title id="${item.id}-title">${e(item.title)}</title><desc id="${item.id}-desc">${e(item.title)} illustrated as a minimal Petclinic-style reusable vector for ${item.category}.</desc><g data-motif="illustration-main" font-family="-apple-system,BlinkMacSystemFont,Inter,Arial,sans-serif">${base}${mini}${badge}</g></svg>`};
+ return `<svg xmlns="http://www.w3.org/2000/svg" width="220" height="160" viewBox="0 0 220 160" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="${item.id}-title ${item.id}-desc" data-tl-illustration-id="${item.id}" data-design-version="1"><title id="${item.id}-title">${e(item.title)}</title><desc id="${item.id}-desc">${e(item.title)} illustrated as a minimal Petclinic-style reusable vector for ${e(item.category)}.</desc><g data-motif="illustration-main" font-family="-apple-system,BlinkMacSystemFont,Inter,Arial,sans-serif">${base}${mini}${badge}</g></svg>`};
  return {art,motifs:Object.keys(M)};
 })()
