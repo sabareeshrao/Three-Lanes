@@ -1,5 +1,7 @@
 # Project-Rebuild — nanoGPT commit lessons in Three-Lanes
 
+**[Continue from commit 6 — detailed AI handover](./HANDOVER-NEXT-COMMITS.md)**
+
 **[Launch nested viewer](https://sabareeshrao.github.io/Three-Lanes/projects/project-rebuild/)**  
 Original source repository (read-only): https://github.com/sabareeshrao/Project-Rebuild
 
