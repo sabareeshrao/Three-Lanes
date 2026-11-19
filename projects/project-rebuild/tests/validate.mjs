@@ -100,3 +100,6 @@ check(audit.checkedCommits===5&&audit.checkedFiles===14&&audit.lineCoordinateCov
 console.log('Project-Rebuild QA: '+commits.length+' historical commits / '+steps.length+' file-scoped steps / 14 SVGs / 192 changed lines.');
 if(errors.length){errors.forEach(e=>console.error('FAIL '+e));process.exitCode=1;}
 else console.log('PASS: source coverage, transparent SVGs and structural ID parity with original prototype.');
+
+// Validate local GitHub Dark syntax highlighting for all 14 historical source files.
+await import('./syntax.mjs');

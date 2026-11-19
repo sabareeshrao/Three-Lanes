@@ -70,3 +70,13 @@ The project's static source validator enforces 14 file scopes, real SHA links, 1
 - [x] Collapsed inspector does not reserve a full-height blank grid row
 - [x] Preserve fixed 700px diagrams/rail and default-open code after navigation
 - [ ] Live-browser manual wheel, mouse and touch testing of nested page
+
+## GitHub Dark syntax and theme QA
+
+- [x] GitHub-inspired dark colors for controls, panels, commits, source diff, terminals
+- [x] Original prototype shapes, geometry, lane positions and scrolling unchanged
+- [x] Safe token highlighting for Python, Markdown, TOML, gitignore and shell
+- [x] Colored Before/After, full Commit changes and right-lane terminal examples
+- [x] Source text checked against all 14 lessons, including raw diff lines
+- [x] Regression test rejects changes to theme CSS geometry properties
+- [ ] Independently inspect rendered colors on desktop and mobile
