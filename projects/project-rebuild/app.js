@@ -43,7 +43,7 @@ function choose(i){
  index=Math.min(Math.max(0,i),steps.length-1);const s=steps[index],commit=commits.find(c=>c.number===s.commitOrdinal);
  setText('stepTitle',s.title);setText('stepLocation',s.file);
  setText('stepCount',(index+1)+' / '+steps.length);
- setText('diagramTitle',s.title);setText('visualFocus',commit.title+' · '+basename(s.file));
+ setText('diagramTitle',s.title);setText('visualFocus','This step changes only '+s.file);
  setText('mentorText',s.mentor);$('mentor').open=false;
  const asset=visuals[s.sha+':'+s.id]?.backend;
  $('diagram').src=asset||'';$('diagram').alt=s.title+': '+s.file+' (source-specific architecture diagram)';
@@ -95,7 +95,7 @@ function init(){
   nodes.rail.querySelectorAll('.commit-group').forEach(group=>{let visible=0;group.querySelectorAll('.rail-step').forEach(b=>{b.hidden=!!q&&!b.dataset.search.includes(q);if(!b.hidden)visible++});group.hidden=visible===0});
  });
  $('search').addEventListener('keydown',e=>{if(e.key==='Enter'){const visible=nodes.rail.querySelector('.rail-step:not([hidden])');if(visible){visible.click();$('search').blur()}e.preventDefault()}});
- document.addEventListener('keydown',e=>{if(e.target.closest('input,textarea,select,button,[contenteditable=true]'))return;if(e.key==='ArrowRight'){e.preventDefault();choose(index+1)}else if(e.key==='ArrowLeft'){e.preventDefault();choose(index-1)}});
+ document.addEventListener('keydown',e=>{if(e.target.closest('input,textarea,select,[contenteditable=true]'))return;if(e.key==='ArrowRight'){e.preventDefault();choose(index+1)}else if(e.key==='ArrowLeft'){e.preventDefault();choose(index-1)}});
  const first=(location.hash.match(/^#step-(\d+\.\d+)$/)||[])[1];const found=steps.findIndex(x=>x.id===first);
  rail();setPanel('visual');choose(found>=0?found:0);
 }
