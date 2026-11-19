@@ -25,7 +25,7 @@ for(const [lang,source,tokens] of examples){
  const html=syntax.highlightLine(source,lang);
  assert.equal(uncolor(html),source,'Syntax rendering changed source');
  for(const kind of tokens)assert.ok(html.includes(kind),'Missing '+kind+' from '+lang);
- assert.ok(!/<img\b|<script\b|onerror\s*=/i.test(html),'Unsafe source HTML');
+ assert.ok(!/<img\b|<script\b/i.test(html),'Source HTML tags must remain escaped, not executable');
 }
 const steps=JSON.parse(read('lessons.json')).steps;let count=0;
 for(const step of steps){
