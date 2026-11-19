@@ -72,6 +72,15 @@ check(appJs.includes('projectApp')&&appJs.includes('renderTimeline')&&appJs.incl
 const customCSS=fs.readFileSync(path.join(root,'styles.css'),'utf8');
 check(!customCSS.includes('grid-template-columns:minmax(0,1fr) 180px minmax(0,1fr)'),'Must not recreate independent viewer grid');
 check(!customCSS.includes('.conveyor{'),'Must not recreate alternate conveyor system');
+
+// Keep the real source visible on first load and while navigating to any file or commit.
+check(appJs.includes('inspectorOpen=true,inspectorMode="compare"'),'Original source must be expanded by default');
+const chooseBlock=(appJs.match(/function choose\(ci,si\)\{[\s\S]*?\n \}/)||[])[0]||'';
+check(chooseBlock.includes('selection={ci,si};')&&!chooseBlock.includes('inspectorOpen=false'),'Step navigation must not close source inspector');
+check(chooseBlock.indexOf('inspectorMode="compare"')===-1,'Step navigation must retain selected source mode');
+check(appJs.includes('class="no"')&&appJs.includes("'+c.number+'"),'Commit carousel must display ordinal numbers rather than SHA hashes');
+check(!html.includes('id="wideCompare" hidden'),'Source inspector should not start hidden in HTML');
+check(html.includes('app.js?v=code-default-2'),'Viewer JS should bypass the prior cached implementation');
 check(audit.checkedCommits===5&&audit.checkedFiles===14&&audit.lineCoordinateCoverage,'Coverage tracker inconsistent');
 console.log('Project-Rebuild QA: '+commits.length+' historical commits / '+steps.length+' file-scoped steps / 14 SVGs / 192 changed lines.');
 if(errors.length){errors.forEach(e=>console.error('FAIL '+e));process.exitCode=1;}

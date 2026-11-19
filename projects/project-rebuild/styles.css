@@ -27,7 +27,7 @@ body{background:var(--tl-bg)!important}
 .mentor-dropdown .mentor-content::-webkit-scrollbar{width:0;display:none}
 .mentor-dropdown[open] summary span{transform:rotate(180deg)}
 .workspace>.lane>.visual{margin-bottom:12px!important}
-.rail .commitBtn .no{font-family:var(--tl-font-code)!important;font-size:10.5px!important;letter-spacing:-.25px}
+.rail .commitBtn .no{font-family:var(--tl-font-ui)!important;font-size:17px!important;font-weight:800!important;letter-spacing:0}
 .rail .commitBtn{width:63px!important}
 .summary h2{font-size:15px!important;font-weight:740}
 .summary p{font-size:11px!important;line-height:1.5!important}
@@ -82,6 +82,6 @@ body{background:var(--tl-bg)!important}
 }
 @media(max-width:520px){
  .rail .commitBtn{width:45px!important}
- .rail .commitBtn .no{font-size:8px!important}
+ .rail .commitBtn .no{font-size:15px!important}
  .prot-runtime .learning-chips b{font-size:10px;padding:5px 6px}
 }

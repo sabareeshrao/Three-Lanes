@@ -3,7 +3,7 @@
  const $=id=>document.getElementById(id);
  const esc=v=>String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#39;");
  let commits=[],steps=[],visuals={};
- let selection={ci:0,si:0},inspectorOpen=false,inspectorMode="compare",mobileView="both";
+ let selection={ci:0,si:0},inspectorOpen=true,inspectorMode="compare",mobileView="both";
  function current(){
   const c=commits[selection.ci],s=steps.find(x=>x.commitOrdinal===c.number&&x.id===c.steps[selection.si].id);
   return {c,s};
@@ -119,7 +119,7 @@
   const rail=$("railItems"),previous=rail.scrollTop;
   rail.innerHTML=commits.map((c,i)=>{
    const selected=i===selection.ci,sha=c.sha.slice(0,7),activeStep=selection.si;
-   const chip='<button class="commitBtn backend '+(selected?"selected":"")+'" type="button" data-c="'+i+'" data-s="0" aria-current="'+selected+'" aria-label="Commit '+sha+': '+esc(c.title)+'" data-commit-title="'+esc(c.title)+'"><span class="no">'+sha+'</span></button>';
+   const chip='<button class="commitBtn backend '+(selected?"selected":"")+'" type="button" data-c="'+i+'" data-s="0" aria-current="'+selected+'" aria-label="Commit '+sha+': '+esc(c.title)+'" data-commit-title="'+esc(c.title)+'"><span class="no">'+c.number+'</span></button>';
    const sub=selected?'<div class="substeps">'+c.steps.map((s,j)=>'<button type="button" class="subbtn '+(activeStep===j?"selected":"")+'" data-c="'+i+'" data-s="'+j+'" aria-current="'+(activeStep===j?"step":"false")+'" title="'+esc(s.title)+'">'+esc(s.id)+'</button>').join("")+'</div>':'<div class="rail-gap" aria-hidden="true"></div>';
    return '<div class="railitem backend">'+chip+sub+'</div>';
   }).join("");
@@ -163,8 +163,9 @@
  function choose(ci,si){
   if(ci<0||ci>=commits.length)return;
   if(si<0||si>=commits[ci].steps.length)return;
-  const isNew=selection.ci!==ci||selection.si!==si;
-  selection={ci,si};if(isNew){inspectorOpen=false;inspectorMode="compare";}
+  selection={ci,si};
+  // Keep the original-source inspector and its mode visible while switching files/commits.
+  // The code is shown on first load and remains open until the reader explicitly closes it.
   render();
  }
  function shift(delta){

@@ -43,3 +43,11 @@ npm run test:visual
 ```
 
 The project's static source validator enforces 14 file scopes, real SHA links, 192 changed lines, original DOM element parity, shared original stylesheet, and transparent SVG safety/weight. The root smoke test covers the root prototype and illustration catalog but does not automatically inspect this nested viewer.
+
+## Source inspector / rail regression fix
+
+- [x] Source inspector opens by default below the shared controls
+- [x] Changing commit or file does not close source or reset View/Commit changes
+- [x] Commit belt shows ordinal numbers; actual SHA remains in summary and original links
+- [x] Added project-local static regression checks for default source visibility and numeric chips
+- [ ] Browser verification for source persistence and numbered rail across steps

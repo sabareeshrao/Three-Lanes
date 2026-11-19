@@ -13,3 +13,5 @@ Read `../../AGENTS.md`, `../../HANDOVER-NEW-PROJECT.md`, `../../SUBCOMMIT-100-LI
 **Source behavior:** View shows real source at the selected immutable SHA; Commit changes shows real diff with GitHub coordinates. Open file uses original GitHub blob at SHA. No click-to-focus SVG behavior. Mentor explanations should be specific, concise and collapsible; avoid repeating the same claims.
 
 Run `node projects/project-rebuild/tests/validate.mjs` then root checks. Record desktop/mobile browser QA in `VISUAL-QA-TRACKER.md`; do not imply a manual visual review occurred if only static/CI checks ran.
+
+**Source visibility and navigation:** The full-width real-code inspector starts **open by default** on first load. Once opened, it stays open and retains the selected View/Commit changes mode while navigating between any file, substep or commit; only an explicit user click closes it. Commit conveyor chip faces show **numbers 1–5**, not SHA strings. The actual SHA stays in top commit metadata and original GitHub links. This rule overrides any previous toggle-on-navigation behavior.
