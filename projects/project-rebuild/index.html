@@ -1,47 +1,43 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212121">
-<title>nanoGPT Rebuild · Three-Lanes Commit Lab</title>
-<link rel="stylesheet" href="../../design-system/tokens.css"><link rel="stylesheet" href="./styles.css?v=1">
-<script type="module" src="./app.js?v=1"></script>
-</head><body>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#212121"><title>nanoGPT Rebuild | Three-Lane Commit Lab</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="../../design-system/tokens.css?v=1"><link rel="stylesheet" href="../../styles/app.css?v=design-system-1"><link rel="stylesheet" href="./styles.css?v=prototype-parity-1"></head>
+<body>
 <div class="app">
-<header class="top">
- <div class="brand"><span class="brand-symbol" aria-hidden="true">⟠</span><h1>nanoGPT <span>Commit Lab</span></h1></div>
- <a class="repo-link" href="https://github.com/sabareeshrao/Project-Rebuild" target="_blank" rel="noopener noreferrer">sabareeshrao / <strong>Project-Rebuild</strong></a>
-</header>
-<div class="toolbar">
- <label class="search-wrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" placeholder="Find commit, file or step…" aria-label="Search commit SHA, file or topic"></label>
- <span class="step-count" id="stepCount" aria-live="polite">1 / 14</span>
- <button type="button" class="nav" id="prev" aria-label="Previous learning step">‹</button><button type="button" class="nav" id="next" aria-label="Next learning step">›</button>
-</div>
-<nav class="mobile-toggle" aria-label="Show mobile panel"><button type="button" data-panel="visual" class="active">Visual</button><button type="button" data-panel="source">Source</button></nav>
-<div class="context-row"><strong id="stepTitle">Loading verified commits…</strong><span class="context-details" id="stepLocation"></span></div>
-<main class="workspace">
- <section class="lane visual-lane" id="visualLane" aria-labelledby="visualHeading">
-  <header class="lane-head"><div class="lane-title"><span class="lane-dot"></span><strong id="visualHeading">Mechanism</strong></div><span class="file-chip" id="visualType">BACKEND</span></header>
-  <div class="diagram tl-paper-grid" id="diagramWrap"><img id="diagram" alt="Learning diagram for the selected source file" decoding="async"/></div>
-  <div class="diagram-caption"><span class="caption-label">WHAT CHANGED</span><strong id="diagramTitle"> </strong><p id="visualFocus"></p></div>
-  <details class="mentor" id="mentor"><summary>Mentor explanation <span aria-hidden="true" class="chevron">⌄</span></summary><p id="mentorText"></p></details>
- </section>
- <aside class="conveyor" aria-label="Commit conveyor">
-  <header class="conveyor-head"><strong>COMMITS</strong><span id="commitCount">5</span></header>
-  <div class="conveyor-list tl-scroll-invisible" id="conveyor" role="navigation" aria-label="Five original commits and their file-specific learning steps"></div>
- </aside>
- <section class="lane source-lane" id="sourceLane" aria-labelledby="sourceHeading">
-  <header class="lane-head"><div class="lane-title"><span class="lane-dot source-dot"></span><strong id="sourceHeading">Real source</strong></div><span class="sha-text" id="sourceSha"></span></header>
-  <div class="source-context">
-   <span id="filename" class="source-file"> </span>
-   <a id="openFile" target="_blank" rel="noopener noreferrer">Open file ↗</a>
+<header class="top"><div class="brand"><div class="brandicon">⟠</div><div><h1 class="title">nanoGPT <span>Commit Lab</span></h1></div></div></header>
+<form class="controlbar" id="searchFormMain">
+  <div class="repo">sabareeshrao <span>/</span> <b>Project-Rebuild</b></div>
+  <div class="searchwrap"><input id="search" class="search" autocomplete="off" aria-label="Search five original commits by SHA, step, file or topic" placeholder="Find commit, step, SHA…"></div>
+  <button type="submit" class="b primary" id="searchButton">Search</button>
+  <div class="stepper" aria-label="Learning step navigation">
+    <button id="prevStep" type="button" class="stepnav" aria-label="Previous step">‹</button>
+    <output id="stepPosition" aria-label="Learning step position">1 / 14</output>
+    <button id="nextStep" type="button" class="stepnav" aria-label="Next step">›</button>
   </div>
-  <div class="source-tabs">
-   <div class="view-switch" role="group" aria-label="Source mode"><button type="button" id="sourceView" class="active">View</button><button type="button" id="changesView">Commit changes</button></div>
-   <div class="side-switch" role="group" aria-label="Historical file revision"><button type="button" id="afterView" class="active">After</button><button type="button" id="beforeView">Before</button></div>
+</form>
+<div class="visually-hidden" id="status" role="status" aria-live="polite"></div>
+<div class="summary" id="summary"></div>
+<nav class="tabs" id="mobileTabs" aria-label="Mobile lane selector"><button class="b" data-mview="backend" type="button">◇ Backend SVG + code</button><button class="b" data-mview="frontend" type="button">▣ Python behavior + code</button><button class="b" data-mview="both" type="button">◫ Both lanes</button></nav>
+<main class="workspace" aria-label="Mechanism, commit timeline and source-grounded Python behavior">
+<section class="lane" id="backendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">◇</span><div><div class="lanetitle">Backend / system internals</div><div class="lanesub" id="backendName">nanoGPT learning mechanisms</div></div></div><span class="lanechip" id="backendInfo">ACTIVE</span></div><div class="blocktitle"><span>01 &nbsp; BACKEND ARCHITECTURE</span></div><div class="visual" id="backendGraphic"></div><details class="mentor-dropdown" id="mentorDropdown"><summary>Mentor explanation <span aria-hidden="true">⌄</span></summary><div class="mentor-content" id="mentorText"></div></details><div class="source-nav" id="backendSourceNav" hidden aria-label="Backend source navigation"></div><div class="source-peek" id="backendSourcePeek" hidden aria-live="polite"></div><div class="backend-note" id="backendInfoLine" hidden></div><div class="source-region" id="backendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="backendSourceActions" role="group" aria-label="Source code view"><div class="source-primary-row"><button type="button" id="backendViewHereTab" data-code-mode="compare" class="source-view-here chosen">View</button><button type="button" id="backendDiffTab" data-code-mode="diff" class="source-view-here">Commit changes</button><select id="backendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="backendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div></div><div class="filebar"><span class="filename" id="backendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="backendCode"></div><div class="source-stats" id="backendCodeStats"></div></div></section>
+<aside class="rail" aria-label="Commit timeline"><div class="railhead">COMMIT<small>STEP</small></div><div class="railscroll" id="railItems"></div></aside>
+<section class="lane" id="frontendLane"><div class="lanehead"><div class="laneident"><span class="laneicon">▣</span><div><div class="lanetitle">Execution / observable behavior</div><div class="lanesub" id="frontendName">Actual examples, tests and source output</div></div></div><span class="lanechip" id="frontendInfo">NO FRONTEND SOURCE</span></div><div class="blocktitle"><span>01 &nbsp; EXECUTION / EXPECTED OUTPUT</span></div><div class="visual" id="frontendGraphic"></div><div class="source-nav" id="frontendSourceNav" hidden aria-label="Frontend source navigation"></div><div class="source-peek" id="frontendSourcePeek" hidden aria-live="polite"></div><div class="source-region" id="frontendSourceRegion"><div class="blocktitle"><span>02 &nbsp; REAL SOURCE CODE</span></div><div class="source-actions" id="frontendSourceActions" role="group" aria-label="Source code view"><div class="source-primary-row"><button type="button" id="frontendViewHereTab" data-code-mode="compare" class="source-view-here chosen">View</button><button type="button" id="frontendDiffTab" data-code-mode="diff" class="source-view-here">Commit changes</button><select id="frontendFileSelect" class="source-fileselect" aria-label="Choose changed file"></select><a id="frontendFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a></div></div><div class="filebar"><span class="filename" id="frontendFile"></span><span class="corner">●</span></div><div class="codeview exact-code" id="frontendCode"></div><div class="source-stats" id="frontendCodeStats"></div></div></section>
+
+<section id="sharedSourceDock" class="shared-source-dock" aria-label="Shared source controls">
+  <span class="shared-source-label">REAL SOURCE CODE</span>
+  <div class="shared-source-controls">
+    <button type="button" id="sharedViewTab" data-shared-code-mode="compare" class="source-view-here chosen" aria-pressed="true">View</button>
+    <button type="button" id="sharedDiffTab" data-shared-code-mode="diff" class="source-view-here" aria-pressed="false">Commit changes</button>
+    <select id="sharedFileSelect" class="source-fileselect" aria-label="Choose a changed file from this commit"></select>
+    <a id="sharedFileLink" class="source-filelink" target="_blank" rel="noopener noreferrer">Open file ↗</a>
   </div>
-  <div class="editor" id="editor" tabindex="0" aria-label="Source code with original GitHub line coordinates"></div>
-  <footer class="source-foot"><span id="coverage"></span><a id="commitLink" target="_blank" rel="noopener noreferrer">GitHub commit ↗</a></footer>
- </section>
+</section>
+
+  <section class="wide-compare" id="wideCompare" hidden aria-label="Full width historical source comparison">
+  <div class="compare-top"><div><div class="compare-kicker">SOURCE INSPECTOR</div><h3 id="compareTitle">Before / After</h3><span id="comparePath"></span></div><button class="compare-close" type="button" id="closeCompare" aria-label="Close code comparison">Close ×</button></div>
+  <div class="compare-columns" id="compareColumns"><div class="compare-pane"><div class="compare-panehead">Before commit</div><div id="compareBefore"></div></div><div class="compare-pane"><div class="compare-panehead">After commit</div><div id="compareAfter"></div></div></div><div id="compareDiff" class="compare-diff" hidden></div>
+</section>
 </main>
-<footer class="page-footer"><span>Original five commits · one changed file per teaching step · no invented frontend</span><span>← → navigate · exact source pinned to SHA</span></footer>
-<div id="liveStatus" role="status" aria-live="polite" class="sr-only"></div>
+<div id="commitHoverLabel" class="commit-hover-label" role="tooltip" hidden></div>
 </div>
+<script defer src="./app.js?v=prototype-parity-1"></script>
 </body></html>
