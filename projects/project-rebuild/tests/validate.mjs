@@ -85,6 +85,7 @@ const css=fs.readFileSync(path.join(root,'styles.css'),'utf8');
 check(css.includes('--rebuild-lane-height:700px'),'Lane height must be a fixed 700px');
 check(css.includes('--rebuild-inspector-height:max(430px, calc(100svh - 24px))'),'Inspector height must be viewport-filling and independent of code length');
 check(css.includes('overscroll-behavior-y:auto!important'),'Code panes must release wheel scroll at boundaries');
+check(css.includes('.workspace>.rail>.railscroll{overscroll-behavior-y:auto!important}'),'Rail must not block page scrolling at its limits');
 check(css.includes('.workspace:has(> .wide-compare[hidden])'),'Closing code should not reserve an empty inspector row');
 check(appJs.includes('window.scrollBy(0,amount)')&&appJs.includes('event.preventDefault()'),'Wheel must shift document until inspector is fully in view');
 check(appJs.includes('event.deltaY<=0'),'Upward scrolling must be allowed to return naturally to visual lanes');

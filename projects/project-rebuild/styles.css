@@ -266,3 +266,7 @@ body.github-source-mode .summary{
     grid-template-rows:var(--rebuild-lane-height) var(--rebuild-sourcebar-height) 0px!important;
   }
 }
+
+/* Let the page continue scrolling when the cursor reaches the end of the
+   internally scrollable commit conveyor; no wheel trapping at its bounds. */
+.workspace>.rail>.railscroll{overscroll-behavior-y:auto!important}
