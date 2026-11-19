@@ -195,6 +195,22 @@
   $("railItems").addEventListener("focusout",hideHover);
   document.addEventListener("scroll",hideHover,true);
   window.addEventListener("resize",()=>{hideHover();displayMobile();});
+  // Hand the wheel to the page until the inspector itself reaches the
+  // viewport top; then let each source pane scroll its own file normally.
+  // This prevents a partially visible code pane from trapping scroll input.
+  $("wideCompare").addEventListener("wheel",event=>{
+   if(!inspectorOpen||event.ctrlKey||event.metaKey||event.deltaY<=0)return;
+   const inspector=$("wideCompare");
+   const top=inspector.getBoundingClientRect().top;
+   const targetTop=12;
+   if(top<=targetTop+1)return;
+   const scrollRoom=document.documentElement.scrollHeight-window.innerHeight-window.scrollY;
+   if(scrollRoom<=0)return;
+   event.preventDefault();
+   const factor=event.deltaMode===1?16:event.deltaMode===2?window.innerHeight:1;
+   const amount=Math.min(event.deltaY*factor,Math.max(0,top-targetTop),scrollRoom);
+   window.scrollBy(0,amount);
+  },{passive:false});
   $("sharedViewTab").addEventListener("click",()=>toggleSource("compare"));
   $("sharedDiffTab").addEventListener("click",()=>toggleSource("diff"));
   $("closeCompare").addEventListener("click",()=>{inspectorOpen=false;renderInspector();});

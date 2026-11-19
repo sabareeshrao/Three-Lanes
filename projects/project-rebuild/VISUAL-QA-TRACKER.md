@@ -61,3 +61,12 @@ The project's static source validator enforces 14 file scopes, real SHA links, 1
 - [x] Default-open code persists across commits and files
 - [x] Mobile source row and two-lane grid heights fixed at their breakpoints
 - [ ] Desktop/mobile actual browser bounding-box tests on the nested viewer
+
+## Scroll handoff / code-only view v4
+
+- [x] Inspector fills most of the viewport (at least 430px), stable across source lengths
+- [x] Remove code-pane overscroll containment and let upward wheel gestures reach the document
+- [x] Forward downward wheel gestures to page until inspector top is visible, then allow code-pane scrolling
+- [x] Collapsed inspector does not reserve a full-height blank grid row
+- [x] Preserve fixed 700px diagrams/rail and default-open code after navigation
+- [ ] Live-browser manual wheel, mouse and touch testing of nested page

@@ -93,7 +93,7 @@ body{background:var(--tl-bg)!important}
 :root{
   --rebuild-lane-height:700px;
   --rebuild-sourcebar-height:52px;
-  --rebuild-inspector-height:430px;
+  --rebuild-inspector-height:max(430px, calc(100svh - 24px));
   --rebuild-summary-height:62px;
 }
 html,body{overflow-anchor:none!important;scroll-behavior:auto!important}
@@ -183,7 +183,8 @@ body.github-source-mode .summary{
   flex:1 1 0!important;
   min-height:0!important;
   overflow:auto!important;
-  overscroll-behavior:contain;
+  overscroll-behavior-y:auto!important;
+  overscroll-behavior-x:auto!important;
   scrollbar-width:none!important;
 }
 #compareBefore::-webkit-scrollbar,#compareAfter::-webkit-scrollbar,
@@ -195,7 +196,8 @@ body.github-source-mode .summary{
   height:auto!important;
   max-height:none!important;
   overflow:auto!important;
-  overscroll-behavior:contain;
+  overscroll-behavior-y:auto!important;
+  overscroll-behavior-x:auto!important;
   scrollbar-width:none!important;
 }
 /* The entire commit rail is static. Selection updates color only; no chip is
@@ -234,4 +236,33 @@ body.github-source-mode .summary{
   :root{--rebuild-summary-height:78px;--rebuild-sourcebar-height:102px}
   .summary .rightsummary{max-width:44%;overflow:hidden}
   .workspace>.shared-source-dock .shared-source-controls{flex-wrap:wrap!important}
+}
+
+
+/* Code reading: give the inspector nearly one viewport of consistent vertical
+   space, so normal page scrolling can place only the code area on screen.
+   Source panes keep independent internal scrolling; wheel events may bubble
+   back to the document at their edges instead of trapping the user. */
+.workspace>.wide-compare:not([hidden]),
+.workspace>.wide-compare>#compareDiff:not([hidden]),
+.workspace>.wide-compare .compare-pane,
+#compareBefore,#compareAfter {
+  overscroll-behavior-y:auto!important;
+}
+.workspace>.wide-compare>#compareDiff:not([hidden]),
+#compareBefore,#compareAfter{
+  touch-action:pan-y;
+  -webkit-overflow-scrolling:touch;
+}
+.workspace>.wide-compare:not([hidden]){scroll-margin-top:12px}
+.workspace:has(> .wide-compare[hidden]){
+  grid-template-rows:var(--rebuild-lane-height) var(--rebuild-sourcebar-height) 0px!important;
+}
+@media(max-width:820px){
+  .workspace.mobile-both:has(> .wide-compare[hidden]){
+    grid-template-rows:var(--rebuild-lane-height) var(--rebuild-lane-height) var(--rebuild-sourcebar-height) 0px!important;
+  }
+  .workspace:not(.mobile-both):has(> .wide-compare[hidden]){
+    grid-template-rows:var(--rebuild-lane-height) var(--rebuild-sourcebar-height) 0px!important;
+  }
 }
