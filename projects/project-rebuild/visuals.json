@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "byCommitStep": {
+    "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8:1.1": {
+      "backend": "./svg/1-1-roadmap.svg"
+    },
+    "603875d9d6dba28142865a1099d9bb194b4984f7:2.1": {
+      "backend": "./svg/2-1-ignore.svg"
+    },
+    "603875d9d6dba28142865a1099d9bb194b4984f7:2.2": {
+      "backend": "./svg/2-2-setup.svg"
+    },
+    "603875d9d6dba28142865a1099d9bb194b4984f7:2.3": {
+      "backend": "./svg/2-3-package.svg"
+    },
+    "603875d9d6dba28142865a1099d9bb194b4984f7:2.4": {
+      "backend": "./svg/2-4-module.svg"
+    },
+    "464f68b46663b5f57de1c38781c995b3c57b509f:3.1": {
+      "backend": "./svg/3-1-batch-example.svg"
+    },
+    "464f68b46663b5f57de1c38781c995b3c57b509f:3.2": {
+      "backend": "./svg/3-2-axes.svg"
+    },
+    "464f68b46663b5f57de1c38781c995b3c57b509f:3.3": {
+      "backend": "./svg/3-3-tensor-fn.svg"
+    },
+    "fcee5a141a735fb0609891d6e07d30bc78f183e0:4.1": {
+      "backend": "./svg/4-1-batch-tests.svg"
+    },
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.1": {
+      "backend": "./svg/5-1-run-commands.svg"
+    },
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.2": {
+      "backend": "./svg/5-2-pairs-example.svg"
+    },
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.3": {
+      "backend": "./svg/5-3-shift.svg"
+    },
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.4": {
+      "backend": "./svg/5-4-slice-fn.svg"
+    },
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.5": {
+      "backend": "./svg/5-5-shift-tests.svg"
+    }
+  }
+}

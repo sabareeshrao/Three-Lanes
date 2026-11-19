@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 2,
+  "projectId": "project-rebuild",
+  "title": "nanoGPT Rebuild",
+  "repository": {
+    "owner": "sabareeshrao",
+    "name": "Project-Rebuild",
+    "defaultBranch": "main"
+  },
+  "data": {
+    "commits": "./commits.json",
+    "sourceLinks": "./source-links.json",
+    "visuals": "./visuals.json",
+    "lessons": "./lessons.json"
+  },
+  "ui": {
+    "theme": "chatgpt-dark",
+    "initialViewerMode": "view"
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "sourceRepo": "sabareeshrao/Project-Rebuild",
+  "checkedCommits": 5,
+  "checkedFiles": 14,
+  "totalChangedLines": 192,
+  "completeFileCoverage": true,
+  "lineCoordinateCoverage": true,
+  "maxInstructionalLines": 27,
+  "steps": [
+    {
+      "id": "1.1",
+      "file": "README.md",
+      "sha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "added": 27,
+      "removed": 0,
+      "shownCodeLines": 27,
+      "coverage": 27
+    },
+    {
+      "id": "2.1",
+      "file": ".gitignore",
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "added": 10,
+      "removed": 0,
+      "shownCodeLines": 10,
+      "coverage": 10
+    },
+    {
+      "id": "2.2",
+      "file": "README.md",
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "added": 12,
+      "removed": 0,
+      "shownCodeLines": 15,
+      "coverage": 12
+    },
+    {
+      "id": "2.3",
+      "file": "pyproject.toml",
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "added": 20,
+      "removed": 0,
+      "shownCodeLines": 20,
+      "coverage": 20
+    },
+    {
+      "id": "2.4",
+      "file": "src/rebuild_gpt/__init__.py",
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "added": 1,
+      "removed": 0,
+      "shownCodeLines": 1,
+      "coverage": 1
+    },
+    {
+      "id": "3.1",
+      "file": "examples/01_token_batches.py",
+      "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "added": 8,
+      "removed": 0,
+      "shownCodeLines": 8,
+      "coverage": 8
+    },
+    {
+      "id": "3.2",
+      "file": "lessons/01_token_batches.md",
+      "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "added": 23,
+      "removed": 0,
+      "shownCodeLines": 23,
+      "coverage": 23
+    },
+    {
+      "id": "3.3",
+      "file": "src/rebuild_gpt/tensors.py",
+      "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "added": 13,
+      "removed": 0,
+      "shownCodeLines": 13,
+      "coverage": 13
+    },
+    {
+      "id": "4.1",
+      "file": "tests/test_tensors.py",
+      "sha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "added": 17,
+      "removed": 0,
+      "shownCodeLines": 17,
+      "coverage": 17
+    },
+    {
+      "id": "5.1",
+      "file": "README.md",
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "added": 11,
+      "removed": 0,
+      "shownCodeLines": 14,
+      "coverage": 11
+    },
+    {
+      "id": "5.2",
+      "file": "examples/02_next_token_pairs.py",
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "added": 8,
+      "removed": 0,
+      "shownCodeLines": 8,
+      "coverage": 8
+    },
+    {
+      "id": "5.3",
+      "file": "lessons/02_next_token_pairs.md",
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "added": 22,
+      "removed": 0,
+      "shownCodeLines": 22,
+      "coverage": 22
+    },
+    {
+      "id": "5.4",
+      "file": "src/rebuild_gpt/tensors.py",
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "added": 7,
+      "removed": 0,
+      "shownCodeLines": 10,
+      "coverage": 7
+    },
+    {
+      "id": "5.5",
+      "file": "tests/test_tensors.py",
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "added": 12,
+      "removed": 1,
+      "shownCodeLines": 22,
+      "coverage": 13
+    }
+  ]
+}

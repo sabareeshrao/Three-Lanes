@@ -1,0 +1,1105 @@
+{
+  "schemaVersion": 1,
+  "byCommitStep": {
+    "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8:1.1": [
+      {
+        "file": "README.md",
+        "sha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+        "parentSha": null,
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8/README.md",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 9
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 10
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 11
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 12
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 13
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 14
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 15
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 16
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 17
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 18
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 19
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 20
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 21
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 22
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 23
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 24
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 25
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 26
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 27
+          }
+        ]
+      }
+    ],
+    "603875d9d6dba28142865a1099d9bb194b4984f7:2.1": [
+      {
+        "file": ".gitignore",
+        "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+        "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/603875d9d6dba28142865a1099d9bb194b4984f7/.gitignore",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 9
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 10
+          }
+        ]
+      }
+    ],
+    "603875d9d6dba28142865a1099d9bb194b4984f7:2.2": [
+      {
+        "file": "README.md",
+        "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+        "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/603875d9d6dba28142865a1099d9bb194b4984f7/README.md",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 28
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 29
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 30
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 31
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 32
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 33
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 34
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 35
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 36
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 37
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 38
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 39
+          }
+        ]
+      }
+    ],
+    "603875d9d6dba28142865a1099d9bb194b4984f7:2.3": [
+      {
+        "file": "pyproject.toml",
+        "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+        "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/603875d9d6dba28142865a1099d9bb194b4984f7/pyproject.toml",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 9
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 10
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 11
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 12
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 13
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 14
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 15
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 16
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 17
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 18
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 19
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 20
+          }
+        ]
+      }
+    ],
+    "603875d9d6dba28142865a1099d9bb194b4984f7:2.4": [
+      {
+        "file": "src/rebuild_gpt/__init__.py",
+        "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+        "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/603875d9d6dba28142865a1099d9bb194b4984f7/src/rebuild_gpt/__init__.py",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          }
+        ]
+      }
+    ],
+    "464f68b46663b5f57de1c38781c995b3c57b509f:3.1": [
+      {
+        "file": "examples/01_token_batches.py",
+        "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+        "parentSha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/464f68b46663b5f57de1c38781c995b3c57b509f/examples/01_token_batches.py",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          }
+        ]
+      }
+    ],
+    "464f68b46663b5f57de1c38781c995b3c57b509f:3.2": [
+      {
+        "file": "lessons/01_token_batches.md",
+        "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+        "parentSha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/464f68b46663b5f57de1c38781c995b3c57b509f/lessons/01_token_batches.md",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 9
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 10
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 11
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 12
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 13
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 14
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 15
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 16
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 17
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 18
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 19
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 20
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 21
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 22
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 23
+          }
+        ]
+      }
+    ],
+    "464f68b46663b5f57de1c38781c995b3c57b509f:3.3": [
+      {
+        "file": "src/rebuild_gpt/tensors.py",
+        "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+        "parentSha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/464f68b46663b5f57de1c38781c995b3c57b509f/src/rebuild_gpt/tensors.py",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 9
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 10
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 11
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 12
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 13
+          }
+        ]
+      }
+    ],
+    "fcee5a141a735fb0609891d6e07d30bc78f183e0:4.1": [
+      {
+        "file": "tests/test_tensors.py",
+        "sha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+        "parentSha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/fcee5a141a735fb0609891d6e07d30bc78f183e0/tests/test_tensors.py",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 9
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 10
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 11
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 12
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 13
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 14
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 15
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 16
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 17
+          }
+        ]
+      }
+    ],
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.1": [
+      {
+        "file": "README.md",
+        "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+        "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/README.md",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 40
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 41
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 42
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 43
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 44
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 45
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 46
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 47
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 48
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 49
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 50
+          }
+        ]
+      }
+    ],
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.2": [
+      {
+        "file": "examples/02_next_token_pairs.py",
+        "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+        "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/examples/02_next_token_pairs.py",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          }
+        ]
+      }
+    ],
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.3": [
+      {
+        "file": "lessons/02_next_token_pairs.md",
+        "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+        "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/lessons/02_next_token_pairs.md",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 1
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 2
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 3
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 5
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 6
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 7
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 8
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 9
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 10
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 11
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 12
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 13
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 14
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 15
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 16
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 17
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 18
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 19
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 20
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 21
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 22
+          }
+        ]
+      }
+    ],
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.4": [
+      {
+        "file": "src/rebuild_gpt/tensors.py",
+        "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+        "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/src/rebuild_gpt/tensors.py",
+        "changedCoordinates": [
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 14
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 15
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 16
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 17
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 18
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 19
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 20
+          }
+        ]
+      }
+    ],
+    "f260dc8059da1bc079e5ab46d56c02fda7914ad0:5.5": [
+      {
+        "file": "tests/test_tensors.py",
+        "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+        "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+        "source": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/tests/test_tensors.py",
+        "changedCoordinates": [
+          {
+            "type": "remove",
+            "oldLine": 4,
+            "newLine": null
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 4
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 18
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 19
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 20
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 21
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 22
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 23
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 24
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 25
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 26
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 27
+          },
+          {
+            "type": "add",
+            "oldLine": null,
+            "newLine": 28
+          }
+        ]
+      }
+    ]
+  }
+}

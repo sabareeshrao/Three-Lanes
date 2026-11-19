@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "commits": [
+    {
+      "number": 1,
+      "sha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "parentSha": null,
+      "date": "2026-11-18T19:40:27Z",
+      "title": "docs: start a learning-first nanoGPT rebuild",
+      "url": "https://github.com/sabareeshrao/Project-Rebuild/commit/daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "stats": {
+        "total": 27,
+        "additions": 27,
+        "deletions": 0
+      },
+      "steps": [
+        {
+          "id": "1.1",
+          "title": "Start a learning-first nanoGPT rebuild",
+          "file": "README.md",
+          "lane": "backend"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "date": "2026-11-18T19:41:19Z",
+      "title": "build: add an installable Python and PyTorch project",
+      "url": "https://github.com/sabareeshrao/Project-Rebuild/commit/603875d9d6dba28142865a1099d9bb194b4984f7",
+      "stats": {
+        "total": 43,
+        "additions": 43,
+        "deletions": 0
+      },
+      "steps": [
+        {
+          "id": "2.1",
+          "title": "Keep local outputs out of Git",
+          "file": ".gitignore",
+          "lane": "backend"
+        },
+        {
+          "id": "2.2",
+          "title": "Add reproducible local setup",
+          "file": "README.md",
+          "lane": "backend"
+        },
+        {
+          "id": "2.3",
+          "title": "Define the Python package",
+          "file": "pyproject.toml",
+          "lane": "backend"
+        },
+        {
+          "id": "2.4",
+          "title": "Initialize rebuild_gpt",
+          "file": "src/rebuild_gpt/__init__.py",
+          "lane": "backend"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "parentSha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "date": "2026-11-18T19:41:26Z",
+      "title": "feat: represent token sequences as PyTorch batches",
+      "url": "https://github.com/sabareeshrao/Project-Rebuild/commit/464f68b46663b5f57de1c38781c995b3c57b509f",
+      "stats": {
+        "total": 44,
+        "additions": 44,
+        "deletions": 0
+      },
+      "steps": [
+        {
+          "id": "3.1",
+          "title": "Run a two-row token batch",
+          "file": "examples/01_token_batches.py",
+          "lane": "backend"
+        },
+        {
+          "id": "3.2",
+          "title": "Explain batch and time axes",
+          "file": "lessons/01_token_batches.md",
+          "lane": "backend"
+        },
+        {
+          "id": "3.3",
+          "title": "Implement token_batch()",
+          "file": "src/rebuild_gpt/tensors.py",
+          "lane": "backend"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "sha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "parentSha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "date": "2026-11-18T19:42:12Z",
+      "title": "test: verify token batch shapes and integer dtype",
+      "url": "https://github.com/sabareeshrao/Project-Rebuild/commit/fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "stats": {
+        "total": 17,
+        "additions": 17,
+        "deletions": 0
+      },
+      "steps": [
+        {
+          "id": "4.1",
+          "title": "Test batch shape and input checks",
+          "file": "tests/test_tensors.py",
+          "lane": "backend"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "date": "2026-11-18T19:42:36Z",
+      "title": "feat: construct one-step-ahead prediction targets",
+      "url": "https://github.com/sabareeshrao/Project-Rebuild/commit/f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "stats": {
+        "total": 61,
+        "additions": 60,
+        "deletions": 1
+      },
+      "steps": [
+        {
+          "id": "5.1",
+          "title": "Document runnable checkpoints",
+          "file": "README.md",
+          "lane": "backend"
+        },
+        {
+          "id": "5.2",
+          "title": "Run one-step-ahead prediction pairs",
+          "file": "examples/02_next_token_pairs.py",
+          "lane": "backend"
+        },
+        {
+          "id": "5.3",
+          "title": "Explain the shifted token windows",
+          "file": "lessons/02_next_token_pairs.md",
+          "lane": "backend"
+        },
+        {
+          "id": "5.4",
+          "title": "Implement next_token_pairs()",
+          "file": "src/rebuild_gpt/tensors.py",
+          "lane": "backend"
+        },
+        {
+          "id": "5.5",
+          "title": "Test shift targets and short contexts",
+          "file": "tests/test_tensors.py",
+          "lane": "backend"
+        }
+      ]
+    }
+  ]
+}

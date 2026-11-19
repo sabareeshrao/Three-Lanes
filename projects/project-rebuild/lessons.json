@@ -1,0 +1,2647 @@
+{
+  "schemaVersion": 1,
+  "sourceRepo": "sabareeshrao/Project-Rebuild",
+  "steps": [
+    {
+      "id": "1.1",
+      "commitOrdinal": 1,
+      "ordinal": 1,
+      "sha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "parentSha": null,
+      "title": "Start a learning-first nanoGPT rebuild",
+      "focus": "Start a learning-first nanoGPT rebuild",
+      "file": "README.md",
+      "status": "added",
+      "language": "markdown",
+      "lane": "backend",
+      "mentor": "This README defines an original learning path: token batches, prediction targets, then embeddings and attention. It documents goals, not a working GPT model.",
+      "visualKind": "roadmap",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8/README.md",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "patch": "@@ -0,0 +1,27 @@\n+# Project Rebuild: nanoGPT\n+\n+An original, learning-first reimplementation of [Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT). This is **not** a fork or a copy of its Git history.\n+\n+## Goal\n+\n+Understand how a GPT language model works by implementing each concept ourselves, validating it with small examples and tests, and studying the original project at checkpoints.\n+\n+## Our commit rules\n+\n+1. One clear learning objective per commit.\n+2. Explain **why** the change exists, not just how to type it.\n+3. Favor small, runnable steps; add tests as soon as behavior appears.\n+4. Use original code and diagrams where helpful, with proper attribution.\n+5. Compare our eventual implementation against nanoGPT's behavior.\n+\n+## First learning milestones\n+\n+- Set up a reproducible Python and PyTorch project.\n+- Represent token IDs as tensors shaped **[batch, time]**.\n+- Write tests for shapes and dtypes.\n+- Construct next-token prediction inputs and targets.\n+- Gradually implement embeddings, attention, transformers, training and generation.\n+\n+## Attribution\n+\n+This independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "# Project Rebuild: nanoGPT",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "An original, learning-first reimplementation of [Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT). This is **not** a fork or a copy of its Git history.",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "## Goal",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "Understand how a GPT language model works by implementing each concept ourselves, validating it with small examples and tests, and studying the original project at checkpoints.",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "text": "## Our commit rules",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "text": "1. One clear learning objective per commit.",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "text": "2. Explain **why** the change exists, not just how to type it.",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "text": "3. Favor small, runnable steps; add tests as soon as behavior appears.",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "text": "4. Use original code and diagrams where helpful, with proper attribution.",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "text": "5. Compare our eventual implementation against nanoGPT's behavior.",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "text": "## First learning milestones",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "text": "- Set up a reproducible Python and PyTorch project.",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "text": "- Represent token IDs as tensors shaped **[batch, time]**.",
+          "oldLine": null,
+          "newLine": 20
+        },
+        {
+          "type": "add",
+          "text": "- Write tests for shapes and dtypes.",
+          "oldLine": null,
+          "newLine": 21
+        },
+        {
+          "type": "add",
+          "text": "- Construct next-token prediction inputs and targets.",
+          "oldLine": null,
+          "newLine": 22
+        },
+        {
+          "type": "add",
+          "text": "- Gradually implement embeddings, attention, transformers, training and generation.",
+          "oldLine": null,
+          "newLine": 23
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 24
+        },
+        {
+          "type": "add",
+          "text": "## Attribution",
+          "oldLine": null,
+          "newLine": 25
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 26
+        },
+        {
+          "type": "add",
+          "text": "This independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.",
+          "oldLine": null,
+          "newLine": 27
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,27 @@"
+      ],
+      "added": 27,
+      "removed": 0,
+      "shownCodeLines": 27,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 20
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 21
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 22
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 23
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 24
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 25
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 26
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 27
+        }
+      ],
+      "before": "",
+      "after": "# Project Rebuild: nanoGPT\n\nAn original, learning-first reimplementation of [Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT). This is **not** a fork or a copy of its Git history.\n\n## Goal\n\nUnderstand how a GPT language model works by implementing each concept ourselves, validating it with small examples and tests, and studying the original project at checkpoints.\n\n## Our commit rules\n\n1. One clear learning objective per commit.\n2. Explain **why** the change exists, not just how to type it.\n3. Favor small, runnable steps; add tests as soon as behavior appears.\n4. Use original code and diagrams where helpful, with proper attribution.\n5. Compare our eventual implementation against nanoGPT's behavior.\n\n## First learning milestones\n\n- Set up a reproducible Python and PyTorch project.\n- Represent token IDs as tensors shaped **[batch, time]**.\n- Write tests for shapes and dtypes.\n- Construct next-token prediction inputs and targets.\n- Gradually implement embeddings, attention, transformers, training and generation.\n\n## Attribution\n\nThis independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.\n"
+    },
+    {
+      "id": "2.1",
+      "commitOrdinal": 2,
+      "ordinal": 2,
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "title": "Keep local outputs out of Git",
+      "focus": "Keep local outputs out of Git",
+      "file": ".gitignore",
+      "status": "added",
+      "language": "text",
+      "lane": "backend",
+      "mentor": "Python virtual environments, caches, model data and experiment outputs are generated locally. They should not pollute the educational commit history.",
+      "visualKind": "ignore",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/603875d9d6dba28142865a1099d9bb194b4984f7/.gitignore",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/603875d9d6dba28142865a1099d9bb194b4984f7",
+      "patch": "@@ -0,0 +1,10 @@\n+.venv/\n+__pycache__/\n+*.pyc\n+.pytest_cache/\n+*.egg-info/\n+build/\n+dist/\n+data/**/*.bin\n+out/\n+wandb/",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": ".venv/",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "__pycache__/",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "*.pyc",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": ".pytest_cache/",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "*.egg-info/",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "build/",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "dist/",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "data/**/*.bin",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "text": "out/",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "text": "wandb/",
+          "oldLine": null,
+          "newLine": 10
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,10 @@"
+      ],
+      "added": 10,
+      "removed": 0,
+      "shownCodeLines": 10,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 10
+        }
+      ],
+      "before": "",
+      "after": ".venv/\n__pycache__/\n*.pyc\n.pytest_cache/\n*.egg-info/\nbuild/\ndist/\ndata/**/*.bin\nout/\nwandb/\n"
+    },
+    {
+      "id": "2.2",
+      "commitOrdinal": 2,
+      "ordinal": 3,
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "title": "Add reproducible local setup",
+      "focus": "Add reproducible local setup",
+      "file": "README.md",
+      "status": "modified",
+      "language": "markdown",
+      "lane": "backend",
+      "mentor": "The new commands create a Python environment and install the project with development extras. PyTorch is required, but early lessons can run on CPU.",
+      "visualKind": "setup",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/603875d9d6dba28142865a1099d9bb194b4984f7/README.md",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/603875d9d6dba28142865a1099d9bb194b4984f7",
+      "patch": "@@ -25,3 +25,15 @@ Understand how a GPT language model works by implementing each concept ourselves\n ## Attribution\n \n This independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.\n+\n+## Local setup\n+\n+Requires Python 3.10+.\n+\n+```bash\n+python -m venv .venv\n+source .venv/bin/activate  # Windows PowerShell: .venv\\\\Scripts\\\\Activate.ps1\n+python -m pip install -e \".[dev]\"\n+```\n+\n+PyTorch is an explicit project dependency; a GPU is **not** required for the first lessons.",
+      "patchLines": [
+        {
+          "type": "context",
+          "text": "## Attribution",
+          "oldLine": 25,
+          "newLine": 25
+        },
+        {
+          "type": "context",
+          "text": "",
+          "oldLine": 26,
+          "newLine": 26
+        },
+        {
+          "type": "context",
+          "text": "This independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.",
+          "oldLine": 27,
+          "newLine": 27
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 28
+        },
+        {
+          "type": "add",
+          "text": "## Local setup",
+          "oldLine": null,
+          "newLine": 29
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 30
+        },
+        {
+          "type": "add",
+          "text": "Requires Python 3.10+.",
+          "oldLine": null,
+          "newLine": 31
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 32
+        },
+        {
+          "type": "add",
+          "text": "```bash",
+          "oldLine": null,
+          "newLine": 33
+        },
+        {
+          "type": "add",
+          "text": "python -m venv .venv",
+          "oldLine": null,
+          "newLine": 34
+        },
+        {
+          "type": "add",
+          "text": "source .venv/bin/activate  # Windows PowerShell: .venv\\\\Scripts\\\\Activate.ps1",
+          "oldLine": null,
+          "newLine": 35
+        },
+        {
+          "type": "add",
+          "text": "python -m pip install -e \".[dev]\"",
+          "oldLine": null,
+          "newLine": 36
+        },
+        {
+          "type": "add",
+          "text": "```",
+          "oldLine": null,
+          "newLine": 37
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 38
+        },
+        {
+          "type": "add",
+          "text": "PyTorch is an explicit project dependency; a GPU is **not** required for the first lessons.",
+          "oldLine": null,
+          "newLine": 39
+        }
+      ],
+      "hunks": [
+        "@@ -25,3 +25,15 @@ Understand how a GPT language model works by implementing each concept ourselves"
+      ],
+      "added": 12,
+      "removed": 0,
+      "shownCodeLines": 15,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 28
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 29
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 30
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 31
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 32
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 33
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 34
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 35
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 36
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 37
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 38
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 39
+        }
+      ],
+      "before": "# Project Rebuild: nanoGPT\n\nAn original, learning-first reimplementation of [Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT). This is **not** a fork or a copy of its Git history.\n\n## Goal\n\nUnderstand how a GPT language model works by implementing each concept ourselves, validating it with small examples and tests, and studying the original project at checkpoints.\n\n## Our commit rules\n\n1. One clear learning objective per commit.\n2. Explain **why** the change exists, not just how to type it.\n3. Favor small, runnable steps; add tests as soon as behavior appears.\n4. Use original code and diagrams where helpful, with proper attribution.\n5. Compare our eventual implementation against nanoGPT's behavior.\n\n## First learning milestones\n\n- Set up a reproducible Python and PyTorch project.\n- Represent token IDs as tensors shaped **[batch, time]**.\n- Write tests for shapes and dtypes.\n- Construct next-token prediction inputs and targets.\n- Gradually implement embeddings, attention, transformers, training and generation.\n\n## Attribution\n\nThis independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.\n",
+      "after": "# Project Rebuild: nanoGPT\n\nAn original, learning-first reimplementation of [Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT). This is **not** a fork or a copy of its Git history.\n\n## Goal\n\nUnderstand how a GPT language model works by implementing each concept ourselves, validating it with small examples and tests, and studying the original project at checkpoints.\n\n## Our commit rules\n\n1. One clear learning objective per commit.\n2. Explain **why** the change exists, not just how to type it.\n3. Favor small, runnable steps; add tests as soon as behavior appears.\n4. Use original code and diagrams where helpful, with proper attribution.\n5. Compare our eventual implementation against nanoGPT's behavior.\n\n## First learning milestones\n\n- Set up a reproducible Python and PyTorch project.\n- Represent token IDs as tensors shaped **[batch, time]**.\n- Write tests for shapes and dtypes.\n- Construct next-token prediction inputs and targets.\n- Gradually implement embeddings, attention, transformers, training and generation.\n\n## Attribution\n\nThis independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.\n\n## Local setup\n\nRequires Python 3.10+.\n\n```bash\npython -m venv .venv\nsource .venv/bin/activate  # Windows PowerShell: .venv\\\\Scripts\\\\Activate.ps1\npython -m pip install -e \".[dev]\"\n```\n\nPyTorch is an explicit project dependency; a GPU is **not** required for the first lessons.\n"
+    },
+    {
+      "id": "2.3",
+      "commitOrdinal": 2,
+      "ordinal": 4,
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "title": "Define the Python package",
+      "focus": "Define the Python package",
+      "file": "pyproject.toml",
+      "status": "added",
+      "language": "toml",
+      "lane": "backend",
+      "mentor": "The pyproject sets Python 3.10+, setuptools, torch and optional pytest. It declares the `src` package layout and test discovery rules.",
+      "visualKind": "package",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/603875d9d6dba28142865a1099d9bb194b4984f7/pyproject.toml",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/603875d9d6dba28142865a1099d9bb194b4984f7",
+      "patch": "@@ -0,0 +1,20 @@\n+[build-system]\n+requires = [\"setuptools>=68\"]\n+build-backend = \"setuptools.build_meta\"\n+\n+[project]\n+name = \"project-rebuild-nanogpt\"\n+version = \"0.1.0\"\n+description = \"A learning-first nanoGPT reimplementation\"\n+requires-python = \">=3.10\"\n+dependencies = [\"torch>=2.2\"]\n+\n+[project.optional-dependencies]\n+dev = [\"pytest>=8\"]\n+\n+[tool.setuptools.packages.find]\n+where = [\"src\"]\n+\n+[tool.pytest.ini_options]\n+pythonpath = [\"src\"]\n+testpaths = [\"tests\"]",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "[build-system]",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "requires = [\"setuptools>=68\"]",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "build-backend = \"setuptools.build_meta\"",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "[project]",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "name = \"project-rebuild-nanogpt\"",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "version = \"0.1.0\"",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "description = \"A learning-first nanoGPT reimplementation\"",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "text": "requires-python = \">=3.10\"",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "text": "dependencies = [\"torch>=2.2\"]",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "text": "[project.optional-dependencies]",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "text": "dev = [\"pytest>=8\"]",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "text": "[tool.setuptools.packages.find]",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "text": "where = [\"src\"]",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "text": "[tool.pytest.ini_options]",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "text": "pythonpath = [\"src\"]",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "text": "testpaths = [\"tests\"]",
+          "oldLine": null,
+          "newLine": 20
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,20 @@"
+      ],
+      "added": 20,
+      "removed": 0,
+      "shownCodeLines": 20,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 20
+        }
+      ],
+      "before": "",
+      "after": "[build-system]\nrequires = [\"setuptools>=68\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"project-rebuild-nanogpt\"\nversion = \"0.1.0\"\ndescription = \"A learning-first nanoGPT reimplementation\"\nrequires-python = \">=3.10\"\ndependencies = [\"torch>=2.2\"]\n\n[project.optional-dependencies]\ndev = [\"pytest>=8\"]\n\n[tool.setuptools.packages.find]\nwhere = [\"src\"]\n\n[tool.pytest.ini_options]\npythonpath = [\"src\"]\ntestpaths = [\"tests\"]\n"
+    },
+    {
+      "id": "2.4",
+      "commitOrdinal": 2,
+      "ordinal": 5,
+      "sha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "parentSha": "daaa0c5a9eca7334c73dd224d8bc36f07c63b2f8",
+      "title": "Initialize rebuild_gpt",
+      "focus": "Initialize rebuild_gpt",
+      "file": "src/rebuild_gpt/__init__.py",
+      "status": "added",
+      "language": "python",
+      "lane": "backend",
+      "mentor": "This package initializer establishes the importable namespace. No attention, model or training code has been added yet.",
+      "visualKind": "module",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/603875d9d6dba28142865a1099d9bb194b4984f7/src/rebuild_gpt/__init__.py",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/603875d9d6dba28142865a1099d9bb194b4984f7",
+      "patch": "@@ -0,0 +1 @@\n+\"\"\"A learning-first reimplementation of nanoGPT.\"\"\"",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "\"\"\"A learning-first reimplementation of nanoGPT.\"\"\"",
+          "oldLine": null,
+          "newLine": 1
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1 @@"
+      ],
+      "added": 1,
+      "removed": 0,
+      "shownCodeLines": 1,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        }
+      ],
+      "before": "",
+      "after": "\"\"\"A learning-first reimplementation of nanoGPT.\"\"\"\n"
+    },
+    {
+      "id": "3.1",
+      "commitOrdinal": 3,
+      "ordinal": 6,
+      "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "parentSha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "title": "Run a two-row token batch",
+      "focus": "Run a two-row token batch",
+      "file": "examples/01_token_batches.py",
+      "status": "added",
+      "language": "python",
+      "lane": "backend",
+      "mentor": "The example converts two sequences of IDs into one tensor with shape (2,4). Each row is a sequence; each column is a token position.",
+      "visualKind": "batch-example",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/464f68b46663b5f57de1c38781c995b3c57b509f/examples/01_token_batches.py",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/464f68b46663b5f57de1c38781c995b3c57b509f",
+      "patch": "@@ -0,0 +1,8 @@\n+\"\"\"Lesson 01: token IDs become a [batch, time] tensor.\"\"\"\n+\n+from rebuild_gpt.tensors import token_batch\n+\n+batch = token_batch([[10, 20, 30, 40], [50, 60, 70, 80]])\n+print(\"tokens:\\n\", batch)\n+print(\"shape:\", tuple(batch.shape))  # (2 sequences, 4 positions)\n+print(\"dtype:\", batch.dtype)  # int64 is required for embedding lookups",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "\"\"\"Lesson 01: token IDs become a [batch, time] tensor.\"\"\"",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "from rebuild_gpt.tensors import token_batch",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "batch = token_batch([[10, 20, 30, 40], [50, 60, 70, 80]])",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "print(\"tokens:\\n\", batch)",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "print(\"shape:\", tuple(batch.shape))  # (2 sequences, 4 positions)",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "print(\"dtype:\", batch.dtype)  # int64 is required for embedding lookups",
+          "oldLine": null,
+          "newLine": 8
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,8 @@"
+      ],
+      "added": 8,
+      "removed": 0,
+      "shownCodeLines": 8,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        }
+      ],
+      "before": "",
+      "after": "\"\"\"Lesson 01: token IDs become a [batch, time] tensor.\"\"\"\n\nfrom rebuild_gpt.tensors import token_batch\n\nbatch = token_batch([[10, 20, 30, 40], [50, 60, 70, 80]])\nprint(\"tokens:\\n\", batch)\nprint(\"shape:\", tuple(batch.shape))  # (2 sequences, 4 positions)\nprint(\"dtype:\", batch.dtype)  # int64 is required for embedding lookups\n"
+    },
+    {
+      "id": "3.2",
+      "commitOrdinal": 3,
+      "ordinal": 7,
+      "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "parentSha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "title": "Explain batch and time axes",
+      "focus": "Explain batch and time axes",
+      "file": "lessons/01_token_batches.md",
+      "status": "added",
+      "language": "markdown",
+      "lane": "backend",
+      "mentor": "The lesson separates batch size B from sequence length T. Numbers are deliberately made-up IDs so we can see the tensor shape before tokenizing language.",
+      "visualKind": "axes",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/464f68b46663b5f57de1c38781c995b3c57b509f/lessons/01_token_batches.md",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/464f68b46663b5f57de1c38781c995b3c57b509f",
+      "patch": "@@ -0,0 +1,23 @@\n+# Lesson 01: the shape of language-model input\n+\n+**Question:** How do we present multiple token sequences to a GPT model?\n+\n+Tokenization turns text into integer IDs. For now we use made-up IDs so the\n+tensor structure is visible without having to implement a tokenizer.\n+\n+```text\n+sequence A: 10  20  30  40\n+sequence B: 50  60  70  80\n+            └── time ───┘\n+            2 rows × 4 positions\n+```\n+\n+A batch has shape **(B, T)**: B sequences and T token positions. We store\n+token IDs as `torch.long` (64-bit integers) because embedding-table lookups\n+use integer indices.\n+\n+Run `python examples/01_token_batches.py` after installing the package.\n+\n+**Experiment:** Add a third sequence. Which dimension changes?\n+\n+**Checkpoint:** Explain the difference between batch size and context length.",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "# Lesson 01: the shape of language-model input",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "**Question:** How do we present multiple token sequences to a GPT model?",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "Tokenization turns text into integer IDs. For now we use made-up IDs so the",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "tensor structure is visible without having to implement a tokenizer.",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "```text",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "text": "sequence A: 10  20  30  40",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "text": "sequence B: 50  60  70  80",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "text": "            └── time ───┘",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "text": "            2 rows × 4 positions",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "text": "```",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "text": "A batch has shape **(B, T)**: B sequences and T token positions. We store",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "text": "token IDs as `torch.long` (64-bit integers) because embedding-table lookups",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "text": "use integer indices.",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "text": "Run `python examples/01_token_batches.py` after installing the package.",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 20
+        },
+        {
+          "type": "add",
+          "text": "**Experiment:** Add a third sequence. Which dimension changes?",
+          "oldLine": null,
+          "newLine": 21
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 22
+        },
+        {
+          "type": "add",
+          "text": "**Checkpoint:** Explain the difference between batch size and context length.",
+          "oldLine": null,
+          "newLine": 23
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,23 @@"
+      ],
+      "added": 23,
+      "removed": 0,
+      "shownCodeLines": 23,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 20
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 21
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 22
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 23
+        }
+      ],
+      "before": "",
+      "after": "# Lesson 01: the shape of language-model input\n\n**Question:** How do we present multiple token sequences to a GPT model?\n\nTokenization turns text into integer IDs. For now we use made-up IDs so the\ntensor structure is visible without having to implement a tokenizer.\n\n```text\nsequence A: 10  20  30  40\nsequence B: 50  60  70  80\n            └── time ───┘\n            2 rows × 4 positions\n```\n\nA batch has shape **(B, T)**: B sequences and T token positions. We store\ntoken IDs as `torch.long` (64-bit integers) because embedding-table lookups\nuse integer indices.\n\nRun `python examples/01_token_batches.py` after installing the package.\n\n**Experiment:** Add a third sequence. Which dimension changes?\n\n**Checkpoint:** Explain the difference between batch size and context length.\n"
+    },
+    {
+      "id": "3.3",
+      "commitOrdinal": 3,
+      "ordinal": 8,
+      "sha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "parentSha": "603875d9d6dba28142865a1099d9bb194b4984f7",
+      "title": "Implement token_batch()",
+      "focus": "Implement token_batch()",
+      "file": "src/rebuild_gpt/tensors.py",
+      "status": "added",
+      "language": "python",
+      "lane": "backend",
+      "mentor": "torch.tensor(rows, dtype=torch.long) creates integer indices for later embedding lookups. Invalid empty or non-two-dimensional inputs raise ValueError.",
+      "visualKind": "tensor-fn",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/464f68b46663b5f57de1c38781c995b3c57b509f/src/rebuild_gpt/tensors.py",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/464f68b46663b5f57de1c38781c995b3c57b509f",
+      "patch": "@@ -0,0 +1,13 @@\n+\"\"\"Small tensor helpers used to learn GPT data flow.\"\"\"\n+\n+from collections.abc import Sequence\n+\n+import torch\n+\n+\n+def token_batch(rows: Sequence[Sequence[int]]) -> torch.Tensor:\n+    \"\"\"Turn equal-length token ID sequences into a [batch, time] tensor.\"\"\"\n+    batch = torch.tensor(rows, dtype=torch.long)\n+    if batch.ndim != 2 or batch.numel() == 0:\n+        raise ValueError(\"Expected a non-empty [batch, time] token array\")\n+    return batch",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "\"\"\"Small tensor helpers used to learn GPT data flow.\"\"\"",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "from collections.abc import Sequence",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "import torch",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "def token_batch(rows: Sequence[Sequence[int]]) -> torch.Tensor:",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "text": "    \"\"\"Turn equal-length token ID sequences into a [batch, time] tensor.\"\"\"",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "text": "    batch = torch.tensor(rows, dtype=torch.long)",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "text": "    if batch.ndim != 2 or batch.numel() == 0:",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "text": "        raise ValueError(\"Expected a non-empty [batch, time] token array\")",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "text": "    return batch",
+          "oldLine": null,
+          "newLine": 13
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,13 @@"
+      ],
+      "added": 13,
+      "removed": 0,
+      "shownCodeLines": 13,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 13
+        }
+      ],
+      "before": "",
+      "after": "\"\"\"Small tensor helpers used to learn GPT data flow.\"\"\"\n\nfrom collections.abc import Sequence\n\nimport torch\n\n\ndef token_batch(rows: Sequence[Sequence[int]]) -> torch.Tensor:\n    \"\"\"Turn equal-length token ID sequences into a [batch, time] tensor.\"\"\"\n    batch = torch.tensor(rows, dtype=torch.long)\n    if batch.ndim != 2 or batch.numel() == 0:\n        raise ValueError(\"Expected a non-empty [batch, time] token array\")\n    return batch\n"
+    },
+    {
+      "id": "4.1",
+      "commitOrdinal": 4,
+      "ordinal": 9,
+      "sha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "parentSha": "464f68b46663b5f57de1c38781c995b3c57b509f",
+      "title": "Test batch shape and input checks",
+      "focus": "Test batch shape and input checks",
+      "file": "tests/test_tensors.py",
+      "status": "added",
+      "language": "python",
+      "lane": "backend",
+      "mentor": "Tests verify shape (2,3), torch.long, exact values, and rejection of empty or one-dimensional inputs.",
+      "visualKind": "batch-tests",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/fcee5a141a735fb0609891d6e07d30bc78f183e0/tests/test_tensors.py",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "patch": "@@ -0,0 +1,17 @@\n+import pytest\n+import torch\n+\n+from rebuild_gpt.tensors import token_batch\n+\n+\n+def test_token_batch_has_batch_and_time_axes():\n+    batch = token_batch([[1, 2, 3], [4, 5, 6]])\n+    assert batch.shape == (2, 3)\n+    assert batch.dtype == torch.long\n+    assert batch.tolist() == [[1, 2, 3], [4, 5, 6]]\n+\n+\n+@pytest.mark.parametrize(\"rows\", [[], [1, 2, 3]])\n+def test_token_batch_rejects_missing_axis(rows):\n+    with pytest.raises(ValueError):\n+        token_batch(rows)",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "import pytest",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "import torch",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": "from rebuild_gpt.tensors import token_batch",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "def test_token_batch_has_batch_and_time_axes():",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "    batch = token_batch([[1, 2, 3], [4, 5, 6]])",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "text": "    assert batch.shape == (2, 3)",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "text": "    assert batch.dtype == torch.long",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "text": "    assert batch.tolist() == [[1, 2, 3], [4, 5, 6]]",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "text": "@pytest.mark.parametrize(\"rows\", [[], [1, 2, 3]])",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "text": "def test_token_batch_rejects_missing_axis(rows):",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "text": "    with pytest.raises(ValueError):",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "text": "        token_batch(rows)",
+          "oldLine": null,
+          "newLine": 17
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,17 @@"
+      ],
+      "added": 17,
+      "removed": 0,
+      "shownCodeLines": 17,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 17
+        }
+      ],
+      "before": "",
+      "after": "import pytest\nimport torch\n\nfrom rebuild_gpt.tensors import token_batch\n\n\ndef test_token_batch_has_batch_and_time_axes():\n    batch = token_batch([[1, 2, 3], [4, 5, 6]])\n    assert batch.shape == (2, 3)\n    assert batch.dtype == torch.long\n    assert batch.tolist() == [[1, 2, 3], [4, 5, 6]]\n\n\n@pytest.mark.parametrize(\"rows\", [[], [1, 2, 3]])\ndef test_token_batch_rejects_missing_axis(rows):\n    with pytest.raises(ValueError):\n        token_batch(rows)\n"
+    },
+    {
+      "id": "5.1",
+      "commitOrdinal": 5,
+      "ordinal": 10,
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "title": "Document runnable checkpoints",
+      "focus": "Document runnable checkpoints",
+      "file": "README.md",
+      "status": "modified",
+      "language": "markdown",
+      "lane": "backend",
+      "mentor": "The README links two examples and pytest as a repeatable learning sequence. The source adds commands, not proof they were executed.",
+      "visualKind": "run-commands",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/README.md",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "patch": "@@ -37,3 +37,14 @@ python -m pip install -e \".[dev]\"\n ```\n \n PyTorch is an explicit project dependency; a GPU is **not** required for the first lessons.\n+\n+## First runnable lessons\n+\n+```bash\n+python examples/01_token_batches.py\n+python examples/02_next_token_pairs.py\n+python -m pytest\n+```\n+\n+Each lesson in `lessons/` explains the problem, a code experiment, and a\n+question to answer before moving to the next commit.",
+      "patchLines": [
+        {
+          "type": "context",
+          "text": "```",
+          "oldLine": 37,
+          "newLine": 37
+        },
+        {
+          "type": "context",
+          "text": "",
+          "oldLine": 38,
+          "newLine": 38
+        },
+        {
+          "type": "context",
+          "text": "PyTorch is an explicit project dependency; a GPU is **not** required for the first lessons.",
+          "oldLine": 39,
+          "newLine": 39
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 40
+        },
+        {
+          "type": "add",
+          "text": "## First runnable lessons",
+          "oldLine": null,
+          "newLine": 41
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 42
+        },
+        {
+          "type": "add",
+          "text": "```bash",
+          "oldLine": null,
+          "newLine": 43
+        },
+        {
+          "type": "add",
+          "text": "python examples/01_token_batches.py",
+          "oldLine": null,
+          "newLine": 44
+        },
+        {
+          "type": "add",
+          "text": "python examples/02_next_token_pairs.py",
+          "oldLine": null,
+          "newLine": 45
+        },
+        {
+          "type": "add",
+          "text": "python -m pytest",
+          "oldLine": null,
+          "newLine": 46
+        },
+        {
+          "type": "add",
+          "text": "```",
+          "oldLine": null,
+          "newLine": 47
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 48
+        },
+        {
+          "type": "add",
+          "text": "Each lesson in `lessons/` explains the problem, a code experiment, and a",
+          "oldLine": null,
+          "newLine": 49
+        },
+        {
+          "type": "add",
+          "text": "question to answer before moving to the next commit.",
+          "oldLine": null,
+          "newLine": 50
+        }
+      ],
+      "hunks": [
+        "@@ -37,3 +37,14 @@ python -m pip install -e \".[dev]\""
+      ],
+      "added": 11,
+      "removed": 0,
+      "shownCodeLines": 14,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 40
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 41
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 42
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 43
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 44
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 45
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 46
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 47
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 48
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 49
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 50
+        }
+      ],
+      "before": "# Project Rebuild: nanoGPT\n\nAn original, learning-first reimplementation of [Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT). This is **not** a fork or a copy of its Git history.\n\n## Goal\n\nUnderstand how a GPT language model works by implementing each concept ourselves, validating it with small examples and tests, and studying the original project at checkpoints.\n\n## Our commit rules\n\n1. One clear learning objective per commit.\n2. Explain **why** the change exists, not just how to type it.\n3. Favor small, runnable steps; add tests as soon as behavior appears.\n4. Use original code and diagrams where helpful, with proper attribution.\n5. Compare our eventual implementation against nanoGPT's behavior.\n\n## First learning milestones\n\n- Set up a reproducible Python and PyTorch project.\n- Represent token IDs as tensors shaped **[batch, time]**.\n- Write tests for shapes and dtypes.\n- Construct next-token prediction inputs and targets.\n- Gradually implement embeddings, attention, transformers, training and generation.\n\n## Attribution\n\nThis independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.\n\n## Local setup\n\nRequires Python 3.10+.\n\n```bash\npython -m venv .venv\nsource .venv/bin/activate  # Windows PowerShell: .venv\\\\Scripts\\\\Activate.ps1\npython -m pip install -e \".[dev]\"\n```\n\nPyTorch is an explicit project dependency; a GPU is **not** required for the first lessons.\n",
+      "after": "# Project Rebuild: nanoGPT\n\nAn original, learning-first reimplementation of [Andrej Karpathy's nanoGPT](https://github.com/karpathy/nanoGPT). This is **not** a fork or a copy of its Git history.\n\n## Goal\n\nUnderstand how a GPT language model works by implementing each concept ourselves, validating it with small examples and tests, and studying the original project at checkpoints.\n\n## Our commit rules\n\n1. One clear learning objective per commit.\n2. Explain **why** the change exists, not just how to type it.\n3. Favor small, runnable steps; add tests as soon as behavior appears.\n4. Use original code and diagrams where helpful, with proper attribution.\n5. Compare our eventual implementation against nanoGPT's behavior.\n\n## First learning milestones\n\n- Set up a reproducible Python and PyTorch project.\n- Represent token IDs as tensors shaped **[batch, time]**.\n- Write tests for shapes and dtypes.\n- Construct next-token prediction inputs and targets.\n- Gradually implement embeddings, attention, transformers, training and generation.\n\n## Attribution\n\nThis independent educational project is inspired by [karpathy/nanoGPT](https://github.com/karpathy/nanoGPT). We will not pretend our commits are the upstream project's historical commits.\n\n## Local setup\n\nRequires Python 3.10+.\n\n```bash\npython -m venv .venv\nsource .venv/bin/activate  # Windows PowerShell: .venv\\\\Scripts\\\\Activate.ps1\npython -m pip install -e \".[dev]\"\n```\n\nPyTorch is an explicit project dependency; a GPU is **not** required for the first lessons.\n\n## First runnable lessons\n\n```bash\npython examples/01_token_batches.py\npython examples/02_next_token_pairs.py\npython -m pytest\n```\n\nEach lesson in `lessons/` explains the problem, a code experiment, and a\nquestion to answer before moving to the next commit.\n"
+    },
+    {
+      "id": "5.2",
+      "commitOrdinal": 5,
+      "ordinal": 11,
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "title": "Run one-step-ahead prediction pairs",
+      "focus": "Run one-step-ahead prediction pairs",
+      "file": "examples/02_next_token_pairs.py",
+      "status": "added",
+      "language": "python",
+      "lane": "backend",
+      "mentor": "One sequence [10,20,30,40] becomes inputs [10,20,30] and targets [20,30,40]. Every input predicts its next token.",
+      "visualKind": "pairs-example",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/examples/02_next_token_pairs.py",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "patch": "@@ -0,0 +1,8 @@\n+\"\"\"Lesson 02: each input token predicts the token immediately after it.\"\"\"\n+\n+from rebuild_gpt.tensors import next_token_pairs, token_batch\n+\n+batch = token_batch([[10, 20, 30, 40]])\n+inputs, targets = next_token_pairs(batch)\n+print(\"inputs:\", inputs.tolist())   # [[10, 20, 30]]\n+print(\"targets:\", targets.tolist())  # [[20, 30, 40]]",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "\"\"\"Lesson 02: each input token predicts the token immediately after it.\"\"\"",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "from rebuild_gpt.tensors import next_token_pairs, token_batch",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "batch = token_batch([[10, 20, 30, 40]])",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "inputs, targets = next_token_pairs(batch)",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "print(\"inputs:\", inputs.tolist())   # [[10, 20, 30]]",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "print(\"targets:\", targets.tolist())  # [[20, 30, 40]]",
+          "oldLine": null,
+          "newLine": 8
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,8 @@"
+      ],
+      "added": 8,
+      "removed": 0,
+      "shownCodeLines": 8,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        }
+      ],
+      "before": "",
+      "after": "\"\"\"Lesson 02: each input token predicts the token immediately after it.\"\"\"\n\nfrom rebuild_gpt.tensors import next_token_pairs, token_batch\n\nbatch = token_batch([[10, 20, 30, 40]])\ninputs, targets = next_token_pairs(batch)\nprint(\"inputs:\", inputs.tolist())   # [[10, 20, 30]]\nprint(\"targets:\", targets.tolist())  # [[20, 30, 40]]\n"
+    },
+    {
+      "id": "5.3",
+      "commitOrdinal": 5,
+      "ordinal": 12,
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "title": "Explain the shifted token windows",
+      "focus": "Explain the shifted token windows",
+      "file": "lessons/02_next_token_pairs.md",
+      "status": "added",
+      "language": "markdown",
+      "lane": "backend",
+      "mentor": "The two slices both have shape (B,T−1), but targets start one token later. This prevents training against the same token at the same position.",
+      "visualKind": "shift",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/lessons/02_next_token_pairs.md",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "patch": "@@ -0,0 +1,22 @@\n+# Lesson 02: learning to predict the next token\n+\n+GPT is trained to predict the **next** token at every position, not to\n+memorize the token currently at that position.\n+\n+```text\n+full sequence: 10  20  30  40\n+inputs (x):   10  20  30\n+targets (y):  20  30  40\n+```\n+\n+Notice that `x[:, :-1]` drops the final token and `x[:, 1:]` drops the\n+first token. Their shapes are identical, **(B, T-1)**. The two tensors are\n+views over the same original batch; the data is not copied.\n+\n+Run `python examples/02_next_token_pairs.py` and `python -m pytest`.\n+\n+**Experiment:** Change the batch to two sequences of five tokens.\n+What are the two output shapes?\n+\n+**Checkpoint:** Why would training fail conceptually if inputs and targets\n+contained the exact same tokens at corresponding positions?",
+      "patchLines": [
+        {
+          "type": "add",
+          "text": "# Lesson 02: learning to predict the next token",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "text": "GPT is trained to predict the **next** token at every position, not to",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "text": "memorize the token currently at that position.",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "text": "```text",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "text": "full sequence: 10  20  30  40",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "text": "inputs (x):   10  20  30",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "text": "targets (y):  20  30  40",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "text": "```",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "text": "Notice that `x[:, :-1]` drops the final token and `x[:, 1:]` drops the",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "text": "first token. Their shapes are identical, **(B, T-1)**. The two tensors are",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "text": "views over the same original batch; the data is not copied.",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "text": "Run `python examples/02_next_token_pairs.py` and `python -m pytest`.",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "text": "**Experiment:** Change the batch to two sequences of five tokens.",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "text": "What are the two output shapes?",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 20
+        },
+        {
+          "type": "add",
+          "text": "**Checkpoint:** Why would training fail conceptually if inputs and targets",
+          "oldLine": null,
+          "newLine": 21
+        },
+        {
+          "type": "add",
+          "text": "contained the exact same tokens at corresponding positions?",
+          "oldLine": null,
+          "newLine": 22
+        }
+      ],
+      "hunks": [
+        "@@ -0,0 +1,22 @@"
+      ],
+      "added": 22,
+      "removed": 0,
+      "shownCodeLines": 22,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 1
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 2
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 3
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 5
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 6
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 7
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 8
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 9
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 10
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 11
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 12
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 20
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 21
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 22
+        }
+      ],
+      "before": "",
+      "after": "# Lesson 02: learning to predict the next token\n\nGPT is trained to predict the **next** token at every position, not to\nmemorize the token currently at that position.\n\n```text\nfull sequence: 10  20  30  40\ninputs (x):   10  20  30\ntargets (y):  20  30  40\n```\n\nNotice that `x[:, :-1]` drops the final token and `x[:, 1:]` drops the\nfirst token. Their shapes are identical, **(B, T-1)**. The two tensors are\nviews over the same original batch; the data is not copied.\n\nRun `python examples/02_next_token_pairs.py` and `python -m pytest`.\n\n**Experiment:** Change the batch to two sequences of five tokens.\nWhat are the two output shapes?\n\n**Checkpoint:** Why would training fail conceptually if inputs and targets\ncontained the exact same tokens at corresponding positions?\n"
+    },
+    {
+      "id": "5.4",
+      "commitOrdinal": 5,
+      "ordinal": 13,
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "title": "Implement next_token_pairs()",
+      "focus": "Implement next_token_pairs()",
+      "file": "src/rebuild_gpt/tensors.py",
+      "status": "modified",
+      "language": "python",
+      "lane": "backend",
+      "mentor": "The helper checks shape and minimum length, then returns `batch[:, :-1]` and `batch[:, 1:]`—views of adjacent token windows.",
+      "visualKind": "slice-fn",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/src/rebuild_gpt/tensors.py",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "patch": "@@ -11,3 +11,10 @@ def token_batch(rows: Sequence[Sequence[int]]) -> torch.Tensor:\n     if batch.ndim != 2 or batch.numel() == 0:\n         raise ValueError(\"Expected a non-empty [batch, time] token array\")\n     return batch\n+\n+\n+def next_token_pairs(batch: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:\n+    \"\"\"Make inputs and one-step-ahead targets for causal language modeling.\"\"\"\n+    if batch.ndim != 2 or batch.size(1) < 2:\n+        raise ValueError(\"Expected a [batch, time] tensor with at least 2 tokens\")\n+    return batch[:, :-1], batch[:, 1:]",
+      "patchLines": [
+        {
+          "type": "context",
+          "text": "    if batch.ndim != 2 or batch.numel() == 0:",
+          "oldLine": 11,
+          "newLine": 11
+        },
+        {
+          "type": "context",
+          "text": "        raise ValueError(\"Expected a non-empty [batch, time] token array\")",
+          "oldLine": 12,
+          "newLine": 12
+        },
+        {
+          "type": "context",
+          "text": "    return batch",
+          "oldLine": 13,
+          "newLine": 13
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "text": "def next_token_pairs(batch: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "text": "    \"\"\"Make inputs and one-step-ahead targets for causal language modeling.\"\"\"",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "text": "    if batch.ndim != 2 or batch.size(1) < 2:",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "text": "        raise ValueError(\"Expected a [batch, time] tensor with at least 2 tokens\")",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "text": "    return batch[:, :-1], batch[:, 1:]",
+          "oldLine": null,
+          "newLine": 20
+        }
+      ],
+      "hunks": [
+        "@@ -11,3 +11,10 @@ def token_batch(rows: Sequence[Sequence[int]]) -> torch.Tensor:"
+      ],
+      "added": 7,
+      "removed": 0,
+      "shownCodeLines": 10,
+      "changedCoordinates": [
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 14
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 15
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 16
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 20
+        }
+      ],
+      "before": "\"\"\"Small tensor helpers used to learn GPT data flow.\"\"\"\n\nfrom collections.abc import Sequence\n\nimport torch\n\n\ndef token_batch(rows: Sequence[Sequence[int]]) -> torch.Tensor:\n    \"\"\"Turn equal-length token ID sequences into a [batch, time] tensor.\"\"\"\n    batch = torch.tensor(rows, dtype=torch.long)\n    if batch.ndim != 2 or batch.numel() == 0:\n        raise ValueError(\"Expected a non-empty [batch, time] token array\")\n    return batch\n",
+      "after": "\"\"\"Small tensor helpers used to learn GPT data flow.\"\"\"\n\nfrom collections.abc import Sequence\n\nimport torch\n\n\ndef token_batch(rows: Sequence[Sequence[int]]) -> torch.Tensor:\n    \"\"\"Turn equal-length token ID sequences into a [batch, time] tensor.\"\"\"\n    batch = torch.tensor(rows, dtype=torch.long)\n    if batch.ndim != 2 or batch.numel() == 0:\n        raise ValueError(\"Expected a non-empty [batch, time] token array\")\n    return batch\n\n\ndef next_token_pairs(batch: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:\n    \"\"\"Make inputs and one-step-ahead targets for causal language modeling.\"\"\"\n    if batch.ndim != 2 or batch.size(1) < 2:\n        raise ValueError(\"Expected a [batch, time] tensor with at least 2 tokens\")\n    return batch[:, :-1], batch[:, 1:]\n"
+    },
+    {
+      "id": "5.5",
+      "commitOrdinal": 5,
+      "ordinal": 14,
+      "sha": "f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "parentSha": "fcee5a141a735fb0609891d6e07d30bc78f183e0",
+      "title": "Test shift targets and short contexts",
+      "focus": "Test shift targets and short contexts",
+      "file": "tests/test_tensors.py",
+      "status": "modified",
+      "language": "python",
+      "lane": "backend",
+      "mentor": "Tests assert the shifted values and rejection of a single-token context. The import is updated to bring the new helper into the suite.",
+      "visualKind": "shift-tests",
+      "sourceUrl": "https://github.com/sabareeshrao/Project-Rebuild/blob/f260dc8059da1bc079e5ab46d56c02fda7914ad0/tests/test_tensors.py",
+      "commitUrl": "https://github.com/sabareeshrao/Project-Rebuild/commit/f260dc8059da1bc079e5ab46d56c02fda7914ad0",
+      "patch": "@@ -1,7 +1,7 @@\n import pytest\n import torch\n \n-from rebuild_gpt.tensors import token_batch\n+from rebuild_gpt.tensors import next_token_pairs, token_batch\n \n \n def test_token_batch_has_batch_and_time_axes():\n@@ -15,3 +15,14 @@ def test_token_batch_has_batch_and_time_axes():\n def test_token_batch_rejects_missing_axis(rows):\n     with pytest.raises(ValueError):\n         token_batch(rows)\n+\n+\n+def test_next_token_pairs_shift_targets_one_position():\n+    inputs, targets = next_token_pairs(token_batch([[10, 20, 30, 40]]))\n+    assert inputs.tolist() == [[10, 20, 30]]\n+    assert targets.tolist() == [[20, 30, 40]]\n+\n+\n+def test_next_token_pairs_rejects_single_token_context():\n+    with pytest.raises(ValueError):\n+        next_token_pairs(token_batch([[10]]))",
+      "patchLines": [
+        {
+          "type": "context",
+          "text": "import pytest",
+          "oldLine": 1,
+          "newLine": 1
+        },
+        {
+          "type": "context",
+          "text": "import torch",
+          "oldLine": 2,
+          "newLine": 2
+        },
+        {
+          "type": "context",
+          "text": "",
+          "oldLine": 3,
+          "newLine": 3
+        },
+        {
+          "type": "remove",
+          "text": "from rebuild_gpt.tensors import token_batch",
+          "oldLine": 4,
+          "newLine": null
+        },
+        {
+          "type": "add",
+          "text": "from rebuild_gpt.tensors import next_token_pairs, token_batch",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "context",
+          "text": "",
+          "oldLine": 5,
+          "newLine": 5
+        },
+        {
+          "type": "context",
+          "text": "",
+          "oldLine": 6,
+          "newLine": 6
+        },
+        {
+          "type": "context",
+          "text": "def test_token_batch_has_batch_and_time_axes():",
+          "oldLine": 7,
+          "newLine": 7
+        },
+        {
+          "type": "context",
+          "text": "def test_token_batch_rejects_missing_axis(rows):",
+          "oldLine": 15,
+          "newLine": 15
+        },
+        {
+          "type": "context",
+          "text": "    with pytest.raises(ValueError):",
+          "oldLine": 16,
+          "newLine": 16
+        },
+        {
+          "type": "context",
+          "text": "        token_batch(rows)",
+          "oldLine": 17,
+          "newLine": 17
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "text": "def test_next_token_pairs_shift_targets_one_position():",
+          "oldLine": null,
+          "newLine": 20
+        },
+        {
+          "type": "add",
+          "text": "    inputs, targets = next_token_pairs(token_batch([[10, 20, 30, 40]]))",
+          "oldLine": null,
+          "newLine": 21
+        },
+        {
+          "type": "add",
+          "text": "    assert inputs.tolist() == [[10, 20, 30]]",
+          "oldLine": null,
+          "newLine": 22
+        },
+        {
+          "type": "add",
+          "text": "    assert targets.tolist() == [[20, 30, 40]]",
+          "oldLine": null,
+          "newLine": 23
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 24
+        },
+        {
+          "type": "add",
+          "text": "",
+          "oldLine": null,
+          "newLine": 25
+        },
+        {
+          "type": "add",
+          "text": "def test_next_token_pairs_rejects_single_token_context():",
+          "oldLine": null,
+          "newLine": 26
+        },
+        {
+          "type": "add",
+          "text": "    with pytest.raises(ValueError):",
+          "oldLine": null,
+          "newLine": 27
+        },
+        {
+          "type": "add",
+          "text": "        next_token_pairs(token_batch([[10]]))",
+          "oldLine": null,
+          "newLine": 28
+        }
+      ],
+      "hunks": [
+        "@@ -1,7 +1,7 @@",
+        "@@ -15,3 +15,14 @@ def test_token_batch_has_batch_and_time_axes():"
+      ],
+      "added": 12,
+      "removed": 1,
+      "shownCodeLines": 22,
+      "changedCoordinates": [
+        {
+          "type": "remove",
+          "oldLine": 4,
+          "newLine": null
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 4
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 18
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 19
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 20
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 21
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 22
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 23
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 24
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 25
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 26
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 27
+        },
+        {
+          "type": "add",
+          "oldLine": null,
+          "newLine": 28
+        }
+      ],
+      "before": "import pytest\nimport torch\n\nfrom rebuild_gpt.tensors import token_batch\n\n\ndef test_token_batch_has_batch_and_time_axes():\n    batch = token_batch([[1, 2, 3], [4, 5, 6]])\n    assert batch.shape == (2, 3)\n    assert batch.dtype == torch.long\n    assert batch.tolist() == [[1, 2, 3], [4, 5, 6]]\n\n\n@pytest.mark.parametrize(\"rows\", [[], [1, 2, 3]])\ndef test_token_batch_rejects_missing_axis(rows):\n    with pytest.raises(ValueError):\n        token_batch(rows)\n",
+      "after": "import pytest\nimport torch\n\nfrom rebuild_gpt.tensors import next_token_pairs, token_batch\n\n\ndef test_token_batch_has_batch_and_time_axes():\n    batch = token_batch([[1, 2, 3], [4, 5, 6]])\n    assert batch.shape == (2, 3)\n    assert batch.dtype == torch.long\n    assert batch.tolist() == [[1, 2, 3], [4, 5, 6]]\n\n\n@pytest.mark.parametrize(\"rows\", [[], [1, 2, 3]])\ndef test_token_batch_rejects_missing_axis(rows):\n    with pytest.raises(ValueError):\n        token_batch(rows)\n\n\ndef test_next_token_pairs_shift_targets_one_position():\n    inputs, targets = next_token_pairs(token_batch([[10, 20, 30, 40]]))\n    assert inputs.tolist() == [[10, 20, 30]]\n    assert targets.tolist() == [[20, 30, 40]]\n\n\ndef test_next_token_pairs_rejects_single_token_context():\n    with pytest.raises(ValueError):\n        next_token_pairs(token_batch([[10]]))\n"
+    }
+  ]
+}
