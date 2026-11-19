@@ -1,0 +1,2 @@
+# Local GitHub-style syntax highlighting
+This standalone, dependency-free tokenizer handles Python, Markdown, TOML, .gitignore and shell commands. It escapes every user-supplied source token before inserting color spans, preserving the exact source text, line numbers and diff geometry. All visual styling lives in `../github-theme.css`; this file sets no layout properties. New languages can be added via `highlightLine`.
